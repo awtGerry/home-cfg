@@ -1,3 +1,6 @@
 [submodule "package/nvim"]
 	path = package/nvim
 	url = git@github.com:awtGerry/nvim.git
+[submodule "package/furry-nvim"]
+	path = package/furry-nvim
+	url = https://github.com/awtGerry/furry-nvim.git
