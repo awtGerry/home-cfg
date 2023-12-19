@@ -121,7 +121,6 @@
   users.users.gerry = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-
   };
 
   # Enable zsh
@@ -153,12 +152,17 @@
 	  zsh
 
     # Basic programs
+    spotify
 	  ripgrep
 	  openssl
     unzip
 	  xclip
     tmux
     xwallpaper
+    bat
+    lf
+    sxiv
+    zathura
 
     # Dependencies
     xfce.thunar
@@ -171,16 +175,16 @@
   ];
 
   nixpkgs.overlays = [
-	(final: prev: {
-	  dwm = prev.dwm.overrideAttrs (old: { src = /home/gerry/Github/home-cfg/system/dwm ;});
-	})
+    (final: prev: {
+      dwm = prev.dwm.overrideAttrs (old: { src = /home/gerry/Github/home-cfg/system/dwm ;});
+    })
   ];
 
   # Fonts
   fonts = {
-      enableDefaultFonts = true;
+      enableDefaultPackages = true;
       packages = with pkgs; [
-        # fira-code
+        fira-code-nerdfont
         font-awesome
         noto-fonts
         noto-fonts-emoji
@@ -188,7 +192,6 @@
         source-han-sans
         source-han-sans-japanese
         source-han-serif-japanese
-        (nerdfonts.override { fonts = [ "fira-code" ]; })
       ];
 
       fontconfig = {
