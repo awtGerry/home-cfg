@@ -86,14 +86,35 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.windowManager.dwm.enable = true;
-  services.xserver.layout = "us";
-
-  services.xserver.displayManager = {
-    lightdm.enable = true;
+  # Enable the X11 & setup lightdm display manager.
+  services.xserver = {
+    enable = true;
+    layout = "us";
+    displayManager = {
+      lightdm = {
+        enable = true;
+        greeters.gtk = {
+          enable = true;
+          theme.package = pkgs.flat-remix-gtk;
+          iconTheme.package = pkgs.flat-remix-icon-theme;
+          theme.name = "Flat-Remix-GTK-Dark-Blue";
+          iconTheme.name = "Flat-Remix-Dark-Blue";
+          cursorTheme = {
+            package = pkgs.bibata-cursors;
+            name = "Bibata-Modern-Ice";
+          };
+        };
+      };
+    };
   };
+  services.xserver.windowManager.dwm.enable = true;
+
+  /* services.xserver.displayManager.sddm.theme = "${(pkgs.fetchFromGitHub {
+    owner = "joshuakraemer";
+    repo = "sddm-theme-dialog";
+    rev = "53f81e322f715d3f8e3f41c38eb3774b1be4c19b";
+    sha256 = "qoLSRnQOvH3rAH+G1eRrcf9ZB6WlSRIZjYZBOTkew/0=";
+  })}"; */
 
   services.xserver.displayManager.setupCommands = ''
     ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode 1920x1080 -r 144
@@ -134,7 +155,8 @@
 	  dwm
 
     # Dev stuff
-    cargo
+    # cargo
+    # rustup
     rust-analyzer
 	  clang
 	  gcc
@@ -163,6 +185,9 @@
     lf
     sxiv
     zathura
+
+    # Custom
+    # (callPackage /home/gerry/Github/home-cfg/system/nix/sddm-theme.nix {}).sddm-sugar-dark
 
     # Dependencies
     xfce.thunar
