@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# Alias
+alias \
+    ls="lsd -h --color=auto --group-directories-first" \
+    ll="lsd -lh --color=auto --group-directories-first" \
+    mv="mv -iv" \
+    rm="rm -vI" \
+    cat="bat" \
+    npm="npm --no-fund --no-audit" \
+    v="$EDITOR" \
+    t="tmux" \
+    ta="tmux a" \
+    +x="chmod +x" \
+	z="zathura"
+
+alias cpc="xclip -selection clipboard -o"
+
+# Funciones
+# Buscar directorios y moverse (ignora node_modules, target y .git)
+function f() {
+    cd "$(find . -type d \( -name node_modules -o -name target -o -name .git \) -prune -o -type d -print | fzf)"
+}
+
+# Buscar archivos con extensión dada y abrirlo con el editor
+function ff() {
+    find . -type f -name "*.$1" -not -path "./node_modules/*" | fzf | xargs -r $EDITOR
+}
+
+# Cambiar el wallpaper con xwallpaper y fzf
+function wp() {
+  awt --walls "$(find ~/Pictures/walls -type f -name "*.*" | fzf)"
+}

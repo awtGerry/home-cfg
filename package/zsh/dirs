@@ -1,0 +1,28 @@
+#!/bin/sh
+
+alias \
+lib="cd $HOME/.local/lib && ls -a" \
+cac="cd $HOME/.cache && ls -a" \
+dw="cd $HOME/Downloads && ls -a" \
+docs="cd $HOME/Documents && ls" \
+m="cd $HOME/Music && ls" \
+pp="cd $HOME/Pictures && ls" \
+pps="cd $HOME/Pictures/screenshots && ls" \
+ppw="cd $HOME/Pictures/walls && ls" \
+vv="cd $HOME/Videos && ls" \
+rr="cd $HOME/.local/bin && ls" \
+sc="cd $HOME/.local/share && ls" \
+aw="cd $HOME/.config/awesome && ls -a" \
+cf="cd $HOME/.config && ls -a" \
+cfa="$EDITOR $HOME/.config/zsh/alias" \
+cfd="$EDITOR $HOME/.config/zsh/dirs" \
+cft="$EDITOR $HOME/.config/tmux/tmux.conf" \
+cfv="cd $HOME/.config/nvim && $EDITOR init.lua" \
+cfz="$EDITOR ~/.zshrc"
+
+alias \
+gh="cd $HOME/Github && ls -a" \
+gcf="cd $HOME/Github/home-cfg && ls -a"
+
+# Edit nix configuration file
+alias enx="sudo nvim /etc/nixos/configuration.nix"

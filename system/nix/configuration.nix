@@ -35,36 +35,12 @@
   hardware.nvidia = {
     # Modesetting is required.
     modesetting.enable = true;
-
     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
     powerManagement.enable = false;
-    # Fine-grained power management. Turns off GPU when not in use.
-    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = false;
-
-    # Use the NVidia open source kernel module (not to be confused with the
-    # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of 
-    # supported GPUs is at: 
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
-    # Only available from driver 515.43.04+
-    # Currently alpha-quality/buggy, so false is currently the recommended setting.
     open = false;
-
-    # Enable the Nvidia settings menu,
-    # accessible via `nvidia-settings`.
     nvidiaSettings = true;
-
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
   };
-
-  # Disable nouveau
-  # boot.extraModprobeConfig = ''
-  # blacklist nouveau
-  # options nouveau modeset=0
-  # '';
-  # boot.blacklistedKernelModules = [ "nouveau" "nvidia_drm" "nvidia_modeset" ];
 
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -86,47 +62,36 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-  # Enable the X11 & setup lightdm display manager.
+  # Enable the X11.
   services.xserver = {
     enable = true;
     layout = "us";
+
+    # Lightdm
     displayManager = {
-      lightdm = {
+      lightdm.greeters.enso = {
         enable = true;
-        greeters.gtk = {
-          enable = true;
-          theme.package = pkgs.flat-remix-gtk;
-          iconTheme.package = pkgs.flat-remix-icon-theme;
-          theme.name = "Flat-Remix-GTK-Dark-Blue";
-          iconTheme.name = "Flat-Remix-Dark-Blue";
-          cursorTheme = {
-            package = pkgs.bibata-cursors;
-            name = "Bibata-Modern-Ice";
-          };
-        };
       };
+
+      defaultSession = "none+dwm";
+      setupCommands = ''
+        ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode 1920x1080 -r 144
+      '';
     };
+
+    # Enable dwm
+    windowManager = {
+      dwm.enable = true;
+    };
+
   };
-  services.xserver.windowManager.dwm.enable = true;
 
-  /* services.xserver.displayManager.sddm.theme = "${(pkgs.fetchFromGitHub {
-    owner = "joshuakraemer";
-    repo = "sddm-theme-dialog";
-    rev = "53f81e322f715d3f8e3f41c38eb3774b1be4c19b";
-    sha256 = "qoLSRnQOvH3rAH+G1eRrcf9ZB6WlSRIZjYZBOTkew/0=";
-  })}"; */
-
-  services.xserver.displayManager.setupCommands = ''
-    ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode 1920x1080 -r 144
-  '';
+  # services.xserver.displayManager.setupCommands = ''
+  #   ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode 1920x1080 -r 144
+  # '';
 
   # Enable the compositor
   # services.picom.enable = true;
-  
-
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
