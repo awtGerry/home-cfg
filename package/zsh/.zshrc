@@ -38,7 +38,7 @@ export BROWSER="brave"
 export MUSIC="spotify"
 
 # shortcuts
-bindkey -s '^f' 'tmux-fzf.sh\n'
+bindkey -s '^f' '~/Github/home-cfg/package/tmux/tmux-fzf.sh\n'
 
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/alias" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/alias"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/dirs" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/dirs"
