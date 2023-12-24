@@ -14,7 +14,9 @@
     builtins.elem (lib.getName pkg) [
 	    "spotify"
     ];
-
+  nixpkgs.config.permittedInsecurePackages = [
+    "openssl-1.1.1v"
+  ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -120,9 +122,8 @@
 	  dwm
 
     # Dev stuff
-    # cargo
-    # rustup
-    rust-analyzer
+    cargo
+    rustc
 	  clang
 	  gcc
 	  git
@@ -130,6 +131,16 @@
     neovim
 	  ninja
 	  nodejs
+    sqlite
+	  openssl
+    pkg-config
+
+    lua-language-server
+    rust-analyzer
+    gopls
+    clang-tools
+    # nodePackages.typescript
+    nodePackages.typescript-language-server
 
     # System programs
     firefox
@@ -137,22 +148,21 @@
 	  neofetch
     lsd
 	  zsh
+    gimp
 
     # Basic programs
     spotify
 	  ripgrep
-	  openssl
     unzip
 	  xclip
     tmux
     xwallpaper
     bat
     lf
+    jq
+    fzf
     sxiv
     zathura
-
-    # Custom
-    # (callPackage /home/gerry/Github/home-cfg/system/nix/sddm-theme.nix {}).sddm-sugar-dark
 
     # Dependencies
     xfce.thunar
@@ -192,6 +202,12 @@
               sansSerif = [ "Noto Sans" "Noto Han Sans" ];
           };
       };
+  };
+
+  programs.neovim = {
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
