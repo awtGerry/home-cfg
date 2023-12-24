@@ -6,6 +6,15 @@
       llvmPackages.bintools
       rustup
     ];
+
+    buildInputs = [
+      (rust-bin.stable.latest.default.override {
+        extensions = [ "rust-src" ];
+        target = [ "wasm32-unknown-unknown" ];
+      })
+      darwin.apple_sdk.frameworks.AppKit
+      perl
+    ];
     RUSTC_VERSION = pkgs.lib.readFile ./rust-toolchain;
     # https://github.com/rust-lang/rust-bindgen#environment-variables
     LIBCLANG_PATH = pkgs.lib.makeLibraryPath [ pkgs.llvmPackages_latest.libclang.lib ];
