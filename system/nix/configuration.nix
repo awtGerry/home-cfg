@@ -124,6 +124,7 @@
     # Dev stuff
     cargo
     rustc
+    rustup
 	  clang
 	  gcc
 	  git
@@ -131,9 +132,12 @@
     neovim
 	  ninja
 	  nodejs
+    nodePackages.pnpm
+    glib
     sqlite
 	  openssl
     pkg-config
+    gtk3
 
     lua-language-server
     rust-analyzer
