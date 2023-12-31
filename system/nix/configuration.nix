@@ -64,6 +64,9 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
+  # Enable nix flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Enable the X11.
   services.xserver = {
     enable = true;
@@ -137,6 +140,7 @@
     sqlite
 	  openssl
     pkg-config
+    perl
     gtk3
 
     lua-language-server
@@ -160,16 +164,18 @@
     unzip
 	  xclip
     tmux
-    xwallpaper
     bat
     lf
     jq
     fzf
+    neomutt
     sxiv
+    xwallpaper
     zathura
 
     # Dependencies
     xfce.thunar
+    xdg-user-dirs
     xorg.libX11
     xorg.libX11.dev
     xorg.libxcb
