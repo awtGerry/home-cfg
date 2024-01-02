@@ -3,6 +3,7 @@
 {
   imports = [
     ../system/desktop.nix
+    ../system/gaming.nix
   ];
 
   nixpkgs.config = {
@@ -12,6 +13,7 @@
       "steam-original"
       "steam-run"
       "spotify"
+      "unrar"
     ];
 
     permittedInsecurePackages = [
