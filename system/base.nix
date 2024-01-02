@@ -1,51 +1,60 @@
-{ pkgs, inputs, ... }:
+{ config, lib, pkgs, ... }:
 
-let
-in
 {
-  imports = [
-    ../package/neovim
-    ../package/kitty
-    ../package/zsh
-    ../package/tmux
-    # ../package/htop
-    ../package/git
+  imports = [ # Include the results of the hardware scan.
+      ../system/hardware-configuration.nix
+  ];
+  time.timeZone = "America/Mexico_City";
 
-    # Mail
-    # ../package/neomutt
+  # Enable nix flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  # Enable sound.
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
+
+  # Enable X11 and display manager.
+  services.xserver = {
+    enable = true;
+    layout = "us";
+
+    # Lightdm
+    displayManager = {
+      lightdm.greeters.enso = {
+        enable = true;
+      };
+
+      defaultSession = "none+dwm";
+      setupCommands = ''
+        ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode 1920x1080 -r 144
+      '';
+    };
+
+    # Enable dwm
+    windowManager = {
+      dwm.enable = true;
+    };
+
+  };
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      dwm = prev.dwm.overrideAttrs (old: { src = ../package/dwm ;});
+    })
   ];
 
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.gerry = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+  };
+
   home.packages = with pkgs; [
-
-    # Network utilities
-    curl
-    nmap
-    whois
-    wget
-    
-    # Search
-    bat
-    lsd
-    lf
-    ripgrep
-    xclip
-
-    # Data conversion and manipulation
-    fzf
-    jq
-    unrar
-    unzip
-
-    # System utilities
-    htop
-    neomutt
-    neofetch
-    sxiv
-    xwallpaper
-    zathura
-
     # Xorg dependencies
-    xfce.thunar
     xorg.libX11
     xorg.libX11.dev
     xorg.libxcb
@@ -54,6 +63,4 @@ in
     xorg.xinit
 
   ];
-
-  programs.man.enable = true;
 }
