@@ -11,10 +11,8 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
-    # Define system and user configuration
+  outputs = { self, nixpkgs, ... } @ inputs:
     let
-      # basic system settings
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in
@@ -27,11 +25,12 @@
           ];
         };
 
-        # Testing home-manager configuration
+        # Home-manager configuration
         maria = nixpkgs.lib.nixosSystem {
-          system = system;
+          specialArgs = { inherit inputs; };
           modules = [
             ./host/maria.nix
+            inputs.home-manager.nixosModules.default
           ];
         };
       };

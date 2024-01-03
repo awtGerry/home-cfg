@@ -7,6 +7,8 @@
     ../system/gaming.nix
   ];
 
+
+  # Allowing some unfree packages for maria computer
   nixpkgs.config = {
     allowUnfree = true;
     allowUnfreePredicate = pkg: builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
@@ -23,5 +25,6 @@
     ];
   };
 
-  home.stateVersion = "23.11";
+  # System state version
+  system.stateVersion = "23.11";
 }

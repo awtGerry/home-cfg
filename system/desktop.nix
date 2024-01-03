@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
-    ../system/base.nix
+    # ../system/base.nix
 
     # ../package/neovim
     # ../package/kitty
@@ -95,4 +95,5 @@
   };
 
   programs.man.enable = true;
+  home.stateVersion = "23.11";
 }
