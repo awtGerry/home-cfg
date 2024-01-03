@@ -1,23 +1,46 @@
-{ config, lib, pkgs, ... }:
+{ lib, config, pkgs, ... }:
+
+# Basic configuration for nixos to get up and running.
 
 {
-  imports = [ # Include the results of the hardware scan.
-      ../system/hardware-configuration.nix
+  imports = [
+    ../system/hardware-configuration.nix
   ];
+
+  # Define your hostname.
+  networking.hostName = "awtnix";
+
   time.timeZone = "America/Mexico_City";
 
   # Enable nix flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  # Nvidia config
+  nixpkgs.config.nvidia.acceptLicense = true;
+  # Enable openGL
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
 
-  # Enable X11 and display manager.
+  # Load nvidia driver for xorg
+  services.xserver.videoDrivers = ["nvidia"];
+
+  hardware.nvidia = {
+    # Modesetting is required.
+    modesetting.enable = true;
+    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+    powerManagement.enable = false;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
+  };
+
+  # Enable x11
   services.xserver = {
     enable = true;
     layout = "us";
@@ -28,9 +51,11 @@
         enable = true;
       };
 
+      # Set dwm to be the default session
       defaultSession = "none+dwm";
       setupCommands = ''
         ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode 1920x1080 -r 144
+        xset r rate 300 50
       '';
     };
 
@@ -38,29 +63,5 @@
     windowManager = {
       dwm.enable = true;
     };
-
   };
-
-  nixpkgs.overlays = [
-    (final: prev: {
-      dwm = prev.dwm.overrideAttrs (old: { src = ../package/dwm ;});
-    })
-  ];
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.gerry = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  };
-
-  home.packages = with pkgs; [
-    # Xorg dependencies
-    xorg.libX11
-    xorg.libX11.dev
-    xorg.libxcb
-    xorg.libXft
-    xorg.libXinerama
-    xorg.xinit
-
-  ];
 }

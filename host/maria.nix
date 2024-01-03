@@ -3,10 +3,12 @@
 {
   imports = [
     ../system/desktop.nix
+    # Main desktop config
     ../system/gaming.nix
   ];
 
   nixpkgs.config = {
+    allowUnfree = true;
     allowUnfreePredicate = pkg: builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
       "discord"
       "steam"
@@ -17,10 +19,9 @@
     ];
 
     permittedInsecurePackages = [
-      "electron-24.8.6"
       "openssl-1.1.1v"
     ];
   };
 
-  home.stateVersion = "22.11";
+  home.stateVersion = "23.11";
 }

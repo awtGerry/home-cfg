@@ -94,29 +94,5 @@
     };
   };
 
-  # Fonts
-  fonts = {
-      enableDefaultPackages = true;
-      packages = with pkgs; [
-        fira-code-nerdfont
-        font-awesome
-        noto-fonts
-        noto-fonts-emoji
-        noto-fonts-cjk
-        source-han-sans
-        source-han-sans-japanese
-        source-han-serif-japanese
-      ];
-
-      fontconfig = {
-          enable = true;
-          defaultFonts = {
-              monospace = [ "Fira Code Nerd Font Mono" ];
-              serif = [ "Noto Serif" "Source Han Serif" ];
-              sansSerif = [ "Noto Sans" "Noto Han Sans" ];
-          };
-      };
-  };
-
   programs.man.enable = true;
 }
