@@ -2,11 +2,19 @@
 
 {
   imports = [
+
+    # Hardware
+    ../maria/hardware/system.nix
+
+    # System defaults
     ../system/desktop.nix
-    # Main desktop config
-    ../system/gaming.nix
+    # ../system/gaming.nix
   ];
 
+  system.stateVersion = "23.11";
+
+  # Enable nix flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Allowing some unfree packages for maria computer
   nixpkgs.config = {
@@ -24,7 +32,4 @@
       "openssl-1.1.1v"
     ];
   };
-
-  # System state version
-  system.stateVersion = "23.11";
 }
