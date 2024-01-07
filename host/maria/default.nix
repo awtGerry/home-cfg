@@ -2,7 +2,6 @@
 
 {
   imports = [
-
     # Hardware
     ../maria/hardware/system.nix
 

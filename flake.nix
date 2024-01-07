@@ -29,7 +29,7 @@
         maria = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
-            ./host/maria.nix
+            ./host/maria/default.nix
             inputs.home-manager.nixosModules.default
           ];
         };
