@@ -1,11 +1,12 @@
 { pkgs }:
 
 let
-  img = "https://w.wallhaven.cc/full/85/wallhaven-858lz1.png";
+  # img = "https://w.wallhaven.cc/full/85/wallhaven-858lz1.png";
+  img = "https://github.com/awtGerry/home-cfg/bg.png";
 
   image = pkgs.fetchurl {
     url = img;
-    # sha256 = "034bihk70x5l7dv1kn4c19wx6frw4pik5d833sn9ypfcc96p1pi6";
+    sha256 = "1yx7vnd35j8g9g7m01y3kr30ncrnkaar68wpsdw7qnyxisrcbgi9";
   };
 in
 pkgs.stdenv.mkDerivation {
@@ -22,6 +23,6 @@ pkgs.stdenv.mkDerivation {
     cp -R ./* $out/
     cd $out
     rm Background.jpg
-    ln -s ${image} Background.jpg
+    cp -r ${image} Background.jpg
   '';
 }
