@@ -1,12 +1,15 @@
-{ lib, ... }:
+{ pkgs, lib, inputs, ... }:
 
 {
   imports = [
     # Hardware
     ../maria/hardware/system.nix
 
+    # NixOS modules
+    inputs.home-manager.nixosModules.default
+
     # System defaults
-    ../system/desktop.nix
+    # ../../system/desktop.nix
     # ../system/gaming.nix
   ];
 
@@ -14,6 +17,19 @@
 
   # Enable nix flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.gerry = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+  };
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      "gerry" = import ../../system/desktop.nix;
+    };
+  };
 
   # Allowing some unfree packages for maria computer
   nixpkgs.config = {
