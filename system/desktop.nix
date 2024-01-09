@@ -3,7 +3,7 @@
 {
   imports = [
     ./base.nix
-    # ./devtools.nix
+    ./devtools.nix
   ];
 
   home.username = "gerry";

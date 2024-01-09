@@ -2,34 +2,29 @@
 
 {
   home.packages = with pkgs; [
-    cargo
-    rustc
-    rustup
-	  clang
-	  gcc
-	  git
+    # cargo
+    # rustc
+    # rustup
+    # clang
+    gcc
+    git
     go
-    neovim
-	  ninja
-	  nodejs
-    nodePackages.pnpm
+    ninja
     glib
     sqlite
-	  openssl
+    openssl
     pkg-config
     perl
-    gtk3
 
+    nodejs
+    nodePackages.pnpm
+
+    # Language servers
     lua-language-server
     rust-analyzer
     gopls
     clang-tools
     # nodePackages.typescript
     nodePackages.typescript-language-server
-
-    # term stuff
-    jq
-	  ripgrep
-	  xclip
   ];
 }

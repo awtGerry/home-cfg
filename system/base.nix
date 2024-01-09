@@ -2,6 +2,10 @@
 
 {
   imports = [
+    # Developer stuff
+    # ./devtools.nix
+
+    # Config pkgs
     ../package/zsh
     ../package/gtk
   ];
@@ -13,7 +17,7 @@
 
     # Core programs
     neovim
-    zsh
+    # zsh
     tmux
     kitty
     
