@@ -3,8 +3,8 @@
 {
   imports = [
     # Hardware
-    ../maria/hardware/autoconfig.nix
-    ../maria/hardware/drive.nix
+    ../lyra/hardware/autoconfig.nix
+    ../lyra/hardware/drive.nix
 
     # NixOS modules
     inputs.home-manager.nixosModules.default
@@ -13,6 +13,11 @@
   system.stateVersion = "23.11";
 
   time.timeZone = "America/Mexico_City";
+
+  networking = {
+    hostName = "lyra";
+    useDHCP = true;
+  };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
@@ -24,7 +29,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.gerry = {
+  users.users.lyra = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   };
@@ -59,6 +64,7 @@
       setupCommands = ''
         ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode 1920x1080 -r 144
         ${pkgs.xorg.xset}/bin/xset r rate 300 50
+        ${pkgs.xwallpaper}/bin/xwallpaper --zoom /home/gerry/Pictures/bg.png
       '';
     };
 
@@ -106,7 +112,7 @@
     libsForQt5.qt5.qtgraphicaleffects
   ];
 
-  # Allowing some unfree packages for maria computer
+  # Allow unfree packages
   nixpkgs.config = {
     allowUnfree = true;
     allowUnfreePredicate = pkg: builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
