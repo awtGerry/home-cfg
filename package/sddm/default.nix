@@ -2,11 +2,14 @@
 
 let
   # img = "https://w.wallhaven.cc/full/85/wallhaven-858lz1.png";
-  img = "https://github.com/awtGerry/home-cfg/bg.png";
+  img = "https://raw.githubusercontent.com/awtGerry/home-cfg/master/bg.png";
+  # img = "https://github.com/awtGerry/home-cfg/blob/master/bg.png";
+  # img = "https://github.com/awtGerry/home-cfg/bg.png";
 
   image = pkgs.fetchurl {
     url = img;
-    sha256 = "1yx7vnd35j8g9g7m01y3kr30ncrnkaar68wpsdw7qnyxisrcbgi9";
+    # sha256 = "1n6xshmmhz5121lslgm8s3npb4qwlhbz5s8003c4x3vw4nlpj6jm";
+    sha256 = "sha256-Jt5wTWLMXZ+sHgO1MuMlPDvTeQqM2Bl2O7R0cCaMiww=";
   };
 in
 pkgs.stdenv.mkDerivation {
