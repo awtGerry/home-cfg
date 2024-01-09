@@ -1,19 +1,24 @@
-{ pkgs, lib, inputs, ... }:
+{ pkgs, config, lib, inputs, ... }:
 
 {
   imports = [
     # Hardware
-    ../maria/hardware/system.nix
+    ../maria/hardware/autoconfig.nix
+    ../maria/hardware/drive.nix
 
     # NixOS modules
     inputs.home-manager.nixosModules.default
-
-    # System defaults
-    # ../../system/desktop.nix
-    # ../system/gaming.nix
   ];
 
   system.stateVersion = "23.11";
+
+  time.timeZone = "America/Mexico_City";
+
+  # Use the systemd-boot EFI boot loader.
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
 
   # Enable nix flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -30,6 +35,76 @@
       "gerry" = import ../../system/desktop.nix;
     };
   };
+
+  # Enable sound.
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
+
+  # Set zsh to be default shell
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+
+  # Enable the X11 windowing system.
+  services.xserver = {
+    enable = true;
+    layout = "us";
+
+    # Use sddm as the display manager.
+    displayManager = {
+      sddm = {
+        enable = true;
+        theme = "${import ../../package/sddm/default.nix { inherit pkgs; }}";
+      };
+      defaultSession = "none+dwm";
+      setupCommands = ''
+        ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode 1920x1080 -r 144
+        ${pkgs.xorg.xset}/bin/xset r rate 300 50
+      '';
+    };
+
+    # Use the DWM window manager.
+    windowManager = {
+      dwm.enable = true;
+    };
+  };
+
+  # # Get custom dwm configuration.
+  # nixpkgs.overlays = [
+  #   (final: prev: {
+  #     dwm = prev.dwm.overrideAttrs (old: {
+  #       src = ../../package/dwm;
+  #       # patches = [ ./dwm-statuscolors.patch ];
+  #     });
+  #   })
+  # ];
+
+  #--=[ NVIDIA settup ]=--#
+  nixpkgs.config.nvidia.acceptLicense = true;
+  # Enable openGL
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
+  # Load nvidia driver for xorg
+  services.xserver.videoDrivers = ["nvidia"];
+
+  hardware.nvidia = {
+    # Modesetting is required.
+    modesetting.enable = true;
+    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+    powerManagement.enable = false;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
+  };
+
+  environment.systemPackages = with pkgs; [
+    spotify
+    libsForQt5.qt5.qtquickcontrols2
+    libsForQt5.qt5.qtgraphicaleffects
+  ];
 
   # Allowing some unfree packages for maria computer
   nixpkgs.config = {
