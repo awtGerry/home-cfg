@@ -15,17 +15,22 @@ in
 
       extensions = with addons; [
         ublock-origin
+        new-tab-override
         vimium
       ];
 
-      # userChrome = builtins.readFile ./userChrome.css;
-
-      # Specific settings
+      # Theme settings
       settings = {
-        # "browser.startup.homepage" = "about:blank";
-        "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
+        "browser.startup.homepage" = "about:blank";
         "services.sync.username" = "awtgerry@lyra.com";
+
+        # "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
+        "extensions.activeThemeID" = "22b0eca1-8c02-4c0d-a5d7-6604ddd9836e";
+
+        # Cascade theme
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       };
+      userChrome = builtins.readFile ./userChrome.css;
 
       # Search engines
       search = {
@@ -110,7 +115,6 @@ in
         "browser.newtabpage.pinned" = builtins.toJSON [ ];
         "browser.places.importBookmarksHTML" = true;
         "browser.shell.checkDefaultBrowser" = false;
-        "browser.startup.homepage" = "about:home";
         "browser.startup.page" = 3; # Restore previous session
         "browser.tabs.firefox-view" = false;
         "browser.tabs.warnOnClose" = false;
@@ -120,8 +124,6 @@ in
             widget-overflow-fixed-list = [ ];
             unified-extensions-area = [ ];
             nav-bar = [
-              "back-button"
-              "forward-button"
               "stop-reload-button"
               "urlbar-container"
               "downloads-button"

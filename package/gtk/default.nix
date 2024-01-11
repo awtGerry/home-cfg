@@ -6,16 +6,16 @@
 
     theme = {
       package = pkgs.nordic;
-      name = "Nordic-Polar"; # Or "Nordic-Darker" for dark variant
+      name = "Nordic-Darker"; # opt: Nordic-Darker, Nordic-Polar
       # package = pkgs.arc-theme;
       # name = "Arc";
     };
 
     iconTheme = {
-      package = pkgs.nordic;
-      name = "Nordic-Polar"; # Or "Nordic-Darker" for dark variant
-      # package = pkgs.arc-icon-theme;
-      # name = "Arc";
+      # package = pkgs.nordic;
+      # name = "Nordic-Polar"; # Or "Nordic-Darker" for dark variant
+      package = pkgs.arc-icon-theme;
+      name = "Arc";
     };
 
     cursorTheme = {
