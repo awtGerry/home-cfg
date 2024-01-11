@@ -5,23 +5,23 @@
     enable = true;
 
     theme = {
-      # package = pkgs.nordic;
-      # name = "Nordic-Polar"; # Or "Nordic-Darker" for dark variant
-      package = pkgs.arc-theme;
-      name = "Arc";
+      package = pkgs.nordic;
+      name = "Nordic-Polar"; # Or "Nordic-Darker" for dark variant
+      # package = pkgs.arc-theme;
+      # name = "Arc";
     };
 
     iconTheme = {
-      package = pkgs.arc-icon-theme;
-      name = "Arc";
-      # package = pkgs.nordic;
-      # name = "Nordic-Polar"; # Or "Nordic-Darker" for dark variant
+      package = pkgs.nordic;
+      name = "Nordic-Polar"; # Or "Nordic-Darker" for dark variant
+      # package = pkgs.arc-icon-theme;
+      # name = "Arc";
     };
 
     cursorTheme = {
       package = pkgs.gnome.adwaita-icon-theme;
       name = "Adwaita";
-      size = 24;
+      size = 18;
 
       # inherit (config.home.pointerCursor) package name size;
 

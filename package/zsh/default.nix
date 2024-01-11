@@ -25,6 +25,9 @@ in
     };
 
     initExtra = ''
+      export EDITOR="nvim"
+      export TERMINAL="kitty"
+
       # Autocomplete with tab
       autoload -U compinit
       zstyle ':completion:*' menu select

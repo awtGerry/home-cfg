@@ -3,7 +3,12 @@
 {
   imports = [
     ./base.nix
-    ./devtools.nix
+
+    # Web
+    ../package/firefox
+
+    # Theme
+    ../package/gtk
   ];
 
   home.username = "gerry";

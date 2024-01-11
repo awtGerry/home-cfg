@@ -3,11 +3,10 @@
 {
   imports = [
     # Developer stuff
-    # ./devtools.nix
+    ./devtools.nix
 
     # Config pkgs
     ../package/zsh
-    ../package/gtk
   ];
 
   home.packages = with pkgs; [
@@ -17,12 +16,9 @@
 
     # Core programs
     neovim
-    # zsh
+    zsh
     tmux
     kitty
-    
-    # Web
-    firefox
 
     # Network utilities
     curl
