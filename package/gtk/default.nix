@@ -5,30 +5,37 @@
     enable = true;
 
     theme = {
-      package = pkgs.nordic;
-      name = "Nordic-Darker"; # opt: Nordic-Darker, Nordic-Polar
-      # package = pkgs.arc-theme;
-      # name = "Arc";
+      name = "Catppuccin-Macchiato-Compact-Pink-Dark";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "pink" ];
+        size = "compact";
+        tweaks = [ "rimless" "black" ];
+        variant = "macchiato";
+      };
     };
 
     iconTheme = {
-      # package = pkgs.nordic;
-      # name = "Nordic-Polar"; # Or "Nordic-Darker" for dark variant
-      package = pkgs.arc-icon-theme;
-      name = "Arc";
+      package = pkgs.kora-icon-theme;
+      name = "kora";
     };
 
-    cursorTheme = {
-      package = pkgs.gnome.adwaita-icon-theme;
-      name = "Adwaita";
-      size = 18;
+    # cursorTheme = {
+    #   package = pkgs.gnome.adwaita-icon-theme;
+    #   name = "Adwaita";
+    #   size = 18;
+    #
+    #   # inherit (config.home.pointerCursor) package name size;
+    #   # inherit (config.home.pointerCursor) size;
+    # };
 
-      # inherit (config.home.pointerCursor) package name size;
+    font.name = "sans";
+  };
 
-      # inherit (config.home.pointerCursor) size;
+  home = {
+    sessionVariables = {
+      # Use GTK 3 settings in Qt 5
+      # https://wiki.archlinux.org/index.php/Uniform_look_for_Qt_and_GTK_applications
+      QT_QPA_PLATFORMTHEME = "gtk3";
     };
-
-    font.name = "sans-serif";
-
   };
 }
