@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, config, lib, inputs, ... }:
 
 {
   imports = [
@@ -11,4 +11,8 @@
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
+
+  # Enable sound.
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
 }

@@ -3,8 +3,7 @@
 {
   imports = [
     # Hardware
-    ../lyra/hardware/autoconfig.nix
-    ../lyra/hardware/drive.nix
+    ../lyra/hardware/default.nix
 
     # NixOS modules
     inputs.home-manager.nixosModules.default
@@ -12,26 +11,26 @@
 
   system.stateVersion = "23.11";
 
-  time.timeZone = "America/Mexico_City";
-
   networking = {
     hostName = "lyra";
     useDHCP = true;
   };
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-  };
+  time.timeZone = "America/Mexico_City";
 
   # Enable nix flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.lyra = {
+  users.users.gerry = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+  };
+
+  programs.neovim = {
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
   };
 
   home-manager = {
@@ -40,10 +39,6 @@
       "gerry" = import ../../system/desktop.nix;
     };
   };
-
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
 
   # Set zsh to be default shell
   programs.zsh.enable = true;
