@@ -9,7 +9,6 @@
 
     # Theme
     ../package/gtk
-    ../package/picom
   ];
 
   home.username = "gerry";
@@ -20,6 +19,7 @@
     libnotify
     pavucontrol
     dconf
+    xcompmgr
 
     # Design
     gimp

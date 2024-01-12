@@ -10,6 +10,11 @@
       
       # Remove bell
       enable_audio_bell = false;
+
+      # Transparency
+      background_opacity = "0.8";
+      # Blur
+      # background_blur = 0.5;
     };
   };
 }
