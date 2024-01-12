@@ -1,12 +1,11 @@
 { pkgs }:
 
 let
-  img = "https://raw.githubusercontent.com/awtGerry/home-cfg/master/bg.jpg";
+  imgUrl = "https://raw.githubusercontent.com/awtGerry/home-cfg/master/bg.jpg";
 
   image = pkgs.fetchurl {
-    url = img;
-    # sha256 = "1n6xshmmhz5121lslgm8s3npb4qwlhbz5s8003c4x3vw4nlpj6jm";
-    sha256 = "sha256-Jt5wTWLMXZ+sHgO1MuMlPDvTeQqM2Bl2O7R0cCaMiww=";
+    url = imgUrl;
+    sha256 = "sha256-2FMvWIjeTTtSmVzjQdBh6ImLVrJ6raSQaV+VvGiUNuQ=";
   };
 in
 pkgs.stdenv.mkDerivation {

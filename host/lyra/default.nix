@@ -59,7 +59,7 @@
       setupCommands = ''
         ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode 1920x1080 -r 144
         ${pkgs.xorg.xset}/bin/xset r rate 300 50
-        ${pkgs.xwallpaper}/bin/xwallpaper --zoom /home/gerry/Pictures/bg.png
+        ${pkgs.xwallpaper}/bin/xwallpaper --zoom /home/gerry/Pictures/wallpapers/colors.jpg
       '';
     };
 
