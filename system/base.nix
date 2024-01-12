@@ -6,6 +6,7 @@
     ./devtools.nix
 
     # Config pkgs
+    ../package/tmux
     ../package/kitty
     ../package/zsh
   ];
@@ -17,7 +18,7 @@
 
     # Core programs
     neovim
-    tmux
+    # tmux
     # zsh
     # kitty
 

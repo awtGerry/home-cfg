@@ -24,11 +24,11 @@ in
     };
 
     cursorTheme = {
-      package = pkgs.catppuccin-cursors.macchiatoDark;
-      name = "macchiato-dark";
-      size = 24;
+      # package = pkgs.catppuccin-cursors.macchiatoDark;
+      # name = "Catppuccino-Macchiato-Dark";
+      # size = 24;
 
-      # inherit (config.home.pointerCursor) package name size;
+      inherit (config.home.pointerCursor) package name size;
       # inherit (config.home.pointerCursor) size;
     };
 

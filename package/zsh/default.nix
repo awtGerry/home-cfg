@@ -21,6 +21,7 @@ in
       t="tmux";
       ta="tmux a";
       z="zathura";
+      ff="~/Github/home-cfg/package/tmux/tmux-fzf.sh";
       update="sudo nixos-rebuild switch";
     };
 
@@ -36,7 +37,6 @@ in
       _comp_options+=(globdots)
 
       # shortcuts
-      bindkey -s '^f' '~/Github/home-cfg/package/tmux/tmux-fzf.sh\n'
       bindkey -v
       export KEYTIMEOUT=1
 

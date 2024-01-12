@@ -24,7 +24,10 @@
     rust-analyzer
     gopls
     clang-tools
+    tailwindcss-language-server
     # nodePackages.typescript
     nodePackages.typescript-language-server
+    nodePackages.bash-language-server
+    nodePackages.svelte-language-server
   ];
 }

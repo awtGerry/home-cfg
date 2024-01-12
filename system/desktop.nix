@@ -42,8 +42,8 @@
   ];
 
   home.pointerCursor = {
-    package = pkgs.catppuccin-cursors.macchiatoDark;
-    name = "macchiato-dark";
+    package = pkgs.gnome.adwaita-icon-theme;
+    name = "Adwaita";
     size = 24;
   };
 
