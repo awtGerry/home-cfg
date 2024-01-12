@@ -6,6 +6,7 @@
     ./devtools.nix
 
     # Config pkgs
+    ../package/kitty
     ../package/zsh
   ];
 
@@ -16,9 +17,9 @@
 
     # Core programs
     neovim
-    zsh
     tmux
-    kitty
+    # zsh
+    # kitty
 
     # Network utilities
     curl

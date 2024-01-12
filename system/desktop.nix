@@ -41,6 +41,12 @@
     source-han-serif-japanese
   ];
 
+  home.pointerCursor = {
+    package = pkgs.catppuccin-cursors.macchiatoDark;
+    name = "macchiato-dark";
+    size = 24;
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

@@ -1,16 +1,20 @@
 { config, pkgs, ... }:
 
+let
+  dark = "macchiato";
+  light = "latte";
+in
 {
   gtk = {
     enable = true;
 
     theme = {
-      name = "Catppuccin-Macchiato-Compact-Pink-Dark";
+      name = "Catppuccin-Macchiato-Compact-Lavender-Dark";
       package = pkgs.catppuccin-gtk.override {
-        accents = [ "pink" ];
+        accents = [ "lavender" ];
         size = "compact";
         tweaks = [ "rimless" "black" ];
-        variant = "macchiato";
+        variant = dark;
       };
     };
 
@@ -19,14 +23,14 @@
       name = "kora";
     };
 
-    # cursorTheme = {
-    #   package = pkgs.gnome.adwaita-icon-theme;
-    #   name = "Adwaita";
-    #   size = 18;
-    #
-    #   # inherit (config.home.pointerCursor) package name size;
-    #   # inherit (config.home.pointerCursor) size;
-    # };
+    cursorTheme = {
+      package = pkgs.catppuccin-cursors.macchiatoDark;
+      name = "macchiato-dark";
+      size = 24;
+
+      # inherit (config.home.pointerCursor) package name size;
+      # inherit (config.home.pointerCursor) size;
+    };
 
     font.name = "sans";
   };
