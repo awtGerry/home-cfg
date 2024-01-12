@@ -9,6 +9,7 @@
 
     # Theme
     ../package/gtk
+    ../package/picom
   ];
 
   home.username = "gerry";
