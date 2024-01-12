@@ -1,10 +1,7 @@
 { pkgs }:
 
 let
-  # img = "https://w.wallhaven.cc/full/85/wallhaven-858lz1.png";
-  img = "https://raw.githubusercontent.com/awtGerry/home-cfg/master/bg.png";
-  # img = "https://github.com/awtGerry/home-cfg/blob/master/bg.png";
-  # img = "https://github.com/awtGerry/home-cfg/bg.png";
+  img = "https://raw.githubusercontent.com/awtGerry/home-cfg/master/bg.jpg";
 
   image = pkgs.fetchurl {
     url = img;
