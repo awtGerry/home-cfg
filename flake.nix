@@ -22,6 +22,10 @@
       system = "x86_64-linux";
       lib = nixpkgs.lib // home-manager.lib;
       pkgs = nixpkgs.legacyPackages.${system};
+      nvim-cfg = pkgs.vimUtils.buildVimPlugin {
+        name = "nvim-cfg";
+        src = ./package/furry-nvim;
+      };
     in
     {
       nixosConfigurations = {
