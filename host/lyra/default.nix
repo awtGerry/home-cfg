@@ -5,6 +5,9 @@
     # Hardware
     ../lyra/hardware/default.nix
 
+    # Window manager
+    ../../system/dwm.nix
+
     # NixOS modules
     inputs.home-manager.nixosModules.default
   ];
@@ -25,6 +28,18 @@
   users.users.gerry = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+  };
+
+  # run commands in startup
+  systemd.user.services.startup = {
+    enable = true;
+    wantedBy = [ "default.target" ];
+    script = ''
+      "${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode 1920x1080 -r 144"
+      "${pkgs.xorg.xset}/bin/xset r rate 300 50"
+      "${pkgs.xcompmgr}/bin/xcompmgr"
+      "${pkgs.xwallpaper}/bin/xwallpaper --zoom ~/Pictures/bg.png"
+    '';
   };
 
   programs.neovim = {
@@ -56,29 +71,13 @@
         theme = "${import ../../package/sddm/default.nix { inherit pkgs; }}";
       };
       defaultSession = "none+dwm";
-      setupCommands = ''
-        ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode 1920x1080 -r 144
-        ${pkgs.xorg.xset}/bin/xset r rate 300 50
-        ${pkgs.xwallpaper}/bin/xwallpaper --zoom /home/gerry/Pictures/wallpapers/colors.jpg
-        ${pkgs.xcompmgr}/bin/xcompmgr
-      '';
-    };
-
-    # Use the DWM window manager.
-    windowManager = {
-      dwm.enable = true;
+      # setupCommands = ''
+      #   ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode 1920x1080 -r 144
+      #   ${pkgs.xorg.xset}/bin/xset r rate 300 50
+      #   ${pkgs.xcompmgr}/bin/xcompmgr
+      # '';
     };
   };
-
-  # # Get custom dwm configuration.
-  # nixpkgs.overlays = [
-  #   (final: prev: {
-  #     dwm = prev.dwm.overrideAttrs (old: {
-  #       src = ../../package/dwm;
-  #       # patches = [ ./dwm-statuscolors.patch ];
-  #     });
-  #   })
-  # ];
 
   #--=[ NVIDIA settup ]=--#
   nixpkgs.config.nvidia.acceptLicense = true;
@@ -117,6 +116,7 @@
       "steam-original"
       "steam-run"
       "spotify"
+      "joypixels"
       "unrar"
     ];
 
