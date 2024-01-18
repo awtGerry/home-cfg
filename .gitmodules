@@ -4,3 +4,6 @@
 [submodule "package/furry-nvim"]
 	path = package/furry-nvim
 	url = git@github.com:awtGerry/furry-nvim.git
+[submodule "dwm"]
+	path = package/dwm
+	url = https://github.com/awtGerry/dwm.git
