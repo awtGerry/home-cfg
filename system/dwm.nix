@@ -5,16 +5,6 @@
     dwm.enable = true;
   };
 
-  # Get custom dwm configuration.
-  nixpkgs.overlays = [
-    (final: prev: {
-      dwm = prev.dwm.overrideAttrs (old: {
-        src = ../../package/dwm;
-        # patches = [ ./dwm-statuscolors.patch ];
-      });
-    })
-  ];
-
 #     dwm.package = pkgs.dwm.override {
 #       conf = ''
 # /* --=[ Custom themes variables ]--= */
