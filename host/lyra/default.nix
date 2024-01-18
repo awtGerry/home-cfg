@@ -30,16 +30,16 @@
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   };
 
-  # run commands in startup
+  # run commands on startup
   systemd.user.services.startup = {
-    enable = true;
-    wantedBy = [ "default.target" ];
     script = ''
-      "${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode 1920x1080 -r 144"
-      "${pkgs.xorg.xset}/bin/xset r rate 300 50"
-      "${pkgs.xcompmgr}/bin/xcompmgr"
-      "${pkgs.xwallpaper}/bin/xwallpaper --zoom ~/Pictures/bg.png"
+      #!/usr/bin/env bash
+      ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode 1920x1080 -r 144
+      ${pkgs.xorg.xset}/bin/xset r rate 300 50
+      ${pkgs.xcompmgr}/bin/xcompmgr
+      ${pkgs.xorg.xwallpaper}/bin/xwallpaper --zoom ~/Pictures/bg.jpg
     '';
+    wantedBy = [ "graphical-session.target" ];
   };
 
   programs.neovim = {
