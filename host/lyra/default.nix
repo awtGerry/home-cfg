@@ -34,10 +34,8 @@
   systemd.user.services.startup = {
     script = ''
       #!/usr/bin/env bash
-      ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode 1920x1080 -r 144
       ${pkgs.xorg.xset}/bin/xset r rate 300 50
       ${pkgs.xcompmgr}/bin/xcompmgr
-      ${pkgs.xorg.xwallpaper}/bin/xwallpaper --zoom ~/Pictures/bg.jpg
     '';
     wantedBy = [ "graphical-session.target" ];
   };
@@ -71,11 +69,10 @@
         theme = "${import ../../package/sddm/default.nix { inherit pkgs; }}";
       };
       defaultSession = "none+dwm";
-      # setupCommands = ''
-      #   ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode 1920x1080 -r 144
-      #   ${pkgs.xorg.xset}/bin/xset r rate 300 50
-      #   ${pkgs.xcompmgr}/bin/xcompmgr
-      # '';
+
+      setupCommands = ''
+        ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode 1920x1080 -r 144
+      '';
     };
   };
 

@@ -1,13 +1,16 @@
 { pkgs, config, lib, inputs, ... }:
 
 {
-  services.xserver.windowManager.dwm.enable = true;
-  services.xserver.windowManager.dwm.package = pkgs.dwm.overrideAttrs {
-    src = pkgs.fetchFromGitHub {
-      owner = "awtGerry";
-      repo = "dwm";
-      rev = "6b8e0f61a10774bcb132ce911550e392a10537";
-      sha256 = "kz2rNeQcOsrewhLEu74ixdFCVhT9drutsaEF+GuvHto=";
+  services.xserver.windowManager = {
+    dwm.enable = true;
+    dwm.package = pkgs.dwm.overrideAttrs {
+      # src = /home/gerry/Github/dwm;
+      src = pkgs.fetchFromGitHub {
+        owner = "awtGerry";
+        repo = "dwm";
+        rev = "29ebc8cf82e16511538a5946ef13b71dc757f4a5";
+        sha256 = "sha256-LzNIvLnrBp2IAwAerPa1YO09rff9yNmFyCRx8AWMNl8=";
+      };
     };
   };
 }
