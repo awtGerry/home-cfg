@@ -20,6 +20,7 @@
     pavucontrol
     dconf
     xcompmgr
+    xmenu
 
     # Design
     gimp

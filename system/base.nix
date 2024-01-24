@@ -14,6 +14,7 @@
   home.packages = with pkgs; [
     # Window manager
     dmenu
+    rofi # testing another launcher
 
     # Core programs
     neovim

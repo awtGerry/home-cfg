@@ -26,6 +26,8 @@ in
     };
 
     initExtra = ''
+      export PATH="$PATH:$(find ~/.local/bin -type d | paste -sd ':' -)"
+
       export EDITOR="nvim"
       export TERMINAL="kitty"
 
