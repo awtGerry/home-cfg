@@ -90,6 +90,30 @@ in
             }}";
             definedAliases = [ "@y" ];
           };
+
+          "Crates" = {
+            urls = [{
+              template = "https://crates.io/search";
+              params = [{ name = "q"; value = "{searchTerms}"; }];
+            }];
+            icon = "${pkgs.fetchurl {
+              url = "https://crates.io/assets/cargo.png";
+              hash = "sha256-Js8J6cKjpdcctNFNGcjGhHB1UrLtBGODk0NxldIlRfQ=";
+            }}";
+            definedAliases = [ "@rc" ];
+          };
+
+          "Docs.rs" = {
+            urls = [{
+              template = "https://docs.rs/releases/search";
+              params = [{ name = "query"; value = "{searchTerms}"; }];
+            }];
+            icon = "${pkgs.fetchurl {
+              url = "https://www.rust-lang.org/static/images/rust-logo-blk.svg";
+              hash = "sha256-bW4P0p4gFb7Fypvb3BHt4ehPt5LFYFmbWOVkNGgloik=";
+            }}";
+            definedAliases = [ "@rd" ];
+          };
         };
       }; # search
 
