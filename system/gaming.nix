@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   imports = [
@@ -16,8 +16,10 @@
     #     "BETTERCAMERA=1"
     #   ];
     # }))
-    steam
+    # steam
     # steam-run
+    # ukmm
+    # vvvvvv
 
     # Emulators
     dolphinEmuMaster

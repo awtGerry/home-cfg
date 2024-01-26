@@ -42,7 +42,7 @@
     xclip
 
     # System utilities
-    htop
+    btop
     neomutt
     neofetch
     sxiv

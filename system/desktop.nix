@@ -4,6 +4,9 @@
   imports = [
     ./base.nix
 
+    # TODO: Remove for laptos
+    ./gaming.nix
+
     # Web
     ../package/firefox
 
@@ -12,9 +15,9 @@
   ];
 
   home.username = "gerry";
-  home.stateVersion = "23.11";
 
   home.packages = with pkgs; [
+    spotify
     # Utils
     libnotify
     pavucontrol
@@ -45,6 +48,24 @@
     source-han-serif-japanese
   ];
 
+  # Allow unfree packages
+  nixpkgs.config = {
+    # allowUnfree = true;
+    allowUnfreePredicate = pkg: builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
+      "discord"
+      "steam"
+      "spotify"
+      "steam-original"
+      "steam-run"
+      # "joypixels"
+      "unrar"
+    ];
+
+    permittedInsecurePackages = [
+      "openssl-1.1.1v"
+    ];
+  };
+
   home.pointerCursor = {
     package = pkgs.gnome.adwaita-icon-theme;
     name = "Adwaita";
@@ -53,4 +74,6 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  home.stateVersion = "23.11";
 }

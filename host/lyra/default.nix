@@ -12,8 +12,6 @@
     inputs.home-manager.nixosModules.default
   ];
 
-  system.stateVersion = "23.11";
-
   networking = {
     hostName = "lyra";
     useDHCP = true;
@@ -99,26 +97,11 @@
   };
 
   environment.systemPackages = with pkgs; [
-    spotify
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
   ];
 
-  # Allow unfree packages
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnfreePredicate = pkg: builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
-      "discord"
-      "steam"
-      "steam-original"
-      "steam-run"
-      "spotify"
-      "joypixels"
-      "unrar"
-    ];
+  nixpkgs.config.allowUnfree = true;
 
-    permittedInsecurePackages = [
-      "openssl-1.1.1v"
-    ];
-  };
+  system.stateVersion = "23.11";
 }
