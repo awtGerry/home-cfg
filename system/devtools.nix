@@ -2,18 +2,21 @@
 
 {
   home.packages = with pkgs; [
-    # cargo
-    # rustc
-    # rustup
-    # clang
-    gcc
     git
-    go
     ninja
-    glib
     sqlite
+
+    # rust-analyzer
+    # rustup
+    # rustc
+    # cargo
     openssl
     pkg-config
+
+    gcc
+    glib
+    glibc
+    go
     perl
 
     nodejs
