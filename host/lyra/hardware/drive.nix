@@ -16,6 +16,11 @@
       fsType = "ext4";
     };
 
+  fileSystems."/home/gerry/Drive" =
+    { device = "/dev/sdb1";
+      fsType = "vfat";
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/cca4bde4-ea4c-4901-a794-2905e004f950"; }
     ];
