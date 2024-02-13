@@ -36,7 +36,7 @@ in
       search = {
         force = true;
         default = "DuckDuckGo";
-        order = [ "DuckDuckGo" "Google" ];
+        # order = [ "DuckDuckGo" "Google" ];
         engines = {
           "Amazon.com.mx".metaData.alias = "@a";
           "Google".metaData.alias = "@g";

@@ -58,39 +58,7 @@
         "type": "github"
       }
     },
-    "mybar": {
-      "inputs": {
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "lastModified": 1706822243,
-        "narHash": "sha256-qc5zSmCpIfjnsabXWtSSxE/yCBIU6jCAUbcGohFuoNg=",
-        "owner": "awtGerry",
-        "repo": "mybar",
-        "rev": "14e66b7f27da7a2aa4e6ca7d3c4ec756ea13461c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "awtGerry",
-        "repo": "mybar",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
-      "locked": {
-        "lastModified": 1705883077,
-        "narHash": "sha256-ByzHHX3KxpU1+V0erFy8jpujTufimh6KaS/Iv3AciHk=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "5f5210aa20e343b7e35f40c033000db0ef80d7b9",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_2": {
       "locked": {
         "lastModified": 1704538339,
         "narHash": "sha256-1734d3mQuux9ySvwf6axRWZRBhtcZA9Q8eftD6EZg6U=",
@@ -110,8 +78,7 @@
       "inputs": {
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
-        "mybar": "mybar",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs"
       }
     }
   },
