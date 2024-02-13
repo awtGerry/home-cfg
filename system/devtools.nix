@@ -6,7 +6,7 @@
     ninja
     sqlite
 
-    # rust-analyzer
+    rust-analyzer
     rustc
     cargo
     openssl
