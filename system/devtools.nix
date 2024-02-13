@@ -7,9 +7,8 @@
     sqlite
 
     # rust-analyzer
-    # rustup
-    # rustc
-    # cargo
+    rustc
+    cargo
     openssl
     pkg-config
 
