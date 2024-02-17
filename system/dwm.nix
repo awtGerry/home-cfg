@@ -6,7 +6,7 @@
     dwm.package = pkgs.dwm.overrideAttrs {
 
       # Dwm testing locally
-      src = /home/gerry/Github/suckless_software/dwm;
+      src = /home/gerry/Dev/public/dwm;
 
       # src = pkgs.fetchFromGitHub {
       #   owner = "awtGerry";
