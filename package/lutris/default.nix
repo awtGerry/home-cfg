@@ -14,12 +14,12 @@ in
 
   xdg.configFile = {
     # Manage lutris config outside of home-manager while keeping track of the files in this git repo
-    "lutris/lutris.conf".source = config.lib.file.mkOutOfStoreSymlink
-      "${config.home.configDirectory}/package/lutris/config/lutris.conf";
+    # "lutris/lutris.conf".source = config.lib.file.mkOutOfStoreSymlink
+    #   "${config.home.configDirectory}/package/lutris/config/lutris.conf";
 
     # Manage lutris game configs outside of home-manager while keeping track of the files in this git repo
-    "lutris/games".source = config.lib.file.mkOutOfStoreSymlink
-      "${config.home.configDirectory}/package/lutris/config/games";
+    # "lutris/games".source = config.lib.file.mkOutOfStoreSymlink
+    #   "${config.home.configDirectory}/package/lutris/config/games";
 
     "lutris/runners/dolphin.yml".source = settingsFormat.generate "dolphin.yml" {
       dolphin = {
@@ -77,9 +77,5 @@ in
       };
     };
   };
-
-  wayland.windowManager.sway.config.assigns."5" = [
-    { app_id = "^lutris$"; }
-  ];
 }
 
