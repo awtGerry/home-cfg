@@ -40,7 +40,7 @@
         lyra = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
-            ./host/lyra/default.nix
+            ./hosts/lyra/default.nix
             inputs.home-manager.nixosModules.default
           ];
         };

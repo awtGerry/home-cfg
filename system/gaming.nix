@@ -2,7 +2,7 @@
 
 {
   imports = [
-    # ../package/lutris
+    ../package/lutris
   ];
 
   home.packages = with pkgs; [
