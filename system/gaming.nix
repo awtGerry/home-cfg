@@ -6,6 +6,7 @@
   ];
 
   home.packages = with pkgs; [
+    xpad
     # Games & Launchers
     # clonehero
     # pokemmo-installer
