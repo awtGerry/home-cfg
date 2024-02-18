@@ -74,6 +74,10 @@
     };
   };
 
+  # Load amdgpu driver for xorg
+  # services.xserver.enable = true;
+  # services.xserver.videoDrivers = [ "amdgpu" ]
+
   #--=[ NVIDIA settup ]=--#
   nixpkgs.config.nvidia.acceptLicense = true;
   # Enable openGL
