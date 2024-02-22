@@ -24,6 +24,8 @@
     dconf
     xcompmgr
     xmenu
+    bluez
+    bluez-tools
 
     # Design
     gimp
