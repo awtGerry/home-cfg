@@ -31,7 +31,7 @@
     # Data conversion and manipulation
     fzf
     jq
-    # unrar
+    unrar
     unzip
 
     # Search

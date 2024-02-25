@@ -7,6 +7,7 @@
 
   home.packages = with pkgs; [
     xpad
+    xboxdrv
     # Games & Launchers
     # clonehero
     # pokemmo-installer

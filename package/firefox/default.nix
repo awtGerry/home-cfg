@@ -15,13 +15,13 @@ in
 
       extensions = with addons; [
         ublock-origin
-        new-tab-override
+        # new-tab-override
         vimium
       ];
 
       # Theme settings
       settings = {
-        "browser.startup.homepage" = "https://awtgerry.github.io/startpage/";
+        # "browser.startup.homepage" = "https://awtgerry.github.io/startpage/";
         "services.sync.username" = "awtgerry@lyra.com";
 
         # "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
@@ -36,7 +36,7 @@ in
       search = {
         force = true;
         default = "DuckDuckGo";
-        # order = [ "DuckDuckGo" "Google" ];
+        order = [ "DuckDuckGo" "Google" ];
         engines = {
           "Amazon.com.mx".metaData.alias = "@a";
           "Google".metaData.alias = "@g";
