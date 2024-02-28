@@ -5,6 +5,7 @@
     git
     ninja
     sqlite
+    python3
 
     rust-analyzer
     rustc

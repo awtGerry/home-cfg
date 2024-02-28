@@ -35,6 +35,9 @@
     libreoffice
     ffmpeg
     xfce.thunar
+    pandoc
+    presenterm
+    chafa # Image to ASCII
 
     # Fonts
     fira-code-nerdfont
