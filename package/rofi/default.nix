@@ -1,6 +1,10 @@
 { lib, pkgs, config, ... }:
 
 {
+  home.packages = with pkgs; [
+    rofi-emoji
+  ];
+
   programs.rofi = {
     enable = true;
 
@@ -8,6 +12,6 @@
     terminal = "kitty";
     location = "center";
 
-    configPath = "./config/config.rasi";
+    theme = "/home/gerry/Dev/public/home-cfg/package/rofi/config/config.rasi";
   };
 }

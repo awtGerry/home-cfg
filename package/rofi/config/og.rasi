@@ -1,8 +1,0 @@
-configuration {
-  show-icons:         true;
-  icon-theme:         "Zafiro-X-Red";
-  terminal:           "alacritty";
-  cycle:              false;
-  hide-scrollbar:     true;
-  disable-history:    false;
-}
