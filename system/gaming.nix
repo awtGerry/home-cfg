@@ -35,6 +35,7 @@
     # Overlay / Post-processing
     goverlay
     gamemode
+    gamescope
     mangohud
     vkBasalt
   ];
