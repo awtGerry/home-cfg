@@ -6,6 +6,7 @@
     ./devtools.nix
 
     # Config pkgs
+    ../package/rofi
     ../package/tmux
     ../package/kitty
     ../package/zsh
@@ -14,7 +15,6 @@
   home.packages = with pkgs; [
     # Window manager
     dmenu
-    rofi # testing another launcher
 
     # Core programs
     neovim

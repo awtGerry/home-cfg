@@ -9,13 +9,8 @@ in
     enable = true;
     package = firefox;
     profiles.gerry = {
-      /* bookmarks = {
-        "NixOS" = "https://nixos.org";
-      }; */
-
       extensions = with addons; [
         ublock-origin
-        # new-tab-override
         vimium
       ];
 
