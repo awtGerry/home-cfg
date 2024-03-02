@@ -26,7 +26,7 @@
     xmenu
     bluez
     bluez-tools
-    transmission
+    transmission-gtk
 
     # Design
     gimp
