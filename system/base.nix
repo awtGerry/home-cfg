@@ -9,6 +9,7 @@
     ../package/rofi
     ../package/tmux
     ../package/kitty
+    ../package/wezterm
     ../package/zsh
   ];
 
