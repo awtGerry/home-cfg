@@ -11,6 +11,8 @@
     ../package/kitty
     ../package/wezterm
     ../package/zsh
+
+    ../package/scripts/default.nix
   ];
 
   home.packages = with pkgs; [
@@ -19,9 +21,6 @@
 
     # Core programs
     neovim
-    # tmux
-    # zsh
-    # kitty
 
     # Network utilities
     curl
@@ -46,6 +45,7 @@
     btop
     neomutt
     neofetch
+    maim
     sxiv
     xwallpaper
     zathura

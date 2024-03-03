@@ -34,7 +34,7 @@ in
           },
         },
         warn_about_missing_glyphs = false,
-        font_size = 12.0,
+        font_size = 14.0,
         line_height = 1.0,
         dpi = 96.0,
 
@@ -42,10 +42,10 @@ in
         bold_brightens_ansi_colors = true,
         -- Padding
         window_padding = {
-          left = 5,
-          right = 5,
-          top = 5,
-          bottom = 5,
+          left = 8,
+          right = 8,
+          top = 8,
+          bottom = 8,
         },
 
         -- Tab bar
