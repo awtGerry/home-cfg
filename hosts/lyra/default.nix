@@ -69,7 +69,7 @@
       defaultSession = "none+dwm";
 
       setupCommands = ''
-        ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode 1920x1080 -r 144
+        ${pkgs.xorg.xrandr}/bin/xrandr --output DisplayPort-0 --mode 1920x1080 --rate 144
       '';
     };
   };

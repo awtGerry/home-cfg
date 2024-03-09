@@ -8,8 +8,8 @@
     # Config pkgs
     ../package/rofi
     ../package/tmux
-    ../package/kitty
     ../package/wezterm
+    ../package/zathura
     ../package/zsh
 
     ../package/scripts/default.nix
