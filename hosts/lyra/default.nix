@@ -59,7 +59,7 @@
   services.xserver = {
     enable = true;
     layout = "us";
-
+    videoDrivers = [ "amdgpu" ];
     # Use sddm as the display manager.
     displayManager = {
       sddm = {
@@ -72,32 +72,6 @@
         ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode 1920x1080 -r 144
       '';
     };
-  };
-
-  # Load amdgpu driver for xorg
-  # services.xserver.enable = true;
-  # services.xserver.videoDrivers = [ "amdgpu" ]
-
-  #--=[ NVIDIA settup ]=--#
-  nixpkgs.config.nvidia.acceptLicense = true;
-  # Enable openGL
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
-
-  # Load nvidia driver for xorg
-  services.xserver.videoDrivers = ["nvidia"];
-
-  hardware.nvidia = {
-    # Modesetting is required.
-    modesetting.enable = true;
-    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-    powerManagement.enable = false;
-    open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
   };
 
   environment.systemPackages = with pkgs; [

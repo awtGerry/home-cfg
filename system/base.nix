@@ -46,10 +46,10 @@
     neomutt
     neofetch
     maim
+    xdotool
     sxiv
     xwallpaper
     zathura
-    xdg-user-dirs
 
     # System dependencies
     xorg.libX11
@@ -58,6 +58,7 @@
     xorg.libXft
     xorg.libXinerama
     xorg.xinit
+    xdg-user-dirs
   ];
 
 }

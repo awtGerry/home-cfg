@@ -63,7 +63,7 @@
       "spotify"
       "steam-original"
       "steam-run"
-      # "joypixels"
+      "matlab"
       "unrar"
     ];
 
