@@ -56,13 +56,10 @@
 
   # Allow unfree packages
   nixpkgs.config = {
-    # allowUnfree = true;
+    allowUnfree = true;
     allowUnfreePredicate = pkg: builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
       "discord"
-      "steam"
       "spotify"
-      "steam-original"
-      "steam-run"
       "matlab"
       "unrar"
     ];

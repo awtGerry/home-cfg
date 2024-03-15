@@ -27,6 +27,7 @@
     dolphinEmuMaster
     wineWowPackages.staging
     winetricks
+    snes9x
 
     # Recording
     obs-studio

@@ -12,6 +12,13 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "amdgpu" ];
   boot.extraModulePackages = [ ];
+  hardware.opengl = {
+    # Mesa
+    enable = true;
+
+    # Vulkan
+    driSupport = true;
+  };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
