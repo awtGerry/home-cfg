@@ -1,82 +1,112 @@
 { pkgs, config, lib, inputs, ... }:
 
+# Main pc configuration
+
 {
   imports = [
     ./base.nix
-
-    # TODO: Remove for laptos
     ./gaming.nix
 
-    # Web
-    ../package/firefox
-
-    # Theme
-    ../package/gtk
+    ../package/hyprland
+    # ../package/waybar
   ];
 
   home.username = "gerry";
 
-  home.packages = with pkgs; [
-    spotify
-    # Utils
-    libnotify
-    pavucontrol
-    dconf
-    xcompmgr
-    xmenu
-    bluez
-    bluez-tools
-    transmission-gtk
+  home = {
+    packages = with pkgs; [
+      # Wayland
+      xorg.xprop
+      dunst
+      swww
+      polkit
+      dconf
+      xwayland
+      xwaylandvideobridge
 
-    # Design
-    gimp
-    figma-linux
+      # for now just use the default
+      kitty
 
-    # Documents
-    libreoffice
-    ffmpeg
-    xfce.thunar
-    pandoc
-    presenterm
-    chafa # Image to ASCII
+      discord
+      gimp
+      figma-linux
+      inter
 
-    # Fonts
-    fira-code-nerdfont
-    font-awesome
-    inter
-    open-sans
-    ostrich-sans
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    source-han-sans
-    source-han-sans-japanese
-    source-han-serif-japanese
+      # TODO: change this to his own file.
+      # Documents
+      libreoffice
+      ffmpeg
+      pandoc
+      presenterm
+      chafa # Image to ASCII
+    ];
+
+    pointerCursor = {
+      package = pkgs.gnome.adwaita-icon-theme;
+      name = "Adwaita";
+      size = 24;
+    };
+
+
+    sessionVariables = {
+      # Use Wayland for Chrome & Electron apps
+      NIXOS_OZONE_WL = 1;
+
+      # Improve appearance of Java applications
+      # https://wiki.archlinux.org/index.php/Java#Tips_and_tricks
+      JDK_JAVA_OPTIONS = "-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel";
+    };
+  };
+
+  fonts.fontconfig.enable = true;
+  xdg.configFile."fontconfig/fonts.conf".text = ''
+    <?xml version='1.0'?>
+    <!DOCTYPE fontconfig SYSTEM 'urn:fontconfig:fonts.dtd'>
+    <fontconfig>
+      <alias binding="same">
+      <family>sans-serif</family>
+      <prefer><family>Inter</family></prefer>
+      </alias>
+    </fontconfig>
+  '';
+
+  xdg.configFile."wireplumber/main.lua.d/51-restrict-control.lua".text = ''
+    table.insert(default_access.rules, {
+      matches = {
+        {
+          { "application.process.binary", "matches", "*chromium*" },
+        },
+        {
+          { "application.process.binary", "matches", "*Discord*" },
+        },
+        {
+          { "application.process.binary", "matches", "*electron*" },
+        },
+        {
+          { "application.process.binary", "matches", "*firefox*" },
+        },
+      },
+      default_permissions = "rx",
+    })
+  '';
+
+  wayland.windowManager.hyprland = {
+    enable = true;
+    package = pkgs.hyprland;
+    xwayland.enable = true;
+
+    # Optional
+    # Whether to enable hyprland-session.target on hyprland startup
+    systemd.enable = true;
+  };
+
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [
+    pkgs.xdg-desktop-portal-hyprland
   ];
-
-  # Allow unfree packages
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnfreePredicate = pkg: builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
-      "discord"
-      "spotify"
-      "matlab"
-      "unrar"
-    ];
-
-    permittedInsecurePackages = [
-      "openssl-1.1.1v"
-    ];
-  };
-
-  home.pointerCursor = {
-    package = pkgs.gnome.adwaita-icon-theme;
-    name = "Adwaita";
-    size = 24;
-  };
+  xdg.portal.config.common.default = "*";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
   home.stateVersion = "23.11";
 }
