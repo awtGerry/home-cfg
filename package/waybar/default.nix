@@ -13,11 +13,11 @@ in
         layer = "top";
         position = "bottom";
         height = 32;
-        modules-left = [ "sway/workspaces" "sway/mode" ];
+        modules-left = [ "hyprland/workspaces" "hyprland/mode" ];
         modules-center = [ "cpu" "memory" "disk" "temperature" "network" ];
         modules-right = [ "idle_inhibitor" "backlight" "battery" "wireplumber" "clock" "tray" ];
 
-        "sway/workspaces" = {
+        "hyprland/workspaces" = {
           all-outputs = true;
           format = "{icon}";
           format-icons = {
@@ -34,7 +34,7 @@ in
           };
         };
 
-        "sway/mode" = {
+        "hyprland/mode" = {
           format = "<span style=\"italic\">{}</span>";
         };
 
@@ -109,11 +109,4 @@ in
   home.packages = with pkgs; [
     font-awesome_6
   ];
-
-  wayland.windowManager.sway = {
-    config.bars = [{ command = "${waybar}/bin/waybar"; }];
-    extraConfig = ''
-      layer_effects 'waybar' 'blur enable; shadows enable'
-    '';
-  };
 }
