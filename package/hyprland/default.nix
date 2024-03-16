@@ -52,18 +52,18 @@ in
 
     misc = {
       disable_autoreload = true;
-      animate_mouse_windowdragging = false;
-      # vrr = 1;
-      no_direct_scanout = false;
+      # animate_mouse_windowdragging = false;
+      vrr = 2;
+      # no_direct_scanout = false;
       vfr = true;
-      disable_splash_rendering = true;
+      # disable_splash_rendering = true;
       disable_hyprland_logo = true;
       force_default_wallpaper = 0;
     };
 
     decoration = {
       rounding = 1;
-      blur = {
+      /* blur = {
         size = 6;
         passes = 3;
         new_optimizations = true;
@@ -72,7 +72,7 @@ in
         contrast = "1.1";
         brightness = "1.2";
         xray = true;
-      };
+      }; */
       dim_inactive = true;
       dim_strength = "0.3";
       fullscreen_opacity = 1;
@@ -108,7 +108,7 @@ in
       ];
     };
     dwindle = {
-      no_gaps_when_only = false;
+      no_gaps_when_only = true;
       pseudotile = true;
       preserve_split = true;
     };
@@ -118,12 +118,16 @@ in
     bind =
       [
         "$mod, Q, killactive"
+        "$mod, F, fullscreen"
+        "$mod, Space, togglefloating"
+        "$mod, Tab, cyclenext"
+        "$mod, Tab, bringactivetotop"
+
         "$mod CTRL, Q, exec, hyprctl dispatch exit"
         "$mod, W, exec, firefox"
+        "$mod CTRL, W, exec, chromium"
         "$mod, P, exec, ${rofi_command}"
-        "$mod, Return, exec, wezterm"
-        "$mod, T, exec, kitty"
-        ", Print, exec, grimblast copy area"
+        "$mod, Return, exec, kitty"
       ]
       ++ (
         # workspaces
@@ -141,5 +145,11 @@ in
           )
           10)
       );
+    bindm = [
+      # mouse movements
+      "$mod, mouse:272, movewindow"
+      "$mod, mouse:273, resizewindow"
+      "$mod ALT, mouse:272, resizewindow"
+    ];
   };
 }
