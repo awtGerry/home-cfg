@@ -17,6 +17,10 @@
     packages = with pkgs; [
       # Wayland
       xorg.xprop
+      polkit
+      xdg-desktop-portal
+      dconf
+      xwayland
       xwaylandvideobridge
 
       discord
@@ -82,16 +86,17 @@
     })
   '';
 
-  # enable hyprland
   wayland.windowManager.hyprland = {
+    # Whether to enable Hyprland wayland compositor
     enable = true;
-    /* systemd = {
-      variables = ["--all"];
-      extraCommands = [
-        "systemctl --user stop graphical-session.target"
-        "systemctl --user start hyprland-session.target"
-      ];
-    }; */
+    # The hyprland package to use
+    package = pkgs.hyprland;
+    # Whether to enable XWayland
+    xwayland.enable = true;
+
+    # Optional
+    # Whether to enable hyprland-session.target on hyprland startup
+    systemd.enable = true;
   };
 
   # Let Home Manager install and manage itself.
