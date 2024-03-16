@@ -1,26 +1,40 @@
 { config, pkgs, ... }:
 
+# This will be called in all machines
 {
   imports = [
-    # Developer stuff
-    ./devtools.nix
+    # Default tools
+    ./tools/devtools.nix
+    ./tools/bluetooth.nix
+    ./tools/wallpapers.nix
 
     # Config pkgs
+    ../package/firefox
+    ../package/fzf
     ../package/rofi
+    ../package/git
     ../package/tmux
     ../package/wezterm
     ../package/zathura
     ../package/zsh
 
+    ../package/fonts/default.nix
     ../package/scripts/default.nix
   ];
 
-  home.packages = with pkgs; [
-    # Window manager
-    dmenu
+  # Allow unfree packages
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [
+      "openssl-1.1.1v"
+    ];
+  };
 
+  # Install all the default packages
+  home.packages = with pkgs; [
     # Core programs
     neovim
+    xfce.thunar # File manager
 
     # Network utilities
     curl
@@ -29,7 +43,6 @@
     wget
 
     # Data conversion and manipulation
-    fzf
     jq
     unrar
     unzip
@@ -41,6 +54,13 @@
     ripgrep
     xclip
 
+    # Utils
+    libnotify
+    pavucontrol
+    pulsemixer
+    xcompmgr # Compositor
+    transmission # Torrent client
+
     # System utilities
     btop
     neomutt
@@ -50,15 +70,6 @@
     sxiv
     xwallpaper
     zathura
-
-    # System dependencies
-    xorg.libX11
-    xorg.libX11.dev
-    xorg.libxcb
-    xorg.libXft
-    xorg.libXinerama
-    xorg.xinit
-    xdg-user-dirs
   ];
 
 }

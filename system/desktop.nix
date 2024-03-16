@@ -1,82 +1,99 @@
 { pkgs, config, lib, inputs, ... }:
 
+# Main pc configuration
+
 {
   imports = [
     ./base.nix
-
-    # TODO: Remove for laptos
     ./gaming.nix
-
-    # Web
-    ../package/firefox
-
-    # Theme
-    ../package/gtk
+    ../package/waybar
   ];
 
   home.username = "gerry";
 
-  home.packages = with pkgs; [
-    spotify
-    # Utils
-    libnotify
-    pavucontrol
-    dconf
-    xcompmgr
-    xmenu
-    bluez
-    bluez-tools
-    transmission-gtk
+  home = {
+    packages = with pkgs; [
+      # Wayland
+      xorg.xprop
+      inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+      xwaylandvideobridge
 
-    # Design
-    gimp
-    figma-linux
+      discord
+      gimp
+      figma-linux
+      inter
 
-    # Documents
-    libreoffice
-    ffmpeg
-    xfce.thunar
-    pandoc
-    presenterm
-    chafa # Image to ASCII
-
-    # Fonts
-    fira-code-nerdfont
-    font-awesome
-    inter
-    open-sans
-    ostrich-sans
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    source-han-sans
-    source-han-sans-japanese
-    source-han-serif-japanese
-  ];
-
-  # Allow unfree packages
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnfreePredicate = pkg: builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
-      "discord"
-      "spotify"
-      "matlab"
-      "unrar"
+      # TODO: change this to his own file.
+      # Documents
+      libreoffice
+      ffmpeg
+      pandoc
+      presenterm
+      chafa # Image to ASCII
     ];
 
-    permittedInsecurePackages = [
-      "openssl-1.1.1v"
-    ];
+    pointerCursor = {
+      package = pkgs.gnome.adwaita-icon-theme;
+      name = "Adwaita";
+      size = 24;
+    };
+
+
+    sessionVariables = {
+      # Use Wayland for Chrome & Electron apps
+      NIXOS_OZONE_WL = 1;
+
+      # Improve appearance of Java applications
+      # https://wiki.archlinux.org/index.php/Java#Tips_and_tricks
+      JDK_JAVA_OPTIONS = "-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel";
+    };
   };
 
-  home.pointerCursor = {
-    package = pkgs.gnome.adwaita-icon-theme;
-    name = "Adwaita";
-    size = 24;
+  fonts.fontconfig.enable = true;
+  xdg.configFile."fontconfig/fonts.conf".text = ''
+    <?xml version='1.0'?>
+    <!DOCTYPE fontconfig SYSTEM 'urn:fontconfig:fonts.dtd'>
+    <fontconfig>
+      <alias binding="same">
+      <family>sans-serif</family>
+      <prefer><family>Inter</family></prefer>
+      </alias>
+    </fontconfig>
+  '';
+
+  xdg.configFile."wireplumber/main.lua.d/51-restrict-control.lua".text = ''
+    table.insert(default_access.rules, {
+      matches = {
+        {
+          { "application.process.binary", "matches", "*chromium*" },
+        },
+        {
+          { "application.process.binary", "matches", "*Discord*" },
+        },
+        {
+          { "application.process.binary", "matches", "*electron*" },
+        },
+        {
+          { "application.process.binary", "matches", "*firefox*" },
+        },
+      },
+      default_permissions = "rx",
+    })
+  '';
+
+  # enable hyprland
+  wayland.windowManager.hyprland = {
+    enable = true;
+    /* systemd = {
+      variables = ["--all"];
+      extraCommands = [
+        "systemctl --user stop graphical-session.target"
+        "systemctl --user start hyprland-session.target"
+      ];
+    }; */
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
   home.stateVersion = "23.11";
 }

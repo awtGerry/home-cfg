@@ -5,8 +5,8 @@
     # Hardware
     ../lyra/hardware/default.nix
 
-    # Window manager
-    ../../system/dwm.nix
+    # Default
+    ../../system/desktop.nix
 
     # NixOS modules
     inputs.home-manager.nixosModules.default
