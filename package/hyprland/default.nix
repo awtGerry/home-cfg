@@ -10,21 +10,21 @@ let
 
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
       ${pkgs.waybar}/bin/waybar &
-      ${pkgs.swaybg}/bin/swaybg -o \* -i $(random-wallpaper) &
+      ${pkgs.swww}/bin/swww init &
+
+      # Set the wallpaper
+      ${pkgs.swww}/bin/swww img ${random-wallpaper} &
   '';
 in
 {
   home.packages = with pkgs; [
     wl-clipboard
     wlr-randr
-    swaylock
-    swaybg
     slurp
-    hyprpaper
-    # Screenshots
-    # grim
-    # grimblast
+    grim
+    slurp
   ];
+
   wayland.windowManager.hyprland.settings = {
 
     exec-once = ''${startupScript}/bin/start'';
@@ -52,7 +52,7 @@ in
 
     misc = {
       disable_autoreload = true;
-      # animate_mouse_windowdragging = false;
+      animate_mouse_windowdragging = false;
       vrr = 2;
       # no_direct_scanout = false;
       vfr = true;
@@ -63,7 +63,7 @@ in
 
     decoration = {
       rounding = 1;
-      /* blur = {
+      blur = {
         size = 6;
         passes = 3;
         new_optimizations = true;
@@ -72,7 +72,7 @@ in
         contrast = "1.1";
         brightness = "1.2";
         xray = true;
-      }; */
+      };
       dim_inactive = true;
       dim_strength = "0.3";
       fullscreen_opacity = 1;
