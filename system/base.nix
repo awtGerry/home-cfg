@@ -15,7 +15,7 @@
     ../package/git
     ../package/gtk
     ../package/tmux
-    ../package/wezterm
+    # ../package/wezterm
     ../package/zathura
     ../package/zsh
 
@@ -74,13 +74,13 @@
     zathura
 
     # System dependencies
-    xorg.libX11
-    xorg.libX11.dev
-    xorg.libxcb
-    xorg.libXft
-    xorg.libXinerama
-    xorg.xinit
-    xdg-user-dirs 
+    # xorg.libX11
+    # xorg.libX11.dev
+    # xorg.libxcb
+    # xorg.libXft
+    # xorg.libXinerama
+    # xorg.xinit
+    # xdg-user-dirs 
   ];
 
 }

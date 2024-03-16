@@ -6,15 +6,10 @@
 
     settings = {
       font_family = "Fira Code Nerd Font Mono";
-      font_size = 16;
-      
-      # Remove bell
+      font_size = 12;
       enable_audio_bell = false;
-
-      # Transparency
-      background_opacity = "0.8";
-      # Blur
-      # background_blur = 0.5;
+      confirm_os_window_close = 0;
     };
+    theme = "Gruvbox Material Dark Hard";
   };
 }
