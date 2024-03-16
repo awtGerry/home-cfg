@@ -13,6 +13,7 @@
     ../package/fzf
     ../package/rofi
     ../package/git
+    ../package/gtk
     ../package/tmux
     ../package/wezterm
     ../package/zathura
@@ -35,6 +36,7 @@
     # Core programs
     neovim
     xfce.thunar # File manager
+    spotify # until i get used to ncmpcpp or spotify tui
 
     # Network utilities
     curl
@@ -70,6 +72,15 @@
     sxiv
     xwallpaper
     zathura
+
+    # System dependencies
+    xorg.libX11
+    xorg.libX11.dev
+    xorg.libxcb
+    xorg.libXft
+    xorg.libXinerama
+    xorg.xinit
+    xdg-user-dirs 
   ];
 
 }

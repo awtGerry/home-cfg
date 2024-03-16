@@ -8,7 +8,7 @@
     ./gaming.nix
 
     ../package/hyprland
-    # ../package/waybar
+    ../package/waybar
   ];
 
   home.username = "gerry";
@@ -18,7 +18,6 @@
       # Wayland
       xorg.xprop
       dunst
-      swww
       polkit
       dconf
       xwayland
@@ -94,15 +93,12 @@
     enable = true;
     package = pkgs.hyprland;
     xwayland.enable = true;
-
-    # Optional
-    # Whether to enable hyprland-session.target on hyprland startup
     systemd.enable = true;
   };
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [
-    pkgs.xdg-desktop-portal-hyprland
+    pkgs.xdg-desktop-portal-gtk
   ];
   xdg.portal.config.common.default = "*";
 

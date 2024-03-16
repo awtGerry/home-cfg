@@ -25,16 +25,6 @@
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   };
 
-  # run commands on startup
-  systemd.user.services.startup = {
-    script = ''
-      #!/usr/bin/env bash
-      ${pkgs.xorg.xset}/bin/xset r rate 300 50
-      ${pkgs.xcompmgr}/bin/xcompmgr
-    '';
-    wantedBy = [ "graphical-session.target" ];
-  };
-
   programs.neovim = {
     defaultEditor = true;
     viAlias = true;
@@ -52,7 +42,6 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
-  # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
     layout = "us";
@@ -61,9 +50,7 @@
     displayManager = {
       sddm = {
         enable = true;
-        wayland = {
-          enable = true;
-        };
+        wayland.enable = true;
         theme = "${import ../../package/sddm/default.nix { inherit pkgs; }}";
       };
       sessionPackages = [ pkgs.hyprland ];
