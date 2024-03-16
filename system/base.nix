@@ -12,7 +12,7 @@
     ../package/firefox
     ../package/fzf
     ../package/rofi
-    # ../package/git
+    ../package/git
     ../package/tmux
     ../package/wezterm
     ../package/zathura

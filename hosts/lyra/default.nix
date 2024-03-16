@@ -61,13 +61,12 @@
     displayManager = {
       sddm = {
         enable = true;
+        wayland = {
+          enable = true;
+        };
         theme = "${import ../../package/sddm/default.nix { inherit pkgs; }}";
       };
-
-      setupCommands = ''
-        ${pkgs.xorg.xrandr}/bin/xrandr --output DisplayPort-0 --mode 1920x1080 --rate 144
-        ${pkgs.xorg.xset}/bin/xset r rate 300 50
-      '';
+      sessionPackages = [ pkgs.hyprland ];
     };
   };
 

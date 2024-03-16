@@ -8,7 +8,7 @@
     ./gaming.nix
 
     ../package/hyprland
-    ../package/waybar
+    # ../package/waybar
   ];
 
   home.username = "gerry";
@@ -17,11 +17,15 @@
     packages = with pkgs; [
       # Wayland
       xorg.xprop
+      dunst
+      swww
       polkit
-      xdg-desktop-portal
       dconf
       xwayland
       xwaylandvideobridge
+
+      # for now just use the default
+      kitty
 
       discord
       gimp
@@ -87,17 +91,20 @@
   '';
 
   wayland.windowManager.hyprland = {
-    # Whether to enable Hyprland wayland compositor
     enable = true;
-    # The hyprland package to use
     package = pkgs.hyprland;
-    # Whether to enable XWayland
     xwayland.enable = true;
 
     # Optional
     # Whether to enable hyprland-session.target on hyprland startup
     systemd.enable = true;
   };
+
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [
+    pkgs.xdg-desktop-portal-hyprland
+  ];
+  xdg.portal.config.common.default = "*";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
