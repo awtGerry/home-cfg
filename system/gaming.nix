@@ -46,7 +46,7 @@
   # hardware.xpadneo.enable = true;
 
   # Enable GameMode to optimise system performance on-demand
-  programs.gamemode = {
+  /* programs.gamemode = {
     enable = true;
     settings = {
       general = {
@@ -58,6 +58,6 @@
         end = "${pkgs.libnotify}/bin/notify-send --app-name GameMode 'GameMode ended'";
       };
     };
-  };
+  }; */
 
 }

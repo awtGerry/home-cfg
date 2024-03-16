@@ -6,6 +6,8 @@
   imports = [
     ./base.nix
     ./gaming.nix
+
+    ../package/hyprland
     ../package/waybar
   ];
 
@@ -15,7 +17,6 @@
     packages = with pkgs; [
       # Wayland
       xorg.xprop
-      inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
       xwaylandvideobridge
 
       discord

@@ -29,13 +29,6 @@
     in
     {
       nixosConfigurations = {
-        awt = nixpkgs.lib.nixosSystem {
-          system = system;
-          modules = [
-            ./system/configuration.nix
-          ];
-        };
-
         # Home-manager configuration
         lyra = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };

@@ -6,7 +6,7 @@
     ../lyra/hardware/default.nix
 
     # Default
-    ../../system/desktop.nix
+    # ../../system/desktop.nix
 
     # NixOS modules
     inputs.home-manager.nixosModules.default
@@ -56,23 +56,7 @@
   users.defaultUserShell = pkgs.zsh;
 
   # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    layout = "us";
-    videoDrivers = [ "amdgpu" ];
-    # Use sddm as the display manager.
-    displayManager = {
-      sddm = {
-        enable = true;
-        theme = "${import ../../package/sddm/default.nix { inherit pkgs; }}";
-      };
-      defaultSession = "none+dwm";
-
-      setupCommands = ''
-        ${pkgs.xorg.xrandr}/bin/xrandr --output DisplayPort-0 --mode 1920x1080 --rate 144
-      '';
-    };
-  };
+  services.xserver.videoDrivers = [ "amdgpu" ];
 
   environment.systemPackages = with pkgs; [
     libsForQt5.qt5.qtquickcontrols2
