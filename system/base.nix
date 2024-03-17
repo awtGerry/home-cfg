@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 # This will be called in all machines
 {
@@ -22,14 +22,6 @@
     ../package/fonts/default.nix
     ../package/scripts/default.nix
   ];
-
-  # Allow unfree packages
-  nixpkgs.config = {
-    allowUnfree = true;
-    permittedInsecurePackages = [
-      "openssl-1.1.1v"
-    ];
-  };
 
   # Install all the default packages
   home.packages = with pkgs; [

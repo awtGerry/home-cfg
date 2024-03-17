@@ -58,6 +58,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    mesa
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
   ];
@@ -76,7 +77,31 @@
     XDG_DESKTOP_DIR = "$HOME/Desktop";
   };
 
-  nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfreePredicate = pkg: builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
+      "anytype"
+      "anytype-heart"
+      "clonehero"
+      "clonehero-unwrapped"
+      "data.zip"
+      "discord"
+      "minecraft-server"
+      "sm64ex"
+      "steam"
+      "steam-jupiter-original"
+      "steam-original"
+      "steam-run"
+      "steamdeck-hw-theme"
+      "unrar"
+      "vvvvvv"
+    ];
+
+    permittedInsecurePackages = [
+      "openssl-1.1.1v"
+      # "nix-2.16.2" # Required by nixd
+    ];
+  };
 
   system.stateVersion = "23.11";
 }
