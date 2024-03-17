@@ -1,0 +1,6 @@
+game:
+  exe: /home/Games/Lies of P/LOP.exe
+  prefix: /home/Games/Lies of P
+system: {}
+wine:
+  version: GE-Proton9-1

@@ -1,0 +1,7 @@
+game:
+  exe: /media/Drive/Games/Far Cry 3 Complete Collection/Far Cry 3/bin/farcry3_d3d11.exe
+system:
+  fps_limit: '60'
+  locale: ''
+  prefix_command: ''
+wine: {}

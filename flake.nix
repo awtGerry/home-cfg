@@ -9,6 +9,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
+
     # Enable home-manager
     home-manager = {
       url = "github:nix-community/home-manager";

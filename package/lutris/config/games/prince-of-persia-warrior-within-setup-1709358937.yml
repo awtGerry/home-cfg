@@ -1,0 +1,31 @@
+game:
+  exe: /media/Drive/Games/El Alma del Guerrero/PrinceOfPersia.exe
+  prefix: /media/Drive/Games/El Alma del Guerrero
+game_slug: prince-of-persia-warrior-within
+name: 'Prince of Persia: Warrior Within'
+requires: null
+script:
+  files:
+  - setupfile: N/A:Select the setup file
+  game:
+    exe: _xXx_AUTO_WIN32_xXx_
+    prefix: $GAMEDIR
+  installer:
+  - task:
+      arch: win64
+      env:
+        LC_ALL: ''
+      executable: /media/Drive/Torrent/mounted/Setup.exe
+      prefix: /media/Drive/tmp
+      wine_path: /home/gerry/.local/share/lutris/runners/wine/wine-ge-8-26-x86_64/bin/wine
+  system:
+    env:
+      LC_ALL: ''
+slug: prince-of-persia-warrior-within-setup
+system:
+  env:
+    LC_ALL: ''
+variables: {}
+version: Setup file
+wine: {}
+year: null

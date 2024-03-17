@@ -58,7 +58,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    mesa
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
   ];
@@ -77,31 +76,16 @@
     XDG_DESKTOP_DIR = "$HOME/Desktop";
   };
 
-  # nixpkgs.config.allowUnfree = true;
-  nixpkgs.config = {
-    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-      "anytype"
-      "anytype-heart"
-      "clonehero"
-      "clonehero-unwrapped"
-      "data.zip"
-      "discord"
-      "minecraft-server"
-      "sm64ex"
-      "steam"
-      "steam-run"
-      "steam-jupiter-original"
-      "steam-original"
-      "steamdeck-hw-theme"
-      "unrar"
-      "vvvvvv"
-    ];
+  # Force all apps to use the same version of mesa as in hardware.opengl.package,
+  # regardless of the version it was compiled with
+  environment.extraInit = lib.mkIf config.hardware.opengl.enable ''
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH''${LD_LIBRARY_PATH:+:}${lib.makeLibraryPath [
+      config.hardware.opengl.package.out
+      config.hardware.opengl.package32.out
+    ]}
+  '';
 
-    permittedInsecurePackages = [
-      "openssl-1.1.1v"
-      # "nix-2.16.2" # Required by nixd
-    ];
-  };
+  nixpkgs.config.allowUnfree = true;
 
   system.stateVersion = "23.11";
 }

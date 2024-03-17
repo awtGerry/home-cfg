@@ -1,0 +1,13 @@
+game:
+  exe: /media/Drive/Games/Resident Evil 4 2023/re4.exe
+  prefix: /media/Drive/Games/Resident Evil 4 2023
+system:
+  locale: ''
+  prefix_command: ''
+wine:
+  battleye: false
+  dxvk_version: v2.1
+  eac: false
+  system_winetricks: true
+  version: Proton - Experimental
+  vkd3d_version: v2.9

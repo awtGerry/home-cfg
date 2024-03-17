@@ -19,15 +19,18 @@
     #     "BETTERCAMERA=1"
     #   ];
     # }))
+    # sm64ex
     eww-wayland
     ukmm
     vvvvvv
+    steam
+    steam-run
+    # snes9x
 
     # Emulators
     dolphinEmuMaster
     wineWowPackages.staging
     winetricks
-    snes9x
 
     # Recording
     obs-studio

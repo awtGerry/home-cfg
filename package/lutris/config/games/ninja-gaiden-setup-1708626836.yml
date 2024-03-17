@@ -1,0 +1,34 @@
+game:
+  exe: /media/Drive/Games/NINJA GAIDEN - Master Collection/Ninja Gaiden Sigma/NINJA
+    GAIDEN SIGMA.exe
+  prefix: /media/Drive/Games/NINJA GAIDEN - Master Collection
+game_slug: ninja-gaiden
+name: Ninja Gaiden
+requires: null
+script:
+  files:
+  - setupfile: N/A:Select the setup file
+  game:
+    exe: _xXx_AUTO_WIN32_xXx_
+    prefix: $GAMEDIR
+  installer:
+  - task:
+      arch: win64
+      env:
+        LC_ALL: ''
+      executable: /media/Drive/Torrent/NINJA GAIDEN - Master Collection [FitGirl Repack]/setup.exe
+      prefix: /media/Drive/Games/ninja-gaiden
+      wine_path: /home/gerry/.local/share/lutris/runners/wine/wine-ge-8-26-x86_64/bin/wine
+  system:
+    env:
+      LC_ALL: ''
+slug: ninja-gaiden-setup
+system:
+  env:
+    LC_ALL: ''
+  locale: ''
+  prefix_command: ''
+variables: {}
+version: Setup file
+wine: {}
+year: null

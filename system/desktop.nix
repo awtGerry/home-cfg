@@ -10,6 +10,11 @@
     ../package/hyprland
     ../package/waybar
   ];
+  # ++ (with inputs.nixos-hardware.nixosModules; [
+  #   common-cpu-amd
+  #   common-gpu-amd
+  #   common-pc-ssd
+  # ]);
 
   home.username = "gerry";
 
@@ -104,6 +109,39 @@
     pkgs.xdg-desktop-portal-gtk
   ];
   xdg.portal.config.common.default = "*";
+
+  nixpkgs.config = {
+    allowUnfreePredicate = pkg: builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
+      "anytype"
+      "anytype-heart"
+      "clonehero"
+      "clonehero-unwrapped"
+      "data.zip"
+      "discord"
+      "minecraft-server"
+      "sm64ex"
+      "steam"
+      "steam-jupiter-original"
+      "steam-original"
+      "steam-run"
+      "steamdeck-hw-theme"
+      "snes9x"
+      "vvvvvv"
+      "unrar"
+    ];
+
+    permittedInsecurePackages = [
+      "openssl-1.1.1v"
+      "nix-2.16.2" # Required by nixd
+    ];
+  };
+
+  # Configure GPU optimisations for gamemode
+  # programs.gamemode.settings.gpu = {
+  #   apply_gpu_optimisations = "accept-responsibility";
+  #   gpu_device = 0;
+  #   amd_performance_level = "high";
+  # };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

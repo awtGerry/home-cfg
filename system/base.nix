@@ -28,7 +28,6 @@
     # Core programs
     neovim
     xfce.thunar # File manager
-    spotify # until i get used to ncmpcpp or spotify tui
 
     # Network utilities
     curl
@@ -38,7 +37,7 @@
 
     # Data conversion and manipulation
     jq
-    unrar
+    # unrar
     unzip
 
     # Search

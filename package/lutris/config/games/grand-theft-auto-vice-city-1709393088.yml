@@ -1,0 +1,12 @@
+game:
+  exe: /media/Drive/Games/GTA Trilogy The Definitive Edition/GTA Vice City - Definitive
+    Edition/Gameface/Binaries/Win64/ViceCity.exe
+  prefix: /media/Drive/Games/GTA Trilogy The Definitive Edition/GTA Vice City - Definitive
+    Edition
+system:
+  fps_limit: '60'
+  locale: ''
+  prefix_command: ''
+wine:
+  system_winetricks: true
+  version: wine-ge-8-26-x86_64

@@ -1,0 +1,35 @@
+game:
+  exe: /media/Drive/Games/Dark Souls Remastered/DarkSoulsRemastered.exe
+  prefix: /media/Drive/Games/dark-souls-remastered
+game_slug: dark-souls-remastered
+name: "DARK SOULS\u2122: REMASTERED"
+requires: null
+script:
+  files:
+  - setupfile: N/A:Select the setup file
+  game:
+    exe: _xXx_AUTO_WIN32_xXx_
+    prefix: $GAMEDIR
+  installer:
+  - task:
+      arch: win64
+      env:
+        LC_ALL: ''
+      executable: /media/Drive/Torrent/Dark Souls Remastered [FitGirl Repack]/setup.exe
+      prefix: /media/Drive/Games/dark-souls-remastered
+      wine_path: /home/gerry/.local/share/lutris/runners/wine/wine-ge-8-26-x86_64/bin/wine
+  system:
+    env:
+      LC_ALL: ''
+slug: dark-souls-remastered-setup
+system:
+  env:
+    LC_ALL: ''
+  locale: ''
+  prefix_command: ''
+variables: {}
+version: Setup file
+wine:
+  system_winetricks: true
+  version: wine-ge-8-26-x86_64
+year: null
