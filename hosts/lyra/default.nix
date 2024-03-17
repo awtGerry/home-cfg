@@ -79,7 +79,7 @@
 
   # nixpkgs.config.allowUnfree = true;
   nixpkgs.config = {
-    allowUnfreePredicate = pkg: builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
+    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
       "anytype"
       "anytype-heart"
       "clonehero"
@@ -89,9 +89,9 @@
       "minecraft-server"
       "sm64ex"
       "steam"
+      "steam-run"
       "steam-jupiter-original"
       "steam-original"
-      "steam-run"
       "steamdeck-hw-theme"
       "unrar"
       "vvvvvv"
