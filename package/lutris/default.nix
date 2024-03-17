@@ -37,7 +37,7 @@ in
           QT_QPA_PLATFORM = "xcb";
         };
 
-        # prefix_command = "wrap-scale-off"; # Wrap scale off for wayland only x11 breaks lutris
+        prefix_command = "wrap-scale-off"; # Wrap scale off for wayland only x11 breaks lutris
       };
     };
 
@@ -125,10 +125,10 @@ in
         disable_runtime = true;
 
         # Snes doesn't work on Wayland - force X11
-        # env = {
-        #   QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-        #   QT_QPA_PLATFORM = "xcb";
-        # };
+        env = {
+          QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+          QT_QPA_PLATFORM = "xcb";
+        };
       };
     };
 
@@ -148,7 +148,7 @@ in
       wine = { };
 
       system = {
-        # prefix_command = "wrap-scale-off"; # Wrap scale off for wayland only x11 breaks lutris
+        prefix_command = "wrap-scale-off"; # Wrap scale off for wayland only x11 breaks lutris
       };
     };
   };

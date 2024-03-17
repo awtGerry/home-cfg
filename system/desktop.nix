@@ -7,9 +7,6 @@
     ./base.nix
     ./gaming.nix
 
-    # NOTE: While i fix wezterm i'll test kitty
-    ../package/kitty
-
     ../package/hyprland
     ../package/waybar
   ];
@@ -25,6 +22,12 @@
       dconf
       xwayland
       xwaylandvideobridge
+
+      wl-clipboard
+      wlr-randr
+      slurp
+      grim
+      slurp
 
       discord
       gimp

@@ -15,7 +15,7 @@
     ../package/git
     ../package/gtk
     ../package/tmux
-    # ../package/wezterm
+    ../package/kitty
     ../package/zathura
     ../package/zsh
 
@@ -56,11 +56,11 @@
     ripgrep
     xclip
 
+    xcompmgr # Compositor
     # Utils
     libnotify
     pavucontrol
     pulsemixer
-    xcompmgr # Compositor
     transmission # Torrent client
 
     # System utilities
@@ -70,7 +70,6 @@
     maim
     xdotool
     sxiv
-    xwallpaper
     zathura
 
     # System dependencies

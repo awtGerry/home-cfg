@@ -1,30 +1,43 @@
 { config, lib, pkgs, inputs, ... }: 
 
 let
+  swaymsg = "${config.wayland.windowManager.sway.package}/bin/swaymsg";
   rofi_command = "rofi -show drun -show-icons";
 
-  # Randomly choose a wallpaper in ~/Pictures/Wallpapers
-  random-wallpaper = pkgs.writeShellScript "random-wallpaper" ''
-    ${pkgs.findutils}/bin/find -L ~/Pictures/Wallpapers -type f | ${pkgs.coreutils}/bin/shuf -n 1
+  # Turn off scaling on all displays
+  scale-off = pkgs.writeShellScript "scale-off" ''
+    rm -rf /tmp/scale-on
+    mkdir /tmp/scale-on
+
+    while read -r scale name; do
+      echo "$scale" > "/tmp/scale-on/$name";
+    done < <(${swaymsg} -r -t get_outputs | ${pkgs.jq}/bin/jq -r '.[] | "\(.scale) \(.make) \(.model) \(.serial)"')
+
+    ${swaymsg} 'output * scale 1'
+  '';
+
+  # Turn on scaling on all displays
+  scale-on = pkgs.writeShellScript "scale-on" ''
+    for scale_file in /tmp/scale-on/*; do
+      ${swaymsg} "output \"$(basename "$scale_file")\" scale $(${pkgs.coreutils}/bin/cat "$scale_file")"
+    done
   '';
 
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
       ${pkgs.waybar}/bin/waybar &
-      ${pkgs.swww}/bin/swww init &
+      ${pkgs.hyprpaper}/bin/hyprpaper &
+  '';
 
-      # Set the wallpaper
-      ${pkgs.swww}/bin/swww img ${random-wallpaper} &
+  # Turn off scaling on all displays for the duration of the wrapped program
+  wrap-scale-off = pkgs.writeShellScriptBin "wrap-scale-off" ''
+    ${scale-off}
+    export MANGOHUD_CONFIGFILE=$HOME/.config/MangoHud/MangoHud-HiDPI.conf
+    "$1" "''${@:2}"
+    ${scale-on}
   '';
 in
 {
-  home.packages = with pkgs; [
-    wl-clipboard
-    wlr-randr
-    slurp
-    grim
-    slurp
-  ];
-
+  imports = [ ./hyprpaper.nix ];
   wayland.windowManager.hyprland.settings = {
 
     exec-once = ''${startupScript}/bin/start'';
@@ -152,4 +165,8 @@ in
       "$mod ALT, mouse:272, resizewindow"
     ];
   };
+
+  home.packages = with pkgs; [
+    wrap-scale-off
+  ];
 }

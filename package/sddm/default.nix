@@ -28,7 +28,7 @@ pkgs.stdenv.mkDerivation {
     cp -R ./* $out/
     cd $out
     rm theme.conf
-    cp -r ${image} Backgrounds/bg.jpg
+    cp -r $HOME/Pictures/Wallpapers/road.jpg Backgrounds/bg.jpg
     cp -r ${theme} theme.conf
   '';
 }
