@@ -1,12 +1,11 @@
 { pkgs }:
 
 let
-  imgUrl = "https://raw.githubusercontent.com/awtGerry/home-cfg/master/bg.jpg";
   themeUrl = "https://raw.githubusercontent.com/awtGerry/home-cfg/master/package/sddm/theme.conf";
 
   image = pkgs.fetchurl {
-    url = imgUrl;
-    sha256 = "sha256-2FMvWIjeTTtSmVzjQdBh6ImLVrJ6raSQaV+VvGiUNuQ=";
+    url = "https://w.wallhaven.cc/full/l8/wallhaven-l8vp7y.jpg";
+    hash = "sha256-MxmB+im6XVMUo8f0JJmzDNmPjnsB7RR2JpNKHYCKEDs=";
   };
 
   theme = pkgs.fetchurl {
@@ -28,7 +27,7 @@ pkgs.stdenv.mkDerivation {
     cp -R ./* $out/
     cd $out
     rm theme.conf
-    cp -r $HOME/Pictures/Wallpapers/road.jpg Backgrounds/bg.jpg
+    cp -r ${image} Backgrounds/bg.jpg
     cp -r ${theme} theme.conf
   '';
 }
