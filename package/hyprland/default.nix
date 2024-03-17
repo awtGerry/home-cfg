@@ -63,7 +63,7 @@ in
       repeat_delay = 300;
     };
 
-    misc = {
+    /* misc = {
       disable_autoreload = true;
       animate_mouse_windowdragging = false;
       vrr = 2;
@@ -72,11 +72,11 @@ in
       # disable_splash_rendering = true;
       disable_hyprland_logo = true;
       force_default_wallpaper = 0;
-    };
+    }; */
 
     decoration = {
       rounding = 1;
-      blur = {
+      /* blur = {
         size = 6;
         passes = 3;
         new_optimizations = true;
@@ -85,10 +85,10 @@ in
         contrast = "1.1";
         brightness = "1.2";
         xray = true;
-      };
+      }; */
       dim_inactive = true;
       dim_strength = "0.3";
-      fullscreen_opacity = 1;
+/*       fullscreen_opacity = 1; */
       drop_shadow = true;
       shadow_ignore_window = true;
       shadow_offset = "0 8";
@@ -120,6 +120,7 @@ in
         "specialWorkspace, 1, 3, fluent_decel, slidevert"
       ];
     };
+
     dwindle = {
       no_gaps_when_only = true;
       pseudotile = true;

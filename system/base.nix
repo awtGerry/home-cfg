@@ -61,7 +61,7 @@
     libnotify
     pavucontrol
     pulsemixer
-    transmission # Torrent client
+    transmission-gtk # Torrent client
 
     # System utilities
     btop

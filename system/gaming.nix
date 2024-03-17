@@ -21,8 +21,9 @@
     # }))
     steam
     steam-run
-    # ukmm
-    # vvvvvv
+    eww-wayland
+    ukmm
+    vvvvvv
 
     # Emulators
     dolphinEmuMaster
