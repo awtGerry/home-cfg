@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 
 let
-  bg = "~/Pictures/Wallpapers/linux_room.jpg";
+  bg = "~/Pictures/Wallpapers/mustang.jpg";
 in
 {
   home.file = {

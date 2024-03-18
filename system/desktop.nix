@@ -20,6 +20,8 @@
 
   home = {
     packages = with pkgs; [
+      spotify
+
       # Wayland
       xorg.xprop
       dunst
@@ -27,6 +29,7 @@
       dconf
       xwayland
       xwaylandvideobridge
+      swww
 
       wl-clipboard
       wlr-randr
@@ -120,6 +123,7 @@
       "discord"
       "minecraft-server"
       "sm64ex"
+      "spotify"
       "steam"
       "steam-jupiter-original"
       "steam-original"

@@ -26,6 +26,7 @@ let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
       ${pkgs.waybar}/bin/waybar &
       ${pkgs.hyprpaper}/bin/hyprpaper &
+      "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP" &
   '';
 
   # Turn off scaling on all displays for the duration of the wrapped program
@@ -37,9 +38,11 @@ let
   '';
 in
 {
+  # wayland.windowManager.hyprland.settings.exec-once = ''${startupScript}/bin/start'';
   imports = [ ./hyprpaper.nix ];
-  wayland.windowManager.hyprland.settings = {
 
+  wayland.windowManager.hyprland.settings = {
+    xwayland = {force_zero_scaling = true;};
     exec-once = ''${startupScript}/bin/start'';
 
     # general settings
@@ -63,7 +66,7 @@ in
       repeat_delay = 300;
     };
 
-    /* misc = {
+    misc = {
       disable_autoreload = true;
       animate_mouse_windowdragging = false;
       vrr = 2;
@@ -72,11 +75,11 @@ in
       # disable_splash_rendering = true;
       disable_hyprland_logo = true;
       force_default_wallpaper = 0;
-    }; */
+    };
 
     decoration = {
       rounding = 1;
-      /* blur = {
+      blur = {
         size = 6;
         passes = 3;
         new_optimizations = true;
@@ -85,7 +88,7 @@ in
         contrast = "1.1";
         brightness = "1.2";
         xray = true;
-      }; */
+      };
       dim_inactive = true;
       dim_strength = "0.3";
       fullscreen_opacity = 1;
@@ -130,41 +133,126 @@ in
     # keybindings
     "$mod" = "SUPER";
     bind =
-      [
-        "$mod, Q, killactive"
-        "$mod, F, fullscreen"
-        "$mod, Space, togglefloating"
-        "$mod, Tab, cyclenext"
-        "$mod, Tab, bringactivetotop"
+    [
+      "$mod, Q, killactive"
+      "$mod, F, fullscreen"
+      "$mod, Space, togglefloating"
+      "$mod, Tab, cyclenext"
+      "$mod, Tab, bringactivetotop"
 
-        "$mod CTRL, Q, exec, hyprctl dispatch exit"
-        "$mod, W, exec, firefox"
-        "$mod CTRL, W, exec, chromium"
-        "$mod, E, exec, neovim"
-        "$mod, P, exec, ${rofi_command}"
-        "$mod, Return, exec, kitty"
-      ]
-      ++ (
-        # workspaces
-        # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
-        builtins.concatLists (builtins.genList (
-            x: let
-              ws = let
-                c = (x + 1) / 10;
-              in
-                builtins.toString (x + 1 - (c * 10));
-            in [
-              "$mod, ${ws}, workspace, ${toString (x + 1)}"
-              "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
-            ]
-          )
-          10)
-      );
+      "$mod CTRL, Q, exec, hyprctl dispatch exit"
+      "$mod, W, exec, firefox"
+      "$mod CTRL, W, exec, chromium"
+      "$mod, E, exec, neovim"
+      "$mod, P, exec, ${rofi_command}"
+      "$mod, Return, exec, kitty"
+    ]
+    ++ (
+      # workspaces
+      # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
+      builtins.concatLists (builtins.genList (
+          x: let
+            ws = let
+              c = (x + 1) / 10;
+            in
+              builtins.toString (x + 1 - (c * 10));
+          in [
+            "$mod, ${ws}, workspace, ${toString (x + 1)}"
+            "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+          ]
+        )
+        10)
+    );
     bindm = [
       # mouse movements
       "$mod, mouse:272, movewindow"
       "$mod, mouse:273, resizewindow"
       "$mod ALT, mouse:272, resizewindow"
+    ];
+    windowrulev2 = [
+      "opacity 0.90 0.90,class:^(kitty)$"
+      "opacity 0.90 0.90,class:^(foot)$"
+      "opacity 0.90 0.90,class:^(firefox)$"
+      "opacity 0.90 0.90,class:^(chromium)$"
+      "opacity 0.80 0.80,class:^(Steam)$"
+      "opacity 0.80 0.80,class:^(steam)$"
+      "opacity 0.80 0.80,class:^(steamwebhelper)$"
+      "opacity 0.80 0.80,class:^(Spotify)$"
+      "opacity 0.80 0.80,class:^(Code)$"
+      "opacity 0.80 0.80,class:^(thunar)$"
+      "opacity 0.80 0.80,class:^(file-roller)$"
+      "opacity 0.80 0.80,class:^(nwg-look)$"
+      "opacity 0.80 0.80,class:^(qt5ct)$"
+      "opacity 0.80 0.80,class:^(VencordDesktop|Webcord|discord|Discord)"
+      "opacity 0.80 0.70,class:^(pavucontrol)$"
+      "opacity 0.80 0.70,class:^(org.kde.polkit-kde-authentication-agent-1)$"
+      "opacity 0.80 0.80,class:^(org.telegram.desktop)$"
+      "opacity 0.80 0.80,class:^(code-url-handler)$"
+      "opacity 0.80 0.80,title:^(Spotify( Premium)?)$"
+      "opacity 0.80 0.80,title:^(Spotify( Free)?)$"
+      "opacity 0.80 0.80,title:^(Steam)$"
+      "opacity 0.90 0.90, class:^(inlyne)$"
+
+      "float,class:^(org.kde.polkit-kde-authentication-agent-1)$"
+      "float,class:^(pavucontrol)$"
+      "float,title:^(Media viewer)$"
+      "float,title:^(Volume Control)$"
+      "float,class:^(Viewnior)$"
+      "float,title:^(DevTools)$"
+      "float,class:^(file_progress)$"
+      "float,class:^(confirm)$"
+      "float,class:^(dialog)$"
+      "float,class:^(download)$"
+      "float,class:^(notification)$"
+      "float,class:^(error)$"
+      "float,class:^(confirmreset)$"
+      "float,title:^(Open File)$"
+      "float,title:^(branchdialog)$"
+      "float,title:^(Confirm to replace files)$"
+      "float,title:^(File Operation Progress)$"
+      "float,class:^(com.github.Aylur.ags)$"
+
+      "float, title:^(Picture-in-Picture)$"
+      "pin, title:^(Picture-in-Picture)$"
+
+      "idleinhibit focus, class:^(mpv|.+exe)$"
+      "idleinhibit focus, class:^(firefox)$, title:^(.*YouTube.*)$"
+      "idleinhibit fullscreen, class:^(firefox)$"
+      "idleinhibit fullscreen, class:^(Brave-browser)$"
+
+      "dimaround, class:^(xdg-desktop-portal-gtk)$"
+      "dimaround, class:^(polkit-gnome-authentication-agent-1)$"
+
+      "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
+      "workspace special silent, title:^(Firefox — Sharing Indicator)$"
+
+      "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
+      "noanim,class:^(xwaylandvideobridge)$"
+      "nofocus,class:^(xwaylandvideobridge)$"
+      "noinitialfocus,class:^(xwaylandvideobridge)$"
+      "noblur,class:^(xwaylandvideobridge)$"
+      "noshadow,class:^(xwaylandvideobridge)$"
+    ];
+    layerrule = let
+      toRegex = list: let
+        elements = lib.concatStringsSep "|" list;
+      in "^(${elements})$";
+
+      ignorealpha = [
+        "calendar"
+        "notifications"
+        "osd"
+        "system-menu"
+
+        "anyrun"
+        "popups"
+      ];
+      layers = ignorealpha ++ ["bar" "gtk-layer-shell"];
+    in [
+      "blur, ${toRegex layers}"
+      "xray 1, ${toRegex ["bar" "gtk-layer-shell"]}"
+      "ignorealpha 0.2, ${toRegex ["bar" "gtk-layer-shell"]}"
+      "ignorealpha 0.5, ${toRegex (ignorealpha ++ ["music"])}"
     ];
   };
 

@@ -76,6 +76,8 @@
     XDG_DESKTOP_DIR = "$HOME/Desktop";
   };
 
+  environment.variables.NIXOS_OZONE_WL = "1";
+
   # Force all apps to use the same version of mesa as in hardware.opengl.package,
   # regardless of the version it was compiled with
   environment.extraInit = lib.mkIf config.hardware.opengl.enable ''
