@@ -88,7 +88,7 @@ in
       }; */
       dim_inactive = true;
       dim_strength = "0.3";
-/*       fullscreen_opacity = 1; */
+      fullscreen_opacity = 1;
       drop_shadow = true;
       shadow_ignore_window = true;
       shadow_offset = "0 8";
@@ -140,6 +140,7 @@ in
         "$mod CTRL, Q, exec, hyprctl dispatch exit"
         "$mod, W, exec, firefox"
         "$mod CTRL, W, exec, chromium"
+        "$mod, E, exec, neovim"
         "$mod, P, exec, ${rofi_command}"
         "$mod, Return, exec, kitty"
       ]

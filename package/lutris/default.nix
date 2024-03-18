@@ -13,14 +13,6 @@ in
   ];
 
   xdg.configFile = {
-    # Manage lutris config outside of home-manager while keeping track of the files in this git repo
-    "lutris/lutris.conf".source = config.lib.file.mkOutOfStoreSymlink
-      "${config.home.configDirectory}/package/lutris/config/lutris.conf";
-
-    # Manage lutris game configs outside of home-manager while keeping track of the files in this git repo
-    "lutris/games".source = config.lib.file.mkOutOfStoreSymlink
-      "${config.home.configDirectory}/package/lutris/config/games";
-
     # Wii Emulator
     "lutris/runners/dolphin.yml".source = settingsFormat.generate "dolphin.yml" {
       dolphin = {
@@ -141,6 +133,11 @@ in
 
         # I've configured steam to only run gamemode while a game is running
         gamemode = false;
+
+        env = {
+          QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+          QT_QPA_PLATFORM = "xcb";
+        };
       };
     };
 

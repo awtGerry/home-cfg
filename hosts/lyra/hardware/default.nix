@@ -12,6 +12,14 @@
     efi.canTouchEfiVariables = true;
   };
 
+  programs.gamemode.settings.gpu = {
+    apply_gpu_optimisations = "accept-responsibility";
+    gpu_device = 0;
+    amd_performance_level = "high";
+  };
+
+  programs.steam.enable = true;
+
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
