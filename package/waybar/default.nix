@@ -27,7 +27,7 @@ in
             "4" = "";
             "5" = "";
             "7" = "7";
-            "8" = "8";
+            "8" = "";
             "9" = "";
             "10" = "";
             default = "";
@@ -108,5 +108,6 @@ in
 
   home.packages = with pkgs; [
     font-awesome_6
+    wireplumber
   ];
 }

@@ -140,13 +140,6 @@
     ];
   };
 
-  # Configure GPU optimisations for gamemode
-  # programs.gamemode.settings.gpu = {
-  #   apply_gpu_optimisations = "accept-responsibility";
-  #   gpu_device = 0;
-  #   amd_performance_level = "high";
-  # };
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   home.stateVersion = "23.11";
