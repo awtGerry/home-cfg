@@ -37,7 +37,8 @@
 
     # Data conversion and manipulation
     jq
-    # unrar
+    unrar
+    p7zip
     unzip
 
     # Search
