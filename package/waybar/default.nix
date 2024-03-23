@@ -15,7 +15,7 @@ in
         height = 32;
         modules-left = [ "hyprland/workspaces" "hyprland/mode" ];
         modules-center = [ "cpu" "memory" "disk" "temperature" "network" ];
-        modules-right = [ "idle_inhibitor" "backlight" "battery" "wireplumber" "clock" "tray" ];
+        modules-right = [ "idle_inhibitor" "wireplumber" "clock" "tray" ];
 
         "hyprland/workspaces" = {
           all-outputs = true;
@@ -23,13 +23,13 @@ in
           format-icons = {
             "1" = "";
             "2" = ''<span font="Font Awesome 6 Brands"></span>'';
-            "3" = "";
-            "4" = "";
-            "5" = "";
+            "3" = "3";
+            "4" = "4";
+            "5" = "5";
             "7" = "7";
-            "8" = "";
+            "8" = "8";
             "9" = "";
-            "10" = "";
+            "10" = "";
             default = "";
           };
         };
@@ -74,19 +74,6 @@ in
           critical-threshold = 80;
           format = "{temperatureC}°C {icon}";
           format-icons = [ "" "" "" "" "" ];
-        };
-
-        "backlight" = {
-          format = "{percent}% ";
-        };
-
-        "battery" = {
-          states = {
-            warning = 30;
-            critical = 10;
-          };
-          format = "{capacity}% {icon}";
-          format-icons = [ "" "" "" "" "" ];
         };
 
         "network" = {

@@ -73,5 +73,4 @@
     # xorg.xinit
     # xdg-user-dirs 
   ];
-
 }
