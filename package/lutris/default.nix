@@ -85,28 +85,6 @@ in
     #   };
     # };
 
-    # PS2 Emulator
-    "lutris/runners/pcsx2.yml".source = settingsFormat.generate "pcsx2.yml" {
-      pcsx2 = {
-        runner_executable = "${pkgs.pcsx2}/bin/pcsx2";
-      };
-
-      system = {
-        disable_runtime = true;
-      };
-    };
-
-    # PS3 Emulator
-    "lutris/runners/rpcs3.yml".source = settingsFormat.generate "rpcs3.yml" {
-      rpcs3 = {
-        runner_executable = "${pkgs.rpcs3}/bin/rpcs3";
-      };
-
-      system = {
-        disable_runtime = true;
-      };
-    };
-
     # SNES Emulator
     "lutris/runners/snes9x.yml".source = settingsFormat.generate "snes9x.yml" {
       snes9x = {
@@ -130,10 +108,7 @@ in
 
       system = {
         disable_runtime = true;
-
-        # I've configured steam to only run gamemode while a game is running
         gamemode = false;
-
         env = {
           QT_AUTO_SCREEN_SCALE_FACTOR = "1";
           QT_QPA_PLATFORM = "xcb";

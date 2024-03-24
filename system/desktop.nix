@@ -9,6 +9,7 @@
 
     ../package/hyprland
     ../package/waybar
+    ../package/thunderbird
   ];
   # ++ (with inputs.nixos-hardware.nixosModules; [
   #   common-cpu-amd
