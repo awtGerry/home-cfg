@@ -10,18 +10,20 @@ in
     bind =
     [
       "$mod, Q, killactive"
+      "$mod CTRL, Backspace, exec, hyprctl dispatch exit"
       "$mod, F, fullscreen"
       "$mod, Space, togglefloating"
 
-      "$mod, Tab, cyclenext"
-      "$mod, Tab, bringactivetotop"
+      "$mod, Tab, workspace, previous"
+      "$mod CTRL, Tab, cyclenext"
+      "$mod CTRL, Tab, bringactivetotop"
 
-      "$mod CTRL, Q, exec, hyprctl dispatch exit"
+      "$mod, Return, exec, kitty"
       "$mod, W, exec, firefox"
       "$mod CTRL, W, exec, chromium"
       "$mod, E, exec, neovim"
       "$mod, P, exec, ${rofi_command}"
-      "$mod, Return, exec, kitty"
+      "$mod, M, exec, thunderbird"
     ]
     ++ (
       # workspaces
