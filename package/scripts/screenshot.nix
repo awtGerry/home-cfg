@@ -11,38 +11,66 @@ let
       mkdir -p "$screenshot_dir/full"
     fi
 
-    file_path="$screenshot_dir/screenshot-latest.png"
+    output=$(date +%Y-%m-%d_%H-%M-%S)
+    file_name="screenshot-$output.png"
+    xclip_cmd="xclip -sel clip -t image/png"
 
     case "$(printf "  Area\\n  Window\\n󰍹  Full Screen\\n  Area(clipboard)\\n  Window(clipboard)\\n󰍹  Full Screen(clipboard)" |
       rofi -dmenu -i -mesg "Screenshot menu" -config ~/Dev/public/home-cfg/package/rofi/config/opt_menu.rasi)"
     in
       "  Area")
-        file_name="ssarea-$(date +%Y-%m-%d_%H-%M-%S).png"
         if [ -n "$WAYLAND_DISPLAY" ]; then
           grim -g "$(slurp)" "$screenshot_dir/area/$file_name"
         else
-          maim -s "$screenshot_dir/$file_name"
+          maim -s "$screenshot_dir/area/$file_name"
         fi
-        notify-send " Screenshot taken" -i "$screenshot_dir/$file_name"
+        notify-send "Screenshot taken" "Screenshot saved to $screenshot_dir/area/$file_name" -i "$screenshot_dir/area/$file_name"
         ;;
       "  Window")
-        file_name="sswindow-$(date +%Y-%m-%d_%H-%M-%S).png"
         if [ -n "$WAYLAND_DISPLAY" ]; then
+          sleep 0.3
           hyprctl -j activewindow | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"' | grim -g - "$screenshot_dir/window/$file_name"
         else
           maim -i $(xdotool getactivewindow) "$screenshot_dir/window/$file_name"
         fi
-        notify-send " Screenshot taken" -i "$screenshot_dir/$file_name"
+        notify-send "Screenshot taken" "Screenshot saved to $screenshot_dir/window/$file_name" -i "$screenshot_dir/window/$file_name"
         ;;
       "󰍹  Full Screen")
-        file_name="ssfull-$(date +%Y-%m-%d_%H-%M-%S).png"
         if [ -n "$WAYLAND_DISPLAY" ]; then
+          sleep 0.3
           active_workspace_monitor=$(hyprctl -j activeworkspace | jq -r '(.monitor)')
           grim -o "$active_workspace_monitor" "$screenshot_dir/full/$file_name"
         else
           maim "$screenshot_dir/full/$file_name"
         fi
-        notify-send "󰍹 Screenshot taken" -i "$screenshot_dir/$file_name"
+        notify-send "Screenshot taken" "Screenshot saved to $screenshot_dir/full$file_name" -i "$screenshot_dir/full/$file_name"
+        ;;
+      "  Area(clipboard)")
+        if [ -n "$WAYLAND_DISPLAY" ]; then
+          grim -g "$(slurp)" | wl-copy
+        else
+          maim -s | $xclip_cmd
+        fi
+        notify-send "Screenshot taken and copied to clipboard"
+        ;;
+      "  Window(clipboard)")
+        if [ -n "$WAYLAND_DISPLAY" ]; then
+          sleep 0.3
+          hyprctl -j activewindow | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"' | grim -g - | wl-copy
+        else
+          maim -i $(xdotool getactivewindow) | $xclip_cmd
+        fi
+        notify-send "Screenshot taken and copied to clipboard"
+        ;;
+      "󰍹  Full Screen(clipboard)")
+        if [ -n "$WAYLAND_DISPLAY" ]; then
+          sleep 0.3
+          active_workspace_monitor=$(hyprctl -j activeworkspace | jq -r '(.monitor)')
+          grim -o "$active_workspace_monitor" | wl-copy
+        else
+          maim | $xclip_cmd
+        fi
+        notify-send "Screenshot taken and copied to clipboard"
         ;;
     esac
   '';

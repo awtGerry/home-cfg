@@ -15,6 +15,8 @@ in
       "$mod, Backspace, exec, wlogout"
       "$mod CTRL, Backspace, exec, hyprctl dispatch exit"
 
+      "$mod, Print, exec, screenshot"
+
       # Workspaces & windows
       "$mod, Tab, workspace, previous"
       "$mod, k, cyclenext"

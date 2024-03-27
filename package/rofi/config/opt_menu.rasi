@@ -12,6 +12,7 @@ window {
   border-radius: 10px;
   background-color: #282738;
   width: 600px;
+  height: 340px;
 }
 
 mainbox {
