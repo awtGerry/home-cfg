@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, lib, ... }:
+{ pkgs, config, ... }:
 
 let
   public_repos = "${config.home.publicRepos}";

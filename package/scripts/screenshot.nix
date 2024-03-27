@@ -1,6 +1,7 @@
 { pkgs, config, ... }:
 
 let
+  rofi_config = "${config.home.configDirectory}/package/rofi/config/opt_menu.rasi";
   # rofi menu
   screenshot = pkgs.writeShellScriptBin "screenshot" ''
     screenshot_dir="${config.xdg.userDirs.pictures}/screenshots"
@@ -16,7 +17,7 @@ let
     xclip_cmd="xclip -sel clip -t image/png"
 
     case "$(printf "  Area\\n  Window\\n󰍹  Full Screen\\n  Area(clipboard)\\n  Window(clipboard)\\n󰍹  Full Screen(clipboard)" |
-      rofi -dmenu -i -mesg "Screenshot menu" -config ~/Dev/public/home-cfg/package/rofi/config/opt_menu.rasi)"
+      rofi -dmenu -i -mesg "Screenshot menu" -config ${rofi_config})"
     in
       "  Area")
         if [ -n "$WAYLAND_DISPLAY" ]; then
@@ -75,5 +76,6 @@ let
     esac
   '';
 in {
+  imports = [ ../../system/env.nix ];
   home.packages = [screenshot];
 }

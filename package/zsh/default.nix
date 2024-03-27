@@ -21,7 +21,7 @@ in
       t="tmux";
       ta="tmux a";
       z="zathura";
-      ff="~/Dev/public/home-cfg/package/tmux/tmux-fzf.sh";
+      ff="tmux-fzf";
       update="sudo nixos-rebuild switch";
     };
 
