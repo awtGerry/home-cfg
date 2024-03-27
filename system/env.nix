@@ -1,5 +1,6 @@
 { lib, config, ... }:
 
+#
 {
   options.home.configDirectory = lib.mkOption {
     type = lib.types.path;
