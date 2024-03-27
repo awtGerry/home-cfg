@@ -35,7 +35,6 @@
       wlr-randr
       slurp
       grim
-      slurp
 
       discord
       gimp
