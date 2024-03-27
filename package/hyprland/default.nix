@@ -26,10 +26,9 @@ in
       gaps_in = 5;
       gaps_out = 5;
       border_size = 2;
-      "col.active_border" = "rgb(255, 0, 0)";
-      "col.inactive_border" = "rgb(0, 0, 0)";
+      "col.active_border" = "rgba(f6c177ff)";
       "no_border_on_floating" = false;
-      layout = "master";
+      layout = "dwindle";
       no_cursor_warps = true;
     };
 
