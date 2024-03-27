@@ -42,7 +42,7 @@ in
       bind -r C-h resize-pane -L 5
       bind -r C-l resize-pane -R 5
 
-      bind-key -r f run-shell "tmux neww ~/Github/home-cfg/package/tmux/tmux-fzf.sh"
+      bind-key -r f run-shell "tmux neww tmux-fzf"
     '';
   };
 
