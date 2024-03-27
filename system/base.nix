@@ -9,6 +9,7 @@
     ./tools/wallpapers.nix
 
     # Config pkgs
+    ../package/dunst
     ../package/firefox
     ../package/fzf
     ../package/rofi

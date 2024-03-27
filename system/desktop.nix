@@ -25,7 +25,6 @@
 
       # Wayland
       xorg.xprop
-      dunst
       polkit
       dconf
       xwayland
