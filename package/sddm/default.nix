@@ -1,9 +1,10 @@
-{ pkgs }:
+{ lib, pkgs, config, ... }:
+
+# TODO: change this to a more reliable resource
 
 let
   themeUrl = "https://raw.githubusercontent.com/awtGerry/home-cfg/master/package/sddm/theme.conf";
 
-  # TODO: change this to a more reliable source
   image = pkgs.fetchurl {
     url = "https://w.wallhaven.cc/full/q6/wallhaven-q6ov1r.jpg";
     hash = "sha256-TYiHSwANdmdIT7o3v1wjy0fRcENDjGALKjxQOI979wo=";
