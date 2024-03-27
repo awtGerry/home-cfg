@@ -54,6 +54,17 @@
       preserve_split = true;
     };
 
+    windowrule = [
+      "workspace 2, ^(firefox)$"
+      "workspace 3, ^(chromium)$"
+      "workspace 4, ^(Steam)$"
+      "workspace 4, ^(lutris)$"
+      "workspace 5, ^(gimp)$"
+      "workspace 5, ^(figma)$"
+      "workspace 8, ^(Spotify)$"
+      "workspace 9, ^(thunderbird)$"
+    ];
+
     windowrulev2 = [
       "opacity 0.90 0.90,class:^(kitty)$"
       "opacity 0.90 0.90,class:^(foot)$"
@@ -80,6 +91,7 @@
 
       "float,class:^(org.kde.polkit-kde-authentication-agent-1)$"
       "float,class:^(pavucontrol)$"
+      "float,class:^(zathura)$"
       "float,title:^(Media viewer)$"
       "float,title:^(Volume Control)$"
       "float,class:^(Viewnior)$"

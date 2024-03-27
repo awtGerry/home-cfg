@@ -31,8 +31,10 @@ in
       "$mod, E, exec, ${term} -e nvim"
       "$mod, P, exec, ${rofi_command}"
       "$mod SHIFT, P, exec, gimp"
+      "$mod, a, exec, ${term} -e pulsemixer"
       "$mod, X, exec, steam"
       "$mod SHIFT, X, exec, lutris"
+      "$mod, B, exec, ${term} -e bluetoothctl"
       "$mod, M, exec, thunderbird"
       "$mod SHIFT, M, exec, spotify"
     ]
