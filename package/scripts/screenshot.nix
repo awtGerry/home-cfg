@@ -48,7 +48,7 @@ let
         ;;
       "  Area(clipboard)")
         if [ -n "$WAYLAND_DISPLAY" ]; then
-          grim -g "$(slurp)" | wl-copy
+          grim -g "$(slurp)" - | wl-copy
         else
           maim -s | $xclip_cmd
         fi
@@ -57,7 +57,8 @@ let
       "  Window(clipboard)")
         if [ -n "$WAYLAND_DISPLAY" ]; then
           sleep 0.3
-          hyprctl -j activewindow | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"' | grim -g - | wl-copy
+          window=$(hyprctl -j activewindow | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"')
+          grim -g "$window" - | wl-copy
         else
           maim -i $(xdotool getactivewindow) | $xclip_cmd
         fi
@@ -67,7 +68,7 @@ let
         if [ -n "$WAYLAND_DISPLAY" ]; then
           sleep 0.3
           active_workspace_monitor=$(hyprctl -j activeworkspace | jq -r '(.monitor)')
-          grim -o "$active_workspace_monitor" | wl-copy
+          grim -o "$active_workspace_monitor" - | wl-copy
         else
           maim | $xclip_cmd
         fi

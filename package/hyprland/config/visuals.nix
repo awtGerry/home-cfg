@@ -61,8 +61,10 @@
       "workspace 4, ^(lutris)$"
       "workspace 5, ^(gimp)$"
       "workspace 5, ^(figma)$"
-      "workspace 8, ^(Spotify)$"
       "workspace 9, ^(thunderbird)$"
+      "workspace 10, ^(Spotify)$"
+      "workspace 10, ^(Spotify Premium)$"
+      "workspace 10, ^(Spotify Free)$"
     ];
 
     windowrulev2 = [
