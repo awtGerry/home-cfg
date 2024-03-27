@@ -11,6 +11,7 @@ in
   imports = [
     ./config
     ./hyprpaper.nix
+    ./wlogout.nix
   ];
 
   wayland.windowManager.hyprland.settings = {
@@ -28,7 +29,7 @@ in
       "col.active_border" = "rgb(255, 0, 0)";
       "col.inactive_border" = "rgb(0, 0, 0)";
       "no_border_on_floating" = false;
-      layout = "dwindle";
+      layout = "master";
       no_cursor_warps = true;
     };
 

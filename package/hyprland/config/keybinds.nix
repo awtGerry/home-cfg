@@ -2,6 +2,7 @@
 
 let
   rofi_command = "rofi -show drun -show-icons";
+  term = "kitty";
 in
 {
   wayland.windowManager.hyprland.settings = {
@@ -9,21 +10,31 @@ in
     "$mod" = "SUPER";
     bind =
     [
+      # System
       "$mod, Q, killactive"
+      "$mod, Backspace, exec, wlogout"
       "$mod CTRL, Backspace, exec, hyprctl dispatch exit"
+
+      # Workspaces & windows
+      "$mod, Tab, workspace, previous"
+      "$mod, k, cyclenext"
+      "$mod, k, bringactivetotop"
+      "$mod, j, cyclenext, prev"
+      "$mod, j, bringactivetotop"
       "$mod, F, fullscreen"
       "$mod, Space, togglefloating"
 
-      "$mod, Tab, workspace, previous"
-      "$mod CTRL, Tab, cyclenext"
-      "$mod CTRL, Tab, bringactivetotop"
-
+      # Programs
       "$mod, Return, exec, kitty"
       "$mod, W, exec, firefox"
       "$mod CTRL, W, exec, chromium"
-      "$mod, E, exec, neovim"
+      "$mod, E, exec, ${term} -e nvim"
       "$mod, P, exec, ${rofi_command}"
+      "$mod SHIFT, P, exec, gimp"
+      "$mod, X, exec, steam"
+      "$mod SHIFT, X, exec, lutris"
       "$mod, M, exec, thunderbird"
+      "$mod SHIFT, M, exec, spotify"
     ]
     ++ (
       # workspaces
