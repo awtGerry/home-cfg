@@ -4,13 +4,13 @@ let
   themeUrl = "https://raw.githubusercontent.com/awtGerry/home-cfg/master/package/sddm/theme.conf";
 
   image = pkgs.fetchurl {
-    url = "https://w.wallhaven.cc/full/l8/wallhaven-l8vp7y.jpg";
-    hash = "sha256-MxmB+im6XVMUo8f0JJmzDNmPjnsB7RR2JpNKHYCKEDs=";
+    url = "https://w.wallhaven.cc/full/q6/wallhaven-q6ov1r.jpg";
+    hash = "sha256-TYiHSwANdmdIT7o3v1wjy0fRcENDjGALKjxQOI979wo=";
   };
 
   theme = pkgs.fetchurl {
     url = themeUrl;
-    sha256 = "sha256-yRyVrpAqPhUGIeajiUPeGD2DJO/4ZWJ2lKqQkYB9aiI=";
+    sha256 = "sha256-Lo345Gze7qo7v6EmJ/br+2Wgzscxg5uHlIs2agNNnUk=";
   };
 in
 pkgs.stdenv.mkDerivation {
