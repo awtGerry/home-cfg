@@ -33,7 +33,12 @@ in
       "$mod, E, exec, ${term} -e nvim"
       "$mod, P, exec, ${rofi_command}"
       "$mod SHIFT, P, exec, gimp"
-      "$mod, a, exec, ${term} -e pulsemixer"
+      "$mod, A, exec, ${term} -e pulsemixer"
+      # Wallpapers
+      "$mod, S, exec, rofi-wp"
+      "$mod SHIFT, S, exec, random-wp"
+      "$mod CTRL, S, exec, setbg"
+      # Media
       "$mod, X, exec, steam"
       "$mod SHIFT, X, exec, lutris"
       "$mod, B, exec, ${term} -e bluetoothctl"
