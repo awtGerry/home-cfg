@@ -14,8 +14,8 @@ in
         position = "bottom";
         height = 32;
         modules-left = [ "hyprland/workspaces" "hyprland/mode" ];
-        modules-center = [ "cpu" "memory" "disk" "temperature" "network" ];
-        modules-right = [ "idle_inhibitor" "wireplumber" "clock" "tray" ];
+        modules-center = [ "cpu" "memory" "disk" "network" ];
+        modules-right = [ "tray" "idle_inhibitor" "wireplumber" "clock" ];
 
         "hyprland/workspaces" = {
           all-outputs = true;
@@ -47,11 +47,11 @@ in
         };
 
         "tray" = {
-          spacing = 10;
+          spacing = 5;
         };
 
         "clock" = {
-          format = "{:%H:%M:%S}";
+          format = "{:%H:%M}";
           format-alt = "{:%a %b %d, %Y}";
           interval = 1;
           tooltip-format = "{:%a %b %d, %Y | %H:%M:%S}";
@@ -70,12 +70,6 @@ in
           format = "{percentage_used}% ";
         };
 
-        "temperature" = {
-          critical-threshold = 80;
-          format = "{temperatureC}°C {icon}";
-          format-icons = [ "" "" "" "" "" ];
-        };
-
         "network" = {
           format-wifi = "{essid} ({signalStrength}%) ";
           format-ethernet = "{ifname} = {ipaddr}/{cidr} ";
@@ -83,7 +77,7 @@ in
         };
 
         "wireplumber" = {
-          format = "{volume}% {icon}";
+          format = "{icon} {volume}%";
           format-muted = "";
           format-icons = [ "" "" "" ];
         };

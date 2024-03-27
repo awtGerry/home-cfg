@@ -14,4 +14,8 @@
     type = lib.types.path;
     default = "${config.home.homeDirectory}/Dev/private/";
   };
+  options.home.picDir = lib.mkOption {
+    type = lib.types.path;
+    default = "${config.home.homeDirectory}/Pictures";
+  };
 }

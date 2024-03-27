@@ -1,16 +1,17 @@
 { config, lib, pkgs, inputs, ... }: 
 
 let
+      # ${pkgs.swww}/bin/swww-daemon &
+      # ${pkgs.setbg}/bin/setbg &
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
       ${pkgs.waybar}/bin/waybar &
-      ${pkgs.hyprpaper}/bin/hyprpaper &
+      ${pkgs.swww}/bin/swww init &
       "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP" &
   '';
 in
 {
   imports = [
     ./config
-    ./hyprpaper.nix
     ./wlogout.nix
   ];
 

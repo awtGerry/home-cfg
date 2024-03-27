@@ -1,7 +1,8 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, config, ... }:
 
 let
-  bg = "~/Pictures/Wallpapers/mustang.jpg";
+  bg = "~/Pictures/Wallpapers/road.jpg";
+  # bg = "${config.home.picDir.file}/Wallpapers/road.jpg";
 in
 {
   home.file = {

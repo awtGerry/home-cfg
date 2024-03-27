@@ -1,6 +1,9 @@
 { pkgs, config, lib, inputs, ... }:
 
+# Thinkpad configuration
+
 {
+  # Laptop will use dwm instead of hyprland
   services.xserver.windowManager = {
     dwm.enable = true;
     dwm.package = pkgs.dwm.overrideAttrs {

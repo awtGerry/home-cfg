@@ -58,6 +58,7 @@
 
     # System utilities
     btop
+    duf
     neomutt
     neofetch
     # maim # TODO: move maim to x11 dependencies since wayland uses slurp
