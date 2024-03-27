@@ -1,11 +1,10 @@
 { config, lib, pkgs, inputs, ... }: 
 
 let
-      # ${pkgs.swww}/bin/swww-daemon &
-      # ${pkgs.setbg}/bin/setbg &
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
       ${pkgs.waybar}/bin/waybar &
       ${pkgs.swww}/bin/swww init &
+      "setbg" &
       "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP" &
   '';
 in
