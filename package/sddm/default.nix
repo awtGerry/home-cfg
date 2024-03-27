@@ -1,4 +1,4 @@
-{ lib, pkgs, config, ... }:
+{ pkgs }:
 
 # TODO: change this to a more reliable resource
 
