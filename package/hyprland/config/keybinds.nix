@@ -38,6 +38,9 @@ in
       "$mod, S, exec, rofi-wp"
       "$mod SHIFT, S, exec, random-wp"
       "$mod CTRL, S, exec, setbg"
+      # System hardware
+      "$mod, D, exec, ${term} -e duf"
+      "$mod SHIFT, D, exec, ${term} -e btop"
       # Media
       "$mod, X, exec, steam"
       "$mod SHIFT, X, exec, lutris"
