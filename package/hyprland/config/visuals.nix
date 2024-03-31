@@ -70,7 +70,7 @@
     windowrulev2 = [
       "opacity 0.90 0.90,class:^(kitty)$"
       "opacity 0.90 0.90,class:^(foot)$"
-      "opacity 0.90 0.90,class:^(firefox)$"
+      # "opacity 0.90 0.90,class:^(firefox)$"
       "opacity 0.90 0.90,class:^(chromium)$"
       "opacity 0.80 0.80,class:^(Steam)$"
       "opacity 0.80 0.80,class:^(steam)$"
@@ -94,6 +94,7 @@
       "float,class:^(org.kde.polkit-kde-authentication-agent-1)$"
       "float,class:^(pavucontrol)$"
       "float,class:^(zathura)$"
+      "float,class:^(thunar)$"
       "float,title:^(Media viewer)$"
       "float,title:^(Volume Control)$"
       "float,class:^(Viewnior)$"

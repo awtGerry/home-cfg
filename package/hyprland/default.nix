@@ -4,7 +4,7 @@ let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
       ${pkgs.waybar}/bin/waybar &
       ${pkgs.swww}/bin/swww init &
-      "setbg" &
+      "random-wp" &
       "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP" &
   '';
 in
