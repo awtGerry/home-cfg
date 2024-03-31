@@ -5,5 +5,6 @@
     ./screenshot.nix
     ./tmux-fzf.nix
     ./wp.nix
+    ./hash.nix
   ];
 }
