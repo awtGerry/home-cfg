@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 
 let
-  rofi_config = "${config.home.configDirectory}/package/rofi/config/opt_menu.rasi";
+  rofi_config = "${config.home.configDirectory}/package/rofi/config/left_menu.rasi";
   # rofi menu
   screenshot = pkgs.writeShellScriptBin "screenshot" ''
     screenshot_dir="${config.xdg.userDirs.pictures}/screenshots"
