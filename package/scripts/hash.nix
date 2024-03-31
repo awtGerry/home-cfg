@@ -1,0 +1,13 @@
+{ pkgs }:
+
+let
+  geth = pkgs.writeShellScriptBin "geth" ''
+    #!/usr/bin/env bash
+    nix hash to-sri --type sha256 $(nix-prefetch-url "$2")
+  '';
+in
+{
+  home.packages = with pkgs; [
+    geth
+  ];
+}
