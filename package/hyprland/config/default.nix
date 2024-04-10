@@ -25,7 +25,7 @@ let
   # Turn off scaling on all displays for the duration of the wrapped program
   wrap-scale-off = pkgs.writeShellScriptBin "wrap-scale-off" ''
     ${scale-off}
-    export MANGOHUD_CONFIGFILE=$HOME/.config/MangoHud/MangoHud-HiDPI.conf
+    export MANGOHUD_CONFIGFILE=$HOME/.config/MangoHud/MangoHud.conf
     "$1" "''${@:2}"
     ${scale-on}
   '';

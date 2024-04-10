@@ -5,7 +5,6 @@ let
       ${pkgs.waybar}/bin/waybar &
       ${pkgs.swww}/bin/swww init &
       "random-wp" &
-      "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP" &
   '';
 in
 {
