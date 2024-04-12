@@ -22,6 +22,10 @@
     nodejs
     nodePackages.pnpm
 
+    # java
+    openjdk
+    maven
+
     # Language servers
     lua-language-server
     rust-analyzer

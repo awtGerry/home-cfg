@@ -25,6 +25,7 @@
     vvvvvv
     steam
     steam-run
+    heroic
     # snes9x
 
     # Emulators
@@ -42,6 +43,11 @@
     gamescope
     mangohud
     vkBasalt
+
+    # Game dependencies
+    xorg.libXtst
+    xorg.libXrender
+    xorg.libXext
   ];
 
 }
