@@ -1,9 +1,34 @@
 { pkgs, config, lib, inputs, ... }:
 
-# Thinkpad configuration
-
 {
-  # Laptop will use dwm instead of hyprland
+  imports = [
+    ./base.nix
+    ../package/thunderbird
+  ];
+
+  home.username = "gerry";
+
+  home = {
+    packages = with pkgs; [
+      spotify
+      inter
+
+      # Documents
+      ffmpeg
+      pandoc
+      presenterm
+      chafa # Image to ASCII
+    ];
+
+    pointerCursor = {
+      package = pkgs.gnome.adwaita-icon-theme;
+      name = "Adwaita";
+      size = 24;
+    };
+
+  };
+
+  # Laptop will use dwm
   services.xserver.windowManager = {
     dwm.enable = true;
     dwm.package = pkgs.dwm.overrideAttrs {
