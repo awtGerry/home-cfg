@@ -10,8 +10,9 @@
 
   home = {
     packages = with pkgs; [
-      spotify
+      # spotify
       inter
+      dconf
 
       # Documents
       ffmpeg
@@ -25,19 +26,23 @@
       name = "Adwaita";
       size = 24;
     };
-
   };
 
-  # Laptop will use dwm
-  services.xserver.windowManager = {
-    dwm.enable = true;
-    dwm.package = pkgs.dwm.overrideAttrs {
-      src = pkgs.fetchFromGitHub {
-        owner = "awtGerry";
-        repo = "dwm";
-        rev = "29ebc8cf82e16511538a5946ef13b71dc757f4a5";
-        sha256 = "sha256-LzNIvLnrBp2IAwAerPa1YO09rff9yNmFyCRx8AWMNl8=";
-      };
-    };
+  nixpkgs.config = {
+    allowUnfreePredicate = pkg: builtins.elem (builtins.parseDrvName (lib.getName pkg)).name [
+      "data.zip"
+      "discord"
+      "spotify"
+      "vvvvvv"
+      "unrar"
+    ];
+
+    permittedInsecurePackages = [
+      "openssl-1.1.1v"
+      "nix-2.16.2" # Required by nixd
+    ];
   };
+
+  programs.home-manager.enable = true;
+  home.stateVersion = "23.11";
 }

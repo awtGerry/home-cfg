@@ -46,7 +46,7 @@
         };
 
         # Laptop configuration
-        danahy = nixpkgs.lib.nixosSystem {
+        pady = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/pady/default.nix

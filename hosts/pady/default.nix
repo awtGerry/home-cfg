@@ -11,7 +11,7 @@
 
   networking = {
     hostName = "pady";
-    useDHCP = true;
+    networkmanager.enable = true;
   };
 
   time.timeZone = "America/Mexico_City";
@@ -45,20 +45,36 @@
   services.xserver = {
     enable = true;
     layout = "us";
-    # Use sddm as the display manager.
     displayManager = {
       sddm = {
         enable = true;
         theme = "${import ../../package/sddm/default.nix { inherit pkgs; }}";
       };
       defaultSession = "none+dwm";
+      setupCommands = ''
+        ${pkgs.xorg.xrandr}/bin/xset r rate 300 50
+      '';
+    };
+
+    windowManager = {
+      dwm.enable = true;
+      dwm.package = pkgs.dwm.overrideAttrs {
+        src = pkgs.fetchFromGitHub {
+          owner = "awtGerry";
+          repo = "dwm";
+          rev = "master";
+          sha256 = "sha256-8hy7sQ7vAtHs3iWYi9famLZQMPsfz9Ef9nzkvN4FqgE=";
+        };
+      };
     };
   };
 
-  # environment.systemPackages = with pkgs; [
-  #   libsForQt5.qt5.qtquickcontrols2
-  #   libsForQt5.qt5.qtgraphicaleffects
-  # ];
+  programs.dconf.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    libsForQt5.qt5.qtquickcontrols2
+    libsForQt5.qt5.qtgraphicaleffects
+  ];
 
   environment.sessionVariables = rec {
     XDG_CACHE_HOME  = "$HOME/.cache";

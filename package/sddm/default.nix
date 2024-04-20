@@ -12,7 +12,7 @@ let
 
   theme = pkgs.fetchurl {
     url = themeUrl;
-    sha256 = "sha256-Lo345Gze7qo7v6EmJ/br+2Wgzscxg5uHlIs2agNNnUk=";
+    sha256 = "sha256-vhoHjwvazmyy9AA0aIMFMJ+c2J/PG640XXWTMp/myks=";
   };
 in
 pkgs.stdenv.mkDerivation {
