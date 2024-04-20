@@ -19,6 +19,7 @@
       pandoc
       presenterm
       chafa # Image to ASCII
+      xwallpaper
     ];
 
     pointerCursor = {

@@ -4,6 +4,7 @@
   imports = [
     # Hardware
     ../pady/hardware/default.nix
+    ../../system/env.nix
 
     # NixOS modules
     inputs.home-manager.nixosModules.default
