@@ -22,6 +22,7 @@ in
       ta="tmux a";
       z="zathura";
       ff="tmux-fzf";
+      pdi="cd ~/Programs/Matlab/pdi";
       update="sudo nixos-rebuild switch";
     };
 
