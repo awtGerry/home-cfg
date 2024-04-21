@@ -4,15 +4,15 @@
 let
   rofi_config = "${config.home.configDirectory}/package/rofi/config/left_menu.rasi";
   powermenu = pkgs.writeShellScriptBin "powermenu" ''
-    case "$(printf " bloquear"\\n hibernar\\n󰒲 suspender\\n cerrar sesion\\n reiniciar\\n apagar"|
+    case "$(printf " bloquear\\n hibernar\\n󰒲  suspender\\n cerrar sesion\\n  reiniciar\\n  apagar" |
       rofi -dmenu -i -mesg "Screenshot menu" -config ${rofi_config})"
     in
-      " bloquear") ${pkgs.slock}/bin/slock ;;
-      " hibernar") ${pkgs.slock}/bin/slock systemctl hibernate ;;
-      "󰒲 suspender") ${pkgs.slock}/bin/slock systemctl suspend -i ;;
-      " cerrar sesion") kill -TERM "${wmid}" ;;
-      " reiniciar") systemctl reboot -i ;;
-      " apagar") systemctl poweroff -i ;;
+      " bloquear") sudo ${pkgs.slock}/bin/slock ;;
+      " hibernar") sudo ${pkgs.slock}/bin/slock systemctl hibernate ;;
+      "󰒲  suspender") sudo ${pkgs.slock}/bin/slock systemctl suspend -i ;;
+      " cerrar sesion") sudo kill -TERM "${wmid}" ;;
+      "  reiniciar") sudo systemctl reboot -i ;;
+      "  apagar") sudo systemctl poweroff -i ;;
       *) exit 1 ;;
     esac
   '';
