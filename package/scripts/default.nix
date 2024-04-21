@@ -6,5 +6,6 @@
     ./tmux-fzf.nix
     ./wp.nix
     ./hash.nix
+    ./power.nix
   ];
 }

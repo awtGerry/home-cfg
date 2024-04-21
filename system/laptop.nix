@@ -10,9 +10,10 @@
 
   home = {
     packages = with pkgs; [
-      # spotify
+      spotify
       inter
       dconf
+      maim
 
       # Documents
       ffmpeg
