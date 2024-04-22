@@ -21,6 +21,7 @@
       presenterm
       chafa # Image to ASCII
       xwallpaper
+      brightnessctl
     ];
 
     pointerCursor = {

@@ -52,9 +52,6 @@
         theme = "${import ../../package/sddm/default.nix { inherit pkgs; }}";
       };
       defaultSession = "none+dwm";
-      setupCommands = ''
-        ${pkgs.xorg.xrandr}/bin/xset r rate 300 50
-      '';
     };
 
     windowManager = {
@@ -64,7 +61,7 @@
           owner = "awtGerry";
           repo = "dwm";
           rev = "master";
-          sha256 = "sha256-8hy7sQ7vAtHs3iWYi9famLZQMPsfz9Ef9nzkvN4FqgE=";
+          sha256 = "sha256-ew63Qiyq63iJNQwSG+CxY9EtKWfOvtZHSGYypaFRYDs=";
         };
       };
     };
