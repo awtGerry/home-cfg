@@ -61,7 +61,7 @@
           owner = "awtGerry";
           repo = "dwm";
           rev = "master";
-          sha256 = "sha256-ew63Qiyq63iJNQwSG+CxY9EtKWfOvtZHSGYypaFRYDs=";
+          sha256 = "sha256-Qef+5uxESATVLqQDEuNDoSjA0mND5rQMUpOlEcC+P60=";
         };
       };
     };
