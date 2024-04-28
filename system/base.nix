@@ -22,6 +22,7 @@
 
     ../package/fonts/default.nix
     ../package/scripts/default.nix
+    ../package/latex/default.nix
   ];
 
   # Install all the default packages
