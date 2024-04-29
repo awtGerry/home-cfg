@@ -11,6 +11,8 @@ let
 in
 { # home-manager
   home.packages = with pkgs; [
-    tex
+    # tex
+    texlab
+    latexrun
   ];
 }

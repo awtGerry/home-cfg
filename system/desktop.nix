@@ -44,6 +44,7 @@
       # TODO: change this to his own file.
       # Documents
       libreoffice
+      texliveFull
       ffmpeg
       pandoc
       presenterm
