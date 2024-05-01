@@ -25,5 +25,9 @@ in
       url = "https://w.wallhaven.cc/full/0j/wallhaven-0jz2ly.png";
       hash = "sha256-Vjqg/rHn7qI7wV1lhXyHhXk+bf4ROitQpitglzR+Ds0=";
     };
+    "${dir}/cube.jpg".source = pkgs.fetchurl {
+      url = "https://w.wallhaven.cc/full/83/wallhaven-83lq62.jpg";
+      hash = "sha256-qwv70nOkZ4VGYsh6lBKqoSXb5g1JJfUo/Cg1CsqidpA=";
+    };
   };
 }

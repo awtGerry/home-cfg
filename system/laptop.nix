@@ -14,6 +14,7 @@
       inter
       dconf
       maim
+      chromium
 
       # Documents
       ffmpeg
