@@ -29,6 +29,7 @@
   home.packages = with pkgs; [
     # Core programs
     neovim
+    helix
     xfce.thunar # File manager
 
     # Network utilities
