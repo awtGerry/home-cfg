@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 
+/* TODO: Make a toggler functionality on all the system based on the gtk theme */
 let
   dark = "macchiato";
   light = "latte";
@@ -14,7 +15,7 @@ in
         accents = [ "lavender" ];
         size = "compact";
         tweaks = [ "rimless" "black" ];
-        variant = dark;
+        variant = light;
       };
     };
 
