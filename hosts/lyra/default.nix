@@ -14,6 +14,9 @@
     useDHCP = true;
   };
 
+  # TODO: remove this once the issue is fixed
+  services.ratbagd.enable = true;
+
   time.timeZone = "America/Mexico_City";
 
   # Enable nix flakes

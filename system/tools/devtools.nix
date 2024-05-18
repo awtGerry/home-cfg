@@ -36,5 +36,7 @@
     nodePackages.typescript-language-server
     nodePackages.bash-language-server
     nodePackages.svelte-language-server
+
+    bash-completion
   ];
 }
