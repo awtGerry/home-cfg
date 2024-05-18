@@ -41,6 +41,7 @@
       gimp
       figma-linux
       inter
+      piper # Configure logitech devices
 
       # TODO: change this to his own file.
       # Documents
