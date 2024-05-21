@@ -15,6 +15,8 @@
       dconf
       maim
       chromium
+      auto-cpufreq
+      cpulimit
 
       # Documents
       ffmpeg

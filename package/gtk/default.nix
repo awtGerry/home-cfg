@@ -14,7 +14,9 @@ in
       package = pkgs.catppuccin-gtk.override {
         accents = [ "lavender" ];
         size = "compact";
-        tweaks = [ "rimless" "black" ];
+        # tweaks = [ "rimless" "black" ];
+        # variant = dark;
+        tweaks = [ "rimless" "normal" ];
         variant = light;
       };
     };
