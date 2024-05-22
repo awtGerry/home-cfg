@@ -20,7 +20,7 @@
     #   ];
     # }))
     # sm64ex
-    eww-wayland
+    eww
     ukmm
     vvvvvv
     steam

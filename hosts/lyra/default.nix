@@ -45,10 +45,12 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
-  services.xserver = {
-    enable = true;
-    layout = "us";
-    videoDrivers = [ "amdgpu" ];
+  services = {
+    xserver = {
+      enable = true;
+      xkb.layout = "us";
+      videoDrivers = [ "amdgpu" ];
+    };
     # Use sddm as the display manager.
     displayManager = {
       sddm = {
