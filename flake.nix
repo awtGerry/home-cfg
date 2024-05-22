@@ -2,7 +2,7 @@
   description = "Personal NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/master";
 
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
@@ -21,14 +21,37 @@
     hyprland = {
       url = "github:hyprwm/Hyprland";
     };
+
+    rust-overlay.url = "github:oxalica/rust-overlay";
+
+    # My personal packages
+    tudus = {
+      url = "github:awtgerry/tudus";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
+  outputs = {
+    self,
+    nixpkgs,
+    rust-overlay,
+    home-manager,
+    tudus,
+    ...
+    } @ inputs:
     let
       inherit (self) outputs;
       system = "x86_64-linux";
       lib = nixpkgs.lib // home-manager.lib;
-      pkgs = nixpkgs.legacyPackages.${system};
+      # pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        config.allowUnfree = true;
+        inherit system;
+        overlays = [
+          rust-overlay.overlay
+          tudus.overlay
+        ];
+      };
       nvim-cfg = pkgs.vimUtils.buildVimPlugin {
         name = "nvim-cfg";
         src = ./package/furry-nvim;
