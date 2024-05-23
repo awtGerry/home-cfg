@@ -67,6 +67,7 @@
     xdotool
     sxiv
     zathura
+    tudus
 
     # System dependencies
     # xorg.libX11
