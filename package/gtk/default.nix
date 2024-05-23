@@ -16,8 +16,8 @@ in
         size = "compact";
         # tweaks = [ "rimless" "black" ];
         # variant = dark;
-        tweaks = [ "rimless" "normal" ];
-        variant = light;
+        # variant = light;
+        variant = dark;
       };
     };
 

@@ -41,16 +41,15 @@
 
     /* Comment the color theme you don't want to use */
 
-    /* Dark Theme Colors
+    /* Dark Theme Colors */
     --window-colour:               #1f2122;
     --secondary-colour:            #141616;
     --inverted-colour:             #FAFAFC;
-    */
 
     /* Light Theme Colors */
-    --window-colour:               #FAFAFC;
-    --secondary-colour:            #EAEAEC;
-    --inverted-colour:             #1E2021;
+    /* --window-colour:               #FAFAFC; */
+    /* --secondary-colour:            #EAEAEC; */
+    /* --inverted-colour:             #1E2021; */
 
      
     /* Containter Tab Colours */
