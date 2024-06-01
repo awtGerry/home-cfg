@@ -27,6 +27,7 @@
 
   # Install all the default packages
   home.packages = with pkgs; [
+    # tudus
     # Core programs
     neovim
     helix
@@ -67,7 +68,6 @@
     xdotool
     sxiv
     zathura
-    tudus
 
     # System dependencies
     # xorg.libX11

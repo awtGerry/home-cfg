@@ -24,7 +24,7 @@
 
     rust-overlay.url = "github:oxalica/rust-overlay";
 
-    # My personal packages
+    # Personal packages
     tudus.url = "github:awtgerry/tudus";
   };
 
@@ -54,9 +54,6 @@
           modules = [
             ./hosts/lyra/default.nix
             inputs.home-manager.nixosModules.default
-            {
-              nixpkgs.overlays = [ tudus.overlay ];
-            }
           ];
         };
 

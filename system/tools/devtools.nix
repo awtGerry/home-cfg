@@ -7,8 +7,6 @@
     #   extensions = ["rust-analyzer" "rust-src" "rust-std"];
     # })
 
-    # tudus
-
     git
     ninja
     sqlite

@@ -64,15 +64,15 @@ in
     };
 
     # Nintendo Switch Emulator
-    # "lutris/runners/yuzu.yml".source = settingsFormat.generate "yuzu.yml" {
-    #   yuzu = {
-    #     runner_executable = "${pkgs.yuzu}/bin/yuzu";
-    #   };
-    #
-    #   system = {
-    #     disable_runtime = true;
-    #   };
-    # };
+    "lutris/runners/yuzu.yml".source = settingsFormat.generate "yuzu.yml" {
+      yuzu = {
+        runner_executable = "${pkgs.yuzu-early-access}/bin/yuzu";
+      };
+
+      system = {
+        disable_runtime = true;
+      };
+    };
 
     # Redream Dreamcast Emulator
     # "lutris/runners/redream.yml".source = settingsFormat.generate "redream.yml" {

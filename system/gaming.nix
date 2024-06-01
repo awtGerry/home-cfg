@@ -11,15 +11,8 @@
 
     # Games & Launchers
     # clonehero
-    # pokemmo-installer
-    # prismlauncher
+    prismlauncher
     protontricks
-    # (sm64ex.overrideAttrs (attrs: {
-    #   makeFlags = attrs.makeFlags ++ [
-    #     "BETTERCAMERA=1"
-    #   ];
-    # }))
-    # sm64ex
     eww
     ukmm
     vvvvvv
@@ -27,6 +20,7 @@
     steam-run
     heroic
     # snes9x
+    # yuzu
 
     # Emulators
     dolphinEmuMaster
