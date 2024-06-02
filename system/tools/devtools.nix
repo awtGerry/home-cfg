@@ -29,7 +29,7 @@
     nodePackages.pnpm
 
     # java
-    openjdk
+    openjdk8
     maven
 
     # Language servers
