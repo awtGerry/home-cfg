@@ -4,6 +4,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/master";
 
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,8 +26,6 @@
     hyprland = {
       url = "github:hyprwm/Hyprland";
     };
-
-    rust-overlay.url = "github:oxalica/rust-overlay";
 
     # Personal packages
     tudus.url = "github:awtgerry/tudus";
@@ -54,6 +57,10 @@
           modules = [
             ./hosts/lyra/default.nix
             inputs.home-manager.nixosModules.default
+            ({ pkgs, ... }: {
+              nixpkgs.overlays = [ rust-overlay.overlays.default ];
+              environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
+            })
           ];
         };
 

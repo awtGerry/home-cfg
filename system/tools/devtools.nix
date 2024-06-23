@@ -2,20 +2,14 @@
 
 {
   home.packages = with pkgs; [
-    # (rust-bin.stable.latest.default.override {
-    #   targets = ["x86_64-unknown-linux-gnu" "wasm32-unknown-unknown"];
-    #   extensions = ["rust-analyzer" "rust-src" "rust-std"];
-    # })
-
     git
     ninja
     sqlite
     python3
 
-    rust-bindgen
-    # rust-analyzer
+    # rust-bindgen
     # rustc
-    cargo
+    # cargo
     openssl
     pkg-config
 
@@ -29,7 +23,8 @@
     nodePackages.pnpm
 
     # java
-    openjdk8
+    # openjdk8
+    openjdk21
     maven
 
     # Language servers
@@ -44,7 +39,6 @@
     nodePackages.svelte-language-server
 
     bash-completion
-
     autopsy
   ];
 }

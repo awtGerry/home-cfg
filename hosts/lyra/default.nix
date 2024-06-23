@@ -93,6 +93,11 @@
     ]}
   '';
 
+  # Enable the OpenCL ICD loader for ROCm
+  # boot.kernelPackages = pkgs.linuxPackages_5_4;
+  # hardware.opengl.enable = true;
+  # hardware.opengl.extraPackages = [ pkgs.rocm-opencl-icd ];
+
   nixpkgs.config.allowUnfree = true;
 
   system.stateVersion = "23.11";
