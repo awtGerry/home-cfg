@@ -52,7 +52,6 @@
     ripgrep
     xclip
 
-    xcompmgr # Compositor
     # Utils
     libnotify
     pavucontrol

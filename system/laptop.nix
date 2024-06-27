@@ -18,6 +18,8 @@
       auto-cpufreq
       cpulimit
 
+      xcompmgr # Compositor for X
+
       # Documents
       ffmpeg
       pandoc

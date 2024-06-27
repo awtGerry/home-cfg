@@ -115,6 +115,11 @@ in
       # Global settings
       settings = {
         "accessibility.typeaheadfind.flashBar" = 0;
+        # --- Hardware acceleration ---
+        "media.ffmpeg.vaapi.enabled" = true
+        "gfx.webrender.all" = true
+        "media.ffvpx.enabled" = false
+        # -----------------------------
         "apz.gtk.pangesture.delta_mode" = 2; # pixel mode
         "apz.gtk.pangesture.pixel_delta_mode_multiplier" = "80"; # default is 40
         "apz.overscroll.enabled" = true;
