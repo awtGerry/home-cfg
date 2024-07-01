@@ -43,6 +43,7 @@
     jq
     unrar
     p7zip
+    zip
     unzip
 
     # Search

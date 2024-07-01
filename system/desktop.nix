@@ -134,6 +134,8 @@
       "snes9x"
       "vvvvvv"
       "unrar"
+
+      "cudnn"
     ];
 
     permittedInsecurePackages = [
