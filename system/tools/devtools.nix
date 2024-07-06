@@ -18,6 +18,7 @@
     glibc
     go
     gleam
+    erlang
     perl
 
     nodejs
