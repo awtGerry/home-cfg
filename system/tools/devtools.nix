@@ -17,6 +17,7 @@
     glib
     glibc
     go
+    gleam
     perl
 
     nodejs
