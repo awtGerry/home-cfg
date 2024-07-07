@@ -1,0 +1,36 @@
+game:
+  exe: /media/Drive/Games/Tom Clancys Ghost Recon Wildlands/GRW.exe
+  prefix: /media/Drive/Games/Tom Clancys Ghost Recon Wildlands
+game_slug: tom-clancys-ghost-recon-wildlands
+name: "Tom Clancy's Ghost Recon\xAE Wildlands"
+script:
+  files:
+  - setupfile: N/A:Select the setup file
+  game:
+    exe: _xXx_AUTO_WIN32_xXx_
+    prefix: $GAMEDIR
+  installer:
+  - task:
+      arch: win64
+      env:
+        LC_ALL: ''
+      executable: /media/Drive/Torrent/mounted/setup.exe
+      prefix: /media/Drive/tmp2
+      wine_path: /home/gerry/.local/share/lutris/runners/wine/wine-ge-8-26-x86_64/bin/wine
+  system:
+    env:
+      LC_ALL: ''
+slug: tom-clancys-ghost-recon-wildlands-setup
+system:
+  env:
+    LC_ALL: ''
+  fps_limit: '45'
+  gamescope_window_mode: ''
+  mangohud: true
+  prefix_command: ''
+version: Setup file
+wine:
+  battleye: false
+  eac: false
+  esync: true
+  version: GE-Proton9-9

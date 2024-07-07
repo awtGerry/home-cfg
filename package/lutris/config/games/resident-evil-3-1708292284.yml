@@ -1,9 +1,0 @@
-game:
-  exe: /media/Drive/Games/Resident Evil 3/re3.exe
-  prefix: /media/Drive/Games/Resident Evil 3
-system:
-  locale: ''
-  prefix_command: ''
-wine:
-  custom_wine_path: ''
-  version: GE-Proton8-32

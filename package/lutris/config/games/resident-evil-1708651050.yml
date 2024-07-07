@@ -1,9 +1,0 @@
-game:
-  exe: /media/Drive/Games/Resident Evil HD Remaster/bhd.exe
-  prefix: /media/Drive/Games/Resident Evil HD Remaster
-system:
-  locale: ''
-  prefix_command: ''
-wine:
-  system_winetricks: true
-  version: wine-ge-8-26-x86_64

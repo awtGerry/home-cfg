@@ -1,8 +1,0 @@
-game:
-  exe: /media/Drive/Games/Far Cry 3 Complete Collection/Far Cry 3 Blood Dragon/bin/fc3_blooddragon.exe
-system:
-  locale: ''
-  prefix_command: ''
-wine:
-  system_winetricks: true
-  version: wine-ge-8-26-x86_64

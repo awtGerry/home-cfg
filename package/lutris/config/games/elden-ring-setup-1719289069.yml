@@ -1,0 +1,34 @@
+game:
+  exe: /media/Drive/Games/ELDEN RING/Game/eldenring.exe
+  prefix: /media/Drive/Games/ELDEN RING
+game_slug: elden-ring
+name: Elden Ring
+script:
+  files:
+  - setupfile: N/A:Select the setup file
+  game:
+    exe: _xXx_AUTO_WIN32_xXx_
+    prefix: $GAMEDIR
+  installer:
+  - task:
+      arch: win64
+      env:
+        LC_ALL: ''
+      executable: /media/Drive/Torrent/ELDEN RING [FitGirl Repack]/setup.exe
+      prefix: /media/Drive/tmp4
+      wine_path: /home/gerry/.local/share/lutris/runners/wine/wine-ge-8-26-x86_64/bin/wine
+  system:
+    env:
+      LC_ALL: ''
+slug: elden-ring-setup
+system:
+  env:
+    LC_ALL: ''
+  gamescope: false
+  mangohud: true
+  prefix_command: ''
+version: Setup file
+wine:
+  battleye: false
+  eac: false
+  version: GE-Proton9-9

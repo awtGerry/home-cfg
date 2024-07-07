@@ -1,7 +1,0 @@
-game:
-  exe: /media/Drive/Games/GTA Trilogy The Definitive Edition/GTA III - Definitive
-    Edition/Gameface/Binaries/Win64/LibertyCity.exe
-system:
-  locale: ''
-  prefix_command: ''
-wine: {}

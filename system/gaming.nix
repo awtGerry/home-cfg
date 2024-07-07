@@ -26,9 +26,8 @@
     dolphinEmuMaster
     wineWowPackages.staging
     winetricks
+    pcsxr
 
-    # Recording
-    obs-studio
     discord
 
     # Overlay / Post-processing

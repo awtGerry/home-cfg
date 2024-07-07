@@ -1,0 +1,8 @@
+game:
+  exe: /media/Drive/Games/Cyberpunk 2077/bin/x64/Cyberpunk2077.exe
+  prefix: /media/Drive/Games/Cyberpunk 2077
+system:
+  fps_limit: '40'
+  mangohud: true
+wine:
+  version: GE-Proton9-9

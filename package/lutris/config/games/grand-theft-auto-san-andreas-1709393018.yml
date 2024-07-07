@@ -1,9 +1,0 @@
-game:
-  exe: /media/Drive/Games/GTA Trilogy The Definitive Edition/GTA San Andreas - Definitive
-    Edition/Gameface/Binaries/Win64/SanAndreas.exe
-system:
-  fps_limit: '60'
-  locale: ''
-  prefix_command: ''
-wine:
-  system_winetricks: true
