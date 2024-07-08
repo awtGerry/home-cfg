@@ -22,15 +22,13 @@ script:
       LC_ALL: ''
 slug: tom-clancys-ghost-recon-wildlands-setup
 system:
-  env:
-    LC_ALL: ''
+  disable_runtime: true
+  disable_screen_saver: false
   fps_limit: '45'
-  gamescope_window_mode: ''
-  mangohud: true
-  prefix_command: ''
+  mangohud: false
 version: Setup file
 wine:
   battleye: false
   eac: false
-  esync: true
-  version: GE-Proton9-9
+  system_winetricks: true
+  version: GE-Proton9-10
