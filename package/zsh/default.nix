@@ -4,6 +4,11 @@ let
   zsh = pkgs.zsh;
 in
 {
+
+  home.packages = with pkgs; [
+    starship # Change to starship
+  ];
+
   programs.zsh = {
     enable = true;
 
@@ -17,6 +22,7 @@ in
       rm="rm -vI";
       cat="bat";
       npm="npm --no-fund --no-audit";
+      sc="cd ~/.local/share";
       v="nvim";
       t="tmux";
       ta="tmux a";
@@ -26,7 +32,7 @@ in
       update="sudo nixos-rebuild switch";
     };
 
-    initExtra = ''
+    initExtraFirst = ''
       export PATH="$PATH:$(find ~/.local/bin -type d | paste -sd ':' -)"
 
       export EDITOR="nvim"
@@ -65,24 +71,20 @@ in
           sha256 = "1bmrb724vphw7y2gwn63rfssz3i8lp75ndjvlk5ns1g35ijzsma5";
         };
       }
-      {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        # src = pkgs.fetchFromGitHub {
-        #   owner = "romkatv";
-        #   repo = "powerlevel10k";
-        #   rev = "d804048efc46b8b248693fa3a7bfc9f863bb1254";
-        #   sha256 = "0q7sachpvxaki983q8p7dkjbx6igab3g00vy3yfjb4yzxxz8dhb1";
-        # };
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
-      {
-        name = "powerlevel10k-config";
-        src = ./p10k-config;
-        file = "p10k.zsh";
-      }
     ];
 
     enableAutosuggestions = true;
+  };
+
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+
+    settings = {
+      character = {
+        success_symbol = "➜";
+        error_symbol = "";
+      };
+    };
   };
 }
