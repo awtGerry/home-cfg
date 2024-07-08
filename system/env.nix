@@ -18,4 +18,8 @@
     type = lib.types.path;
     default = "${config.home.homeDirectory}/Pictures";
   };
+  options.home.driveDirectory = lib.mkOption {
+    type = lib.types.path;
+    default = "/media/Drive";
+  };
 }
