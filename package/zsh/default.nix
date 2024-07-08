@@ -22,14 +22,21 @@ in
       rm="rm -vI";
       cat="bat";
       npm="npm --no-fund --no-audit";
-      sc="cd ~/.local/share";
+      pnpm="pnpm --no-fund --no-audit";
       v="nvim";
       t="tmux";
       ta="tmux a";
       z="zathura";
       ff="tmux-fzf";
-      pdi="cd ~/Programs/Matlab/pdi";
+      # Nix
       update="sudo nixos-rebuild switch";
+      nxd="nix develop --command zsh";
+      nxs="nix-shell --command zsh";
+      nxe="nix-env -iA";
+
+      # Dirs
+      pdi="cd ~/Programs/Matlab/pdi";
+      sc="cd ~/.local/share";
     };
 
     initExtraFirst = ''
