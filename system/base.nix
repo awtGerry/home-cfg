@@ -15,6 +15,7 @@
     ../package/rofi
     ../package/git
     ../package/gtk
+    ../package/lf
     ../package/tmux
     ../package/kitty
     ../package/zathura
@@ -51,7 +52,6 @@
     # Search
     bat
     lsd
-    lf
     ripgrep
     xclip
 

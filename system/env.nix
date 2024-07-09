@@ -6,6 +6,10 @@
     type = lib.types.path;
     default = "${config.home.homeDirectory}/Dev/public/home-cfg";
   };
+  options.home.devDirectory = lib.mkOption {
+    type = lib.types.path;
+    default = "${config.home.homeDirectory}/Dev";
+  };
   options.home.publicRepos = lib.mkOption {
     type = lib.types.path;
     default = "${config.home.homeDirectory}/Dev/public/";
