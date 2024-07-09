@@ -6,10 +6,10 @@
 
     settings = {
       font_family = "Fira Code Nerd Font Mono";
-      font_size = 16;
+      font_size = 18; # I'm kinda blind :(
       enable_audio_bell = false;
       confirm_os_window_close = 0;
     };
-    theme = "Gruvbox Material Dark Hard";
+    theme = "Catppuccin-Mocha";
   };
 }

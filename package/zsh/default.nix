@@ -31,12 +31,15 @@ in
       # Nix
       update="sudo nixos-rebuild switch";
       nxd="nix develop --command zsh";
-      nxs="nix-shell --command zsh";
+      nxs="nix shell --command zsh";
+      nxss="nix-shell --command zsh";
       nxe="nix-env -iA";
 
       # Dirs
       pdi="cd ~/Programs/Matlab/pdi";
       sc="cd ~/.local/share";
+      dvp="cd ~/Dev/public";
+      dvs="cd ~/Dev/private";
     };
 
     initExtraFirst = ''

@@ -24,6 +24,10 @@ in
 
     extraConfig = {
       XDG_DEV_DIR = "${home}/Dev";
+      XDG_DEV_PUBLIC_DIR = "${home}/Dev/public";
+      XDG_DEV_PRIVATE_DIR = "${home}/Dev/private";
+      XDG_DEV_WORK_DIR = "${home}/Dev/work";
+      XDG_DEV_TEST_DIR = "${home}/Dev/tests";
       XDG_GAMES_DIR = "${config.home.driveDirectory}/Games";
     };
   };
