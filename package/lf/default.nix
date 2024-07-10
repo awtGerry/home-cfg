@@ -2,6 +2,7 @@
 
 let
   lf = pkgs.lf;
+  symlink = config.lib.file.mkOutOfStoreSymlink;
 in
 {
   home.packages = with pkgs; [
@@ -14,6 +15,8 @@ in
     ../../system/env.nix
   ];
 
+  xdg.configFile."lf/icons".source = symlink "${config.home.configDirectory}/package/lf/icons";
+
   programs.lf = {
     enable = true;
     package = lf;
@@ -24,12 +27,14 @@ in
       autoquit = true;
       scrolloff = 10;
       preview = true;
+      dirfirst = true;
       hidden = true;
       hiddenfiles = ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml";
       icons = true;
       drawbox = true;
     };
 
+    # TODO: complete commands
     commands = {
       # Open files depending on their type (.jpg -> sxiv, .pdf -> zathura, etc).
       open = ''
@@ -61,7 +66,7 @@ in
       a = "push %mkdir<space>";
       t = "push %touch<space>";
       r = "push :rename<space>";
-      f = "fzf";
+      D = "push :delete<space>";
       "<enter>" = "open";
     };
   };
