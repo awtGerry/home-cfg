@@ -7,17 +7,20 @@ let
   rofi_config = "${config.home.configDirectory}/package/rofi/config/left_menu.rasi";
   rofi-wp = pkgs.writeShellScriptBin "rofi-wp" ''
     #!/bin/sh
-    is_x="$(command -v xrandr)"
-    # for x
-    if [[ -n $is_x ]]; then
-      xwallpaper --zoom ${dir}/$(ls ${dir} | rofi -dmenu -i -mesg "Select a wallpaper" -config ${rofi_config})
-    else
+    if [ -n "$WAYLAND_DISPLAY" ]; then
       swww img ${dir}/$(ls ${dir} | rofi -dmenu -i -mesg "Select a wallpaper" -config ${rofi_config}) --transition-type=wipe --transition-angle=25 --transition-step=90 --transition-fps=200
+    else
+      # make a symbolic link to the selected wallpaper in ~/Pictures/.wallpaper
+      # this file is referenced in DWM config.
+      selected=$(ls ${dir} | rofi -dmenu -i -mesg "Select a wallpaper" -config ${rofi_config})
+      # if none (or selected is Wallpaper) is selected, do nothing
+      [ -z "$selected" ] && exit 0
+      ln -sf ${dir}/$selected ${config.home.picDir}/.wallpaper
+      xwallpaper --zoom ${config.home.picDir}/.wallpaper
     fi
-    # swww img ${dir}/$(ls ${dir} | rofi -dmenu -i -mesg "Select a wallpaper" -config ${rofi_config}) --transition-type=wipe --transition-angle=25 --transition-step=90 --transition-fps=200
   '';
 
-  # Random wallpaper
+  # Random wallpaper (right now only available for wayland)
   random-wp = pkgs.writeShellScriptBin "random-wp" ''
     #!/bin/sh
     swww img ${dir}/$(ls ${dir} | shuf -n 1) --transition-type=wipe --transition-angle=25 --transition-step=90 --transition-fps=200
