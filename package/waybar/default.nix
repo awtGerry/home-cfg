@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, osConfig, ... }:
 
 let
   waybar = pkgs.waybar;
