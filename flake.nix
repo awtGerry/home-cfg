@@ -28,6 +28,7 @@
     };
 
     # Personal packages
+    # awtpkgs.url = "github:awtgerry/awtpkgs"; # personal pkgs
     tudus.url = "github:awtgerry/tudus";
   };
 
@@ -70,6 +71,10 @@
           modules = [
             ./hosts/pady/default.nix
             inputs.home-manager.nixosModules.default
+            ({ pkgs, ... }: {
+              nixpkgs.overlays = [ rust-overlay.overlays.default ];
+              environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
+            })
           ];
         };
       };

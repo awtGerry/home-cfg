@@ -45,14 +45,7 @@
 
   services.xserver = {
     enable = true;
-    layout = "us";
-    displayManager = {
-      sddm = {
-        enable = true;
-        theme = "${import ../../package/sddm/default.nix { inherit pkgs; }}";
-      };
-      defaultSession = "none+dwm";
-    };
+    xkb.layout = "us";
 
     windowManager = {
       dwm.enable = true;
@@ -65,6 +58,14 @@
         };
       };
     };
+  };
+
+  services.displayManager = {
+    sddm = {
+      enable = true;
+      theme = "${import ../../package/sddm/default.nix { inherit pkgs; }}";
+    };
+    defaultSession = "none+dwm";
   };
 
   programs.dconf.enable = true;

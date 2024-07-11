@@ -28,7 +28,7 @@ in
       XDG_DEV_PRIVATE_DIR = "${home}/Dev/private";
       XDG_DEV_WORK_DIR = "${home}/Dev/work";
       XDG_DEV_TEST_DIR = "${home}/Dev/tests";
-      XDG_GAMES_DIR = "${config.home.driveDirectory}/Games";
+      # XDG_GAMES_DIR = "${config.home.driveDirectory}/Games";
     };
   };
 }
