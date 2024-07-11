@@ -1,6 +1,5 @@
 { lib, pkgs, config, ... }:
 
-# swww img road.jpg --transition-type=wipe --transition-step=90
 let
   dir = "${config.home.picDir}/Wallpapers";
 
@@ -8,7 +7,14 @@ let
   rofi_config = "${config.home.configDirectory}/package/rofi/config/left_menu.rasi";
   rofi-wp = pkgs.writeShellScriptBin "rofi-wp" ''
     #!/bin/sh
-    swww img ${dir}/$(ls ${dir} | rofi -dmenu -i -mesg "Select a wallpaper" -config ${rofi_config}) --transition-type=wipe --transition-angle=25 --transition-step=90 --transition-fps=200
+    is_x="$(command -v xrandr)"
+    # for x
+    if [[ -n $is_x ]]; then
+      xwallpaper --zoom ${dir}/$(ls ${dir} | rofi -dmenu -i -mesg "Select a wallpaper" -config ${rofi_config})
+    else
+      swww img ${dir}/$(ls ${dir} | rofi -dmenu -i -mesg "Select a wallpaper" -config ${rofi_config}) --transition-type=wipe --transition-angle=25 --transition-step=90 --transition-fps=200
+    fi
+    # swww img ${dir}/$(ls ${dir} | rofi -dmenu -i -mesg "Select a wallpaper" -config ${rofi_config}) --transition-type=wipe --transition-angle=25 --transition-step=90 --transition-fps=200
   '';
 
   # Random wallpaper

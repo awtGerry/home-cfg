@@ -29,5 +29,9 @@ in
       url = "https://w.wallhaven.cc/full/83/wallhaven-83lq62.jpg";
       hash = "sha256-qwv70nOkZ4VGYsh6lBKqoSXb5g1JJfUo/Cg1CsqidpA=";
     };
+    "${dir}/planet.jpg".source = pkgs.fetchurl {
+      url = "https://w.wallhaven.cc/full/zy/wallhaven-zyj8gw.jpg";
+      hash = "sha256-WJb9lEOwGfq2IyLxvsRhpCf62wke77ZTsZTuLBObsuA=";
+    };
   };
 }
