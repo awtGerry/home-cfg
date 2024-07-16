@@ -11,6 +11,3 @@ Configuration to manage my dev environment using Nix and [home-manager](https://
 > It may not be compatible with other hardware. Attempting to build this on a
 > different system could result in an unbootable system or data loss.
 > Proceed with caution and make changes if necessary.
-
-> [!Note]
-> It may be safer to run the pady host, which uses X and DWM.
