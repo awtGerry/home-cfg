@@ -26,4 +26,8 @@
     type = lib.types.path;
     default = "/media/Drive";
   };
+  options.home.dotfiles = lib.mkOption {
+    type = lib.types.path;
+    default = "${config.home.homeDirectory}/.config/";
+  };
 }

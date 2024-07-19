@@ -19,14 +19,12 @@
     steam
     steam-run
     heroic
-    # snes9x
-    # yuzu
 
     # Emulators
     dolphinEmuMaster
     wineWowPackages.staging
     winetricks
-    pcsxr
+    ryujinx
 
     discord
 
