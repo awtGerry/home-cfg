@@ -29,7 +29,7 @@
 
     # Personal packages
     # awtpkgs.url = "github:awtgerry/awtpkgs"; # personal pkgs
-    tudus.url = "github:awtgerry/tudus";
+    # tudus.url = "github:awtgerry/tudus";
   };
 
   outputs = {
@@ -37,7 +37,6 @@
     nixpkgs,
     rust-overlay,
     home-manager,
-    tudus,
     ...
     } @ inputs:
     let
@@ -60,7 +59,9 @@
             inputs.home-manager.nixosModules.default
             ({ pkgs, ... }: {
               nixpkgs.overlays = [ rust-overlay.overlays.default ];
-              environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
+              environment.systemPackages = [
+                pkgs.rust-bin.stable.latest.default
+              ];
             })
           ];
         };

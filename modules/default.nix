@@ -2,8 +2,10 @@
 
 with lib;
 
+# concept not in use yet
+
 {
-  options.useropt = {
+  options.opt = {
     theme = mkOption {
       type = str;
       default = "dark";
@@ -11,15 +13,21 @@ with lib;
     };
     wallpaper = mkOption {
       type = str;
-      default = if options.useropt.theme == "dark" then "dark-wallpaper" else "light-wallpaper";
+      # The wallpaper if defined needs to be in the wallpapers folder (~/Pictures/Wallpapers)
+      default = if options.opt.theme == "dark" then "mustang.jpg" else "white.png";
       description = "The wallpaper to use in the system";
+    };
+    language = mkOption {
+      type = str;
+      default = "en"; # en & es are the only languages supported
+      description = "The language to use in the system";
     };
   };
 
-  options.theme = {
-    dark = {
-    };
-    light = {
-    };
-  };
+  # options.theme = {
+  #   dark = {
+  #   };
+  #   light = {
+  #   };
+  # };
 }
