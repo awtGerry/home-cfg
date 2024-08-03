@@ -15,7 +15,7 @@ in
 
   xdg.configFile = {
     "lutris/lutris.conf".source = symlink "${config.home.configDirectory}/package/lutris/config/lutris.conf";
-    "lutris/games".source = symlink "${config.home.configDirectory}/package/lutris/config/games";
+    # "lutris/games".source = symlink "${config.home.configDirectory}/package/lutris/config/games";
 
     # Nintendo 64 Emulator
     "lutris/runners/mupen64plus.yml".source = settingsFormat.generate "mupen64plus.yml" {
@@ -88,16 +88,16 @@ in
       };
     };
 
-    # Libretro Emulator
-    "lutris/runners/libretro.yml".source = settingsFormat.generate "libretro.yml" {
-      libretro = {
-        runner_executable = "${pkgs.retroarch}/bin/retroarch";
-        config_file = "${config.home.dotfiles}/retroarch/retroarch.cfg";
-      };
-      system = {
-        disable_runtime = true;
-      };
-    };
+    # Libretro Emulator (for now we handle it manually)
+    # "lutris/runners/libretro.yml".source = settingsFormat.generate "libretro.yml" {
+    #   libretro = {
+    #     runner_executable = "${pkgs.retroarch}/bin/retroarch";
+    #     config_file = "${config.home.dotfiles}/retroarch/retroarch.cfg";
+    #   };
+    #   system = {
+    #     disable_runtime = true;
+    #   };
+    # };
 
     # Steam
     "lutris/runners/steam.yml".source = settingsFormat.generate "steam.yml" {
