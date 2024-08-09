@@ -86,13 +86,14 @@
 
   # Force all apps to use the same version of mesa as in hardware.opengl.package,
   # regardless of the version it was compiled with
-  environment.extraInit = lib.mkIf config.hardware.opengl.enable ''
+  environment.extraInit = lib.mkIf config.hardware.graphics.enable ''
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH''${LD_LIBRARY_PATH:+:}${lib.makeLibraryPath [
-      config.hardware.opengl.package.out
-      config.hardware.opengl.package32.out
+      config.hardware.graphics.package.out
+      config.hardware.graphics.package32.out
     ]}
   '';
 
+  # (doesn't work for the card used in this system)
   # Enable the OpenCL ICD loader for ROCm
   # boot.kernelPackages = pkgs.linuxPackages_5_4;
   # hardware.opengl.enable = true;
@@ -100,5 +101,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  system.stateVersion = "23.11";
+  # system.stateVersion = "23.11";
+  system.stateVersion = "24.05";
 }

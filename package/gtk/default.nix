@@ -1,22 +1,23 @@
 { config, pkgs, ... }:
 
 /* TODO: Make a toggler functionality on all the system based on the gtk theme */
-let
-  dark = "macchiato";
-  light = "latte";
-in
+
 {
+  home.pointerCursor = {
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Original-Ice";
+    size = 24;
+    gtk.enable = true;
+    x11.enable = true;
+  };
+
   gtk = {
     enable = true;
 
     theme = {
-      name = "Catppuccin-Macchiato-Compact-Lavender-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "lavender" ];
-        size = "compact";
-        tweaks = [ "rimless" "black" ];
-        variant = dark;
-        # variant = light;
+      name = "WhiteSur-Dark";
+      package = pkgs.whitesur-gtk-theme.override {
+        nautilusStyle = "glassy";
       };
     };
 
@@ -25,16 +26,38 @@ in
       name = "kora";
     };
 
-    cursorTheme = {
-      # package = pkgs.catppuccin-cursors.macchiatoDark;
-      # name = "Catppuccino-Macchiato-Dark";
-      # size = 24;
+    # TODO: change the font (sf pro main option)
+    font.name = "sans";
 
-      inherit (config.home.pointerCursor) package name size;
-      # inherit (config.home.pointerCursor) size;
+    gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
+    gtk2.extraConfig = ''
+      gtk-xft-antialias=1
+      gtk-xft-hinting=1
+      gtk-xft-hintstyle="hintslight"
+      gtk-xft-rgba="rgb"
+    '';
+
+    gtk3 = {
+      bookmarks = [
+        "file://${config.home.homeDirectory}/Documents"
+        "file://${config.home.homeDirectory}/Downloads"
+        "file://${config.home.homeDirectory}/Music"
+        "file://${config.home.homeDirectory}/Pictures"
+        "file://${config.home.homeDirectory}/Videos"
+        "file://${config.home.homeDirectory}/Dev"
+        "file:///media/Drive/Games"
+        "file:///media/Drive/Games/Roms"
+      ];
+      extraConfig = {
+        gtk-xft-antialias = 1;
+        gtk-xft-hinting = 1;
+        gtk-xft-hintstyle = "hintfull";
+        gtk-xft-rgba = "rgb";
+        gtk-application-prefer-dark-theme = 1;
+      };
     };
 
-    font.name = "sans";
+    gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
   };
 
   home = {

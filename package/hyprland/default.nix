@@ -28,7 +28,7 @@ in
       "col.active_border" = "rgba(f6c177ff)";
       "no_border_on_floating" = false;
       layout = "dwindle";
-      # no_cursor_warps = true;
+      # no_cursor_warp = true;
     };
 
     # keyboard
