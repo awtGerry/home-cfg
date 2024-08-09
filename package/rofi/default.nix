@@ -14,7 +14,7 @@ in
     package = rofi;
 
     font = "Noto Sans 10";
-    terminal = "kitty";
+    terminal = "wezterm";
     location = "center";
 
     theme = rose-pine;

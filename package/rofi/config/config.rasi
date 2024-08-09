@@ -1,15 +1,26 @@
 * {
   /* Default background color */
-  background-color: #282738;
-  text-color:       #FDE5EC;
+  background-color: #191724;
+  text-color:       #e0def4;
+}
+
+configuration {
+    font: "Noto Sans Mono 10";
+}
+
+prompt {
+    enabled: true;
+    font: "Font Awesome 6 Free Solid 16";
+    text: "";
+    text-color: #e0def4;
 }
 
 window {
   padding: 1em;
-  border-color: #282738;
+  border-color: #191724;
   border:       5px;
   border-radius: 10px;
-  background-color: #282738;
+  background-color: #191724;
 }
 
 mainbox {
@@ -30,7 +41,7 @@ message {
 }
 
 textbox {
-    background-color:            inherit;
+    background-color:            none;
     text-color:                  inherit;
     vertical-align:              0.5;
     horizontal-align:            0.5;
@@ -38,7 +49,7 @@ textbox {
     blink:                       true;
     markup:                      true;
     size:                        400em;
-    font: "JetBrainsMono Bold 15";
+    font: "Libertinus Sans 18";
 
 }
 error-message {
@@ -61,29 +72,30 @@ element,element-text,element-icon, button {
 inputbar {
   margin: 0px 10px;
   spacing: 0.4em;
-  border-color: #282738;
+  border-color: #191724;
   border:        5px;
-  background-color: #282738;
-  /* children: [entry,overlay,case-indicator]; */
+  background-color: #191724;
+  children: [entry,overlay,case-indicator];
 }
 
 
 listview, message {
   padding: 0.5em;
-  border-color: #282738;
+  border-color: #191724;
   border:        5px;
   border-radius: 10px;
-  background-color: #282738;
+  background-color: #191724;
 
   columns: 1;
   lines:   8;
 }
+
 listview {
   border:       0px 5px 5px 5px;
   border-radius: 10px 10px 10px 10px;
   spacing: 10px;
-  background-color: #282738;
-  border-color:     #282738;
+  background-color: #191724;
+  border-color:     #191724;
   scrollbar:    true;
 }
 
@@ -92,77 +104,81 @@ element {
     border:  5px;
     border-radius: 5px;
     padding: 5px;
-    border-color: #282738;
+    border-color: #1f1d2e;
 }
 element-text {
-    background-color: #282738;
-    text-color:       #FFFFFF;
-    font: "JetBrains Mono Medium";
+    background-color: #1f1d2e;
+    text-color:       #e0def4;
+    font: "Libertinus Sans";
 }
 
 element normal.normal {
-    background-color: #282738;
-    text-color:       #E5B9C6;
+    background-color: #1f1d2e;
+    text-color:       #c4a7e7;
 }
 element.normal.urgent {
-    background-color: #282738;
-    text-color:       #E5B9C6;
+    background-color: #1f1d2e;
+    text-color:       #c4a7e7;
 }
 element.normal.active {
-    background-color: #282738;
-    text-color:       #E5B9C6;
+    background-color: #1f1d2e;
+    text-color:       #c4a7e7;
 }
 element.selected.normal {
-    background-color: #E5B9C6;
-    border-color: #E5B9C6;
-    text-color:       #E5B9C6;
+    background-color: #26233a;
+    border-color: #26233a;
+    text-color:       #26233a;
 }
 element.selected.urgent {
-    background-color: #E5B9C6;
-    border-color: #E5B9C6;
-    text-color:       #E5B9C6;
+    background-color: #26233a;
+    border-color: #26233a;
+    text-color:       #26233a;
 }
 element.selected.active {
-    background-color: #E5B9C6;
-    border-color: #E5B9C6;
-    text-color:       #E5B9C6;
+    background-color: #26233a;
+    border-color: #26233a;
+    text-color:       #26233a;
 }
 element.alternate.normal {
-    background-color: #282738;
-    text-color:       #E5B9C6;
+    background-color: #1f1d2e;
+    border-color: #1f1d2e;
+    text-color:       #e0def4;
 }
 element.alternate.urgent {
-    background-color: #282738;
-    text-color:       #E5B9C6;
+    background-color: #1f1d2e;
+    border-color: #1f1d2e;
+    text-color:       #e0def4;
 }
 element.alternate.active {
-    background-color: #282738;
-    text-color:       #E5B9C6;
+    background-color: #1f1d2e;
+    border-color: #1f1d2e;
+    text-color:       #e0def4;
 }
 
 
 element-text.selected.normal {
-    background-color: #E5B9C6;
-    border-color: #E5B9C6;
-    text-color:       #282738;
-    font: "JetBrains Mono Medium";
+    background-color: #26233a;
+    border-color: #26233a;
+    text-color:       #31748f;
+    font: "Libertinus Sans";
 }
 element-text.selected.urgent {
-    background-color: #E5B9C6;
-    border-color: #E5B9C6;
-    text-color:       #282738;
-    font: "JetBrains Mono Medium";
+    background-color: #26233a;
+    border-color: #26233a;
+    text-color:       #31748f;
+    font: "Libertinus Sans";
 }
 element-text.selected.active {
-    background-color: #E5B9C6;
-    border-color: #E5B9C6;
-    text-color:       #282738;
-    font: "JetBrains Mono Medium";
+    background-color: #26233a;
+    border-color: #26233a;
+    text-color:       #31748f;
+    font: "Libertinus Sans";
 }
 scrollbar {
-    width:        4px ;
+    width:        2px ;
     border:       0;
-    handle-color: #E5B9C6;
+    border-radius: 25px 25px 25px 25px;
+    handle-color: #e0def4;
     handle-width: 8px ;
     padding:      0;
 }
@@ -172,29 +188,32 @@ mode-switcher {
     expand: true;
 }
 button {
-    text-color: #E5B9C6;
+    text-color: #e0def4;
     border:       0px 0px 5px ;
-    border-color: #282738;
+    border-color: #26233a;
     border-radius:    10px 10px 0 0;
     background-color: #282738;
     horizontal-align: 0.5;
 }
 button selected.normal {
-    text-color: #E5B9C6;
+    text-color: #e0def4;
     margin: 0px;
     padding: 0px;
     border:     5px 5px 5px 5px ;
-    border-color: #282738;
+    border-color: #26233a;
     border-radius:    10px 10px 10px 10px;
-    background-color: #353446;
+    background-color: #191724;
 }
 
 entry {
-    placeholder: "Buscar";
-    placeholder-color: #282738;
-    border-color: #353446;
-    background-color: #353446;
+    /* font: "Libertinus Sans 18"; */
+    font: "FiraCodeNerdFont 18";
+    placeholder: "  Search";
+    placeholder-color: #6e6a86;
+    border-color: #1f1d2e;
+    background-color: #1f1d2e;
     border:        10px;
     border-radius: 2px 2px 2px 2px;
-    text-color: #E5B9C6;
-  }
+    text-color: #e0def4;
+    padding-bottom: 28px;
+}
