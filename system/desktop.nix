@@ -3,6 +3,7 @@
 # Main pc configuration
 
 {
+  home.enableNixpkgsReleaseCheck = false;
   imports = [
     ./base.nix
     ./gaming.nix
@@ -53,12 +54,6 @@
       chafa # Image to ASCII
     ];
 
-    # pointerCursor = {
-    #   package = pkgs.adwaita-icon-theme;
-    #   name = "Adwaita";
-    #   size = 24;
-    # };
-
 
     sessionVariables = {
       # Use Wayland for Chrome & Electron apps
@@ -69,18 +64,6 @@
       JDK_JAVA_OPTIONS = "-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel";
     };
   };
-
-  fonts.fontconfig.enable = true;
-  xdg.configFile."fontconfig/fonts.conf".text = ''
-    <?xml version='1.0'?>
-    <!DOCTYPE fontconfig SYSTEM 'urn:fontconfig:fonts.dtd'>
-    <fontconfig>
-      <alias binding="same">
-      <family>sans-serif</family>
-      <prefer><family>Inter</family></prefer>
-      </alias>
-    </fontconfig>
-  '';
 
   xdg.configFile."wireplumber/main.lua.d/51-restrict-control.lua".text = ''
     table.insert(default_access.rules, {

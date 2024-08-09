@@ -1,6 +1,8 @@
 { pkgs, config, lib, inputs, ... }:
 
 {
+  nixpkgs.config.allowUnfree = true;
+
   imports = [
     # Hardware
     ../lyra/hardware/default.nix
@@ -98,8 +100,7 @@
   # boot.kernelPackages = pkgs.linuxPackages_5_4;
   # hardware.opengl.enable = true;
   # hardware.opengl.extraPackages = [ pkgs.rocm-opencl-icd ];
-
-  nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowUnfree = true;
 
   # system.stateVersion = "23.11";
   system.stateVersion = "24.05";

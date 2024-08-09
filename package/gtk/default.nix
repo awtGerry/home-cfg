@@ -14,6 +14,8 @@
   gtk = {
     enable = true;
 
+    gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
+
     theme = {
       name = "WhiteSur-Dark";
       package = pkgs.whitesur-gtk-theme.override {
@@ -26,16 +28,8 @@
       name = "kora";
     };
 
-    # TODO: change the font (sf pro main option)
+    # TODO: change the font (sf pro maybe)
     font.name = "sans";
-
-    gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
-    gtk2.extraConfig = ''
-      gtk-xft-antialias=1
-      gtk-xft-hinting=1
-      gtk-xft-hintstyle="hintslight"
-      gtk-xft-rgba="rgb"
-    '';
 
     gtk3 = {
       bookmarks = [
@@ -56,6 +50,19 @@
         gtk-application-prefer-dark-theme = 1;
       };
     };
+
+    gtk2.extraConfig = ''
+      gtk-toolbar-style=GTK_TOOLBAR_TEXT
+      gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
+      gtk-button-images=0
+      gtk-menu-images=1
+      gtk-enable-event-sounds=1
+      gtk-enable-input-feedback-sounds=1
+      gtk-xft-antialias=1
+      gtk-xft-hinting=1
+      gtk-xft-hintstyle="hintfull"
+      gtk-xft-rgba="rgb"
+    '';
 
     gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
   };

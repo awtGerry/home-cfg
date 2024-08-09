@@ -1,5 +1,8 @@
 { inputs, lib, pkgs, config, ... }:
 
+# configuration from:
+# https://gitlab.com/kira-bruneau/nixos-config
+
 let
   firefox = pkgs.firefox;
   addons = inputs.firefox-addons.packages.${pkgs.system};
@@ -16,16 +19,17 @@ in
 
       # Theme settings
       settings = {
-        # "browser.startup.homepage" = "https://awtgerry.github.io/startpage/";
+        "browser.startup.homepage" = "https://awtgerry.github.io/startpage/";
         "services.sync.username" = "awtgerry@lyra.com";
 
-        # "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
-        "extensions.activeThemeID" = "22b0eca1-8c02-4c0d-a5d7-6604ddd9836e";
+        "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
+        # "extensions.activeThemeID" = "22b0eca1-8c02-4c0d-a5d7-6604ddd9836e";
 
         # Cascade theme
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       };
       userChrome = builtins.readFile ./userChrome.css;
+      # userContent = builtins.readFile ./userContent.css;
 
       # Search engines
       search = {
@@ -267,6 +271,7 @@ in
         "toolkit.telemetry.shutdownPingSender.enabled" = false;
         "toolkit.telemetry.unified" = false;
         "toolkit.telemetry.updatePing.enabled" = false;
+        "widget.gtk.ignore-bogus-leave-notify" = 1;
 
         # EME extension (for DRM media)
         # "browser.eme.ui.enabled" = false;
