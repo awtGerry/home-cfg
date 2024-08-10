@@ -15,6 +15,8 @@ in
       extensions = with addons; [
         ublock-origin
         vimium
+        sidebery
+        return-youtube-dislikes
       ];
 
       # Theme settings
@@ -178,16 +180,10 @@ in
             "developer-button"
 
             # Extensions
-            "_3385c2d8-dcfd-4f92-adb7-5d8429dee164_-browser-action" # Video Ad-Block, for Twitch
-            "_9a41dee2-b924-4161-a971-7fb35c053a4a_-browser-action" # enhanced-h264ify
             "_d7742d87-e61d-4b78-b8a1-b469842139fa_-browser-action" # Vimium
-            "_testpilot-containers-browser-action"
-            "ghosttext_bfred_it-browser-action"
-            "jid1-zadieub7xozojw_jetpack-browser-action" # Media Keys
-            "keepassxc-browser_keepassxc_org-browser-action"
-            "languagetool-webextension_languagetool_org-browser-action"
-            "popupwindow_ettoolong-browser-action"
-            "ublock0_raymondhill_net-browser-action"
+            "_9a41dee2-b924-4161-a971-7fb35c053a4a_-browser-action" # enhanced-h264ify
+            "_3385c2d8-dcfd-4f92-adb7-5d8429dee164_-browser-action" # Video Ad-Block, for Twitch (not working rn)
+            "ublock0_raymondhill_net-browser-action" # uBlock Origin
             "_762f9885-5a13-4abd-9c77-433dcd38b8fd_-browser-action" # Return YouTube Dislike
           ];
           dirtyAreaCache = [
