@@ -28,12 +28,6 @@
       xwallpaper
       brightnessctl
     ];
-
-    pointerCursor = {
-      package = pkgs.gnome.adwaita-icon-theme;
-      name = "Adwaita";
-      size = 24;
-    };
   };
 
   nixpkgs.config = {
@@ -52,5 +46,5 @@
   };
 
   programs.home-manager.enable = true;
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.05";
 }
