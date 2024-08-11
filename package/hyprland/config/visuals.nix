@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, osConfig, ... }:
+
+let
+  float_size =  if osConfig.networking.hostName == "lyra" then "1280 720" else "800 600";
+  # font_size = if osConfig.networking.hostName == "lyra" then 16 else 13;
+in
 {
   wayland.windowManager.hyprland.settings = {
     decoration = {
@@ -63,20 +68,20 @@
       "workspace 5, ^(figma)$"
       "workspace 9, ^(thunderbird)$"
       "workspace 10, ^(Spotify)$"
-      "workspace 10, ^(Spotify Premium)$"
-      "workspace 10, ^(Spotify Free)$"
+      "workspace 10, ^(Spotify ( Premium)?)$"
+      "workspace 10, ^(Spotify ( Free)?)$"
     ];
 
     windowrulev2 = [
-      # "opacity 0.90 0.90,class:^(kitty)$"
+      # "opacity 0.90 0.90,class:^(org.wezfurlong.wezterm)$" # this make terminal transparent
       "opacity 0.90 0.90,class:^(foot)$"
-      # "opacity 0.90 0.90,class:^(firefox)$"
-      # "opacity 0.90 0.90,class:^(chromium)$"
       "opacity 0.90 0.90,class:^(lutris)$"
       "opacity 0.80 0.80,class:^(Steam)$"
       "opacity 0.80 0.80,class:^(steam)$"
       "opacity 0.80 0.80,class:^(steamwebhelper)$"
       "opacity 0.80 0.80,class:^(Spotify)$"
+      "opacity 0.90 0.90,class:^(dunst)$"
+      "opacity 0.90 0.90,class:^(Dunst)$"
       "opacity 0.80 0.80,class:^(Code)$"
       "opacity 0.80 0.80,class:^(thunar)$"
       "opacity 0.80 0.80,class:^(file-roller)$"
@@ -96,6 +101,7 @@
       "float,class:^(pavucontrol)$"
       "float,class:^(zathura)$"
       "float,class:^(thunar)$"
+      "size ${float_size}, class:^(thunar)$"
       "float,title:^(Media viewer)$"
       "float,title:^(Volume Control)$"
       "float,class:^(Viewnior)$"

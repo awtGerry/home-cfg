@@ -2,7 +2,7 @@
 
 let
   rofi_command = "rofi -show drun -show-icons";
-  term = "kitty";
+  term = "wezterm";
 in
 {
   wayland.windowManager.hyprland.settings = {
@@ -27,7 +27,7 @@ in
       "$mod, Space, togglefloating"
 
       # Programs
-      "$mod, Return, exec, kitty"
+      "$mod, Return, exec, ${term}"
       "$mod, W, exec, firefox"
       "$mod CTRL, W, exec, chromium"
       "$mod, E, exec, ${term} -e nvim"
