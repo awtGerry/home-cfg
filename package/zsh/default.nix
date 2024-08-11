@@ -28,6 +28,7 @@ in
       ta="tmux a";
       z="zathura";
       ff="tmux-fzf";
+
       # Nix
       update="sudo nixos-rebuild switch";
       nxd="nix develop --command zsh";
@@ -35,18 +36,35 @@ in
       nxss="nix-shell --command zsh";
       nxe="nix-env -iA";
 
+      # Git
+      g="git";
+      ga="git add";
+      gac="git add . && git commit"; # Add all and commit
+      gc="git commit"; # Commit
+      gca="git commit --amend"; # Change last commit
+      gco="git checkout"; # Checkout
+      gd="git diff"; # Diff
+      gds="git diff --staged"; # Diff staged
+      gf="git fetch"; # Fetch
+      gl="git log"; # Log
+      gp="git push"; # Push
+      gs="git status"; # Status
+
       # Dirs
-      pdi="cd ~/Programs/Matlab/pdi";
+      cac="cd ~/.cache";
       sc="cd ~/.local/share";
       dvp="cd ~/Dev/public";
       dvs="cd ~/Dev/private";
+      dvc="cd ~/Dev/clones";
+      dvw="cd ~/Dev/work";
+      dvt="cd ~/Dev/tests";
     };
 
     initExtraFirst = ''
       export PATH="$PATH:$(find ~/.local/bin -type d | paste -sd ':' -)"
 
       export EDITOR="nvim"
-      export TERMINAL="kitty"
+      export TERMINAL="wezterm"
 
       # Autocomplete with tab
       autoload -U compinit

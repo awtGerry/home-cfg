@@ -7,8 +7,8 @@
     settings = {
       global = {
         follow = "mouse";
-        width = 400;
-        origin = "top-right";
+        width = 480;
+        origin = "top-center";
         alignment = "left";
         vertical_alignment = "center";
         ellipsize = "middle";
@@ -26,10 +26,10 @@
         progress_bar_max_width = 300;
         separator_height = 2;
         frame_width = 2;
-        frame_color = "#eb6f92";
+        # frame_color = "#eb6f92";
         separator_color = "frame";
-        corner_radius = 8;
-        transparency = 0;
+        corner_radius = 4;
+        transparency = 90;
         gap_size = 8;
         line_height = 0;
         notification_limit = 0;
@@ -57,21 +57,21 @@
 
       fullscreen_delay_everything = {fullscreen = "delay";};
       urgency_critical = {
-        background = "#1f1d2e";
+        background = "#191724";
         foreground = "#e0def4";
-        frame_color = "#21202e";
+        frame_color = "#eb6f92";
         timeout = 20;
       };
       urgency_normal = {
-        background = "#1f1d2e";
+        background = "#191724";
         foreground = "#e0def4";
-        frame_color = "#21202e";
-        timeout = 5;
+        frame_color = "#191724";
+        timeout = 3;
       };
       urgency_low = {
-        background = "#1f1d2e";
+        background = "#191724";
         foreground = "#e0def4";
-        frame_color = "#21202e";
+        frame_color = "#191724";
         timeout = 3;
       };
     };
