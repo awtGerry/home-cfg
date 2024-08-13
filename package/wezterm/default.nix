@@ -7,8 +7,6 @@ in
   programs.wezterm = {
     enable = true;
     extraConfig = ''
-      local wezterm = require("wezterm")
-
       local config = {}
       if wezterm.config_builder then
         config = wezterm.config_builder()
@@ -37,6 +35,9 @@ in
       config.freetype_load_target = "HorizontalLcd"
 
       config.window_background_opacity = 1.0
+      config.window_close_confirmation = "NeverPrompt"
+
+      config.audible_bell = "Disabled"
 
       return config
     '';

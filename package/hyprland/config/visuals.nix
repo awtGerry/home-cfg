@@ -2,7 +2,6 @@
 
 let
   float_size =  if osConfig.networking.hostName == "lyra" then "1280 720" else "800 600";
-  # font_size = if osConfig.networking.hostName == "lyra" then 16 else 13;
 in
 {
   wayland.windowManager.hyprland.settings = {

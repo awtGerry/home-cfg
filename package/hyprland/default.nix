@@ -36,5 +36,15 @@ in
       repeat_rate = 50;
       repeat_delay = 300;
     };
+
+    misc = {
+      disable_autoreload = true;
+      animate_mouse_windowdragging = false;
+      # vrr = 2;
+      no_direct_scanout = false;
+      vfr = true;
+      disable_splash_rendering = true;
+    };
+
   };
 }
