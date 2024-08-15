@@ -66,6 +66,7 @@
     duf
     neomutt
     neofetch
+    lazygit
     # maim # TODO: move maim to x11 dependencies since wayland uses slurp
     xdotool
     sxiv
