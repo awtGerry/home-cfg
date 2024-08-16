@@ -2,6 +2,9 @@
 
 /* TODO: Make a toggler functionality on all the system based on the gtk theme */
 
+let
+  dark = false;
+in
 {
   home.pointerCursor = {
     package = pkgs.bibata-cursors;
@@ -17,7 +20,9 @@
     gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
 
     theme = {
-      name = "WhiteSur-Dark";
+      # name = "WhiteSur-Dark";
+      # name = "WhiteSur";
+      name = if dark then "WhiteSur-Dark" else "WhiteSur";
       package = pkgs.whitesur-gtk-theme.override {
         nautilusStyle = "glassy";
       };
@@ -47,7 +52,8 @@
         gtk-xft-hinting = 1;
         gtk-xft-hintstyle = "hintfull";
         gtk-xft-rgba = "rgb";
-        gtk-application-prefer-dark-theme = 1;
+        # gtk-application-prefer-dark-theme = 1;
+        gtk-application-prefer-dark-theme = if dark then 1 else 0;
       };
     };
 
@@ -64,7 +70,8 @@
       gtk-xft-rgba="rgb"
     '';
 
-    gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
+    # gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
+    gtk4.extraConfig.gtk-application-prefer-dark-theme = if dark then 1 else 0;
   };
 
   home = {
