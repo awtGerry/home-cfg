@@ -21,8 +21,6 @@ in
       mv="mv -iv";
       rm="rm -vI";
       cat="bat";
-      npm="npm --no-fund --no-audit";
-      pnpm="pnpm --no-fund --no-audit";
       v="nvim";
       t="tmux";
       ta="tmux a";
@@ -37,6 +35,7 @@ in
       nxe="nix-env -iA";
 
       # Git
+      lg="lazygit"; # Trying lazygit (finally)
       g="git";
       ga="git add";
       gac="git add . && git commit"; # Add all and commit

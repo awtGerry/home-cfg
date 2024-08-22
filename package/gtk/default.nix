@@ -3,7 +3,7 @@
 /* TODO: Make a toggler functionality on all the system based on the gtk theme */
 
 let
-  dark = false;
+  dark = true;
 in
 {
   home.pointerCursor = {
