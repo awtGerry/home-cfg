@@ -41,12 +41,13 @@ in
       gac="git add . && git commit"; # Add all and commit
       gc="git commit"; # Commit
       gca="git commit --amend"; # Change last commit
-      gco="git checkout"; # Checkout
+      gC="git checkout"; # Checkout
       gd="git diff"; # Diff
       gds="git diff --staged"; # Diff staged
       gf="git fetch"; # Fetch
       gl="git log"; # Log
-      gp="git push"; # Push
+      gP="git push"; # Push
+      gp="git pull"; # Pull
       gs="git status"; # Status
 
       # Dirs
