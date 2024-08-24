@@ -17,7 +17,7 @@
 
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 8080 1234 ]; # Allow HTTP and HTTPS ports
+      allowedTCPPorts = [ 8080 1234 587 ]; # Allow HTTP and HTTPS ports
       # allowedTCPPorts = [ 22 ];
       # allowedUDPPorts = [ 53 ];
     };
