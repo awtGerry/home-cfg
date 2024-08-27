@@ -3,7 +3,7 @@ Configuration to manage my dev environment using Nix and [home-manager](https://
 
 ## Hosts
 * `lyra`: My current machine with support for newer hardware using Wayland.
-* `pady`: My school laptop, focused on simplicity and battery life, sacrificing a bit of performance and looks.
+* `pady`: My school laptop, focused on simplicity, performance and battery life, sacrificing looks.
 * `artemis`: Laptop used as a server (not working currently).
 
 > [!Caution]
