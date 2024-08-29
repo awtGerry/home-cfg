@@ -18,6 +18,7 @@
     ../package/lf
     ../package/tmux
     ../package/wezterm
+    ../package/kitty
     ../package/zathura
     ../package/zsh
 

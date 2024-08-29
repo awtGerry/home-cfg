@@ -2,8 +2,6 @@
 
 with lib;
 
-# concept not in use yet
-
 {
   options.opt = {
     theme = mkOption {
