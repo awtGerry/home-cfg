@@ -73,6 +73,8 @@ in
 
     windowrulev2 = [
       # "opacity 0.90 0.90,class:^(org.wezfurlong.wezterm)$" # this make terminal transparent
+      "opacity 0.90 0.90,class:^(kitty)$"
+      "opacity 0.90 0.90,class:^(firefox)$"
       "opacity 0.90 0.90,class:^(foot)$"
       "opacity 0.90 0.90,class:^(lutris)$"
       "opacity 0.80 0.80,class:^(Steam)$"
