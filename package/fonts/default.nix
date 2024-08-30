@@ -2,7 +2,8 @@
 {
   home.packages = with pkgs; [
     # Fonts
-    fira-code-nerdfont
+    # fira-code-nerdfont
+    jetbrains-mono
     libertinus
     noto-fonts-color-emoji
     font-awesome

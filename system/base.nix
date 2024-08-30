@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 # This will be called in all machines
 {
@@ -7,6 +7,7 @@
     ./tools/devtools.nix
     ./tools/bluetooth.nix
     ./tools/wallpapers.nix
+    ./tools/colorscheme.nix
 
     # Config pkgs
     ../package/dunst
@@ -18,7 +19,6 @@
     ../package/lf
     ../package/tmux
     ../package/wezterm
-    ../package/kitty
     ../package/zathura
     ../package/zsh
 
@@ -34,7 +34,6 @@
     # tudus
     # Core programs
     neovim
-    helix
     xfce.thunar # File manager
 
     # Network utilities

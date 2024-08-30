@@ -10,8 +10,8 @@ in
     settings = {
       mainBar = {
         ipc = true;
-        layer = "top";
-        position = "bottom";
+        layer = "bottom";
+        position = "top";
         height = 32;
         modules-left = [ "hyprland/workspaces" "hyprland/mode" ];
         modules-center = [ "cpu" "memory" "disk" "network" ];

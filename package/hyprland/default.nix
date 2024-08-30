@@ -21,7 +21,7 @@ in
     general = {
       monitor = [
         "DP-1,1920x1080@144,0x0,1"
-        "HDMI-A-1,disable"
+        # "HDMI-A-1,disable"
       ];
       gaps_in = 5;
       gaps_out = 5;
@@ -29,7 +29,6 @@ in
       "no_border_on_floating" = false;
       layout = "dwindle";
       allow_tearing = true;
-      # no_cursor_warp = true;
     };
 
     # keyboard
