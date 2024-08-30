@@ -21,16 +21,16 @@ in
           all-outputs = true;
           format = "{icon}";
           format-icons = {
-            "1" = "";
+            "1" = ''<span font="Font Awesome 6 Brands"></span>'';
             "2" = ''<span font="Font Awesome 6 Brands"></span>'';
             "3" = "3";
             "4" = "4";
             "5" = "5";
             "7" = "7";
-            "8" = "8";
-            "9" = "";
-            "10" = "";
-            default = "";
+            "8" = ''<span font="Font Awesome 6 Brands"></span>'';
+            "9" = ''<span font="Font Awesome 6 Brands"></span>'';
+            "10" = ''<span font="Font Awesome 6 Brands"></span>'';
+            default = ''<span font="Font Awesome 6 Brands"></span>'';
           };
         };
 
