@@ -7,7 +7,7 @@
     ./tools/devtools.nix
     ./tools/bluetooth.nix
     ./tools/wallpapers.nix
-    ./tools/colorscheme.nix
+    # ./tools/colorscheme.nix
 
     # Config pkgs
     ../package/dunst
@@ -32,7 +32,6 @@
 
   # Install all the default packages
   home.packages = with pkgs; [
-    chromium
     # Core programs
     neovim
     xfce.thunar # File manager

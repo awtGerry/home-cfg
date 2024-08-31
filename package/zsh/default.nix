@@ -21,6 +21,8 @@ in
       mv="mv -iv";
       rm="rm -vI";
       cat="bat";
+      # npm="npm --no-fund --no-audit";
+      # pnpm="pnpm --no-fund --no-audit";
       v="nvim";
       t="tmux";
       neofetch="neofetch --kitty";

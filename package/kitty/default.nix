@@ -6,7 +6,7 @@
 
     settings = {
       font_family = "UDEV Gothic NF";
-      font_size = if osConfig.networking.hostName == "lyra" then 18 else 13;
+      font_size = if osConfig.networking.hostName == "lyra" then 18 else 14;
       enable_audio_bell = false;
       confirm_os_window_close = 0;
 
