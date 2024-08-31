@@ -3,9 +3,10 @@
 /* TODO: Make a toggler functionality on all the system based on the gtk theme */
 
 let
-  # dark = true;
+  dark = true;
+  # TODO: fix this
   # Disable dark theme for thinkpad
-  dark = if osConfig.networking.hostName == "lyra" then true else false;
+  # dark = if osConfig.networking.hostName == "lyra" then true else false;
 in
 {
   home.pointerCursor = {
