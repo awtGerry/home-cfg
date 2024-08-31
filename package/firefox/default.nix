@@ -115,6 +115,21 @@ in
             }}";
             definedAliases = [ "@rd" ];
           };
+
+          "Font Awesome" = {
+            urls = [{
+              template = "https://fontawesome.com/search";
+              params = [
+                { name = "q"; value = "{searchTerms}"; }
+                { name = "m"; value = "free"; }
+              ];
+            }];
+            icon = "${pkgs.fetchurl {
+              url = "https://fontawesome.com/favicon.ico";
+              hash = "sha256-VHyHwm8WNZtjifyimfvMBdhhIOPP1TvBz5z3uRoU58U=";
+            }}";
+            definedAliases = [ "@fa" ];
+          };
         };
       }; # search
 
