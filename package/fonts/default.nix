@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     # Fonts
     # fira-code-nerdfont
+    udev-gothic-nf
     jetbrains-mono
     libertinus
     noto-fonts-color-emoji
