@@ -23,6 +23,7 @@ in
       cat="bat";
       v="nvim";
       t="tmux";
+      neofetch="neofetch --kitty";
       ta="tmux a";
       z="zathura";
       ff="tmux-fzf";
@@ -64,7 +65,7 @@ in
       export PATH="$PATH:$(find ~/.local/bin -type d | paste -sd ':' -)"
 
       export EDITOR="nvim"
-      export TERMINAL="wezterm"
+      export TERMINAL="kitty"
 
       # Autocomplete with tab
       autoload -U compinit

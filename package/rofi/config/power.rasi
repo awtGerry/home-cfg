@@ -4,7 +4,7 @@
   /* Default background color */
   background-color: #282738;
   text-color:       #E5B9C6;
-  font: "JetBrainsMono Bold 10";
+  font: "UDEV Gothic NF Bold 10";
 }
 
 
@@ -41,7 +41,7 @@ textbox {
     blink:                       true;
     markup:                      true;
     size:                        400em;
-    font: "JetBrainsMono Bold 15";
+    font: "UDEV Gothic NF Bold 15";
 
 }
 error-message {
@@ -77,7 +77,7 @@ listview {
   border-radius: 10px 10px 10px 10px;
   background-color: #353446;
   border-color:     #282738;
-  font: "JetBrains Mono Medium";
+  font: "UDEV Gothic NF Medium";
   scrollbar: false;
 
 }
@@ -92,7 +92,7 @@ element {
 element-text {
     background-color: #353446;
     text-color:       #FFFFFF;
-    font: "JetBrains Mono Medium";
+    font: "UDEV Gothic NF Medium";
     margin:   0px 50px;
 }
 
@@ -141,19 +141,19 @@ element-text.selected.normal {
     background-color: #E5B9C6;
     border-color: #E5B9C6;
     text-color:       #282738;
-    font: "JetBrains Mono Medium";
+    font: "UDEV Gothic NF Medium";
 }
 element-text.selected.urgent {
     background-color: #E5B9C6;
     border-color: #E5B9C6;
     text-color:       #282738;
-    font: "JetBrains Mono Medium";
+    font: "UDEV Gothic NF Medium";
 }
 element-text.selected.active {
     background-color: #E5B9C6;
     border-color: #E5B9C6;
     text-color:       #282738;
-    font: "JetBrains Mono Medium";
+    font: "UDEV Gothic NF Medium";
 }
 
 

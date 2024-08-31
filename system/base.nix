@@ -19,7 +19,7 @@
     ../package/lf
     ../package/neofetch
     ../package/tmux
-    ../package/wezterm
+    ../package/kitty
     ../package/zathura
     ../package/zsh
 
@@ -61,24 +61,18 @@
     pavucontrol
     pulsemixer
     transmission_4-gtk # Torrent client
+    imagemagick
+    libsixel
 
     # System utilities
     btop
     duf
     neomutt
+    neofetch
     lazygit
     # maim # TODO: move maim to x11 dependencies since wayland uses slurp
     xdotool
     sxiv
     zathura
-
-    # System dependencies
-    # xorg.libX11
-    # xorg.libX11.dev
-    # xorg.libxcb
-    # xorg.libXft
-    # xorg.libXinerama
-    # xorg.xinit
-    # xdg-user-dirs 
   ];
 }

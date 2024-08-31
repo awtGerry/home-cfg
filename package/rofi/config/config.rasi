@@ -5,12 +5,12 @@
 }
 
 configuration {
-    font: "Noto Sans Mono 10";
+    font: "Noto Sans Mono 8";
 }
 
 prompt {
     enabled: true;
-    font: "Font Awesome 6 Free Solid 16";
+    font: "Font Awesome 6 Free Solid 12";
     text: "";
     text-color: #e0def4;
 }
@@ -49,7 +49,7 @@ textbox {
     blink:                       true;
     markup:                      true;
     size:                        400em;
-    font: "Libertinus Sans 18";
+    font: "Libertinus Sans 12";
 
 }
 error-message {
@@ -206,8 +206,7 @@ button selected.normal {
 }
 
 entry {
-    /* font: "Libertinus Sans 18"; */
-    font: "JetBrains Mono 18";
+    font: "UDEV Gothic NF 12";
     placeholder: "  Search";
     placeholder-color: #6e6a86;
     border-color: #1f1d2e;

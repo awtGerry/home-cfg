@@ -15,7 +15,7 @@ in
         height = 32;
         modules-left = [ "hyprland/workspaces" "hyprland/mode" ];
         modules-center = [ "cpu" "memory" "disk" "network" ];
-        modules-right = [ "tray" "idle_inhibitor" "wireplumber" "clock" ];
+        modules-right = [ "tray" "wireplumber" "clock" ];
 
         "hyprland/workspaces" = {
           all-outputs = true;
@@ -72,7 +72,7 @@ in
 
         "network" = {
           format-wifi = "{essid} ({signalStrength}%) ";
-          format-ethernet = "{ifname} = {ipaddr}/{cidr} ";
+          format-ethernet = "{ifname} ";
           format-disconnected = "Disconnected ⚠";
         };
 

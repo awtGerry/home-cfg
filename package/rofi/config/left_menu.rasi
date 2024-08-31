@@ -39,7 +39,7 @@ prompt {
 button {
     action: "ok";
     str: "󰍉 ";
-    font: "JetBrains Mono Medium 12";
+    font: "UDEV Gothic NF Medium 12";
     expand: false;
     text-color: #6e6a86;
     background-color: @transparent;
