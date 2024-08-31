@@ -1,4 +1,6 @@
-# home config
+# NixOS Configuration
+[![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
+
 Configuration to manage my dev environment using Nix and [home-manager](https://github.com/nix-community/home-manager)
 
 ## Hosts
