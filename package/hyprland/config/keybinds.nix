@@ -2,7 +2,8 @@
 
 let
   rofi_command = "rofi -show drun -show-icons";
-  term = "wezterm";
+  term = "kitty";
+  fullscreen_ss = "grim -o $(hyprctl -j activeworkspace | jq -r '.monitor') ${config.xdg.userDirs.pictures}/screenshots/full/$(date +%Y-%m-%d_%H-%M-%S).png";
 in
 {
   wayland.windowManager.hyprland.settings = {
@@ -16,6 +17,7 @@ in
       "$mod CTRL, Backspace, exec, hyprctl dispatch exit"
 
       "$mod, Print, exec, screenshot"
+      "$mod Shift, Print, exec, ${fullscreen_ss}"
 
       # Workspaces & windows
       "$mod, Tab, workspace, previous"

@@ -29,7 +29,6 @@ let
         ;;
       "  Window")
         if [ -n "$WAYLAND_DISPLAY" ]; then
-          sleep 0.3
           hyprctl -j activewindow | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"' | grim -g - "$screenshot_dir/window/$file_name"
         else
           maim -i $(xdotool getactivewindow) "$screenshot_dir/window/$file_name"
@@ -38,7 +37,6 @@ let
         ;;
       "󰍹  Full Screen")
         if [ -n "$WAYLAND_DISPLAY" ]; then
-          sleep 0.3
           active_workspace_monitor=$(hyprctl -j activeworkspace | jq -r '(.monitor)')
           grim -o "$active_workspace_monitor" "$screenshot_dir/full/$file_name"
         else

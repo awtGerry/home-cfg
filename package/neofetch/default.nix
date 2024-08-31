@@ -1,22 +1,17 @@
 { pkgs, config, ... }:
 
 {
-  programs.neofetch = {
-    enable = true;
-  };
-
   home.file."${config.home.dotfiles}/neofetch/config.conf".text = ''
     print_info() {
     	prin ""
-    	prin "$(color 1)L I N U X  |  M O B I L E"
+      info title
     	prin _____________________
       info "\e[34m  " distro
-      info "\e[31m " kernel
-    	info "\e[33m󰍛 " memory
-    	info "\e[32m " term
-    	info "\e[35m " de
-    	prin "" "github.com/linuxmobile"
-      prin "$(mypad) $(color 1)▂▂ $(color 2)▂▂ $(color 3)▂▂ $(color 4)▂▂ $(color 5)▂▂ $(color 6)▂▂ $(color 7)▂▂ "
+      info "\e[33m " kernel
+    	info "\e[31m " packages
+      info "\e[36m󰍛  " cpu
+      info "\e[36m  " gpu
+    	info "\e[35m " de
       prin _____________________
     }
     title_fqdn="off"
@@ -65,17 +60,14 @@
     bar_char_elapsed="-"
     bar_char_total="="
     bar_border="on"
-    bar_length=15
-    bar_color_elapsed="distro"
+    bar_length=15 bar_color_elapsed="distro"
     bar_color_total="distro"
     cpu_display="off"
     memory_display="off"
     battery_display="off"
     disk_display="off"
-    # Flag:     --backend
     image_backend="sixel"
-    #image_source="auto"
-    image_source="$HOME/.config/neofetch/images/nix.jpg"
+    image_source="$HOME/.config/neofetch/images/anime.jpg"
     ascii_distro="auto"
     ascii_colors=(distro)
     ascii_bold="on"
@@ -83,7 +75,7 @@
     thumbnail_dir="$HOME/.cache/thumbnails/neofetch"
     crop_mode="normal"
     crop_offset="center"
-    image_size="220px"
+    image_size="300px"
     gap=4
     yoffset=0
     xoffset=0

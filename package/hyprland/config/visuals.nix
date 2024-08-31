@@ -65,6 +65,7 @@ in
       "workspace 4, ^(lutris)$"
       "workspace 5, ^(gimp)$"
       "workspace 5, ^(figma)$"
+      "workspace 8, ^(discord)$"
       "workspace 9, ^(thunderbird)$"
       "workspace 10, ^(Spotify)$"
       "workspace 10, ^(Spotify ( Premium)?)$"
@@ -72,7 +73,7 @@ in
     ];
 
     windowrulev2 = [
-      "opacity 0.90 0.90,class:^(org.wezfurlong.wezterm)$" # this make terminal transparent
+      "opacity 0.90 0.90,class:^(kitty)$" # this make terminal transparent
       "opacity 0.90 0.90,class:^(firefox)$"
       "opacity 0.90 0.90,class:^(foot)$"
       "opacity 0.90 0.90,class:^(lutris)$"
@@ -135,6 +136,7 @@ in
 
       "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
       "noanim,class:^(xwaylandvideobridge)$"
+      "noanim,class:^(Rofi)$"
       "nofocus,class:^(xwaylandvideobridge)$"
       "noinitialfocus,class:^(xwaylandvideobridge)$"
       "noblur,class:^(xwaylandvideobridge)$"
