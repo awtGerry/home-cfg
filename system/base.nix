@@ -17,6 +17,7 @@
     ../package/git
     ../package/gtk
     ../package/lf
+    ../package/neofetch
     ../package/tmux
     ../package/wezterm
     ../package/zathura
@@ -31,7 +32,7 @@
 
   # Install all the default packages
   home.packages = with pkgs; [
-    # tudus
+    chromium
     # Core programs
     neovim
     xfce.thunar # File manager
@@ -65,7 +66,6 @@
     btop
     duf
     neomutt
-    neofetch
     lazygit
     # maim # TODO: move maim to x11 dependencies since wayland uses slurp
     xdotool
