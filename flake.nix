@@ -1,5 +1,5 @@
 {
-  description = "Personal NixOS configuration";
+  description = "NixOS configuration";
 
   inputs = {
     # nixpkgs.url = "github:nixos/nixpkgs/master";
@@ -17,7 +17,6 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
-    # Enable home-manager
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

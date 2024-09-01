@@ -7,7 +7,7 @@
     ./tools/devtools.nix
     ./tools/bluetooth.nix
     ./tools/wallpapers.nix
-    # ./tools/colorscheme.nix
+    ./tools/colorscheme.nix
 
     # Config pkgs
     ../package/dunst

@@ -1,6 +1,6 @@
 { inputs, lib, pkgs, config, ... }:
 
-# configuration from:
+# configuration based on:
 # https://gitlab.com/kira-bruneau/nixos-config
 
 let

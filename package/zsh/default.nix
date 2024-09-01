@@ -68,6 +68,7 @@ in
 
       export EDITOR="nvim"
       export TERMINAL="kitty"
+      export BROWSER="firefox"
 
       # Autocomplete with tab
       autoload -U compinit

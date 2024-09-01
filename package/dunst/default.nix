@@ -1,5 +1,4 @@
-{ pkgs, lib, ... }:
-
+{ pkgs, lib, config, ... }:
 
 {
   services.dunst = {
@@ -8,7 +7,7 @@
       global = {
         follow = "mouse";
         width = 480;
-        origin = "top-center";
+        origin = "top-right";
         alignment = "left";
         vertical_alignment = "center";
         ellipsize = "middle";
@@ -56,23 +55,26 @@
       };
 
       fullscreen_delay_everything = {fullscreen = "delay";};
+
       urgency_critical = {
-        background = "#191724";
-        foreground = "#e0def4";
-        frame_color = "#eb6f92";
+        background = "${config.home.colorscheme.base08}";
+        foreground = "${config.home.colorscheme.base05}";
+        frame_color = "${config.home.colorscheme.base08}";
         timeout = 20;
       };
+
       urgency_normal = {
-        background = "#191724";
-        foreground = "#e0def4";
-        frame_color = "#191724";
-        timeout = 3;
+        background = "${config.home.colorscheme.base00}";
+        foreground = "${config.home.colorscheme.base05}";
+        frame_color = "${config.home.colorscheme.base00}";
+        timeout = 10;
       };
+
       urgency_low = {
-        background = "#191724";
-        foreground = "#e0def4";
-        frame_color = "#191724";
-        timeout = 3;
+        background = "${config.home.colorscheme.base00}";
+        foreground = "${config.home.colorscheme.base05}";
+        frame_color = "${config.home.colorscheme.base00}";
+        timeout = 5;
       };
     };
   };
