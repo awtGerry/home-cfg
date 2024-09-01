@@ -4,11 +4,12 @@ author: remyiscool
 url: https://github.com/remyiscool/AnimatedFox
  * ============================================================ */
 
-*,
-*::before,
-*::after {
-  font-family: UDEV Gothic NF, UDEV Gothic, monospace, monospace;
-}
+/**/
+/* *, */
+/* *::before, */
+/* *::after { */
+/*   font-family: UDEV Gothic NF, UDEV Gothic, monospace, monospace; */
+/* } */
 
 #alltabs-button,
 .titlebar-buttonbox-container,

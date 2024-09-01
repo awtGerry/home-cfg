@@ -15,8 +15,8 @@ in
       extensions = with addons; [
         ublock-origin
         vimium
-        sidebery
         return-youtube-dislikes
+        tabliss
       ];
 
       # Theme settings
