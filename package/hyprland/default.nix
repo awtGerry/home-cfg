@@ -26,9 +26,10 @@ in
       gaps_in = 5;
       gaps_out = 5;
       border_size = 2;
+      "col.active_border" = "rgba(f6c177ff)";
       "no_border_on_floating" = false;
       layout = "dwindle";
-      allow_tearing = true;
+      # no_cursor_warp = true;
     };
 
     # keyboard
@@ -40,10 +41,11 @@ in
     misc = {
       disable_autoreload = true;
       animate_mouse_windowdragging = false;
-      # vrr = 2;
       no_direct_scanout = false;
       vfr = true;
       disable_splash_rendering = true;
+      disable_hyprland_logo = true;
+      force_default_wallpaper = 0;
     };
 
   };

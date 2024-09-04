@@ -73,8 +73,10 @@ in
     ];
 
     windowrulev2 = [
-      "opacity 0.90 0.90,class:^(kitty)$" # this make terminal transparent
-      "opacity 0.90 0.90,class:^(firefox)$"
+      # Uncomment the following lines if you like transparency on terminal or firefox
+      # "opacity 0.90 0.90,class:^(kitty)$" # this make terminal transparent
+      # "opacity 0.90 0.90,class:^(firefox)$" # this makes firefox transparent
+
       "opacity 0.90 0.90,class:^(foot)$"
       "opacity 0.90 0.90,class:^(lutris)$"
       "opacity 0.80 0.80,class:^(Steam)$"

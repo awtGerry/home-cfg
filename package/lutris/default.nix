@@ -30,8 +30,6 @@ in
           QT_AUTO_SCREEN_SCALE_FACTOR = "1";
           QT_QPA_PLATFORM = "xcb";
         };
-
-        prefix_command = "wrap-scale-off"; # Wrap scale off for wayland only x11 breaks lutris
       };
     };
 
@@ -50,8 +48,6 @@ in
           QT_AUTO_SCREEN_SCALE_FACTOR = "1";
           QT_QPA_PLATFORM = "xcb";
         };
-
-        prefix_command = "wrap-scale-off"; # Wrap scale off for wayland only x11 breaks lutris
       };
     };
 
@@ -123,10 +119,6 @@ in
 
     "lutris/runners/wine.yml".source = settingsFormat.generate "wine.yml" {
       wine = { };
-
-      system = {
-        prefix_command = "wrap-scale-off"; # Wrap scale off for wayland only x11 breaks lutris
-      };
     };
   };
 }
