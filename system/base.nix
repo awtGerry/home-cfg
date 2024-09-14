@@ -10,6 +10,7 @@
     ./tools/colorscheme.nix
 
     # Config pkgs
+    ../package/cava
     ../package/dunst
     ../package/firefox
     ../package/fzf
