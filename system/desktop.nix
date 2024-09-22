@@ -40,7 +40,6 @@
       discord
       easyeffects # improve audio quality and reduce noise
       gimp
-      figma-linux
       inter
       piper # Configure logitech devices
 

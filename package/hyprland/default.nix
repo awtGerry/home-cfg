@@ -26,10 +26,9 @@ in
       gaps_in = 5;
       gaps_out = 5;
       border_size = 2;
-      "col.active_border" = "rgba(f6c177ff)";
       "no_border_on_floating" = false;
       layout = "dwindle";
-      # no_cursor_warp = true;
+      # allow_tearing = true;
     };
 
     # keyboard
@@ -41,6 +40,7 @@ in
     misc = {
       disable_autoreload = true;
       animate_mouse_windowdragging = false;
+      # vrr = 2;
       no_direct_scanout = false;
       vfr = true;
       disable_splash_rendering = true;

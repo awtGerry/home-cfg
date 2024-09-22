@@ -64,7 +64,6 @@ in
       "workspace 4, ^(Steam)$"
       "workspace 4, ^(lutris)$"
       "workspace 5, ^(gimp)$"
-      "workspace 5, ^(figma)$"
       "workspace 8, ^(discord)$"
       "workspace 9, ^(thunderbird)$"
       "workspace 10, ^(Spotify)$"
@@ -74,7 +73,7 @@ in
 
     windowrulev2 = [
       # Uncomment the following lines if you like transparency on terminal or firefox
-      # "opacity 0.90 0.90,class:^(kitty)$" # this make terminal transparent
+      "opacity 0.90 0.90,class:^(kitty)$" # this make terminal transparent
       # "opacity 0.90 0.90,class:^(firefox)$" # this makes firefox transparent
 
       "opacity 0.90 0.90,class:^(foot)$"

@@ -40,6 +40,14 @@
       color = {
         background = "'#192330'";
         foreground = "'#cdcecf'";
+        gradient = 1;
+        gradient_count = 6;
+        gradient_color_1 = "'#7ad5d6'";
+        gradient_color_2 = "'#63cdcf'";
+        gradient_color_3 = "'#86abdc'";
+        gradient_color_4 = "'#719cd6'";
+        gradient_color_5 = "'#d6d6d7'";
+        gradient_color_6 = "'#cdcecf'";
       };
       smoothing = {
         integral = 77;
