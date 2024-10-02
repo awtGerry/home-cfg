@@ -19,6 +19,7 @@
     ../package/gtk
     ../package/lf
     ../package/neofetch
+    ../package/helix
     ../package/tmux
     ../package/kitty
     ../package/zathura
@@ -35,6 +36,7 @@
   home.packages = with pkgs; [
     # Core programs
     neovim
+    helix
     xfce.thunar # File manager
 
     # Network utilities
