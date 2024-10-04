@@ -1,4 +1,10 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 # This will be called in all machines
 {
@@ -14,14 +20,14 @@
     ../package/dunst
     ../package/firefox
     ../package/fzf
-    ../package/rofi
+    ../package/helix
     ../package/git
     ../package/gtk
     ../package/lf
     ../package/neofetch
-    ../package/helix
+    ../package/rofi
     ../package/tmux
-    ../package/kitty
+    ../package/wezterm
     ../package/zathura
     ../package/zsh
 

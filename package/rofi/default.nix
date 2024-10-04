@@ -1,20 +1,23 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 
 let
   rose-pine = "~/Dev/public/home-cfg/package/rofi/config/config.rasi";
   rofi = pkgs.rofi-wayland;
 in
 {
-  home.packages = with pkgs; [
-    rofi-emoji
-  ];
+  home.packages = with pkgs; [ rofi-emoji ];
 
   programs.rofi = {
     enable = true;
     package = rofi;
 
     font = "Noto Sans 10";
-    terminal = "kitty";
+    terminal = "wezterm";
     location = "center";
 
     theme = rose-pine;

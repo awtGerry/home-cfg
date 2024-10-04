@@ -1,8 +1,5 @@
-{ pkgs, ...}:
+{ pkgs, ... }:
 
-let
-  zsh = pkgs.zsh;
-in
 {
 
   home.packages = with pkgs; [
@@ -12,62 +9,62 @@ in
   programs.zsh = {
     enable = true;
 
-    history.size=10000000;
-    history.path="/home/gerry/.cache/zsh_history";
+    history.size = 10000000;
+    history.path = "/home/gerry/.cache/zsh_history";
 
     shellAliases = {
-      ls="lsd -h --color=auto --group-directories-first";
-      ll="lsd -lh --color=auto --group-directories-first";
-      mv="mv -iv";
-      rm="rm -vI";
-      cat="bat";
+      ls = "lsd -h --color=auto --group-directories-first";
+      ll = "lsd -lh --color=auto --group-directories-first";
+      e = "hx";
+      mv = "mv -iv";
+      rm = "rm -vI";
+      cat = "bat";
       # npm="npm --no-fund --no-audit";
       # pnpm="pnpm --no-fund --no-audit";
-      v="nvim";
-      t="tmux";
-      neofetch="neofetch --kitty";
-      ta="tmux a";
-      z="zathura";
-      ff="tmux-fzf";
+      t = "tmux";
+      neofetch = "neofetch --$TERM";
+      ta = "tmux a";
+      z = "zathura";
+      ff = "tmux-fzf";
 
       # Nix
-      update="sudo nixos-rebuild switch";
-      nxd="nix develop --command zsh";
-      nxs="nix shell --command zsh";
-      nxss="nix-shell --command zsh";
-      nxe="nix-env -iA";
+      update = "sudo nixos-rebuild switch";
+      nxd = "nix develop --command zsh";
+      nxs = "nix shell --command zsh";
+      nxss = "nix-shell --command zsh";
+      nxe = "nix-env -iA";
 
       # Git
-      lg="lazygit"; # Trying lazygit (finally)
-      g="git";
-      ga="git add";
-      gac="git add . && git commit"; # Add all and commit
-      gc="git commit"; # Commit
-      gca="git commit --amend"; # Change last commit
-      gC="git checkout"; # Checkout
-      gd="git diff"; # Diff
-      gds="git diff --staged"; # Diff staged
-      gf="git fetch"; # Fetch
-      gl="git log"; # Log
-      gP="git push"; # Push
-      gp="git pull"; # Pull
-      gs="git status"; # Status
+      lg = "lazygit"; # Trying lazygit (finally)
+      g = "git";
+      ga = "git add";
+      gac = "git add . && git commit"; # Add all and commit
+      gc = "git commit"; # Commit
+      gca = "git commit --amend"; # Change last commit
+      gC = "git checkout"; # Checkout
+      gd = "git diff"; # Diff
+      gds = "git diff --staged"; # Diff staged
+      gf = "git fetch"; # Fetch
+      gl = "git log"; # Log
+      gP = "git push"; # Push
+      gp = "git pull"; # Pull
+      gs = "git status"; # Status
 
       # Dirs
-      cac="cd ~/.cache";
-      sc="cd ~/.local/share";
-      dvp="cd ~/Dev/public";
-      dvs="cd ~/Dev/private";
-      dvc="cd ~/Dev/clones";
-      dvw="cd ~/Dev/work";
-      dvt="cd ~/Dev/tests";
+      cac = "cd ~/.cache";
+      sc = "cd ~/.local/share";
+      dvp = "cd ~/Dev/public";
+      dvs = "cd ~/Dev/private";
+      dvc = "cd ~/Dev/clones";
+      dvw = "cd ~/Dev/work";
+      dvt = "cd ~/Dev/tests";
     };
 
     initExtraFirst = ''
       export PATH="$PATH:$(find ~/.local/bin -type d | paste -sd ':' -)"
 
-      export EDITOR="nvim"
-      export TERMINAL="kitty"
+      export EDITOR="hx"
+      export TERMINAL="wezterm"
       export BROWSER="firefox"
 
       # Autocomplete with tab

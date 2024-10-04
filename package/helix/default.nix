@@ -30,6 +30,8 @@
           "keep_primary_selection"
           "collapse_selection"
         ];
+        "u" = "switch_to_lowercase";
+        "U" = "switch_to_uppercase";
         "$" = "goto_line_end";
         "0" = "goto_line_start";
       };
