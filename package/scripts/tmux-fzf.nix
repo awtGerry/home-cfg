@@ -12,7 +12,7 @@ let
     fi
 
     if [[ -z $selected ]]; then
-        exit 0
+        exit 1
     fi
 
     selected_name=$(basename "$selected" | tr . _)
@@ -31,9 +31,8 @@ let
 
     tmux switch-client -t $selected_name
   '';
-in {
-  imports = [
-    ../../system/env.nix
-  ];
-  home.packages = [tmux-fzf];
+in
+{
+  imports = [ ../../system/env.nix ];
+  home.packages = [ tmux-fzf ];
 }

@@ -29,7 +29,7 @@
         bottom = 0
       }
 
-      config.default_prog = { "zsh", "--login", "-c", "tmux attach -t dev || tmux new -s dev" }
+      config.default_prog = { "zsh", "--login", "-c", "tmux attach -t dev || tmux-fzf || tmux new -s dev" }
 
       config.window_close_confirmation = "NeverPrompt"
       config.audible_bell = "Disabled"
