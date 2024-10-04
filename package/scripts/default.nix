@@ -7,5 +7,6 @@
     ./wp.nix
     ./hash.nix
     ./power.nix
+    ./android.nix
   ];
 }

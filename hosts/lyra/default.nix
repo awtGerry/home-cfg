@@ -1,4 +1,10 @@
-{ pkgs, config, lib, inputs, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  inputs,
+  ...
+}:
 
 {
   nixpkgs.config.allowUnfree = true;
@@ -17,9 +23,19 @@
 
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 8080 1234 587 22 ]; # Allow HTTP and HTTPS ports and ssh
+      allowedTCPPorts = [
+        8080
+        1234
+        587
+        22
+      ]; # Allow HTTP and HTTPS ports and ssh
       # allowedUDPPorts = [ 53 ];
     };
+  };
+
+  virtualisation = {
+    docker.enable = true;
+    waydroid.enable = true;
   };
 
   # TODO: remove this once the issue is fixed
@@ -28,12 +44,18 @@
   time.timeZone = "America/Mexico_City";
 
   # Enable nix flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.gerry = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "docker"
+    ];
   };
 
   programs.neovim = {
@@ -43,7 +65,9 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {
+      inherit inputs;
+    };
     users = {
       "gerry" = import ../../system/desktop.nix;
     };
@@ -77,10 +101,10 @@
   ];
 
   environment.sessionVariables = rec {
-    XDG_CACHE_HOME  = "$HOME/.cache";
+    XDG_CACHE_HOME = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
-    XDG_DATA_HOME   = "$HOME/.local/share";
-    XDG_STATE_HOME  = "$HOME/.local/state";
+    XDG_DATA_HOME = "$HOME/.local/share";
+    XDG_STATE_HOME = "$HOME/.local/state";
     XDG_DOWNLOAD_DIR = "$HOME/Downloads";
     XDG_DOCUMENTS_DIR = "$HOME/Documents";
     XDG_MUSIC_DIR = "$HOME/Music";
@@ -95,10 +119,12 @@
   # Force all apps to use the same version of mesa as in hardware.opengl.package,
   # regardless of the version it was compiled with
   environment.extraInit = lib.mkIf config.hardware.graphics.enable ''
-    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH''${LD_LIBRARY_PATH:+:}${lib.makeLibraryPath [
-      config.hardware.graphics.package.out
-      config.hardware.graphics.package32.out
-    ]}
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH''${LD_LIBRARY_PATH:+:}${
+      lib.makeLibraryPath [
+        config.hardware.graphics.package.out
+        config.hardware.graphics.package32.out
+      ]
+    }
   '';
 
   # (doesn't work for the card used in this system)
