@@ -12,18 +12,14 @@
       rebase.autostash = true;
       diff.algorithm = "histogram";
 
-      # ignores = [
-      #   ".test"
-      #   ".envrc"
-      #   ".project"
-      #   ".settings"
-      # ];
-
     }; # extraConfig
 
-    # home.packages = with pkgs; [
-    #   gitAndTools.git-bug
-    # ];
+    ignores = [
+      ".test"
+      ".envrc"
+      ".project"
+      ".settings"
+    ];
 
   };
 }
