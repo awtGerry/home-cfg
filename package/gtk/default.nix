@@ -1,21 +1,18 @@
 { config, pkgs, ... }:
 
-/* TODO: Make a toggler functionality on all the system based on the gtk theme */
+# TODO: Make a toggler functionality on all the system based on the gtk theme
 
 let
   dark = true;
-  # TODO: fix this
-  # Disable dark theme for thinkpad
-  # dark = if osConfig.networking.hostName == "lyra" then true else false;
 in
 {
-  home.pointerCursor = {
-    package = pkgs.rose-pine-cursor;
-    name = "BreezeX-RosePineDawn-Linux";
-    size = 24;
-    gtk.enable = true;
-    x11.enable = true;
-  };
+  # home.pointerCursor = {
+  #   package = pkgs.rose-pine-cursor;
+  #   name = "BreezeX-RosePineDawn-Linux";
+  #   size = 24;
+  #   gtk.enable = true;
+  #   x11.enable = true;
+  # };
 
   gtk = {
     enable = true;
@@ -24,9 +21,7 @@ in
 
     theme = {
       name = if dark then "WhiteSur-Dark" else "WhiteSur";
-      package = pkgs.whitesur-gtk-theme.override {
-        nautilusStyle = "glassy";
-      };
+      package = pkgs.whitesur-gtk-theme.override { nautilusStyle = "glassy"; };
     };
 
     iconTheme = {
@@ -45,8 +40,6 @@ in
         "file://${config.home.homeDirectory}/Pictures"
         "file://${config.home.homeDirectory}/Videos"
         "file://${config.home.homeDirectory}/Dev"
-        "file:///media/Drive/Games"
-        "file:///media/Drive/Games/Roms"
       ];
       extraConfig = {
         gtk-xft-antialias = 1;
