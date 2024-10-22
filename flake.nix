@@ -6,8 +6,8 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
       imports = [
-        ./parts/system_config.nix
-        ./parts/home_config.nix
+        ./parts/system.nix
+        ./parts/home.nix
 
         ./nixos/configurations
         ./home/configurations
@@ -41,8 +41,8 @@
     # Keep the system clean
     # impermanence = "github:nix-community/impermanence?ref=opensource";
 
-    eww.url = "github:elkowar/eww";
-    eww.inputs.nixpkgs.follows = "nixpkgs";
+    # eww.url = "github:elkowar/eww";
+    # eww.inputs.nixpkgs.follows = "nixpkgs";
 
     firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
     firefox-addons.inputs.nixpkgs.follows = "nixpkgs";
