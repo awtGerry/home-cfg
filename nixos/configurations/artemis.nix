@@ -35,6 +35,24 @@ in
   services.lvm.boot.thin.enable = true;
   boot.enableContainers = false;
 
+  # Network config
+  networking = {
+    useDHCP = false;
+    networkmanager.enable = true;
+
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [
+        8080
+        1234
+        587
+        22
+      ];
+    };
+  };
+
+  console.font = "Lat2-Terminus16";
+
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you

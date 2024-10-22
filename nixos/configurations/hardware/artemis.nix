@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 {
   _file = ./artemix.nix;
 
@@ -54,5 +54,5 @@
   # powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
 
-  hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
+  # hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
 }
