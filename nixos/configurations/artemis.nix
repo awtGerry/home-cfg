@@ -52,6 +52,9 @@ in
   };
 
   console.font = "Lat2-Terminus16";
+  time.timeZone = "America/Mexico_City";
+
+  environment.systemPackages = [ pkgs.iptables ];
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
