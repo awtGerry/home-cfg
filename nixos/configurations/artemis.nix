@@ -45,8 +45,12 @@ in
       allowedTCPPorts = [
         8080
         1234
+        443
+        80
         587
         22
+        9002
+        9003
       ];
     };
   };
@@ -55,6 +59,31 @@ in
   time.timeZone = "America/Mexico_City";
 
   environment.systemPackages = [ pkgs.iptables ];
+
+  # Services
+  services.xserver = {
+    enable = true;
+    xkb.layout = "us";
+    videoDrivers = [ "amdgpu" ];
+  };
+
+  services.displayManager.sddm = {
+    enable = true;
+    # theme = "${import ../../package/sddm/default.nix { inherit pkgs; }}";
+  };
+  services.displayManager.defaultSession = "none+dwm";
+
+  services.openssh.enable = true; # Enable OpenSSH daemon
+  services.printing.enable = true; # Enable cups
+
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    jack.enable = true;
+    pulse.enable = true;
+  };
+
+  hardware.bluetooth.enable = true;
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database

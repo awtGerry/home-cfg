@@ -51,8 +51,8 @@
 
   swapDevices = [ ];
 
-  # powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  # powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
 
   # hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
 }
