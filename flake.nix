@@ -1,5 +1,5 @@
 {
-  description = "NixOS configuration";
+  description = "Configuracion de NixOS";
 
   outputs =
     { flake-parts, ... }@inputs:
@@ -34,11 +34,11 @@
     systems.url = "github:nix-systems/default-linux";
     hardware.url = "github:nixos/nixos-hardware";
 
-    # Simplify Nix Flakes with the module system
+    # Simplificar nix flakes
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
 
-    # Keep the system clean
+    # Mantiene el sistema limpio
     # impermanence = "github:nix-community/impermanence?ref=opensource";
 
     # eww.url = "github:elkowar/eww";
@@ -47,6 +47,7 @@
     firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
     firefox-addons.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Modifica la apariencia de spotify
     spictify.url = "github:MichaelPachec0/spicetify-nix";
     spictify.inputs.nixpkgs.follows = "nixpkgs";
   };

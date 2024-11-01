@@ -31,12 +31,12 @@
   hardware.enableRedistributableFirmware = true;
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/d8136752-a39b-42d1-9b86-a2258d80d615";
+    device = "/dev/disk/by-label/NIXROOT";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/681E-1C3B";
+    device = "/dev/disk/by-label/NIXBOOT";
     fsType = "vfat";
     options = [
       "fmask=0022"
@@ -44,9 +44,10 @@
     ];
   };
 
+  # Shared disk for w10 and nixos
   fileSystems."/media/Drive" = {
-    device = "/dev/disk/by-uuid/6af823f1-8303-4819-84a0-54143b00b04c";
-    fsType = "ext4";
+    device = "/dev/disk/by-label/Unix";
+    fsType = "exfat";
   };
 
   swapDevices = [ ];

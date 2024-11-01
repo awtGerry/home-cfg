@@ -17,12 +17,7 @@ in
 {
   _file = ./artemis.nix;
 
-  nix.allowedUnfree = [
-    "spotify"
-    "discord"
-    "unrar"
-    "snes9x"
-  ] ++ steamPackages;
+  nix.allowedUnfree = [ "unrar" ] ++ steamPackages;
   nix.settings.experimental-features = [
     "ca-derivations"
     "impure-derivations"
@@ -35,7 +30,7 @@ in
   services.lvm.boot.thin.enable = true;
   boot.enableContainers = false;
 
-  # Network config
+  # Configuracion de red
   networking = {
     useDHCP = false;
     networkmanager.enable = true;
@@ -60,7 +55,7 @@ in
 
   environment.systemPackages = [ pkgs.iptables ];
 
-  # Services
+  # Servicios
   services.xserver = {
     enable = true;
     xkb.layout = "us";
@@ -69,12 +64,13 @@ in
 
   services.displayManager.sddm = {
     enable = true;
+    # TODO: Implement theme
     # theme = "${import ../../package/sddm/default.nix { inherit pkgs; }}";
   };
   services.displayManager.defaultSession = "none+dwm";
 
-  services.openssh.enable = true; # Enable OpenSSH daemon
-  services.printing.enable = true; # Enable cups
+  services.openssh.enable = true; # OpenSSH daemon
+  services.printing.enable = true; # cups
 
   services.pipewire = {
     enable = true;
@@ -84,6 +80,35 @@ in
   };
 
   hardware.bluetooth.enable = true;
+
+  hardware.graphics.enable = true;
+  # hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ]; # No funciona para 5000 cards.
+
+  virtualisation = {
+    docker.enable = true;
+    container.enable = true;
+    libvirtd.enable = true;
+  };
+
+  users.users = {
+    gerry = {
+      isNormalUser = true;
+      shell = pkgs.zsh;
+      extraGroups = [
+        "wheel"
+        "docker"
+        "audio"
+        "networkmanager"
+      ];
+    };
+    gamer = {
+      isNormalUser = true;
+      extraGroups = [
+        "audio"
+        "networkmanager"
+      ];
+    };
+  };
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database

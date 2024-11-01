@@ -95,7 +95,7 @@ in
             };
 
             config = lib.mkIf config.enable {
-              # Example: gerry_artemis
+              # Ejemplo: gerry_artemis
               entryPoint = import "${self}/home/configurations/${config.username}_${config.hostname}.nix";
             };
 
