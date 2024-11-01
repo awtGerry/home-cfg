@@ -22,8 +22,14 @@
   };
 
   fileSystems."/media/Drive" = {
-    device = "/dev/disk/by-label/Unix";
+    device = "/dev/disk/by-label/Shared";
     fsType = "exfat";
+    options = [
+      # "rw"
+      "allow_other" # for non-root access
+      "users" # Allows any user to mount and unmount
+      "nofail" # Prevent system from failing if this drive doesn't mountc
+    ];
   };
 
   #swapDevices =
