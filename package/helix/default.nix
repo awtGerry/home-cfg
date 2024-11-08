@@ -58,6 +58,20 @@
             "--tsserver-path=${pkgs.nodePackages.typescript}/lib/node_modules/typescript/lib"
           ];
         };
+
+        rust-analyzer = {
+          config = {
+            procMacro = {
+              ignored = {
+                leptos_macro = [
+                  # Optional:
+                  # "component",
+                  "server"
+                ];
+              };
+            };
+          };
+        };
       };
 
       language =
