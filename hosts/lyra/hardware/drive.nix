@@ -23,12 +23,8 @@
 
   fileSystems."/media/Drive" = {
     device = "/dev/disk/by-label/Shared";
-    fsType = "exfat";
-    options = [
-      "umask=000"
-      "uid=1000"
-      "gid=100"
-    ];
+    fsType = "ext4";
+    options = [ "nofail" ];
   };
 
   #swapDevices =
