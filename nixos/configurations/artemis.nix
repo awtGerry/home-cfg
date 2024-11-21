@@ -15,8 +15,6 @@ let
   ];
 in
 {
-  _file = ./artemis.nix;
-
   nix.allowedUnfree = [ "unrar" ] ++ steamPackages;
   nix.settings.experimental-features = [
     "ca-derivations"

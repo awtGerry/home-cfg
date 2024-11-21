@@ -5,6 +5,9 @@
     { flake-parts, ... }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
+
+      # _module.args.npins = import ./npins; # NOTA: Aun no se si usar npins o hacerlo manual.
+
       imports = [
         ./parts/system.nix
         ./parts/home.nix

@@ -11,8 +11,6 @@ let
   packages = builtins.attrValues (builtins.mapAttrs (_: config: config.packageModule) cfg);
 in
 {
-  _file = "./system.nix";
-
   options = {
     # Atributos para la configuracion de nixos
     awt.nixosConfigurations = lib.mkOptions {

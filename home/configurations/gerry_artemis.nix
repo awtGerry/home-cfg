@@ -6,15 +6,14 @@
   ...
 }:
 {
-  _file = ./gerry_artemis.nix;
-
   config = {
-    nixpkgs.allowdUnfree = [
+    nixpkgs.allowedUnfree = [
       "discord"
       "spotify"
     ];
 
     activeProfiles = [ "development" ];
+    theme.variant = "light";
 
     dconf.enable = true;
     systemd.user.tmpfiles.rules = [

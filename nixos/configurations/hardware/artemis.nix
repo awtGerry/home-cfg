@@ -1,7 +1,5 @@
 { lib, ... }:
 {
-  _file = ./artemix.nix;
-
   imports = [ ];
 
   boot.initrd.availableKernelModules = [

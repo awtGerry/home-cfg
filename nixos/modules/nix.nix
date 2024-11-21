@@ -4,7 +4,6 @@ let
   allowed = config.nix.allowedUnfree;
 in
 {
-  _file = ./nix.nix;
   options.nix = {
     allowdUnfree = lib.mkOption {
       type = lib.types.listOf lib.types.str;

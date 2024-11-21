@@ -5,4 +5,6 @@ inputs: {
   "profiles/dev" = import ./profiles/dev inputs;
   "profiles/browser" = import ./profiles/browser inputs;
 
+  "theme" = import ./theme inputs;
+
 }

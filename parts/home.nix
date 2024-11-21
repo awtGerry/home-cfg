@@ -1,8 +1,11 @@
+# TODO: Descomentar o remover npins.
+
 {
   self,
   inputs,
   config,
   lib,
+  # npins,
   ...
 }:
 let
@@ -12,8 +15,6 @@ let
   packages = builtins.attrValues (builtins.mapAttrs (_: config: config.packageModule) enabledConfigs);
 in
 {
-  _file = ./home.nix;
-
   options = {
     awt.homeConfigurations = lib.mkOption {
       type = lib.types.attrsOf (
@@ -119,6 +120,7 @@ in
 
             finalHome = inputs.home-manager.lib.homeManagerConfiguration {
               pkgs = config.nixpkgs.legacyPackages.${config.system};
+              # extraSpecialArgs.npins = npins;
               modules = config.finalModules;
             };
           }

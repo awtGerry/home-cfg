@@ -12,8 +12,6 @@ let
     builtins.foldl' reducer { } config.activeProfiles;
 in
 {
-  _file = ./default.nix;
-
   # Modulo para aceptar la lista de perfiles.
   options.activateProfiles = lib.mkOption {
     type = lib.types.listOf lib.types.str;
