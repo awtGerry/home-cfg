@@ -12,7 +12,10 @@
       "spotify"
     ];
 
-    activeProfiles = [ "development" ];
+    activeProfiles = [
+      "development"
+      "gaming"
+    ];
     theme.variant = "light";
 
     dconf.enable = true;
