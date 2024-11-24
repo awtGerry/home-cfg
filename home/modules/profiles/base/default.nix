@@ -77,6 +77,39 @@ in
 
       firefox.enable = true;
       helix.enable = true;
+
+      tmux = {
+        enable = true;
+        newSession = true;
+        disableConfirmationPrompt = true;
+        clock24 = true;
+        terminal = "screen-256color";
+        extraConfig = ''
+          unbind C-b
+          set -g prefix C-Space
+
+          # vi settings
+          set-window-option -g mode-keys vi
+          bind -T copy-mode-vi v send-keys -X begin-selection
+          bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+          bind -r ^ last-window
+          bind -r k select-pane -U
+          bind -r j select-pane -D
+          bind -r h select-pane -L
+          bind -r l select-pane -R
+
+          # Moving window
+          bind-key -n C-S-Left swap-window -t -1 \; previous-window
+          bind-key -n C-S-Right swap-window -t +1 \; next-window
+          # Resizing pane
+          bind -r C-k resize-pane -U 5
+          bind -r C-j resize-pane -D 5
+          bind -r C-h resize-pane -L 5
+          bind -r C-l resize-pane -R 5
+
+          bind-key -r f run-shell "tmux neww tmux-fzf"
+        '';
+      };
     };
   };
 }
