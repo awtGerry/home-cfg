@@ -36,15 +36,14 @@ in
       };
 
       gtk3 = {
-        # TODO
-        # bookmarks = [
-        #   "file://${config.home.homeDirectory}/Documents"
-        #   "file://${config.home.homeDirectory}/Downloads"
-        #   "file://${config.home.homeDirectory}/Music"
-        #   "file://${config.home.homeDirectory}/Pictures"
-        #   "file://${config.home.homeDirectory}/Videos"
-        #   "file://${config.home.homeDirectory}/Dev"
-        # ];
+        bookmarks = [
+          "file://${config.home.homeDirectory}/Documents"
+          "file://${config.home.homeDirectory}/Downloads"
+          "file://${config.home.homeDirectory}/Music"
+          "file://${config.home.homeDirectory}/Pictures"
+          "file://${config.home.homeDirectory}/Videos"
+          "file://${config.home.homeDirectory}/Dev"
+        ];
         extraConfig = {
           gtk-xft-antialias = 1;
           gtk-xft-hinting = 1;
@@ -68,25 +67,31 @@ in
     };
 
     programs = {
-      home-manager.enable = true;
       bat.enable = true;
-      fzf.enable = true;
       btop.enable = true;
-
+      firefox.enable = true; # Todos tienen firefox, solo los 'browsing' tienen firefox personalizado
+      fzf.enable = true;
+      helix.enable = true; # NOTA: Helix se habilita siempre pero solo se configura si el usuario es developer
+      home-manager.enable = true;
+      lsd.enable = true;
       ssh.enable = true;
 
-      firefox.enable = true;
-      helix.enable = true;
-
-      tmux = {
+      tmux.enable = {
         enable = true;
-        newSession = true;
         disableConfirmationPrompt = true;
-        clock24 = true;
         terminal = "screen-256color";
+        clock24 = true;
+
         extraConfig = ''
           unbind C-b
           set -g prefix C-Space
+
+          # basics
+          set -g status-style 'bg=#101010 fg=#EEEEEE'
+          set -g base-index 1
+          set-option -g history-limit 64096
+          set-option -g pane-active-border-style fg='#08D9D6'
+          set-window-option -g window-status-current-style fg='#08D9D6'
 
           # vi settings
           set-window-option -g mode-keys vi
@@ -110,6 +115,49 @@ in
           bind-key -r f run-shell "tmux neww tmux-fzf"
         '';
       };
+
+      wezterm = {
+        enable = true;
+        extraConfig = ''
+          local config =  {}
+
+          if wezterm.config_builder then
+            config = wezterm.config_builder()
+          end
+
+          -- For some reason wezterm won't work on wayland if not added this line.
+          config.enable_wayland = false;
+
+          config.font_size = 14
+
+          config.enable_tab_bar = false;
+          config.window_padding = {
+            left = 0,
+            right = 0,
+            top = 0,
+            bottom = 0
+          }
+
+          config.window_close_confirmation = "NeverPrompt"
+          config.audible_bell = "Disabled"
+
+          return config
+        '';
+      };
+      zathura.enable = true;
+      zsh.enable = true; # TODO: Mover a configuracion aparte.
     };
+
+    # Otros programas
+    home.packages = with pkgs; [
+      # Conversion de archivos
+      unrar
+      unzip
+      zip
+
+      # Utilidades del sistema
+      xdotool
+      sxiv
+    ];
   };
 }

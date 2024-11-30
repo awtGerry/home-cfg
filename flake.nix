@@ -11,12 +11,13 @@
       imports = [
         ./parts/system.nix
         ./parts/home.nix
+        ./parts/home_modules.nix
 
         ./nixos/configurations
         ./home/configurations
 
-        ./hosts
-        ./lib
+        ./home/modules
+        ./nixos/modules
 
         ./packages
       ];

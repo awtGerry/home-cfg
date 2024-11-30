@@ -1,10 +1,11 @@
-inputs: {
-  "profiles" = import ./profiles inputs;
+{
+  awt.homeModules = {
+    "profiles" = ./profiles;
+    "profiles/base" = ./profiles/base;
+    "profiles/development" = ./profiles/development;
 
-  "profiles/base" = import ./profiles/base inputs;
-  "profiles/dev" = import ./profiles/dev inputs;
-  "profiles/browser" = import ./profiles/browser inputs;
+    "programs/helix" = ./programs/helix;
 
-  "theme" = import ./theme inputs;
-
+    "theme" = ./theme;
+  };
 }
