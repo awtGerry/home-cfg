@@ -1,4 +1,10 @@
-{ pkgs, config, lib, inputs, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -11,6 +17,8 @@
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
+
+  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
 
   programs.gamemode.settings.gpu = {
     apply_gpu_optimisations = "accept-responsibility";
