@@ -62,17 +62,18 @@ in
         formatter.command = "${pkgs.shfmt}/bin/shfmt";
       })
       (mkLanguage { name = "c"; })
-      # NOTA: Para sistemas embebidos descomento estas lineas (simplemente para que no cargue de mas cosas lsp!)
-      # (mkLanguage {
-      #   name = "cpp";
-      #   langServer = {
-      #     command = "${pkgs.arduino-language-server}/bin/arduino-language-server";
-      #     args = [
-      #       "--clangd"
-      #       "${pkgs.clang-tools}/bin/clangd"
-      #     ];
-      #   };
-      # })
+      (mkLanguage { name = "markdown"; })
+      (mkLanguage {
+        name = "ruby";
+        extraConfig = {
+          language-servers = [
+            {
+              name = "solargraph";
+              args = [ "stdio" ];
+            }
+          ];
+        };
+      })
       (mkLanguage {
         name = "json";
         formatter = {
