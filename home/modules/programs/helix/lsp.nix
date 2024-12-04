@@ -93,5 +93,33 @@ in
         };
       })
     ] ++ prettierLanguages;
+
+    language-server = {
+      biome-lsp = {
+        command = "biome";
+        args = [ "lsp-proxy" ];
+      };
+      nil = {
+        command = "${pkgs.nil}/bin/nil";
+        config.nil.formatting.command = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ];
+      };
+      typescript-language-server = {
+        command = "${pkgs.nodePackages.typescript-language-server}/bin/typescript-language-server";
+        args = [
+          "--stdio"
+          "tsserver-path=${pkgs.nodePackages.typescript}/lib/node_modules/typescript/lib"
+        ];
+      };
+      rust-analyzer = {
+        config = {
+          procMacro.ignored = {
+            leptos_macro = [
+              "component"
+              "server"
+            ];
+          };
+        };
+      };
+    };
   };
 }
