@@ -22,6 +22,13 @@ in
         editor = {
           line-number = "relative";
           lsp.display-messages = true;
+          lsp.display-inlay-hints = true;
+          cursor-line = true;
+          color-mode = true;
+          true-color = true;
+          auto-pairs = false;
+
+          whitespace.characters.newline = "⤶";
         };
         keys.normal = {
           # Ctrl-c como en vim
