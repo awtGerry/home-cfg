@@ -158,6 +158,7 @@ in
       # Utilidades del sistema
       xdotool
       sxiv
+      yt-dlt
     ];
   };
 }
