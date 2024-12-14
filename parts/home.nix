@@ -98,30 +98,32 @@ in
             config = lib.mkIf config.enable {
               # Ejemplo: gerry_artemis
               entryPoint = import "${self}/home/configurations/${config.username}_${config.hostname}.nix";
-            };
+              # Para macos
+              base = if lib.strings.hasSuffix "-darwin" config.system then "Users" else "home";
 
-            homeDirectory = "${config.base}/${config.username}";
+              homeDirectory = "${config.base}/${config.username}";
 
-            finalModules = [
-              config.entryPoint
-              {
-                home = {
-                  inherit (config) username homeDirectory;
-                };
-              }
-            ] ++ config.modules ++ builtins.attrValues self.homeModules;
+              finalModules = [
+                config.entryPoint
+                {
+                  home = {
+                    inherit (config) username homeDirectory;
+                  };
+                }
+              ] ++ config.modules ++ builtins.attrValues self.homeModules;
 
-            packageName = "home/config/${name}";
-            finalPackage = config.finalHome.activationPackage;
+              packageName = "home/config/${name}";
+              finalPackage = config.finalHome.activationPackage;
 
-            packageModule = {
-              ${config.system}.${config.packageName} = config.finalPackage;
-            };
+              packageModule = {
+                ${config.system}.${config.packageName} = config.finalPackage;
+              };
 
-            finalHome = inputs.home-manager.lib.homeManagerConfiguration {
-              pkgs = config.nixpkgs.legacyPackages.${config.system};
-              # extraSpecialArgs.npins = npins;
-              modules = config.finalModules;
+              finalHome = inputs.home-manager.lib.homeManagerConfiguration {
+                pkgs = config.nixpkgs.legacyPackages.${config.system};
+                # extraSpecialArgs.npins = npins;
+                modules = config.finalModules;
+              };
             };
           }
         )

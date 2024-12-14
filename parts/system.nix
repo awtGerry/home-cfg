@@ -13,7 +13,7 @@ in
 {
   options = {
     # Atributos para la configuracion de nixos
-    awt.nixosConfigurations = lib.mkOptions {
+    awt.nixosConfigurations = lib.mkOption {
       type = lib.types.attrsOf (
         lib.types.submodule (
           { name, config, ... }:
@@ -46,7 +46,7 @@ in
               };
 
               entryPoint = lib.mkOption {
-                type = lib.types.str;
+                type = lib.types.unspecified;
                 readOnly = true;
               };
 
@@ -60,8 +60,18 @@ in
                 readOnly = true;
               };
 
+              finalSystem = lib.mkOption {
+                type = lib.types.unspecified;
+                readOnly = true;
+              };
+
               finalModules = lib.mkOption {
-                type = lib.types.listOf lib.types.uspecified;
+                type = lib.types.listOf lib.types.unspecified;
+                readOnly = true;
+
+              };
+              packageModule = lib.mkOption {
+                type = lib.types.unspecified;
                 readOnly = true;
               };
 
@@ -87,14 +97,14 @@ in
                   { boot.tmp.cleanOnBoot = true; }
                   { networking.hostName = name; }
                   { nix.flakes.enable = true; }
+                  { system.configurationRevision = self.rev or "${self.dirtyRev or "unknown"}-dirty"; }
                   { documentation.man.enable = true; }
                   { documentation.man.generateCaches = true; }
-                  { nixpkgs.hostPlataform.system = config.system; }
+                  { nixpkgs.hostPlatform.system = config.system; }
                 ]
                 ++ config.modules
                 ++ builtins.attrValues { inherit (config) entryPoint bootloader hardware; }
-                ++ builtins.attrValues self.nixosModules
-                ++ builtins.attrValues self.mixedModules;
+                ++ builtins.attrValues self.nixosModules;
 
               packageName = "nixos/config/${name}";
               finalPackage = config.finalSystem.config.system.build.toplevel;

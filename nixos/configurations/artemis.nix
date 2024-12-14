@@ -84,7 +84,7 @@ in
 
   virtualisation = {
     docker.enable = true;
-    container.enable = true;
+    containers.enable = true;
     libvirtd.enable = true;
   };
 

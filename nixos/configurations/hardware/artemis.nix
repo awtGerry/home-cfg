@@ -1,16 +1,12 @@
-{ lib, ... }:
+{ lib, modulesPath, ... }:
 {
-  imports = [ ];
-
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
   boot.initrd.availableKernelModules = [
     "xhci_pci"
-    "ehci_pci"
     "ahci"
     "usbhid"
     "usb_storage"
     "sd_mod"
-    "sr_mod"
-    "rtsx_pci_sdmmc"
   ];
   boot.initrd.kernelModules = [
     "dm-snapshot"
@@ -18,6 +14,7 @@
   ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  # Soporta otros tipos de discos (ejemplo: ntfs & exfat son usados en windows)
   boot.supportedFilesystems = [
     "ntfs"
     "exfat"
@@ -28,6 +25,7 @@
   hardware.cpu.amd.updateMicrocode = true;
   hardware.enableRedistributableFirmware = true;
 
+  # -- DISCOS --
   fileSystems."/" = {
     device = "/dev/disk/by-label/NIXROOT";
     fsType = "ext4";
@@ -42,16 +40,22 @@
     ];
   };
 
-  # Shared disk for w10 and nixos
+  # Disco compartido
   fileSystems."/media/Drive" = {
-    device = "/dev/disk/by-label/Unix";
-    fsType = "exfat";
+    device = "/dev/disk/by-label/Shared";
+    fsType = "exf4";
+    # TODO: Testear esta opcion, en teoria deberia impedir que haya
+    #       problemas de arranque.
+
+    options = [ "nofail" ];
   };
 
   swapDevices = [ ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   # powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
-
+  # NOTE: ROCM no esta muy bien implementado todavia, esperemos con el tiempo sea compatible con mi tarjeta.
   # hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }

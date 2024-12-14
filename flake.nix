@@ -16,9 +16,6 @@
         ./nixos/configurations
         ./home/configurations
 
-        ./home/modules
-        ./nixos/modules
-
         ./packages
       ];
 
@@ -37,6 +34,14 @@
 
     systems.url = "github:nix-systems/default-linux";
     hardware.url = "github:nixos/nixos-hardware";
+
+    nix.url = "github:nixos/nix";
+    nix.inputs.flake-parts.follows = "flake-parts";
+    nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Arregla command-not-found para sqlite
+    programsdb.url = "github:wamserma/flake-programs-sqlite";
+    programsdb.inputs.nixpkgs.follows = "nixpkgs";
 
     # Simplificar nix flakes
     flake-parts.url = "github:hercules-ci/flake-parts";

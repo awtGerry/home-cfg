@@ -4,9 +4,9 @@
 Configuration to manage my dev environment using Nix and [home-manager](https://github.com/nix-community/home-manager)
 
 ## Hosts
-* `artemis`: My main machine.
+* `lyra`: Machine with support for newer hardware using Wayland (current main).
+* `artemis`: Machine with X config.
 * `pady`: My laptop, focused on simplicity, performance and battery life.
-* `lyra`: Machine with support for newer hardware using Wayland.
 
 > [!Caution]
 > This repository is configured for my specific host system and hardware.

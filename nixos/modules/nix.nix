@@ -5,7 +5,7 @@ let
 in
 {
   options.nix = {
-    allowdUnfree = lib.mkOption {
+    allowedUnfree = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       default = [ ];
       description = ''Permite paquetes no libres por nombre'';
