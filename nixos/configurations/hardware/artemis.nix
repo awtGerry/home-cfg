@@ -43,7 +43,7 @@
   # Disco compartido
   fileSystems."/media/Drive" = {
     device = "/dev/disk/by-label/Shared";
-    fsType = "exf4";
+    fsType = "ext4";
     # TODO: Testear esta opcion, en teoria deberia impedir que haya
     #       problemas de arranque.
 
