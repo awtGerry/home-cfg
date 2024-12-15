@@ -64,7 +64,7 @@ in
     enable = true;
     wayland.enable = true;
     # TODO: Implementar el tema
-    theme = "${import ../../home/modules/programs/sddm/default.nix { inherit pkgs; }}";
+    # theme = "${import ../../home/modules/programs/sddm/default.nix { inherit pkgs; }}";
   };
 
   services.openssh.enable = true; # OpenSSH daemon

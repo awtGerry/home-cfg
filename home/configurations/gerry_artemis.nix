@@ -29,6 +29,18 @@
             firefox = "0.90 0.90";
           };
         };
+        # Atajos de teclado
+        bindings = {
+          modKey = "SUPER";
+          # apps = {
+          #   terminal = "ghostty";
+          # };
+          # NOTE: Aqui se pueden añadir atajos de teclado adicionales
+          # extraBinds = [
+          #   "$mod, C, exec, code"
+          #   "$mod SHIFT, V, exec, vlc"
+          # ];
+        };
       };
     };
 

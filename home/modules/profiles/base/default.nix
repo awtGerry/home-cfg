@@ -144,8 +144,9 @@ in
           return config
         '';
       };
+      yazi.enable = true;
       zathura.enable = true;
-      zsh.enable = true; # TODO: Mover a configuracion aparte.
+      # zsh.enable = true; # TODO: Mover a configuracion aparte.
     };
 
     # Otros programas
