@@ -30,8 +30,8 @@ in
 
   # Configuracion de red
   networking = {
-    useDHCP = false;
-    networkmanager.enable = true;
+    hostName = "artemis";
+    # networkmanager.enable = true;
 
     firewall = {
       enable = true;
@@ -48,7 +48,6 @@ in
     };
   };
 
-  console.font = "Lat2-Terminus16";
   time.timeZone = "America/Mexico_City";
 
   environment.systemPackages = [ pkgs.iptables ];
