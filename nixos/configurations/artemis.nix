@@ -1,4 +1,4 @@
-{ self, ... }@inputs:
+{ self, ... }:
 {
   config,
   pkgs,
@@ -53,19 +53,19 @@ in
 
   environment.systemPackages = [ pkgs.iptables ];
 
-  # Servicios
+  # Xserver
   services.xserver = {
     enable = true;
     xkb.layout = "us";
-    videoDrivers = [ "amdgpu" ];
+    videoDrivers = [ "amdgpu" ]; # @necesary
   };
 
   services.displayManager.sddm = {
     enable = true;
-    # TODO: Implement theme
-    # theme = "${import ../../package/sddm/default.nix { inherit pkgs; }}";
+    wayland.enable = true;
+    # TODO: Implementar el tema
+    theme = "${import ../../home/modules/programs/sddm/default.nix { inherit pkgs; }}";
   };
-  services.displayManager.defaultSession = "none+dwm";
 
   services.openssh.enable = true; # OpenSSH daemon
   services.printing.enable = true; # cups
@@ -77,9 +77,17 @@ in
     pulse.enable = true;
   };
 
+  services.libinput = {
+    enable = true;
+    mouse.accelProfile = "flat";
+  };
+
   hardware.bluetooth.enable = true;
 
-  hardware.graphics.enable = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
   # hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ]; # No funciona para 5000 cards.
 
   virtualisation = {
@@ -99,6 +107,7 @@ in
         "networkmanager"
       ];
     };
+
     gamer = {
       isNormalUser = true;
       extraGroups = [
@@ -107,6 +116,24 @@ in
       ];
     };
   };
+
+  # Activa algunos programas (zsh necesario)
+  programs = {
+    steam.enable = true;
+
+    zsh.enable = true;
+    zsh.enableCompletion = false;
+  };
+
+  # Fuerza a usar la misma version de mesa
+  environment.extraInit = lib.mkIf config.hardware.graphics.enable ''
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH''${LD_LIBRARY_PATH:+:}${
+      lib.makeLibraryPath [
+        config.hardware.graphics.package.out
+        config.hardware.graphics.package32.out
+      ]
+    }
+  '';
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
