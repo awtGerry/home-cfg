@@ -5,6 +5,7 @@
     "profiles/development" = ./profiles/development;
 
     "programs/helix" = ./programs/helix;
+    "programs/sddm" = ./programs/sddm;
 
     "theme" = ./theme;
   };
