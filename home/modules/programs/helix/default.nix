@@ -9,22 +9,18 @@ let
   cfg = config.programs.helix;
 in
 {
-  options = {
-    programs.helix.enable = lib.mkEnableOption "helix";
-  };
-
   imports = [ ./lsp.nix ];
 
   config = lib.mkIf cfg.enable {
     programs.helix = {
       settings = {
-        theme = "nightfox";
+        theme = config.theme.scheme;
         editor = {
           line-number = "relative";
           lsp.display-messages = true;
           lsp.display-inlay-hints = true;
-          cursor-line = true;
-          color-mode = true;
+          cursorline = true;
+          color-modes = true;
           true-color = true;
           auto-pairs = false;
 

@@ -1,10 +1,4 @@
-_:
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ lib, pkgs, ... }:
 let
   mkLanguage =
     {
@@ -66,7 +60,7 @@ in
       (mkLanguage {
         name = "ruby";
         extraConfig = {
-          language-servers = [
+          language-server = [
             {
               name = "solargraph";
               args = [ "stdio" ];
