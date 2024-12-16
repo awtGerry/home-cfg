@@ -1,7 +1,7 @@
 # Todos los perfiles comparten esta configuracion
 
 # Home manager configuracion base:
-{ self, nix, ... }:
+{ self, ... }:
 
 {
   config,
@@ -11,7 +11,7 @@
 }:
 let
   cfg = config.profiles.base;
-  dark = if config.theme.variant == "dark" then true else false;
+  dark = config.theme.variant == "dark";
 in
 {
   options.profiles.base = {
@@ -30,10 +30,11 @@ in
       iconTheme.package = pkgs.kora-icon-theme;
       iconTheme.name = "kora";
 
-      font = {
-        name = "SF Pro Display";
-        package = self."sf/pro";
-      };
+      # TODO
+      # font = {
+      #   name = "SF Pro Display";
+      #   package = self."sf/pro";
+      # };
 
       gtk3 = {
         bookmarks = [
@@ -76,7 +77,7 @@ in
       lsd.enable = true;
       ssh.enable = true;
 
-      tmux.enable = {
+      tmux = {
         enable = true;
         disableConfirmationPrompt = true;
         terminal = "screen-256color";
@@ -128,6 +129,7 @@ in
           -- For some reason wezterm won't work on wayland if not added this line.
           config.enable_wayland = false;
 
+          config.font = wezterm.font 'Fira Code'
           config.font_size = 14
 
           config.enable_tab_bar = false;
@@ -146,20 +148,21 @@ in
       };
       yazi.enable = true;
       zathura.enable = true;
-      # zsh.enable = true; # TODO: Mover a configuracion aparte.
+      zsh.enable = true;
     };
 
     # Otros programas
     home.packages = with pkgs; [
       # Conversion de archivos
-      unrar
       unzip
       zip
 
       # Utilidades del sistema
       xdotool
       sxiv
-      yt-dlt
+      yt-dlp
+
+      nerd-fonts.fira-code # for now you go here...
     ];
   };
 }

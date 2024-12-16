@@ -1,6 +1,5 @@
 _:
 { config, lib, ... }:
-
 let
   # Funcion para convertir una lista de nombres en perfiles habilitados.
   profileEnabler =
@@ -13,7 +12,7 @@ let
 in
 {
   # Modulo para aceptar la lista de perfiles.
-  options.activateProfiles = lib.mkOption {
+  options.activeProfiles = lib.mkOption {
     type = lib.types.listOf lib.types.str;
     default = [ ];
   };

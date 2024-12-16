@@ -14,7 +14,27 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    # Empecemos con algunos programas :)
+    programs.git = {
+      enable = true;
+
+      userName = "Victor Rodriguez";
+      userEmail = "awtGerry@gmail.com";
+
+      extraConfig = {
+        init.defaultBranch = "master";
+        pull.rebase = "merges";
+        rebase.autostash = true;
+        diff.algorithm = "histogram";
+      };
+
+      ignores = [
+        ".test"
+        ".env"
+        ".envrc"
+        ".direnv"
+        "result"
+      ];
+    };
     home.packages = [ ];
 
     # Configuraciones

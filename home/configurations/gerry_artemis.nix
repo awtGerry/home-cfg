@@ -8,6 +8,7 @@
 {
   activeProfiles = [
     "development"
+    "browsing"
     "gaming"
   ];
   theme.variant = "dark";
