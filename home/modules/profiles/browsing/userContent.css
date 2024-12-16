@@ -1,0 +1,34 @@
+@-moz-document url-prefix("about:newtab"),
+url-prefix("about:home") {
+    /*Hides the Releases and Support Links*/
+    #floorp {
+        display: none;
+    }
+    /*Hides the cog button to customize the new tab*/
+    [data-l10n-id="newtab-personalize-icon-label"] {
+        display: none !important;
+    }
+    /*Removes the Floorp Logo*/
+    .logo-and-wordmark {
+        display: none !important;
+    }
+    main {
+        display: none;
+    }
+    #background {
+        background-image: url(pulp_fiction.jpg) !important;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .selected_image {
+        background-color: transparent !important;
+    }
+}
+
+
+/*Autofilled forms have a light blue tint*/
+
+input:autofill {
+    background: #ffffff00 !important;
+}
