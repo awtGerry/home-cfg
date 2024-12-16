@@ -1,4 +1,5 @@
-{ pkgs }:
+_:
+{ pkgs, ... }:
 
 # TODO: change this to a more reliable resource
 
