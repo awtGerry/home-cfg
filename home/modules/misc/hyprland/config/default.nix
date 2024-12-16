@@ -1,5 +1,5 @@
 _: {
-  import = [
+  imports = [
     ./keys.nix
     ./visuals.nix
   ];

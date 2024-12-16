@@ -1,5 +1,4 @@
 # Configuracion visual para hyprland
-_:
 { config, lib, ... }:
 
 let
@@ -12,7 +11,7 @@ let
       foot = "0.90 0.90";
     };
     apps = {
-      # firefox = "0.90 0.90";
+      firefox = "0.10 0.10";
       lutris = "0.90 0.90";
       steam = "0.80 0.80";
       spotify = "0.80 0.80";
@@ -35,7 +34,7 @@ let
     "^(${elements})$";
 in
 {
-  import = [ ./keys.nix ]; # Atajos de teclado
+  imports = [ ]; # Atajos de teclado
 
   options.wayland.windowManager.hyprland = {
     visuals = {
@@ -52,6 +51,20 @@ in
           xray = true;
         };
         description = "Activa la configuracion de blur para hyprland";
+      };
+
+      animation = {
+        enable = lib.mkEnableOption "animations";
+        beziers = lib.mkOption {
+          type = with lib.types; listOf str;
+          default = [
+            "fluent_decel, 0, 0.2, 0.4, 1"
+            "easeOutCirc, 0, 0.55, 0.45, 1"
+            "easeOutCubic, 0.33, 1, 0.68, 1"
+            "easeinoutsine, 0.37, 0, 0.63, 1"
+          ];
+          description = "Activa animaciones en el sistema";
+        };
       };
 
       transparency = {
@@ -81,84 +94,84 @@ in
         ];
         description = "Configuraciones para las animaciones";
       };
-    };
 
-    windowRules = {
-      workspaceRules = lib.mkOption {
-        type = with lib.types; listOf str;
-        default = [
-          "workspace 2, ^(firefox)$"
-          "workspace 3, ^(chromium)$"
-          "workspace 4, ^(Steam)$"
-          "workspace 4, ^(lutris)$"
-          "workspace 5, ^(gimp)$"
-          "workspace 8, ^(discord)$"
-          "workspace 9, ^(thunderbird)$"
-          "workspace 10, ^(Spotify)$"
-          "workspace 10, ^(Spotify ( Premium)?)$"
-          "workspace 10, ^(Spotify ( Free)?)$"
-        ];
-        description = "Asignacion de programas en los espacios de trabajo";
-      };
+      windowRules = {
+        workspaceRules = lib.mkOption {
+          type = with lib.types; listOf str;
+          default = [
+            "workspace 2, ^(firefox)$"
+            "workspace 3, ^(chromium)$"
+            "workspace 4, ^(Steam)$"
+            "workspace 4, ^(lutris)$"
+            "workspace 5, ^(gimp)$"
+            "workspace 8, ^(discord)$"
+            "workspace 9, ^(thunderbird)$"
+            "workspace 10, ^(Spotify)$"
+            "workspace 10, ^(Spotify ( Premium)?)$"
+            "workspace 10, ^(Spotify ( Free)?)$"
+          ];
+          description = "Asignacion de programas en los espacios de trabajo";
+        };
 
-      opacityRules = lib.mkOption {
-        type = with lib.types; listOf str;
-        default = [
-          "opacity 0.90 0.90,class:^(wezterm)$"
-          "opacity 0.90 0.90,class:^(firefox)$"
-          "opacity 0.90 0.90,class:^(foot)$"
-          "opacity 0.90 0.90,class:^(lutris)$"
-          "opacity 0.80 0.80,class:^(Steam)$"
-          "opacity 0.80 0.80,class:^(steam)$"
-          "opacity 0.80 0.80,class:^(steamwebhelper)$"
-          "opacity 0.80 0.80,class:^(Spotify)$"
-          "opacity 0.90 0.90,class:^(dunst)$"
-          "opacity 0.90 0.90,class:^(Dunst)$"
-          "opacity 0.80 0.80,class:^(Code)$"
-          "opacity 0.80 0.80,class:^(thunar)$"
-          "opacity 0.80 0.80,class:^(file-roller)$"
-          "opacity 0.80 0.80,class:^(nwg-look)$"
-          "opacity 0.80 0.80,class:^(qt5ct)$"
-          "opacity 0.80 0.80,class:^(VencordDesktop|Webcord|discord|Discord)"
-          "opacity 0.80 0.70,class:^(pavucontrol)$"
-          "opacity 0.80 0.70,class:^(org.kde.polkit-kde-authentication-agent-1)$"
-          "opacity 0.80 0.80,class:^(org.telegram.desktop)$"
-          "opacity 0.80 0.80,class:^(code-url-handler)$"
-          "opacity 0.80 0.80,title:^(Spotify( Premium)?)$"
-          "opacity 0.80 0.80,title:^(Spotify( Free)?)$"
-          "opacity 0.80 0.80,title:^(Steam)$"
-          "opacity 0.90 0.90, class:^(inlyne)$"
-        ];
-        description = "Transparencia en los programas";
-      };
+        opacityRules = lib.mkOption {
+          type = with lib.types; listOf str;
+          default = [
+            "opacity 0.90 0.90,class:^(${config.apps.terminal})$"
+            "opacity 0.90 0.90,class:^(${config.apps.browser})$"
+            "opacity 0.90 0.90,class:^(foot)$"
+            "opacity 0.90 0.90,class:^(lutris)$"
+            "opacity 0.80 0.80,class:^(Steam)$"
+            "opacity 0.80 0.80,class:^(steam)$"
+            "opacity 0.80 0.80,class:^(steamwebhelper)$"
+            "opacity 0.80 0.80,class:^(Spotify)$"
+            "opacity 0.90 0.90,class:^(dunst)$"
+            "opacity 0.90 0.90,class:^(Dunst)$"
+            "opacity 0.80 0.80,class:^(Code)$"
+            "opacity 0.80 0.80,class:^(thunar)$"
+            "opacity 0.80 0.80,class:^(file-roller)$"
+            "opacity 0.80 0.80,class:^(nwg-look)$"
+            "opacity 0.80 0.80,class:^(qt5ct)$"
+            "opacity 0.80 0.80,class:^(VencordDesktop|Webcord|discord|Discord)"
+            "opacity 0.80 0.70,class:^(pavucontrol)$"
+            "opacity 0.80 0.70,class:^(org.kde.polkit-kde-authentication-agent-1)$"
+            "opacity 0.80 0.80,class:^(org.telegram.desktop)$"
+            "opacity 0.80 0.80,class:^(code-url-handler)$"
+            "opacity 0.80 0.80,title:^(Spotify( Premium)?)$"
+            "opacity 0.80 0.80,title:^(Spotify( Free)?)$"
+            "opacity 0.80 0.80,title:^(Steam)$"
+            "opacity 0.90 0.90, class:^(inlyne)$"
+          ];
+          description = "Transparencia en los programas";
+        };
 
-      floatRules = lib.mkOption {
-        type = with lib.types; listOf str;
-        default = [
-          "float,class:^(org.kde.polkit-kde-authentication-agent-1)$"
-          "float,class:^(pavucontrol)$"
-          "float,class:^(zathura)$"
-          "float,class:^(thunar)$"
-          "size 1280 720, class:^(thunar)$"
-          "float,title:^(Media viewer)$"
-          "float,title:^(Volume Control)$"
-          "float,class:^(Viewnior)$"
-          "float,title:^(DevTools)$"
-          "float,class:^(file_progress)$"
-          "float,class:^(confirm)$"
-          "float,class:^(dialog)$"
-          "float,class:^(download)$"
-          "float,class:^(notification)$"
-          "float,class:^(error)$"
-          "float,class:^(confirmreset)$"
-          "float,title:^(Open File)$"
-          "float,title:^(branchdialog)$"
-          "float,title:^(Confirm to replace files)$"
-          "float,title:^(File Operation Progress)$"
-          "float,class:^(com.github.Aylur.ags)$"
-          "float, title:^(Picture-in-Picture)$"
-        ];
-        description = "Programas que se sobreponen (ignora el tipico efecto de un wm)";
+        floatRules = lib.mkOption {
+          type = with lib.types; listOf str;
+          default = [
+            "float,class:^(org.kde.polkit-kde-authentication-agent-1)$"
+            "float,class:^(pavucontrol)$"
+            "float,class:^(zathura)$"
+            "float,class:^(thunar)$"
+            "size 1280 720, class:^(thunar)$"
+            "float,title:^(Media viewer)$"
+            "float,title:^(Volume Control)$"
+            "float,class:^(Viewnior)$"
+            "float,title:^(DevTools)$"
+            "float,class:^(file_progress)$"
+            "float,class:^(confirm)$"
+            "float,class:^(dialog)$"
+            "float,class:^(download)$"
+            "float,class:^(notification)$"
+            "float,class:^(error)$"
+            "float,class:^(confirmreset)$"
+            "float,title:^(Open File)$"
+            "float,title:^(branchdialog)$"
+            "float,title:^(Confirm to replace files)$"
+            "float,title:^(File Operation Progress)$"
+            "float,class:^(com.github.Aylur.ags)$"
+            "float, title:^(Picture-in-Picture)$"
+          ];
+          description = "Programas que se sobreponen (ignora el tipico efecto de un wm)";
+        };
       };
     };
   };

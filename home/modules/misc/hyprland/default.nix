@@ -20,8 +20,6 @@ let
 in
 {
   options.wayland.windowManager.hyprland = {
-    enable = lib.mkEnableOption "Hyprland window manager";
-
     monitors = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       default = [
@@ -47,34 +45,26 @@ in
       ];
       description = "Ventanas de trabajo asignadas por monitor";
     };
-
-    settings = lib.mkOption {
-      type = lib.types.attrs;
-      default = { };
-      description = "Configuracion para hyprland";
-    };
   };
 
   imports = [
     ./config
-    ./wlogout.nix
+    # ./wlogout.nix
   ];
 
   config = lib.mkIf cfg.enable {
-    wayland.windowManager.hyprland = {
-      settings = {
-        xwayland.force_zero_scaling = true;
-        exec-once = ''${startupScript}/bin/start'';
+    wayland.windowManager.hyprland.settings = {
+      xwayland.force_zero_scaling = true;
+      exec-once = ''${startupScript}/bin/start'';
 
-        general = {
-          monitor = cfg.monitors;
-          workspace = cfg.workspaces;
-          gaps_in = 5;
-          gaps_out = 5;
-          border_size = 2;
-          "no_border_on_floating" = false;
-          layout = "dwindle";
-        };
+      general = {
+        monitor = cfg.monitors;
+        workspace = cfg.workspaces;
+        gaps_in = 5;
+        gaps_out = 5;
+        border_size = 2;
+        "no_border_on_floating" = false;
+        layout = "dwindle";
       };
 
       # Configuraciones del teclado (lo hace un poco mas veloz)

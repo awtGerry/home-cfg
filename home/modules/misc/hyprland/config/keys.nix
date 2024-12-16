@@ -1,4 +1,3 @@
-_:
 { config, lib, ... }:
 
 let
@@ -8,7 +7,6 @@ let
   # TODO: Mejor variables globales para las aplicaciones? ...
   defaultApps = {
     terminal = "wezterm";
-    browser = "firefox";
     altBrowser = "chromium";
     editor = "hx";
     launcher = "rofi -show drun -show-icons";
@@ -28,6 +26,7 @@ let
     "grim -o $(hyprctl -j activeworkspace | jq -r '.monitor') ${dir}/$(date +%Y-%m-%d_%H-%M-%S).png";
 in
 {
+  imports = [ ];
   options.wayland.windowManager.hyprland = {
     # Atajos de teclado
     bindings = {
@@ -81,8 +80,8 @@ in
           "$mod, Space, togglefloating"
 
           # Ejecutar aplicaciones
-          "$mod, Return, exec, ${cfg.bindings.apps.terminal}"
-          "$mod, W, exec, ${cfg.bindings.apps.browser}"
+          "$mod, Return, exec, ${config.apps.terminal}"
+          "$mod, W, exec, ${config.apps.browser}"
           "$mod CTRL, W, exec, ${cfg.bindings.apps.altBrowser}"
           "$mod, E, exec, ${cfg.bindings.apps.terminal} -e ${cfg.bindings.apps.editor}"
           "$mod, P, exec, ${cfg.bindings.apps.launcher}"
