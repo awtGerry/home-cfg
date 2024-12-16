@@ -16,13 +16,16 @@
         ./nixos/configurations
         ./home/configurations
 
+        ./home/modules
+        ./nixos/modules
+
         ./packages
       ];
 
-      flake = {
-        nixosModules = import ./nixos/modules inputs;
-        homeModules = import ./home/modules inputs;
-      };
+      # flake = {
+      #   nixosModules = import ./nixos/modules inputs;
+      #   homeModules = import ./home/modules inputs;
+      # };
     };
 
   inputs = {
