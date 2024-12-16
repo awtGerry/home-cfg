@@ -46,7 +46,6 @@
     fsType = "ext4";
     # TODO: Testear esta opcion, en teoria deberia impedir que haya
     #       problemas de arranque.
-
     options = [ "nofail" ];
   };
 

@@ -6,7 +6,7 @@
 }:
 let
   cfg = config.awt.homeModules;
-  inherit (import ./helpers.nix lib inputs) submodule;
+  inherit (import ./helper.nix lib inputs) submodule;
   modules = builtins.mapAttrs (_: config: config.wrappedModule) cfg;
 in
 {

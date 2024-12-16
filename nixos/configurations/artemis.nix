@@ -1,7 +1,7 @@
-{ self, ... }:
 {
   config,
   pkgs,
+  inputs,
   lib,
   ...
 }:
@@ -59,11 +59,14 @@ in
     videoDrivers = [ "amdgpu" ]; # @necesary
   };
 
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-    # TODO: Implementar el tema
-    # theme = "${import ../../home/modules/programs/sddm/default.nix { inherit pkgs; }}";
+  services.displayManager = {
+    sddm = {
+      enable = true;
+      wayland.enable = true;
+      # TODO: Implementar el tema
+      # theme = "${import ../../home/modules/programs/sddm/default.nix { inherit pkgs; }}";
+    };
+    sessionPackages = [ pkgs.hyprland ];
   };
 
   services.openssh.enable = true; # OpenSSH daemon
@@ -133,6 +136,19 @@ in
       ]
     }
   '';
+
+  # Para este sistema usare la version 'default' de home-manager
+  imports = [ inputs.home-manager.nixosModules.home-manager ];
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.gerry =
+      { ... }:
+      {
+        imports = [ ../../home/configurations/gerry_artemis.nix ];
+        _module.args.inputs = inputs; # Pass inputs directly to the home-manager config
+      };
+  };
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database

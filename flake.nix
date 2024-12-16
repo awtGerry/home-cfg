@@ -12,6 +12,7 @@
         ./parts/system.nix
         ./parts/home.nix
         ./parts/home_modules.nix
+        ./parts/nixos_modules.nix
 
         ./nixos/configurations
         ./home/configurations

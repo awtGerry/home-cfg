@@ -1,11 +1,8 @@
-# TODO: Descomentar o remover npins.
-
 {
   self,
   inputs,
   config,
   lib,
-  # npins,
   ...
 }:
 let
@@ -27,7 +24,7 @@ in
               };
 
               nixpkgs = lib.mkOption {
-                type = lib.types.uspecified;
+                type = lib.types.unspecified;
                 default = inputs.nixpkgs;
               };
 
@@ -36,6 +33,7 @@ in
                   "x86_64-linux"
                   "aarch64-linux"
                   "x86_64-darwin"
+                  "aarch64-darwin"
                 ];
               };
 
@@ -50,7 +48,7 @@ in
               };
 
               entryPoint = lib.mkOption {
-                type = lib.types.str;
+                type = lib.types.unspecified;
                 readOnly = true;
               };
 
@@ -96,12 +94,11 @@ in
             };
 
             config = lib.mkIf config.enable {
-              # Ejemplo: gerry_artemis
+              # Ejemplo: gerry_artemis.nix
               entryPoint = import "${self}/home/configurations/${config.username}_${config.hostname}.nix";
               # Para macos
               base = if lib.strings.hasSuffix "-darwin" config.system then "Users" else "home";
-
-              homeDirectory = "${config.base}/${config.username}";
+              homeDirectory = "/${config.base}/${config.username}";
 
               finalModules = [
                 config.entryPoint
@@ -109,7 +106,11 @@ in
                   home = {
                     inherit (config) username homeDirectory;
                   };
+                  _module.args = {
+                    inherit inputs;
+                  };
                 }
+                { systemd.user.startServices = "sd-switch"; }
               ] ++ config.modules ++ builtins.attrValues self.homeModules;
 
               packageName = "home/config/${name}";
@@ -121,7 +122,6 @@ in
 
               finalHome = inputs.home-manager.lib.homeManagerConfiguration {
                 pkgs = config.nixpkgs.legacyPackages.${config.system};
-                # extraSpecialArgs.npins = npins;
                 modules = config.finalModules;
               };
             };

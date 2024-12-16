@@ -9,11 +9,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1734149010,
-        "narHash": "sha256-KZytuAK2m+YTXnRY88sIMmVLJTpxc8yGWukkJlQiad4=",
+        "lastModified": 1734235408,
+        "narHash": "sha256-0yHVZ2+VaW36/RTGHm1x3p+KS1oAWIj+TWObLDUzHfQ=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "a51fd7b8d7221a806c1ece4bcca2db387d555ba1",
+        "rev": "02261a5dd442b8c6eb778c31e7967e734bc2ff76",
         "type": "gitlab"
       },
       "original": {
@@ -275,11 +275,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1734205341,
-        "narHash": "sha256-sgkyH+Fl7twFYhR5BbdY/lWxGsXG3nke3JiuG/dsg4s=",
+        "lastModified": 1734210937,
+        "narHash": "sha256-slkrgD2GZp4u3i90j4YkpZ8jnH26S8T2DuQdqXiVFyA=",
         "owner": "wamserma",
         "repo": "flake-programs-sqlite",
-        "rev": "6971c943ccfc27086169d145aeba8aa2d9caefc1",
+        "rev": "04ebd5ffc3442260081e49ab1f323ffef356bbdb",
         "type": "github"
       },
       "original": {
@@ -310,11 +310,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1734115935,
-        "narHash": "sha256-vpHUsF8LCJnr4+fsNICwR5fvqbsWhVBfzPYIX2u+Juw=",
+        "lastModified": 1734202210,
+        "narHash": "sha256-i/puyaGA5PCV1zXTy8IOiIPhKsVSUvVjJvNUfyTSpFA=",
         "owner": "MichaelPachec0",
         "repo": "spicetify-nix",
-        "rev": "140084a766f40ee4132e2fd721e7e6c508e835ff",
+        "rev": "212672de4b33c662c7a2e163d10cb7458f318ede",
         "type": "github"
       },
       "original": {
