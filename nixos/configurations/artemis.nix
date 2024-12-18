@@ -48,7 +48,6 @@ in
     };
   };
 
-
   fonts = {
     fontconfig.enable = true;
     packages = with pkgs; [
@@ -78,15 +77,50 @@ in
     sessionPackages = [ pkgs.hyprland ];
   };
 
-  services.dbus.packages = [pkgs.dconf];
+  services.dbus.packages = [ pkgs.dconf ];
   services.openssh.enable = true; # OpenSSH daemon
   services.printing.enable = true; # cups
 
   services.pipewire = {
     enable = true;
     alsa.enable = true;
+    alsa.support32Bit = true;
     jack.enable = true;
     pulse.enable = true;
+
+    # config.pipewire = {
+    #   "context.properties" = {
+    #     "default.clock.rate" = 48000;
+    #     "default.clock.quantum" = 1024;
+    #     "default.clock.min-quantum" = 32;
+    #     "default.clock.max-quantum" = 32;
+    #   };
+    # };
+
+    extraConfig.pipewire."99-custom" = {
+      "context.properties" = {
+        "default.clock.rate" = 48000;
+        "default.clock.quantum" = 256;
+        "default.clock.min-quantum" = 256;
+        "default.clock.max-quantum" = 2048;
+      };
+      "context.modules" = [
+        {
+          name = "libpipewire-module-rtkit";
+          args = {
+            "nice.level" = -15;
+            "rt.prio" = 88;
+            "rt.time.soft" = 200000;
+            "rt.time.hard" = 200000;
+          };
+          flags = [
+            "ifexists"
+            "nofail"
+          ];
+        }
+      ];
+    };
+
   };
 
   services.libinput = {
