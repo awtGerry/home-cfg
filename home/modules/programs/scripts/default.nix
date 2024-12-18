@@ -1,0 +1,3 @@
+{
+  imports = [ ./tmux-fzf.nix ];
+}
