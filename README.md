@@ -1,15 +1,27 @@
 # NixOS Configuration
 [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
 
-Configuration to manage my dev environment using Nix and [home-manager](https://github.com/nix-community/home-manager)
+Configuracion de mi sistema utilizando nix y [home-manager](https://github.com/nix-community/home-manager)
+
+> [!NOTE]
+> Esta configuracion esta hecha para poder aprender mejor Nix, no soy ningun experto y no quiero
+> hacerme pasar por uno, cualquier sugerencia para arreglar o mejorar seran bienvenidas.
+
+> [!Warning]
+> Esta configuracion apesar de quererla hacer semi modular esta pensada para utilizarse
+> en mis computadoras, con mi sistema y hardware especificos.
+> Puede no ser compatible con otro hardware (puede que si). Ten en cuenta que
+> intentar lanzar esta configuracion en otro sistema puede resultar en un sistema
+> no arrancable o en perdida de datos. Realiza cambios si es necesario.
 
 ## Hosts
-* `lyra`: Machine with support for newer hardware using Wayland (current main).
-* `artemis`: Machine with X config.
-* `pady`: My laptop, focused on simplicity, performance and battery life.
+* `artemis`: Soporta nuevo software, actualmente mi sistema principal (Wayland + Hyprland).
+* `lyra`: Maquina que utiliza X, para software mas sencillo solo para programar. (_on progress_)
+* `pady`: Sistema para portatiles, enfocado en la simplicidad y vida de la bateria. (_on progress_)
 
-> [!Caution]
-> This repository is configured for my specific host system and hardware.
-> It may not be compatible with other hardware. Attempting to build this on a
-> different system could result in an unbootable system or data loss.
-> Proceed with caution and make changes if necessary.
+
+## Inspiracion y recursos
+- [NobbZ: nixos-config](https://github.com/NobbZ/nixos-config)
+- [Kira Bruneau: nixos-config](https://gitlab.com/kira-bruneau/nixos-config)
+- [Misterio77: nix-config](https://github.com/Misterio77/nix-config/tree/main)
+- [Janik](https://discourse.nixos.org/u/Janik/summary)
