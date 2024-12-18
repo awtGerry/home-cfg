@@ -22,9 +22,8 @@ in
     programs.rofi = {
       package = rofi;
 
-      font = "SF-Pro 10";
-      terminal = "wezterm";
-      # terminal = config.apps.terminal;
+      font = "SF-Pro Display 10";
+      terminal = config.apps.terminal;
       location = "center";
 
       theme = launcher_config;

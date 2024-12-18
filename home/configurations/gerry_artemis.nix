@@ -15,7 +15,7 @@
 
     apps = {
       browser = "firefox";
-      terminal = "wezterm";
+      terminal = "kitty";
       # terminal = "ghostty";
       editor = "helix";
     };

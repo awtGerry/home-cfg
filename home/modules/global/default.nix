@@ -51,7 +51,7 @@ in
     };
     terminal = lib.mkOption {
       type = lib.types.str;
-      default = "wezterm";
+      default = "kitty";
       description = "Terminal del sistema";
     };
     editor = lib.mkOption {
