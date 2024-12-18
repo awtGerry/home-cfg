@@ -60,4 +60,15 @@ in
       description = "Editor principal";
     };
   };
+
+  options.dirs = {
+    publicRepos = lib.mkOption {
+      type = lib.types.path;
+      default = "${config.home.homeDirectory}/Dev/public/";
+    };
+    privateRepos = lib.mkOption {
+      type = lib.types.path;
+      default = "${config.home.homeDirectory}/Dev/private/";
+    };
+  };
 }
