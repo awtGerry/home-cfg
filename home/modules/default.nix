@@ -8,10 +8,12 @@
 
     "programs/nixpkgs" = ./programs/nixpkgs;
     "programs/helix" = ./programs/helix;
+    "programs/helix/lsp" = ./programs/helix/lsp.nix;
     "programs/wezterm" = ./programs/wezterm;
-    # "programs/sddm" = ./programs/sddm;
+    "programs/zsh" = ./programs/zsh;
 
     "misc/hyprland" = ./misc/hyprland;
+    "misc/waybar" = ./misc/waybar;
     "misc/home" = ./misc/home;
     "misc/rofi" = ./misc/rofi;
 

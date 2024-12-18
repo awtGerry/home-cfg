@@ -1,15 +1,9 @@
 _:
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, lib, ... }:
 let
   cfg = config.programs.helix;
 in
 {
-  imports = [ ./lsp.nix ];
 
   config = lib.mkIf cfg.enable {
     programs.helix = {
@@ -22,7 +16,9 @@ in
           cursorline = true;
           color-modes = true;
           true-color = true;
-          auto-pairs = false;
+
+          # Comment if you want auto-pairs
+          # auto-pairs = false;
 
           whitespace.characters.newline = "⤶";
         };

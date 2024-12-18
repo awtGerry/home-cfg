@@ -1,5 +1,12 @@
-{ lib, pkgs, ... }:
+_:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
+  cfg = config.programs.helix;
   mkLanguage =
     {
       name,
@@ -17,7 +24,7 @@ let
         "<" = ">";
         "'" = "'";
       };
-      language-server = lib.optional (langServer != null) langServer;
+      # language-servers = lib.optional (langServer != null) langServer;
     }
     // (lib.optionalAttrs (formatter != null) { inherit formatter; })
     // extraConfig;
@@ -49,69 +56,71 @@ let
       ];
 in
 {
-  programs.helix.languages = {
-    language = [
-      (mkLanguage {
-        name = "bash";
-        formatter.command = "${pkgs.shfmt}/bin/shfmt";
-      })
-      (mkLanguage { name = "c"; })
-      (mkLanguage { name = "markdown"; })
-      (mkLanguage {
-        name = "ruby";
-        extraConfig = {
-          language-server = [
-            {
-              name = "solargraph";
-              args = [ "stdio" ];
-            }
-          ];
-        };
-      })
-      (mkLanguage {
-        name = "json";
-        formatter = {
-          command = "biome";
-          args = [
-            "format"
-            "json"
-          ];
-        };
-        extraConfig = {
-          language-servers = [
-            {
-              name = "typescript-language-server";
-              except-features = [ "format" ];
-            }
-            "biome-lsp"
-          ];
-        };
-      })
-    ] ++ prettierLanguages;
+  config = lib.mkIf cfg.enable {
+    programs.helix.languages = {
+      language = [
+        (mkLanguage {
+          name = "bash";
+          formatter.command = "${pkgs.shfmt}/bin/shfmt";
+        })
+        (mkLanguage { name = "c"; })
+        (mkLanguage { name = "markdown"; })
+        # (mkLanguage {
+        #   name = "ruby";
+        #   extraConfig = {
+        #     language-server = [
+        #       {
+        #         name = "solargraph";
+        #         args = [ "stdio" ];
+        #       }
+        #     ];
+        #   };
+        # })
+        # (mkLanguage {
+        #   name = "json";
+        #   formatter = {
+        #     command = "biome";
+        #     args = [
+        #       "format"
+        #       "json"
+        #     ];
+        #   };
+        #   extraConfig = {
+        #     language-server = [
+        #       {
+        #         name = "typescript-language-server";
+        #         except-features = [ "format" ];
+        #       }
+        #       "biome-lsp"
+        #     ];
+        #   };
+        # })
+      ] ++ prettierLanguages;
 
-    language-server = {
-      biome-lsp = {
-        command = "biome";
-        args = [ "lsp-proxy" ];
-      };
-      nil = {
-        command = "${pkgs.nil}/bin/nil";
-        config.nil.formatting.command = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ];
-      };
-      typescript-language-server = {
-        command = "${pkgs.nodePackages.typescript-language-server}/bin/typescript-language-server";
-        args = [
-          "--stdio"
-          "tsserver-path=${pkgs.nodePackages.typescript}/lib/node_modules/typescript/lib"
-        ];
-      };
-      rust-analyzer = {
-        config = {
-          procMacro.ignored = {
-            leptos_macro = [
-              "component"
-              "server"
-            ];
+      language-server = {
+        biome-lsp = {
+          command = "biome";
+          args = [ "lsp-proxy" ];
+        };
+        nil = {
+          command = "${pkgs.nil}/bin/nil";
+          config.nil.formatting.command = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ];
+        };
+        typescript-language-server = {
+          command = "${pkgs.nodePackages.typescript-language-server}/bin/typescript-language-server";
+          args = [
+            "--stdio"
+            "tsserver-path=${pkgs.nodePackages.typescript}/lib/node_modules/typescript/lib"
+          ];
+        };
+        rust-analyzer = {
+          config = {
+            procMacro.ignored = {
+              leptos_macro = [
+                "component"
+                "server"
+              ];
+            };
           };
         };
       };

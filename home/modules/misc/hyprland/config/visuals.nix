@@ -184,12 +184,12 @@ in
         dim_inactive = true;
         dim_strength = "0.3";
         fullscreen_opacity = 1;
-        drop_shadow = true;
-        shadow_ignore_window = true;
-        shadow_offset = "0 8";
-        shadow_range = 50;
-        shadow_render_power = 3;
-        "col.shadow" = "rgba(00000055)";
+        # drop_shadow = true;
+        # shadow_ignore_window = true;
+        # shadow_offset = "0 8";
+        # shadow_range = 50;
+        # shadow_render_power = 3;
+        # "col.shadow" = "rgba(00000055)";
         blurls = [
           "lockscreen"
           "waybar"
@@ -203,7 +203,7 @@ in
       };
 
       dwindle = {
-        no_gaps_when_only = true;
+        # no_gaps_when_only = true;
         pseudotile = true;
         preserve_split = true;
       };

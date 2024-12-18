@@ -1,4 +1,4 @@
-{ self, ... }:
+_:
 {
   config,
   lib,
@@ -11,14 +11,17 @@ let
   symlink = config.lib.file.mkOutOfStoreSymlink;
 in
 {
-  options.profiles.browsing = {
+  options.profiles.gaming = {
     enable = lib.mkEnableOption "Activa algunos programas y configuraciones para jugadores";
   };
 
   config = lib.mkIf cfg.enable {
+    nixpkgs.allowedUnfree = [
+      "discord"
+      "steam"
+      "steam-run"
+    ];
     home.packages = with pkgs; [
-      discord
-
       # Paquetes para los controles
       xpad
       xboxdrv
@@ -36,13 +39,10 @@ in
       protontricks
       eww
       ukmm
-      vvvvvv
-      steam
-      steam-run
       heroic
 
       # Emulators
-      dolphinEmuMaster
+      dolphin-emu
       wineWowPackages.staging
       winetricks
       ryujinx # Emulador para switch
@@ -77,7 +77,7 @@ in
       "lutris/runners/dolphin.yml".source = settingsFormat.generate "dolphin.yml" {
         dolphin = {
           nogui = true;
-          runner_executable = "${pkgs.dolphinEmuMaster}/bin/dolphin-emu";
+          runner_executable = "${pkgs.dolphin-emu}/bin/dolphin-emu";
         };
 
         system = {

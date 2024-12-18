@@ -7,9 +7,7 @@ in
   options.nixpkgs.allowedUnfree = lib.mkOption {
     type = lib.types.listOf lib.types.str;
     default = [ ];
-    description = ''
-      Allows for  unfree packages by their name.
-    '';
+    description = ''Permite paquetes que no libres (por nombre)'';
   };
 
   config.nixpkgs.config.allowUnfreePredicate =

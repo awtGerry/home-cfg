@@ -6,9 +6,9 @@ let
   # Definir las aplicaciones usadas en el sistema
   # TODO: Mejor variables globales para las aplicaciones? ...
   defaultApps = {
-    terminal = "wezterm";
+    terminal = config.apps.terminal;
     altBrowser = "chromium";
-    editor = "hx";
+    editor = config.apps.editor;
     launcher = "rofi -show drun -show-icons";
     mixer = "pulsemixer";
     imageEditor = "gimp";
@@ -26,7 +26,6 @@ let
     "grim -o $(hyprctl -j activeworkspace | jq -r '.monitor') ${dir}/$(date +%Y-%m-%d_%H-%M-%S).png";
 in
 {
-  imports = [ ];
   options.wayland.windowManager.hyprland = {
     # Atajos de teclado
     bindings = {

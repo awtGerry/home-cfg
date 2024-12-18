@@ -47,41 +47,56 @@ in
     };
   };
 
-  imports = [
-    ./config
-    # ./wlogout.nix
-  ];
+  imports = [ ./config ];
 
   config = lib.mkIf cfg.enable {
-    wayland.windowManager.hyprland.settings = {
-      xwayland.force_zero_scaling = true;
-      exec-once = ''${startupScript}/bin/start'';
+    wayland.windowManager.hyprland = {
+      xwayland.enable = true;
+      systemd.enable = true;
+      settings = {
+        xwayland.force_zero_scaling = true;
+        exec-once = ''${startupScript}/bin/start'';
 
-      general = {
-        monitor = cfg.monitors;
-        workspace = cfg.workspaces;
-        gaps_in = 5;
-        gaps_out = 5;
-        border_size = 2;
-        "no_border_on_floating" = false;
-        layout = "dwindle";
-      };
+        general = {
+          monitor = cfg.monitors;
+          workspace = cfg.workspaces;
+          gaps_in = 5;
+          gaps_out = 5;
+          border_size = 2;
+          "no_border_on_floating" = false;
+          layout = "dwindle";
+        };
 
-      # Configuraciones del teclado (lo hace un poco mas veloz)
-      input = {
-        repeat_rate = 50;
-        repeat_delay = 300;
-      };
+        # Configuraciones del teclado (lo hace un poco mas veloz)
+        input = {
+          repeat_rate = 50;
+          repeat_delay = 300;
+        };
 
-      misc = {
-        disable_autoreload = true;
-        animate_mouse_windowdragging = false;
-        no_direct_scanout = false;
-        vfr = true;
-        disable_splash_rendering = true;
-        disable_hyprland_logo = true;
-        force_default_wallpaper = 0;
+        misc = {
+          disable_autoreload = true;
+          animate_mouse_windowdragging = false;
+          # no_direct_scanout = false;
+          vfr = true;
+          disable_splash_rendering = true;
+          disable_hyprland_logo = true;
+          force_default_wallpaper = 0;
+        };
       };
     };
+
+    home.packages = with pkgs; [
+      # Wayland packages
+      xorg.xprop
+      polkit
+      dconf
+      xwayland
+      xwaylandvideobridge
+      swww
+      wl-clipboard
+      wlr-randr
+      slurp
+      grim
+    ];
   };
 }

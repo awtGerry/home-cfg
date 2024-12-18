@@ -1,10 +1,19 @@
 _:
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}:
+{ lib, config, ... }:
+let
+  colorSchemes = {
+    light = {
+      nightfox = "nightfox"; # No me gusta 'dayfox'
+      tokyonight = "tokyonight-day";
+      gruvbox = "gruvbox_light";
+    };
+    dark = {
+      nightfox = "nightfox";
+      tokyonight = "tokyonight-night";
+      gruvbox = "gruvbox-dark_hard";
+    };
+  };
+in
 {
   # Elige la variante que se usara en el sistema
   options.theme = {
@@ -16,42 +25,39 @@ _:
       default = "dark";
       description = "Tema global para el sistema (light/dark)";
     };
-    # NOTE: La idea de scheme es que sea una derivada de 'variant' (no supe hacerlo de otra forma jeje)
-    # Ejemplo:
-    # config.theme.variant = "light"
-    # config.theme.scheme = if config.theme.variant == "light" then "tu_tema_claro" else "tu_tema_oscuro"
+
+    baseScheme = lib.mkOption {
+      type = lib.types.enum [
+        "nightfox"
+        "tokyonight"
+        "gruvbox"
+      ];
+      default = "nightfox";
+      description = "Familia de esquema de colores para utilizar";
+    };
+
     scheme = lib.mkOption {
       type = lib.types.str;
-      default = "nightfox";
-      description = "Esquema de colores";
+      description = "Determinado esquema de colores por tema";
+      default = colorSchemes.${config.theme.variant}.${config.theme.baseScheme};
     };
   };
 
-  # Define los programas del usuario
   options.apps = {
     browser = lib.mkOption {
       type = lib.types.str;
       default = "firefox";
-      description = "Define el navegador del sistema";
+      description = "Navegador principal";
     };
-
-    altBrowser = lib.mkOption {
-      enable = lib.mkEnableOption "Activa un navegador secundario";
-      type = lib.types.str;
-      default = "chromium";
-      description = "Define un navegador secundario del sistema";
-    };
-
     terminal = lib.mkOption {
       type = lib.types.str;
       default = "wezterm";
-      description = "Define la terminal del sistema";
+      description = "Terminal del sistema";
     };
-
     editor = lib.mkOption {
       type = lib.types.str;
       default = "helix";
-      description = "Define el editor del sistema";
+      description = "Editor principal";
     };
   };
 }

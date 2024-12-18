@@ -1,13 +1,8 @@
 { self, ... }:
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ pkgs, inputs, ... }:
 {
   profiles.base.enable = true;
-  fonts.fontconfig.enable = true;
+  # fonts.fontconfig.enable = true;
 
   systemd.user = {
     # sessionVariables = { NIX_PATH = nixPath; };
@@ -15,6 +10,7 @@
 
   home = {
     packages = with pkgs; [
+      hello
       tmate # Comparte terminales
 
       # Fuentes

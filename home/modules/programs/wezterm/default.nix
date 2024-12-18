@@ -16,6 +16,7 @@ in
         -- For some reason wezterm won't work on wayland if not added this line.
         config.enable_wayland = false;
 
+        config.color_scheme = 'nightfox'
         config.font_size = 14
 
         config.enable_tab_bar = false;

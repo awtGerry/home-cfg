@@ -1,4 +1,4 @@
-{ self, ... }:
+_:
 {
   config,
   inputs,
@@ -32,8 +32,8 @@ in
 
         # Personalizacion visual
         settings = {
-          # "browser.startup.homepage" = "https://awtgerry.github.io/startpage/";
-          "services.sync.username" = "${config.username}@${config.hostname}.com";
+          # "services.sync.username" = "${config.username}@${config.hostname}.com"; # TODO
+          "services.sync.username" = "gerry@artemis.com";
 
           "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
           # "extensions.activeThemeID" = "22b0eca1-8c02-4c0d-a5d7-6604ddd9836e";
@@ -353,10 +353,5 @@ in
 
       };
     };
-
-    home.packages = with pkgs; [
-      # self.packages.${pkgs.system}.google-chrome
-      firefox
-    ];
   };
 }
