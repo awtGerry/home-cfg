@@ -8,15 +8,9 @@
       inputs',
       ...
     }:
-    let
-      upkgs = inputs'.nixpkgs.legacyPackages;
-    in
     {
-      packages = lib.mkMerge [
-        {
-          "sf/pro" = upkgs.callPackage ./sf-pro { };
-          "rofi/unicode" = upkgs.callPackage ./rofi-unicode { };
-        }
-      ];
+      packages = {
+        sf-pro = pkgs.callPackage ./sf-pro { inherit (pkgs) stdenv; };
+      };
     };
 }

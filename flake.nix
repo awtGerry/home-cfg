@@ -4,9 +4,11 @@
   outputs =
     { flake-parts, ... }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "x86_64-linux" ];
-
-      # _module.args.npins = import ./npins; # NOTA: Aun no se si usar npins o hacerlo manual.
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "aarch64-darwin"
+      ];
 
       imports = [
         ./parts/system.nix
@@ -22,11 +24,6 @@
 
         ./packages
       ];
-
-      # flake = {
-      #   nixosModules = import ./nixos/modules inputs;
-      #   homeModules = import ./home/modules inputs;
-      # };
     };
 
   inputs = {
@@ -63,5 +60,7 @@
     # Modifica la apariencia de spotify
     spictify.url = "github:MichaelPachec0/spicetify-nix";
     spictify.inputs.nixpkgs.follows = "nixpkgs";
+
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 }

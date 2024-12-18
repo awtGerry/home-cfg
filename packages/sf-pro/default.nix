@@ -1,20 +1,19 @@
 # Instala la fuente de apple
-
 {
   stdenv,
-  fetchFromGithub,
+  fetchFromGitHub,
   unzip,
 }:
 
-stdenv.mkDerivation (self: {
+stdenv.mkDerivation {
   pname = "SF-Pro";
   version = "3";
 
-  src = fetchFromGithub {
+  src = fetchFromGitHub {
     owner = "sahibjotsaggu";
-    name = "San-Francisco-Pro-Fonts";
+    repo = "San-Francisco-Pro-Fonts";
     rev = "master";
-    sha256 = "";
+    sha256 = "sha256-mAXExj8n8gFHq19HfGy4UOJYKVGPYgarGd/04kUIqX4=";
   };
 
   nativeBuildInputs = [ unzip ];
@@ -23,6 +22,6 @@ stdenv.mkDerivation (self: {
     mkdir -p $out/share/fonts/opentype
     mkdir -p $out/share/fonts/truetype
     cp *.otf $out/share/fonts/opentype
-    cp *.otf $out/share/fonts/truetype
+    cp *.ttf $out/share/fonts/truetype  # Changed otf to ttf for truetype
   '';
-})
+}

@@ -48,6 +48,15 @@ in
     };
   };
 
+
+  fonts = {
+    fontconfig.enable = true;
+    packages = with pkgs; [
+      maple-mono-SC-NF
+      inputs.self.packages.${pkgs.system}.sf-pro
+    ];
+  };
+
   time.timeZone = "America/Mexico_City";
 
   environment.systemPackages = [ pkgs.iptables ];
@@ -69,6 +78,7 @@ in
     sessionPackages = [ pkgs.hyprland ];
   };
 
+  services.dbus.packages = [pkgs.dconf];
   services.openssh.enable = true; # OpenSSH daemon
   services.printing.enable = true; # cups
 
@@ -136,19 +146,6 @@ in
       ]
     }
   '';
-
-  # Para este sistema usare la version 'default' de home-manager
-  imports = [ inputs.home-manager.nixosModules.home-manager ];
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users.gerry =
-      { ... }:
-      {
-        imports = [ ../../home/configurations/gerry_artemis.nix ];
-        _module.args.inputs = inputs; # Pass inputs directly to the home-manager config
-      };
-  };
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database

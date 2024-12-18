@@ -2,13 +2,16 @@ _:
 { config, lib, ... }:
 let
   allowed = config.nix.allowedUnfree;
+  kibibyte = 1024;
+  mibibyte = 1024 * kibibyte;
+  gibibyte = 1024 * mibibyte;
 in
 {
   options.nix = {
     allowedUnfree = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       default = [ ];
-      description = ''Permite paquetes no libres por nombre'';
+      description = ''Permite paquetes que no libres (por nombre)'';
     };
   };
 
@@ -22,6 +25,8 @@ in
         "root"
         "@wheel"
       ];
+      nix.settings.min-free = lib.mkDefault (5 * gibibyte);
+      nix.settings.max-free = lib.mkDefault (25 * gibibyte);
       nix.settings.allow-import-from-derivation = lib.mkDefault false;
     }
   ];
