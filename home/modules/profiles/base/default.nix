@@ -19,6 +19,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+
     # Configuracion de GTK
     gtk = {
       enable = true;
@@ -26,13 +27,16 @@ in
       theme.package = pkgs.arc-theme;
       theme.name = if isDark then "Arc-Dark" else "Arc";
 
+      cursorTheme.name = if isDark then "Posy_Cursor_Black" else "Posy_Cursor";
+      cursorTheme.package = pkgs.posy-cursors;
+      cursorTheme.size = 16;
+
       iconTheme.package = pkgs.kora-icon-theme;
       iconTheme.name = "kora";
 
       font = {
         name = "SF Pro Display";
         package = inputs.self.packages.${pkgs.system}.sf-pro;
-
       };
 
       gtk3 = {
@@ -56,9 +60,18 @@ in
       gtk4.extraConfig.gtk-application-prefer-dark-theme = if isDark then 1 else 0;
     };
 
+    nixpkgs.allowedUnfree = [ "posy-cursors" ];
+    home.pointerCursor = {
+      package = pkgs.posy-cursors;
+      name = if isDark then "Posy_Cursor_Black" else "Posy_Cursor";
+      size = 16;
+      gtk.enable = true;
+      x11.enable = true;
+    };
+
     xsession = {
       enable = true;
-      # numlock.enable = true;
+      numlock.enable = true;
       # NOTA: Activar esta opcion si se desea usar teclado español por defecto!
       # profileExtra = ''
       #   setxkbmap es
@@ -84,7 +97,7 @@ in
           enable_audio_bell = false;
           confirm_os_window_close = 0;
 
-          # Nightfox colors for Kitty
+          # Nightfox colors
           ## name: nightfox
           ## upstream: https://github.com/edeneast/nightfox.nvim/raw/main/extra/nightfox/kitty.conf
           background = "#152528";

@@ -27,12 +27,10 @@ in
           ublock-origin
           vimium
           return-youtube-dislikes
-          tabliss
         ];
 
         # Personalizacion visual
         settings = {
-          # "services.sync.username" = "${config.username}@${config.hostname}.com"; # TODO
           "services.sync.username" = "gerry@artemis.com";
 
           "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
