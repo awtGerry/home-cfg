@@ -1,4 +1,8 @@
-_: {...}:
+_:
+{ ... }:
 {
-  imports = [ ./tmux-fzf.nix ];
+  imports = [
+    ./tmux-fzf.nix
+    ./screenshots.nix
+  ];
 }
