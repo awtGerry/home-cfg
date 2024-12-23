@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
 
   config = {
@@ -20,8 +20,7 @@
       editor = "helix";
     };
 
-    programs.waybar.enable = true;
-
+    programs.waybar.enable = true; # TODO: Falta actualizar configuracion de waybar
     wayland.windowManager.hyprland = {
       enable = true;
       visuals = {
@@ -49,6 +48,14 @@
       #   # ];
       # };
     };
+
+    nixpkgs.allowedUnfree = [
+      "spotify"
+    ];
+
+    home.packages = with pkgs; [
+      spotify
+    ];
 
     home.sessionVariables = {
       # Usa Wayland para aplicaciones Chrome & Electron
