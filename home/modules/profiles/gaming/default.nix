@@ -56,7 +56,7 @@ in
     # Configuracion de lutris
     xdg.configFile = {
       "lutris/lutris.conf".source =
-        symlink "${config.dirs.repoDir}home/modules/profiles/gaming/lutris.conf";
+        symlink "${config.dirs.repoDir}/home/modules/profiles/gaming/lutris.conf";
 
       # Nintendo 64 Emulator
       "lutris/runners/mupen64plus.yml".source = settingsFormat.generate "mupen64plus.yml" {

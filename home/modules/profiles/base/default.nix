@@ -60,7 +60,6 @@ in
       gtk4.extraConfig.gtk-application-prefer-dark-theme = if isDark then 1 else 0;
     };
 
-    nixpkgs.allowedUnfree = [ "posy-cursors" ];
     home.pointerCursor = {
       package = pkgs.posy-cursors;
       name = if isDark then "Posy_Cursor_Black" else "Posy_Cursor";
@@ -194,10 +193,17 @@ in
       zsh.enable = true;
     };
 
+    nixpkgs.allowedUnfree = [
+      "posy-cursors"
+      "unrar"
+    ];
+
     # Otros programas
     home.packages = with pkgs; [
       # Conversion de archivos
+      unrar
       unzip
+      p7zip
       zip
 
       # Utilidades del sistema

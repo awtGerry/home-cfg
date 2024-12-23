@@ -88,15 +88,7 @@ in
     jack.enable = true;
     pulse.enable = true;
 
-    # config.pipewire = {
-    #   "context.properties" = {
-    #     "default.clock.rate" = 48000;
-    #     "default.clock.quantum" = 1024;
-    #     "default.clock.min-quantum" = 32;
-    #     "default.clock.max-quantum" = 32;
-    #   };
-    # };
-
+    # Arregla problemas de audio en algunos juegos
     extraConfig.pipewire."99-custom" = {
       "context.properties" = {
         "default.clock.rate" = 48000;
@@ -137,6 +129,7 @@ in
   # hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ]; # No funciona para 5000 cards.
 
   virtualisation = {
+    waydroid.enable = true; # Emulador android para wayland
     docker.enable = true;
     containers.enable = true;
     libvirtd.enable = true;
