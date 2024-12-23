@@ -10,24 +10,21 @@ let
   mkLanguage =
     {
       name,
-      formatter ? null,
       autoFormat ? true, # Si no se especifica siempre se usara
       langServer ? null,
-      extraConfig ? { },
+      formatter ? null,
     }:
     {
       inherit name;
       auto-format = autoFormat;
       # Cerrar cosas
       auto-pairs = {
-        # Solo me gusta usar estos, {} o () me incomoda...
         "<" = ">";
         "'" = "'";
       };
-      # language-servers = lib.optional (langServer != null) langServer;
+      language-servers = lib.optional (langServer != null) langServer;
     }
-    // (lib.optionalAttrs (formatter != null) { inherit formatter; })
-    // extraConfig;
+    // (lib.optionalAttrs (formatter != null) { inherit formatter; });
 
   prettier = lang: {
     command = "${pkgs.nodePackages.prettier}/bin/prettier";
@@ -65,36 +62,14 @@ in
         })
         (mkLanguage { name = "c"; })
         (mkLanguage { name = "markdown"; })
-        # (mkLanguage {
-        #   name = "ruby";
-        #   extraConfig = {
-        #     language-server = [
-        #       {
-        #         name = "solargraph";
-        #         args = [ "stdio" ];
-        #       }
-        #     ];
-        #   };
-        # })
-        # (mkLanguage {
-        #   name = "json";
-        #   formatter = {
-        #     command = "biome";
-        #     args = [
-        #       "format"
-        #       "json"
-        #     ];
-        #   };
-        #   extraConfig = {
-        #     language-server = [
-        #       {
-        #         name = "typescript-language-server";
-        #         except-features = [ "format" ];
-        #       }
-        #       "biome-lsp"
-        #     ];
-        #   };
-        # })
+        (mkLanguage {
+          name = "nix";
+          langServer = "nil";
+        })
+        (mkLanguage {
+          name = "ruby";
+          langServer = "solargraph";
+        })
       ] ++ prettierLanguages;
 
       language-server = {
@@ -122,6 +97,11 @@ in
               ];
             };
           };
+        };
+        solargraph = {
+          command = "${pkgs.rubyPackages.solargraph}/bin/solargraph";
+          config.diagnostics = true;
+          config.formatting = true;
         };
       };
     };
