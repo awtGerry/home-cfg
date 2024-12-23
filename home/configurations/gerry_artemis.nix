@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 {
 
   config = {
@@ -9,7 +9,7 @@
     ];
 
     theme = {
-      variant = "light";
+      variant = "dark";
       baseScheme = "nightfox";
     };
 
@@ -28,8 +28,11 @@
         # animation.enable = true;
         # Agrega reglas de transparencia (testeando con firefox)
         transparency = {
+          enable = true;
           opacityRules = {
-            terminal = { kitty = "0.90 0.90"; };
+            terminal = {
+              kitty = "0.90 0.90";
+            };
             apps = {
               firefox = "0.90 0.90";
             };
@@ -39,9 +42,6 @@
       # Atajos de teclado
       # bindings = {
       #   modKey = "SUPER";
-      #   # apps = {
-      #   #   terminal = "ghostty";
-      #   # };
       #   # NOTE: Aqui se pueden añadir atajos de teclado adicionales
       #   # extraBinds = [
       #   #   "$mod, C, exec, code"

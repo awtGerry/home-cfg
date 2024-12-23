@@ -26,6 +26,21 @@ let
     };
   };
 
+  # Helper function to safely get opacity rules
+  getOpacityRules =
+    category:
+    if cfg.visuals.transparency.opacityRules ? ${category} then
+      cfg.visuals.transparency.opacityRules.${category}
+    else
+      defaultOpacityRules.${category};
+
+  # Helper function to create opacity rules
+  makeOpacityRules =
+    category:
+    lib.mapAttrsToList (name: opacity: "opacity ${opacity},class:^(${name})$") (
+      getOpacityRules category
+    );
+
   toRegex =
     list:
     let
@@ -212,20 +227,14 @@ in
 
       windowrulev2 =
         (lib.optionals cfg.visuals.transparency.enable (
-          # Terminal
-          (lib.mapAttrsToList (
-            name: opacity: "opacity ${opacity},class:^(${name})$"
-          ) cfg.visuals.transparency.opacityRules.terminal)
+          # Terminal rules
+          (makeOpacityRules "terminal")
           ++
-            # Aplicaciones
-            (lib.mapAttrsToList (
-              name: opacity: "opacity ${opacity},class:^(${name})$"
-            ) cfg.visuals.transparency.opacityRules.apps)
+            # Apps rules
+            (makeOpacityRules "apps")
           ++
-            # Sistema
-            (lib.mapAttrsToList (
-              name: opacity: "opacity ${opacity},class:^(${name})$"
-            ) cfg.visuals.transparency.opacityRules.system)
+            # System rules
+            (makeOpacityRules "system")
         ))
         ++ cfg.visuals.windowRules.floatRules;
 

@@ -67,7 +67,7 @@ in
           layout = "dwindle";
         };
 
-        # Configuraciones del teclado (lo hace un poco mas veloz)
+        # Configuraciones del teclado (lo hace un poco mas veloz) y mouse cursor
         input = {
           repeat_rate = 50;
           repeat_delay = 300;

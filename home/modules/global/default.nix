@@ -10,7 +10,7 @@ let
     dark = {
       nightfox = "nightfox";
       tokyonight = "tokyonight-night";
-      gruvbox = "gruvbox-dark_hard";
+      gruvbox = "gruvbox_dark_hard";
     };
   };
 in
@@ -59,9 +59,20 @@ in
       default = "helix";
       description = "Editor principal";
     };
+    launcher = lib.mkOption {
+      type = lib.types.str;
+      default = "rofi";
+      description = "Launcher";
+    };
   };
 
   options.dirs = {
+    # Directorio de este repositorio
+    # (se utiliza en algunas configuraciones hasta que consiga una mejor manera de hacer links simbolicos)
+    repoDir = lib.mkOption {
+      type = lib.types.path;
+      default = "${config.home.homeDirectory}/Dev/public/home-cfg";
+    };
     publicRepos = lib.mkOption {
       type = lib.types.path;
       default = "${config.home.homeDirectory}/Dev/public/";

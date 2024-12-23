@@ -9,7 +9,7 @@ let
     terminal = config.apps.terminal;
     altBrowser = "chromium";
     editor = config.apps.editor;
-    launcher = "rofi -show drun -show-icons";
+    launcher = "${config.apps.launcher} -show drun -show-icons";
     mixer = "pulsemixer";
     imageEditor = "gimp";
     diskUsage = "duf";
