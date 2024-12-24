@@ -17,7 +17,7 @@ Configuracion de mi sistema utilizando nix y [home-manager](https://github.com/n
 ## Hosts
 * `artemis`: Soporta nuevo software, actualmente mi sistema principal (Wayland + Hyprland).
 * `lyra`: Maquina que utiliza X, para software mas sencillo solo para programar. (_on progress_)
-* `pady`: Sistema para portatiles, enfocado en la simplicidad y vida de la bateria. (_on progress_)
+* `freya`: Sistema para portatiles, enfocado en la simplicidad y vida de la bateria (X11 + DWM). (_on progress_)
 
 
 ## Inspiracion y recursos
