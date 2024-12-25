@@ -76,7 +76,7 @@ in
           repo = "dwm";
           rev = "master";
           # NOTE: Cada que dwm se actualice el sha256 se actualiza con el.
-          sha256 = "sha256-2LscNELatqshu59PK3bt8el/TmxUDvTjOIs6Q+rhjps=";
+          sha256 = "sha256-SMZn6ZbUe2oTsUk2uerroHn6iexQTvmr4h6/AprwjrM=";
         };
       };
     };

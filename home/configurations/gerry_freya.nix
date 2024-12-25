@@ -18,8 +18,6 @@
       editor = "helix";
     };
 
-    programs.waybar.enable = true;
-
     home.sessionVariables = {
       # Usa Wayland para aplicaciones Chrome & Electron
       NIXOS_OZONE_WL = 1;
