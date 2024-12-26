@@ -61,6 +61,12 @@
     spictify.url = "github:MichaelPachec0/spicetify-nix";
     spictify.inputs.nixpkgs.follows = "nixpkgs";
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    # hyprland.url = "github:hyprwm/Hyprland";
+
+    # Por ahora ghostty vive aqui
+    ghostty.url = "github:ghostty-org/ghostty";
+    ghostty.inputs.nixpkgs-unstable.follows = "nixpkgs";
+    ghostty.inputs.nixpkgs-stable.follows = "nixpkgs";
+
   };
 }

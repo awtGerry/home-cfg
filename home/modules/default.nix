@@ -7,6 +7,7 @@
     "profiles/gaming" = ./profiles/gaming;
 
     "programs/nixpkgs" = ./programs/nixpkgs;
+    "programs/ghostty" = ./programs/ghostty;
     "programs/helix" = ./programs/helix;
     "programs/helix/lsp" = ./programs/helix/lsp.nix;
     "programs/scripts" = ./programs/scripts;
