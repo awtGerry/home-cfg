@@ -8,7 +8,8 @@ in
   config = lib.mkIf cfg.enable {
     programs.helix = {
       settings = {
-        theme = config.theme.scheme;
+        # theme = config.theme.scheme;
+        theme = if config.theme.scheme == "gruvbox" then "gruvbox_dark_hard" else config.theme.scheme;
         editor = {
           line-number = "relative";
           lsp.display-messages = true;
@@ -17,8 +18,8 @@ in
           color-modes = true;
           true-color = true;
 
-          # Comment if you want auto-pairs
-          # auto-pairs = false;
+          # uncomment if you want auto-pairs
+          auto-pairs = false;
 
           whitespace.characters.newline = "⤶";
         };

@@ -10,13 +10,12 @@
 
     theme = {
       variant = "dark";
-      baseScheme = "nightfox";
+      baseScheme = "gruvbox";
     };
 
     apps = {
       browser = "firefox";
-      terminal = "kitty";
-      # terminal = "ghostty";
+      terminal = "ghostty";
       editor = "helix";
     };
 
@@ -30,7 +29,7 @@
           enable = true;
           opacityRules = {
             terminal = {
-              kitty = "0.90 0.90";
+              ghostty = "0.90 0.90";
             };
             apps = {
               firefox = "0.90 0.90";
