@@ -5,7 +5,6 @@
     activeProfiles = [
       "development"
       "browsing"
-      "gaming"
     ];
 
     theme = {
@@ -15,8 +14,7 @@
 
     apps = {
       browser = "firefox";
-      terminal = "kitty";
-      # terminal = "ghostty";
+      terminal = "ghostty";
       editor = "helix";
     };
 
