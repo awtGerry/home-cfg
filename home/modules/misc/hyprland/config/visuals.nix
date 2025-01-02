@@ -7,11 +7,9 @@ let
   # Reglas de opacidad y transparencia
   defaultOpacityRules = {
     terminal = {
-      wezterm = "0.90 0.90";
       foot = "0.90 0.90";
     };
     apps = {
-      firefox = "0.10 0.10";
       lutris = "0.90 0.90";
       steam = "0.80 0.80";
       spotify = "0.80 0.80";

@@ -91,7 +91,8 @@ in
       tmux = {
         enable = true;
         disableConfirmationPrompt = true;
-        terminal = "screen-256color";
+        # terminal = "screen-256color";
+        terminal = "xterm-256color"; # Arregla problemas con gruvbox
         clock24 = true;
 
         extraConfig = ''
