@@ -31,9 +31,6 @@
             terminal = {
               ghostty = "0.90 0.90";
             };
-            apps = {
-              firefox = "0.90 0.90";
-            };
           };
         };
       };

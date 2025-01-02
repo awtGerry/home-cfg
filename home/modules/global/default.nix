@@ -1,16 +1,20 @@
 _:
 { lib, config, ... }:
 let
+  # TODO: Los temas (ej: gruvbox) tienen diferentes nombres en diferentes programas, ver si
+  #       se puede hacer un 'diccionario' con los nombres
   colorSchemes = {
     light = {
-      nightfox = "nightfox"; # No me gusta 'dayfox'
+      nightfox = "dayfox";
       tokyonight = "tokyonight-day";
       gruvbox = "gruvbox_light";
+      catppuccin = "catppuccin";
     };
     dark = {
       nightfox = "nightfox";
-      tokyonight = "tokyonight-night";
-      gruvbox = "gruvbox_dark_hard";
+      tokyonight = "tokyonight";
+      gruvbox = "gruvbox";
+      catppuccin = "catppuccin";
     };
   };
 in
@@ -29,6 +33,7 @@ in
     baseScheme = lib.mkOption {
       type = lib.types.enum [
         "nightfox"
+        "catppuccin"
         "tokyonight"
         "gruvbox"
       ];
