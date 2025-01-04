@@ -64,6 +64,7 @@ in
   services.xserver = {
     enable = true;
     xkb.layout = "us";
+    xkbOptions = "caps:escape"; # Utiliza `Bloq Mayus.` como `ESC`
     videoDrivers = [ "amdgpu" ]; # @necesary
   };
 
@@ -159,6 +160,14 @@ in
   # Activa algunos programas (zsh necesario)
   programs = {
     steam.enable = true;
+
+    # Arregla algunos problemas con helix y tmux
+    screen = {
+      enable = true;
+      screenrc = ''
+        maptimeout 0
+      '';
+    };
 
     zsh.enable = true;
     zsh.enableCompletion = false;
