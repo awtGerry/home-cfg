@@ -65,6 +65,7 @@ in
   services.xserver = {
     enable = true;
     xkb.layout = "us";
+    xkbOptions = [ "caps:escape" ]; # Utiliza `Bloq Mayus.` como `ESC`
 
     windowManager = {
       dwm.enable = true;
