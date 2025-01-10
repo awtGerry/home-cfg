@@ -1,5 +1,6 @@
 _:
 {
+  inputs,
   config,
   lib,
   pkgs,
@@ -20,8 +21,10 @@ in
       "discord"
       "steam"
       "steam-run"
+      "snes9x"
     ];
     home.packages = with pkgs; [
+      discord
       # Paquetes para los controles
       xpad
       xboxdrv
@@ -45,7 +48,12 @@ in
       dolphin-emu
       wineWowPackages.staging
       winetricks
+      snes9x
+      shadps4
       ryujinx # Emulador para switch
+      inputs.self.packages.${pkgs.system}.sudachi
+      xemu
+      # inputs.self.packages.${pkgs.system}.extract-xiso
 
       # Game dependencies
       xorg.libXtst
@@ -92,6 +100,18 @@ in
         };
       };
 
+      # SNES
+      "lutris/runners/snes9x.yml".source = settingsFormat.generate "snes9x.yml" {
+        snes9x = {
+          nogui = true;
+          runner_executable = "${pkgs.snes9x}/bin/snes9x";
+        };
+
+        system = {
+          disable_runtime = true;
+        };
+      };
+
       # Wii U Emulator
       "lutris/runners/cemu.yml".source = settingsFormat.generate "cemu.yml" {
         cemu = {
@@ -106,7 +126,11 @@ in
       # Nintendo Switch Emulator
       "lutris/runners/ryujinx.yml".source = settingsFormat.generate "ryujinx.yml" {
         ryujinx = {
-          runner_executable = "${pkgs.ryujinx}/bin/ryujinx";
+          # runner_executable = "${pkgs.ryujinx}/bin/ryujinx";
+          # Por ahora usare sudachi
+          # TODO: Ver si hay una manera de agregar un runner no listado a lutris
+          # runner_executable = "/nix/store/cydkw8jjl27ki9qhwccylbrxa8pbf1yq-user-environment/bin/sudachi";
+          runner_executable = "${inputs.self.packages.${pkgs.system}.sudachi}/bin/sudachi";
         };
 
         system = {
@@ -118,6 +142,28 @@ in
       "lutris/runners/pcsx2.yml".source = settingsFormat.generate "pcsx2.yml" {
         pcsx2 = {
           runner_executable = "${pkgs.pcsx2}/bin/pcsx2-qt";
+        };
+
+        system = {
+          disable_runtime = true;
+        };
+      };
+
+      # PS4
+      "lutris/runners/shadps4.yml".source = settingsFormat.generate "shadps4.yml" {
+        shadps4 = {
+          runner_executable = "${pkgs.shadps4}/bin/shadps4";
+        };
+
+        system = {
+          disable_runtime = true;
+        };
+      };
+
+      # Xbox emulator
+      "lutris/runners/xemu.yml".source = settingsFormat.generate "xemu.yml" {
+        xemu = {
+          runner_executable = "${pkgs.xemu}/bin/xemu";
         };
 
         system = {
