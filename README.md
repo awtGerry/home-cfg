@@ -1,4 +1,5 @@
 # NixOS Configuration
+
 [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
 
 Configuracion de mi sistema utilizando nix y [home-manager](https://github.com/nix-community/home-manager)
@@ -15,12 +16,13 @@ Configuracion de mi sistema utilizando nix y [home-manager](https://github.com/n
 > no arrancable o en perdida de datos. Realiza cambios si es necesario.
 
 ## Hosts
-* `artemis`: Soporta nuevo software, actualmente mi sistema principal (Wayland + Hyprland).
-* `lyra`: Maquina que utiliza X, para software mas sencillo solo para programar. (_on progress_)
-* `freya`: Sistema para portatiles, enfocado en la simplicidad y vida de la bateria (X11 + DWM). (_on progress_)
 
+- `artemis`: Soporta nuevo software, actualmente mi sistema principal (Wayland + Hyprland).
+- `lyra`: Maquina que utiliza X, para software mas sencillo solo para programar. (_on progress_)
+- `freya`: Sistema para portatiles, enfocado en la simplicidad y vida de la bateria (X11 + DWM).
 
 ## Inspiracion y recursos
+
 - [NobbZ: nixos-config](https://github.com/NobbZ/nixos-config)
 - [Kira Bruneau: nixos-config](https://gitlab.com/kira-bruneau/nixos-config)
 - [Misterio77: nix-config](https://github.com/Misterio77/nix-config/tree/main)
