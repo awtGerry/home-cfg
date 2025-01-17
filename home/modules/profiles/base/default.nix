@@ -77,12 +77,24 @@ in
       # '';
     };
 
+    xdg.mimeApps = {
+      enable = true;
+      associations.added = {
+        "inode/directory" = [ "thunar.desktop" ];
+      };
+      defaultApplications = {
+        "inode/directory" = [ "thunar.desktop" ];
+      };
+    };
+
     programs = {
       bat.enable = true;
       btop.enable = true;
       firefox.enable = true; # Todos tienen firefox, solo los 'browsing' tienen firefox personalizado
       fzf.enable = true;
       helix.enable = if config.apps.editor == "helix" then true else false;
+      kitty.enable = if config.apps.terminal == "kitty" then true else false;
+      # ghostty.enable = if config.apps.terminal == "ghostty" then true else false;
       home-manager.enable = true;
       lsd.enable = true;
       ssh.enable = true;
@@ -98,6 +110,7 @@ in
         extraConfig = ''
           unbind C-b
           set -g prefix C-Space
+          set -sg escape-time 0 
 
           # basics
           set -g status-style 'bg=#101010 fg=#EEEEEE'
