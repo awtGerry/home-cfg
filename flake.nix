@@ -40,7 +40,7 @@
     nix.inputs.flake-parts.follows = "flake-parts";
     nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Arregla command-not-found para sqlite
+    # Arregla errores de sqlite
     programsdb.url = "github:wamserma/flake-programs-sqlite";
     programsdb.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -67,6 +67,10 @@
     ghostty.url = "github:ghostty-org/ghostty";
     ghostty.inputs.nixpkgs-unstable.follows = "nixpkgs";
     ghostty.inputs.nixpkgs-stable.follows = "nixpkgs";
+
+    # Rust
+    rust-overlay.url = "github:oxalica/rust-overlay";
+    rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
   };
 }

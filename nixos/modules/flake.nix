@@ -1,6 +1,7 @@
 {
   nix,
   nixpkgs,
+  rust-overlay,
   programsdb,
   ...
 }:
@@ -19,6 +20,11 @@ in
 
   config = lib.mkIf config.nix.flakes.enable {
     programs.command-not-found.dbPath = programsdb.packages.${pkgs.system}.programs-sqlite;
+
+    nixpkgs.overlays = [ rust-overlay.overlays.default ];
+    environment.systemPackages = [
+      pkgs.rust-bin.stable.latest.default
+    ];
 
     nix = {
       package = lib.mkDefault nix.packages.${pkgs.system}.nix;

@@ -58,7 +58,10 @@ in
 
   time.timeZone = "America/Mexico_City";
 
-  environment.systemPackages = [ pkgs.iptables ];
+  environment.systemPackages = [
+    pkgs.iptables
+    pkgs.libsForQt5.qt5.qtwebengine
+  ];
 
   # Xserver
   services.xserver = {
@@ -72,7 +75,7 @@ in
     enable = true;
     plugins = [ pkgs.interception-tools-plugins.caps2esc ];
     udevmonConfig = ''
-      - JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${pkgs.interception-tools-plugins.caps2esc}/bin/caps2esc | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
+      - JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${pkgs.interception-tools-plugins.caps2esc}/bin/caps2esc -m 1 | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
         DEVICE:
           EVENTS:
             EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
