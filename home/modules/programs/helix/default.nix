@@ -9,6 +9,7 @@ in
     programs.helix = {
       settings = {
         # theme = config.theme.scheme;
+        # TODO: Mejorar estos metodos
         theme = if config.theme.scheme == "gruvbox" then "gruvbox_dark_hard" else config.theme.scheme;
         editor = {
           line-number = "relative";
@@ -24,7 +25,7 @@ in
           whitespace.characters.newline = "⤶";
         };
         keys.normal = {
-          # Ctrl-c como en vim
+          # Utilizar ctrl-c para escape
           C-c = [
             "keep_primary_selection"
             "collapse_selection"

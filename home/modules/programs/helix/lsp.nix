@@ -18,10 +18,10 @@ let
       inherit name;
       auto-format = autoFormat;
       # Cerrar cosas
-      auto-pairs = {
-        "<" = ">";
-        "'" = "'";
-      };
+      # auto-pairs = {
+      #   "<" = ">";
+      #   "'" = "'";
+      # };
       language-servers = lib.optional (langServer != null) langServer;
     }
     // (lib.optionalAttrs (formatter != null) { inherit formatter; });
@@ -40,6 +40,7 @@ let
         lang:
         mkLanguage {
           name = lang;
+          autoFormat = true;
           formatter = prettier lang;
         }
       )
@@ -67,6 +68,18 @@ in
           langServer = "nil";
         })
         (mkLanguage {
+          name = "rust";
+          autoFormat = true;
+          # langServer = "${pkgs.rust-analyzer}/bin/rust-analyzer";
+          # langServer = [ "rust-analyzer" ];
+          langServer = "rust-analyzer";
+        })
+        (mkLanguage {
+          name = "lua";
+          autoFormat = true;
+          langServer = "${pkgs.lua-language-server}/bin/lua-language-server";
+        })
+        (mkLanguage {
           name = "ruby";
           langServer = "solargraph";
         })
@@ -87,16 +100,6 @@ in
             "--stdio"
             "tsserver-path=${pkgs.nodePackages.typescript}/lib/node_modules/typescript/lib"
           ];
-        };
-        rust-analyzer = {
-          config = {
-            procMacro.ignored = {
-              leptos_macro = [
-                "component"
-                "server"
-              ];
-            };
-          };
         };
         solargraph = {
           command = "${pkgs.rubyPackages.solargraph}/bin/solargraph";
