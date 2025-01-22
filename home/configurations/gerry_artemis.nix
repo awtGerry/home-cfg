@@ -10,7 +10,7 @@
 
     theme = {
       variant = "dark";
-      baseScheme = "gruvbox";
+      baseScheme = "gruber-darker";
     };
 
     apps = {

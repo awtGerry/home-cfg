@@ -9,12 +9,14 @@ let
       tokyonight = "tokyonight-day";
       gruvbox = "gruvbox_light";
       catppuccin = "catppuccin";
+      gruber-darker = "gruber-darker";
     };
     dark = {
       nightfox = "nightfox";
       tokyonight = "tokyonight";
       gruvbox = "gruvbox";
       catppuccin = "catppuccin";
+      gruber-darker = "gruber-darker";
     };
   };
 in
@@ -36,6 +38,7 @@ in
         "catppuccin"
         "tokyonight"
         "gruvbox"
+        "gruber-darker"
       ];
       default = "nightfox";
       description = "Familia de esquema de colores para utilizar";
