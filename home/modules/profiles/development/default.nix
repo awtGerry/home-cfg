@@ -43,9 +43,6 @@ in
       sqlite
       python3
 
-      # rust-bindgen
-      # rustc
-      # cargo
       openssl
       pkg-config
 

@@ -6,9 +6,7 @@
   makeWrapper,
   makeDesktopItem,
   autoPatchelfHook,
-  # wrapQtAppsHook,
-  # Qt5
-  # libsForQt5,
+  # QT
   kdePackages,
   # Multimedia
   libva,
