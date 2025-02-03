@@ -1,16 +1,19 @@
-{ ghostty, ... }:
-_: {
-  xdg.configFile."ghostty/config".text =
-    # toml
-    ''
-      font-family = "Fira Code"
-      font-size = 16
-
-      theme = "GruvboxDarkHard"
-
-      confirm-close-surface = false
-      gtk-titlebar = false
-    '';
-
-  home.packages = [ ghostty.packages.x86_64-linux.default ];
+_:
+{ config, lib, ... }:
+let
+  cfg = config.programs.ghostty;
+in
+{
+  config = lib.mkIf cfg.enable {
+    programs.ghostty = {
+      settings = {
+        # Hacer al tema gruvbox su variante 'dark hard'
+        theme = if config.theme.scheme == "gruvbox" then "GruvboxDarkHard" else config.theme.scheme;
+        font-size = 16;
+        font-family = "Fira Code";
+        confirm-close-surface = false;
+        gtk-titlebar = true;
+      };
+    };
+  };
 }
