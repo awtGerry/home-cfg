@@ -46,6 +46,11 @@ in
       openssl
       pkg-config
 
+      # Paginas de manual
+      man-pages
+      glibcInfo
+
+      # Compiladores y lenguajes
       gcc
       glib
       glibc
