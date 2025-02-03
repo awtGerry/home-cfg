@@ -63,11 +63,6 @@
 
     # hyprland.url = "github:hyprwm/Hyprland";
 
-    # Por ahora ghostty vive aqui
-    ghostty.url = "github:ghostty-org/ghostty";
-    ghostty.inputs.nixpkgs-unstable.follows = "nixpkgs";
-    ghostty.inputs.nixpkgs-stable.follows = "nixpkgs";
-
     # Rust
     rust-overlay.url = "github:oxalica/rust-overlay";
     rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
