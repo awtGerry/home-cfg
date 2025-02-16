@@ -61,7 +61,10 @@ in
           name = "bash";
           formatter.command = "${pkgs.shfmt}/bin/shfmt";
         })
-        (mkLanguage { name = "c"; })
+        (mkLanguage {
+          name = "c";
+          langServer = "clangd";
+        })
         (mkLanguage { name = "markdown"; })
         (mkLanguage {
           name = "nix";
@@ -70,8 +73,6 @@ in
         (mkLanguage {
           name = "rust";
           autoFormat = true;
-          # langServer = "${pkgs.rust-analyzer}/bin/rust-analyzer";
-          # langServer = [ "rust-analyzer" ];
           langServer = "rust-analyzer";
         })
         (mkLanguage {
