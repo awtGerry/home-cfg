@@ -27,7 +27,8 @@ in
       ];
       nix.settings.min-free = lib.mkDefault (5 * gibibyte);
       nix.settings.max-free = lib.mkDefault (25 * gibibyte);
-      nix.settings.allow-import-from-derivation = lib.mkDefault false;
+      # nix.settings.allow-import-from-derivation = lib.mkDefault false;
+      nix.settings.allow-import-from-derivation = lib.mkDefault true; # Lo necesito para ruby on rails :p
     }
   ];
 }

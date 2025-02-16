@@ -93,8 +93,8 @@ in
       firefox.enable = true; # Todos tienen firefox, solo los 'browsing' tienen firefox personalizado
       fzf.enable = true;
       helix.enable = if config.apps.editor == "helix" then true else false;
-      kitty.enable = if config.apps.terminal == "kitty" then true else false;
-      # ghostty.enable = if config.apps.terminal == "ghostty" then true else false;
+      # kitty.enable = if config.apps.terminal == "kitty" then true else false;
+      ghostty.enable = if config.apps.terminal == "ghostty" then true else false;
       home-manager.enable = true;
       lsd.enable = true;
       ssh.enable = true;
