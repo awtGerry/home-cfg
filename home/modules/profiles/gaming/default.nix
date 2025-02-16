@@ -27,7 +27,7 @@ in
       discord
       # Paquetes para los controles
       xpad
-      xboxdrv
+      # xboxdrv # discontinued
 
       # Informacion y mejoras
       goverlay
