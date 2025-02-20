@@ -48,6 +48,7 @@ in
 
       # Paginas de manual
       man-pages
+      man-pages-posix
       glibcInfo
 
       # Compiladores y lenguajes
