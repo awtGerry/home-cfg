@@ -3,7 +3,8 @@ _:
 
 {
   imports = [
-    ./tmux-fzf.nix
     ./screenshots.nix
+    ./tmux-fzf.nix
+    ./wallpapers.nix
   ];
 }
