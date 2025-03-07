@@ -34,6 +34,8 @@ in
       gamemode
       gamescope
       mangohud
+      mesa-demos
+      vulkan-tools
       vkBasalt
 
       # Games & Launchers

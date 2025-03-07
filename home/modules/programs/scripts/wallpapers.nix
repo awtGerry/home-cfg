@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 
 let
-  dir = "${config.home.picDir}/Wallpapers";
+  dir = "$HOME/Pictures/Wallpapers";
 
   # use rofi to select the wallpaper
   rofi_config = "${config.dirs.repoDir}/home/modules/misc/rofi/config/dark.rasi";
@@ -15,8 +15,8 @@ let
       selected=$(ls ${dir} | rofi -dmenu -i -mesg "Select a wallpaper" -config ${rofi_config})
       # if none (or selected is Wallpaper) is selected, do nothing
       [ -z "$selected" ] && exit 0
-      ln -sf ${dir}/$selected ${config.home.picDir}/.wallpaper
-      xwallpaper --zoom ${config.home.picDir}/.wallpaper
+      ln -sf ${dir}/$selected $HOME/Pictures/.wallpaper
+      xwallpaper --zoom $HOME/Pictures/.wallpaper
     fi
   '';
 
