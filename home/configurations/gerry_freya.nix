@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
 
   config = {
@@ -8,8 +8,8 @@
     ];
 
     theme = {
-      variant = "light";
-      baseScheme = "nightfox";
+      variant = "dark";
+      baseScheme = "gruber-darker";
     };
 
     apps = {
@@ -28,6 +28,25 @@
     dconf.enable = true;
     systemd.user.tmpfiles.rules = [
       "d ${config.home.homeDirectory}/tmp 700 ${config.home.username} users 14d"
+    ];
+
+    nixpkgs.allowedUnfree = [
+      "spotify"
+      "steamcmd"
+      "steam-run"
+      "steam-runtime"
+      "steam-unwrapped"
+    ];
+
+    home.packages = with pkgs; [
+      spotify
+      steamcmd
+      steam-tui
+
+      auto-cpufreq
+      cpulimit
+      xwallpaper
+      brightnessctl
     ];
   };
 }

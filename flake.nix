@@ -28,7 +28,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11"; # With this libgit2 works
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -61,11 +62,8 @@
     spictify.url = "github:MichaelPachec0/spicetify-nix";
     spictify.inputs.nixpkgs.follows = "nixpkgs";
 
-    # hyprland.url = "github:hyprwm/Hyprland";
-
     # Rust
     rust-overlay.url = "github:oxalica/rust-overlay";
     rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
-
   };
 }
