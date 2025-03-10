@@ -84,6 +84,11 @@ in
           name = "ruby";
           langServer = "solargraph";
         })
+        (mkLanguage {
+          name = "latex";
+          autoFormat = true;
+          langServer = "texlab";
+        })
       ] ++ prettierLanguages;
 
       language-server = {
@@ -106,6 +111,35 @@ in
           command = "${pkgs.rubyPackages.solargraph}/bin/solargraph";
           config.diagnostics = true;
           config.formatting = true;
+        };
+        texlab = {
+          command = "${pkgs.texlab}/bin/texlab";
+          config = {
+            texlab = {
+              build = {
+                onSave = true;
+                forwardSearchAfter = true;
+                executable = "latexmk";
+                args = [
+                  "-pdf"
+                  "-interaction=nonstopmode"
+                  "-synctex=1"
+                  "%f"
+                ];
+              };
+              forwardSearch = {
+                executable = "zathura";
+                args = [
+                  "--synctex-forward"
+                  "%l:1:%f"
+                  "%p"
+                ];
+              };
+              chktex = {
+                onEdit = true;
+              };
+            };
+          };
         };
       };
     };
