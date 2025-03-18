@@ -91,7 +91,8 @@ in
       polkit
       dconf
       xwayland
-      xwaylandvideobridge
+      # xwaylandvideobridge
+      libsForQt5.xwaylandvideobridge
       swww
       wl-clipboard
       wlr-randr
