@@ -20,6 +20,7 @@ in
       shellAliases = {
         ls = "lsd -h --color=auto --group-directories-first";
         ll = "lsd -lh --color=auto --group-directories-first";
+        shadps4n = "appimage-run ~/Games/Shadps4-qt.AppImage";
         e = "hx";
         mv = "mv -iv";
         rm = "rm -vI";

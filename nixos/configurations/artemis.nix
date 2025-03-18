@@ -36,6 +36,7 @@ in
     firewall = {
       enable = true;
       allowedTCPPorts = [
+        3000
         8080
         1234
         443
@@ -61,6 +62,14 @@ in
   environment.systemPackages = [
     pkgs.iptables
     pkgs.libsForQt5.qt5.qtwebengine
+    pkgs.qemu
+    pkgs.quickemu
+    pkgs.quickgui
+    (pkgs.writeShellScriptBin "qemu-system-x86_64-uefi" ''
+      qemu-system-x86_64 \
+        -bios ${pkgs.OVMF.fd}/FV/OVMF.fd \
+        "$@"
+    '')
   ];
 
   # Xserver
@@ -148,7 +157,10 @@ in
     docker.enable = true;
     containers.enable = true;
     libvirtd.enable = true;
+    # virtualisation.spiceUSBRedirection.enable = true;
   };
+
+  # users.groups.libvirtd.members = [ "gerry" ];
 
   users.users = {
     gerry = {
@@ -174,6 +186,7 @@ in
   # Activa algunos programas (zsh necesario)
   programs = {
     steam.enable = true;
+    # virt-manager.enable = true;
 
     # Arregla algunos problemas con helix y tmux
     screen = {

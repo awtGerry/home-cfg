@@ -10,7 +10,14 @@ in
       settings = {
         # theme = config.theme.scheme;
         # TODO: Mejorar estos metodos
-        theme = if config.theme.scheme == "gruvbox" then "gruvbox_dark_hard" else config.theme.scheme;
+        theme =
+          if config.theme.scheme == "gruvbox" then
+            "gruvbox_dark_hard"
+          else if config.theme.scheme == "tokyonight-day" then
+            "tokyonight_day"
+          else
+            config.theme.scheme;
+
         editor = {
           line-number = "relative";
           lsp.display-messages = true;
