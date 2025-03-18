@@ -9,6 +9,7 @@ let
       tokyonight = "tokyonight-day";
       gruvbox = "gruvbox_light";
       catppuccin = "catppuccin";
+      rose-pine = "rose_pine";
       gruber-darker = "gruber-darker";
     };
     dark = {
@@ -16,6 +17,7 @@ let
       tokyonight = "tokyonight";
       gruvbox = "gruvbox";
       catppuccin = "catppuccin";
+      rose-pine = "rose_pine";
       gruber-darker = "gruber-darker";
     };
   };
@@ -37,6 +39,7 @@ in
         "nightfox"
         "catppuccin"
         "tokyonight"
+        "rose-pine"
         "gruvbox"
         "gruber-darker"
       ];

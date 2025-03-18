@@ -10,7 +10,10 @@
 
     theme = {
       variant = "dark";
-      baseScheme = "gruber-darker";
+      baseScheme = "rose-pine";
+      # baseScheme = "gruber-darker";
+      # variant = "light";
+      # baseScheme = "tokyonight";
     };
 
     apps = {
