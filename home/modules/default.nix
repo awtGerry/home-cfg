@@ -11,6 +11,7 @@
     "programs/helix" = ./programs/helix;
     "programs/helix/lsp" = ./programs/helix/lsp.nix;
     "programs/scripts" = ./programs/scripts;
+    "programs/zathura" = ./programs/zathura;
     "programs/zsh" = ./programs/zsh;
 
     "misc/hyprland" = ./misc/hyprland;
