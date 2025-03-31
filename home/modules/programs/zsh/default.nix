@@ -62,8 +62,6 @@ in
         dvc = "cd ~/Dev/clones";
         dvw = "cd ~/Dev/work";
         dvt = "cd ~/Dev/tests";
-
-        code = "echo PLEASE NO";
       };
 
       initExtraFirst = ''

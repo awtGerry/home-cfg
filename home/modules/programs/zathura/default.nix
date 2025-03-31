@@ -41,8 +41,6 @@ in
         inputbar-fg = "#FFFADE";
         statusbar-bg = "#21252D";
         statusbar-fg = "#D68EB2";
-        # highlight-color = "#D68EB2";
-        # highlight-active-color = "#ff79c6";
         default-bg = "#18191E";
         default-fg = "#FFEE79";
         render-loading = true;

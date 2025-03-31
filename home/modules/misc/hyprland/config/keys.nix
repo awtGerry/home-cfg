@@ -80,6 +80,7 @@ in
 
           # Ejecutar aplicaciones
           "$mod, Return, exec, ${config.apps.terminal}"
+          "$mod, v, exec, quickemu --vm $HOME/vm/windows-10.conf"
           "$mod, W, exec, ${config.apps.browser}"
           "$mod CTRL, W, exec, ${cfg.bindings.apps.altBrowser}"
           "$mod, E, exec, ${cfg.bindings.apps.terminal} -e ${cfg.bindings.apps.editor}"

@@ -62,6 +62,7 @@ in
   environment.systemPackages = [
     pkgs.iptables
     pkgs.libsForQt5.qt5.qtwebengine
+    # Para virtualizacion
     pkgs.qemu
     pkgs.quickemu
     pkgs.quickgui
@@ -156,9 +157,17 @@ in
     waydroid.enable = true; # Emulador android para wayland
     docker.enable = true;
     containers.enable = true;
-    libvirtd.enable = true;
-    # virtualisation.spiceUSBRedirection.enable = true;
+    libvirtd = {
+      enable = true;
+      qemu = {
+        swtpm.enable = true;
+        ovmf.enable = true;
+        ovmf.packages = [ pkgs.OVMFFull.fd ];
+      };
+    };
+    spiceUSBRedirection.enable = true;
   };
+  services.spice-vdagentd.enable = true;
 
   # users.groups.libvirtd.members = [ "gerry" ];
 
@@ -171,6 +180,7 @@ in
         "docker"
         "audio"
         "networkmanager"
+        "libvirtd"
       ];
     };
 
