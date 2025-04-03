@@ -23,7 +23,7 @@ in
         # userChrome = builtins.readFile ./userChrome.css;
         # userContent = builtins.readFile ./userContent.css;
 
-        extensions = with addons; [
+        extensions.packages = with addons; [
           ublock-origin
           vimium
           return-youtube-dislikes
@@ -43,17 +43,17 @@ in
         # Motores de busqueda (default: DuckDuckGo)
         search = {
           force = true;
-          default = "DuckDuckGo";
+          default = "ddg";
           order = [
-            "DuckDuckGo"
-            "Google"
+            "ddg"
+            "google"
           ];
           engines = {
             "Amazon.com.mx".metaData.alias = "@a";
-            "Google".metaData.alias = "@g";
-            "Wikipedia (en)".metaData.alias = "@w";
-            "Bing".metaData.hidden = true;
-            "eBay".metaData.hidden = true;
+            "google".metaData.alias = "@g";
+            "wikipedia".metaData.alias = "@w";
+            "bing".metaData.hidden = true;
+            "ebay".metaData.hidden = true;
 
             "Github" = {
               urls = [
