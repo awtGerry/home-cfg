@@ -112,16 +112,16 @@ in
         workspaceRules = lib.mkOption {
           type = with lib.types; listOf str;
           default = [
-            "workspace 2, ^(firefox)$"
-            "workspace 3, ^(chromium)$"
-            "workspace 4, ^(Steam)$"
-            "workspace 4, ^(lutris)$"
-            "workspace 5, ^(gimp)$"
-            "workspace 8, ^(discord)$"
-            "workspace 9, ^(thunderbird)$"
-            "workspace 10, ^(Spotify)$"
-            "workspace 10, ^(Spotify ( Premium)?)$"
-            "workspace 10, ^(Spotify ( Free)?)$"
+            "workspace 2, title:(^(firefox)$)"
+            "workspace 3, title:(^(chromium)$)"
+            "workspace 4, title:(^(Steam)$)"
+            "workspace 4, title:(^(lutris)$)"
+            "workspace 5, title:(^(gimp)$)"
+            "workspace 8, title:(^(discord)$)"
+            "workspace 9, title:(^(thunderbird)$)"
+            "workspace 10, title:(^(Spotify)$)"
+            "workspace 10, title:(^(Spotify ( Premium)?)$)"
+            "workspace 10, title:(^(Spotify ( Free)?)$)"
           ];
           description = "Asignacion de programas en los espacios de trabajo";
         };

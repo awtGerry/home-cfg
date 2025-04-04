@@ -51,8 +51,8 @@ in
 
   fonts = {
     fontconfig.enable = true;
-    packages = with pkgs; [
-      maple-mono-SC-NF
+    packages = [
+      # maple-mono-SC-NF
       inputs.self.packages.${pkgs.system}.sf-pro
     ];
   };
