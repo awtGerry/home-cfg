@@ -14,53 +14,48 @@ in
     programs.waybar.settings = {
       mainBar = {
         ipc = true;
-        layer = "bottom";
-        postion = "top";
-        height = 32;
+        reload_style_on_change = true;
+        layer = "top";
+        position = "bottom";
+        height = 42;
         modules-left = [
           "hyprland/workspaces"
-          "hyprland/mode"
+          "hyprland/window"
         ];
         modules-center = [
           "cpu"
           "memory"
           "disk"
-          "network"
         ];
         modules-right = [
           "tray"
-          "idle_inhibitor"
+          "group/language"
+          "network"
           "wireplumber"
           "clock"
+          "custom/power"
         ];
 
         "hyprland/workspaces" = {
           all-outputs = true;
           format = "{icon}";
           format-icons = {
-            "1" = ''<span font="Font Awesome 6 Brands"></span>'';
-            "2" = ''<span font="Font Awesome 6 Brands"></span>'';
+            "1" = "1";
+            "2" = "2";
             "3" = "3";
             "4" = "4";
             "5" = "5";
+            "6" = "6";
             "7" = "7";
-            "8" = ''<span font="Font Awesome 6 Brands"></span>'';
-            "9" = ''<span font="Font Awesome 6 Brands"></span>'';
-            "10" = ''<span font="Font Awesome 6 Brands"></span>'';
+            "8" = "8";
+            "9" = "9";
+            "10" = "0";
             default = ''<span font="Font Awesome 6 Brands"></span>'';
           };
         };
 
-        "hyprland/mode" = {
-          format = "<span style=\"italic\">{}</span>";
-        };
-
-        "idle_inhibitor" = {
-          format = "{icon}";
-          format-icons = {
-            activated = "";
-            deactivated = "";
-          };
+        "hyprland/window" = {
+          format = "<span style=\"italic\">- {}</span>";
         };
 
         "tray" = {
@@ -81,31 +76,82 @@ in
 
         "memory" = {
           format = "{}% ";
+          tooltip = false;
         };
 
         "disk" = {
           format = "{percentage_used}% ";
+          tooltip = false;
+        };
+
+        "group/language" = {
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 500;
+            children-class = "not-power";
+            transition-left-to-right = false;
+            click-to-reveal = true;
+          };
+
+          modules = [
+            "custom/lang"
+            "custom/lang-us"
+            "custom/lang-es"
+          ];
+        };
+
+        "custom/lang" = {
+          format = ''<span font="Font Awesome 6 Brands"></span>'';
+          tooltip = false;
+        };
+
+        "custom/lang-us" = {
+          format = " us ";
+          tooltip = false;
+          on-click = "hyprctl keyword input:kb_layout us && notify-send 'Keyboard layout' 'Changed layout to: English'";
+        };
+
+        "custom/lang-es" = {
+          format = " es ";
+          tooltip = false;
+          on-click = "hyprctl keyword input:kb_layout es && notify-send 'Keyboard layout' 'Changed layout to: Spanish'";
         };
 
         "network" = {
-          format-wifi = "{essid} ({signalStrength}%) ";
-          format-ethernet = "{ifname} = {ipaddr}/{cidr} ";
-          format-disconnected = "Disconnected ⚠";
+          format-wifi = ''<span font="Font Awesome 6 Brands"></span>'';
+          format-ethernet = ''<span font="Font Awesome 6 Brands"></span>'';
+          format-disconnected = ''<span font="Font Awesome 6 Brands"></span>'';
+          tooltip = true;
+          tooltip-format = "{ifname} = {ipaddr}/{cidr}";
+          on-click = "sudo nmtui";
         };
 
         "wireplumber" = {
-          format = "{icon} {volume}%";
-          format-muted = "";
+          format = "{icon}";
+          format-muted = ''<span font="Font Awesome 6 Brands"></span>'';
           format-icons = [
-            ""
-            ""
-            ""
+            ''<span font="Font Awesome 6 Brands"></span>''
+            ''<span font="Font Awesome 6 Brands"></span>''
+            ''<span font="Font Awesome 6 Brands"></span>''
           ];
+          tooltip = true;
+          tooltip-format = "{volume}%";
+          on-click = "${config.apps.terminal} -e pulsemixer";
         };
+
+        "custom/power" = {
+          format = "";
+          tooltip = false;
+          on-click = "wlogout";
+        };
+
       };
 
     };
-    programs.waybar.style = ./style.css;
+
+    # TODO: Crear la variante para el tema claro
+    programs.waybar.style =
+      if config.theme.variant == "light" then ./style_light.css else ./style_dark.css;
 
     home.packages = [
       pkgs.font-awesome_6
