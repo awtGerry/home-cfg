@@ -18,53 +18,53 @@ in
       history.path = "/home/gerry/.cache/zsh_history";
 
       shellAliases = {
-        ls = "lsd -h --color=auto --group-directories-first";
-        ll = "lsd -lh --color=auto --group-directories-first";
-        shadps4n = "appimage-run ~/Games/Shadps4-qt.AppImage";
-        e = "hx";
-        mv = "mv -iv";
-        rm = "rm -vI";
-        cat = "bat";
-        t = "tmux";
-        neofetch = "neofetch --$TERM";
-        ta = "tmux a";
-        z = "zathura";
-        ff = "tmux-fzf";
+        ls = lib.mkDefault "lsd -h --color=lib.mkDefaultauto --group-directories-first";
+        ll = lib.mkDefault "lsd -lh --color=lib.mkDefaultauto --group-directories-first";
+        shadps4n = lib.mkDefault "appimage-run ~/Games/Shadps4-qt.AppImage";
+        e = lib.mkDefault "hx";
+        mv = lib.mkDefault "mv -iv";
+        rm = lib.mkDefault "rm -vI";
+        cat = lib.mkDefault "bat";
+        t = lib.mkDefault "tmux";
+        neofetch = lib.mkDefault "neofetch --$TERM";
+        ta = lib.mkDefault "tmux a";
+        z = lib.mkDefault "zathura";
+        ff = lib.mkDefault "tmux-fzf";
 
         # Nix
-        update = "sudo nixos-rebuild switch";
-        nxd = "nix develop --command zsh";
-        nxs = "nix shell --command zsh";
-        nxss = "nix-shell --command zsh";
-        nxe = "nix-env -iA";
+        update = lib.mkDefault "sudo nixos-rebuild switch";
+        nxd = lib.mkDefault "nix develop --command zsh";
+        nxs = lib.mkDefault "nix shell --command zsh";
+        nxss = lib.mkDefault "nix-shell --command zsh";
+        nxe = lib.mkDefault "nix-env -iA";
 
         # Git
-        lg = "lazygit"; # Trying lazygit (finally)
-        g = "git";
-        ga = "git add";
-        gac = "git add . && git commit"; # Add all and commit
-        gc = "git commit"; # Commit
-        gca = "git commit --amend"; # Change last commit
-        gC = "git checkout"; # Checkout
-        gd = "git diff"; # Diff
-        gds = "git diff --staged"; # Diff staged
-        gf = "git fetch"; # Fetch
-        gl = "git log"; # Log
-        gP = "git push"; # Push
-        gp = "git pull"; # Pull
-        gs = "git status"; # Status
+        lg = lib.mkDefault "lazygit"; # Trying lazygit (finally)
+        g = lib.mkDefault "git";
+        ga = lib.mkDefault "git add";
+        gac = lib.mkDefault "git add . && git commit"; # Add all and commit
+        gc = lib.mkDefault "git commit"; # Commit
+        gca = lib.mkDefault "git commit --amend"; # Change last commit
+        gC = lib.mkDefault "git checkout"; # Checkout
+        gd = lib.mkDefault "git diff"; # Diff
+        gds = lib.mkDefault "git diff --staged"; # Diff staged
+        gf = lib.mkDefault "git fetch"; # Fetch
+        gl = lib.mkDefault "git log"; # Log
+        gP = lib.mkDefault "git push"; # Push
+        gp = lib.mkDefault "git pull"; # Pull
+        gs = lib.mkDefault "git status"; # Status
 
         # Dirs
-        cac = "cd ~/.cache";
-        sc = "cd ~/.local/share";
-        dvp = "cd ~/Dev/public";
-        dvs = "cd ~/Dev/private";
-        dvc = "cd ~/Dev/clones";
-        dvw = "cd ~/Dev/work";
-        dvt = "cd ~/Dev/tests";
+        cac = lib.mkDefault "cd ~/.cache";
+        sc = lib.mkDefault "cd ~/.local/share";
+        dvp = lib.mkDefault "cd ~/Dev/public";
+        dvs = lib.mkDefault "cd ~/Dev/private";
+        dvc = lib.mkDefault "cd ~/Dev/clones";
+        dvw = lib.mkDefault "cd ~/Dev/work";
+        dvt = lib.mkDefault "cd ~/Dev/tests";
       };
 
-      initExtraFirst = ''
+      initContent = lib.mkBefore ''
         export PATH="$PATH:$(find ~/.local/bin -type d | paste -sd ':' -)"
 
         export EDITOR="hx"
