@@ -8,10 +8,11 @@ _:
 
 let
   cfg = config.programs.rofi;
-  # TODO: Hacer el tema claro
-  launcher_config =
-    if config.theme.variant == "dark" then "./config/dark.rasi" else "./config/light.rasi";
   rofi = pkgs.rofi-wayland;
+  inherit (config.lib.formats.rasi) mkLiteral;
+
+  # launcher_config =
+  #   if config.theme.variant == "dark" then "./config/dark.rasi" else "./config/light.rasi";
 in
 {
   config = lib.mkIf cfg.enable {
@@ -24,9 +25,9 @@ in
 
       font = "SF-Pro Display 10";
       terminal = config.apps.terminal;
-      location = "center";
+      location = "top-left";
 
-      theme = launcher_config;
+      # theme = launcher_config;
     };
   };
 }
