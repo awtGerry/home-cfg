@@ -50,7 +50,6 @@ let
         "html"
         "json"
         "vue"
-        "markdown"
       ];
 in
 {
@@ -65,7 +64,10 @@ in
           name = "c";
           langServer = "clangd";
         })
-        (mkLanguage { name = "markdown"; })
+        (mkLanguage {
+          name = "markdown";
+          autoFormat = false;
+        })
         (mkLanguage {
           name = "nix";
           langServer = "nil";

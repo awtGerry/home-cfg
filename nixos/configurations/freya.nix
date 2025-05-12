@@ -7,8 +7,9 @@
 }:
 let
   steamPackages = [
+    "steam"
     "steam-run"
-    "steamcmd"
+    "steam-original"
     "steam-runtime"
     "steam-unwrapped"
   ];
@@ -144,6 +145,7 @@ in
 
   # Activa algunos programas
   programs = {
+    steam.enable = true;
     zsh.enable = true;
     zsh.enableCompletion = false;
   };

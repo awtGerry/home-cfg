@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
-{
 
+{
   config = {
     activeProfiles = [
       "development"
@@ -32,17 +32,10 @@
 
     nixpkgs.allowedUnfree = [
       "spotify"
-      "steamcmd"
-      "steam-run"
-      "steam-runtime"
-      "steam-unwrapped"
     ];
 
     home.packages = with pkgs; [
       spotify
-      steamcmd
-      steam-tui
-
       auto-cpufreq
       cpulimit
       xwallpaper
