@@ -18,6 +18,7 @@
     "misc/waybar" = ./misc/waybar;
     "misc/home" = ./misc/home;
     "misc/rofi" = ./misc/rofi;
+    "misc/rofi/config" = ./misc/rofi/config;
 
     "global" = ./global;
   };

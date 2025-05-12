@@ -18,8 +18,8 @@ in
       history.path = "/home/gerry/.cache/zsh_history";
 
       shellAliases = {
-        ls = lib.mkDefault "lsd -h --color=lib.mkDefaultauto --group-directories-first";
-        ll = lib.mkDefault "lsd -lh --color=lib.mkDefaultauto --group-directories-first";
+        ls = lib.mkForce "lsd -h --color=auto --group-directories-first";
+        ll = lib.mkForce "lsd -lh --color=auto --group-directories-first";
         shadps4n = lib.mkDefault "appimage-run ~/Games/Shadps4-qt.AppImage";
         e = lib.mkDefault "hx";
         mv = lib.mkDefault "mv -iv";

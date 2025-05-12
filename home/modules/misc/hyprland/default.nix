@@ -98,6 +98,7 @@ in
       wlr-randr
       slurp
       grim
+      wdisplays
     ];
   };
 }

@@ -154,6 +154,13 @@ in
 
     # Otros programas
     home.packages = with pkgs; [
+
+      # Documentos
+      libreoffice
+      texlab
+      texlive
+      slides
+
       # Conversion de archivos
       unrar
       unzip
@@ -161,7 +168,9 @@ in
       zip
 
       # Utilidades del sistema
+      gimp
       xfce.thunar
+      dunst
       xdotool
       sxiv
       yt-dlp
@@ -170,7 +179,10 @@ in
       duf
       neofetch
       xdotool
+      easyeffects
+
       # Network
+      networkmanager
       curl
       nmap
       whois

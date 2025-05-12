@@ -62,7 +62,7 @@ in
     };
     terminal = lib.mkOption {
       type = lib.types.str;
-      default = "kitty";
+      default = "ghostty";
       description = "Terminal del sistema";
     };
     editor = lib.mkOption {
@@ -79,7 +79,7 @@ in
 
   options.dirs = {
     # Directorio de este repositorio
-    # (se utiliza en algunas configuraciones hasta que consiga una mejor manera de hacer links simbolicos)
+    # (se utiliza en algunas configuraciones hasta que consiga una mejor manera)
     repoDir = lib.mkOption {
       type = lib.types.path;
       default = "${config.home.homeDirectory}/Dev/public/home-cfg";
