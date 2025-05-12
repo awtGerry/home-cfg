@@ -28,7 +28,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11"; # With this libgit2 works
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
     home-manager.url = "github:nix-community/home-manager";
