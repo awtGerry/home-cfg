@@ -85,6 +85,10 @@ in
           langServer = "solargraph";
         })
         (mkLanguage {
+          name = "html";
+          langServer = "vscode-html-language-server";
+        })
+        (mkLanguage {
           name = "latex";
           autoFormat = true;
           langServer = "texlab";
@@ -95,6 +99,9 @@ in
         biome-lsp = {
           command = "biome";
           args = [ "lsp-proxy" ];
+        };
+        vscode-html-language-server = {
+          command = "${pkgs.vscode-langservers-extracted}/bin/vscode-html-language-server";
         };
         nil = {
           command = "${pkgs.nil}/bin/nil";

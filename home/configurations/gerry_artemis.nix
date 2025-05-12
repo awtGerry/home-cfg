@@ -10,8 +10,8 @@
 
     theme = {
       variant = "dark";
-      baseScheme = "rose-pine";
-      # baseScheme = "gruber-darker";
+      # baseScheme = "rose-pine";
+      baseScheme = "gruber-darker";
       # variant = "light";
       # baseScheme = "tokyonight";
     };
@@ -53,7 +53,10 @@
     ];
 
     home.packages = with pkgs; [
+      # ytui-music
       spotify
+
+      waydroid
     ];
 
     home.sessionVariables = {

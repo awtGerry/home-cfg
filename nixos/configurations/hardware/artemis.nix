@@ -49,6 +49,13 @@
     options = [ "nofail" ];
   };
 
+  # Disco para roms
+  # fileSystems."/media/Drive/Gaming/Roms" = {
+  #   device = "/dev/disk/by-label/AdataSSD";
+  #   fsType = "ext4";
+  #   options = [ "nofail" ];
+  # };
+
   swapDevices = [ ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";

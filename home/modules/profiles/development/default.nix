@@ -36,6 +36,11 @@ in
       ];
     };
 
+    nixpkgs.allowedUnfree = [
+      "code-cursor"
+      "cursor"
+    ];
+
     home.packages = with pkgs; [
       lazygit
       ripgrep
