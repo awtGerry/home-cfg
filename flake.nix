@@ -58,8 +58,8 @@
     firefox-addons.inputs.nixpkgs.follows = "nixpkgs";
 
     # Modifica la apariencia de spotify
-    spictify.url = "github:MichaelPachec0/spicetify-nix";
-    spictify.inputs.nixpkgs.follows = "nixpkgs";
+    # spictify.url = "github:MichaelPachec0/spicetify-nix";
+    # spictify.inputs.nixpkgs.follows = "nixpkgs";
 
     # Rust
     rust-overlay.url = "github:oxalica/rust-overlay";
