@@ -158,7 +158,7 @@ in
       # Documentos
       libreoffice
       texlab
-      texlive
+      # texlive
       slides
 
       # Conversion de archivos

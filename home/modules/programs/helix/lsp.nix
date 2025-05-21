@@ -128,6 +128,7 @@ in
                 forwardSearchAfter = true;
                 executable = "latexmk";
                 args = [
+                  "--shell-escape"
                   "-pdf"
                   "-interaction=nonstopmode"
                   "-synctex=1"
