@@ -51,6 +51,10 @@ in
         recolor-lightcolor = "#21252D";
         recolor-darkcolor = "#FFFADE";
       };
+
+      mappings = {
+        "<C-r>" = "set recolor"; # Ctrl+r to toggle light/dark mode
+      };
     };
   };
 }

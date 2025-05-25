@@ -9,10 +9,12 @@
     ];
 
     theme = {
-      variant = "dark";
+      # variant = "dark";
+      variant = "light";
+
+      baseScheme = "nightfox";
       # baseScheme = "rose-pine";
-      baseScheme = "gruber-darker";
-      # variant = "light";
+      # baseScheme = "gruber-darker";
       # baseScheme = "tokyonight";
     };
 

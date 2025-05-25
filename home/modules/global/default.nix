@@ -5,7 +5,7 @@ let
   #       se puede hacer un 'diccionario' con los nombres
   colorSchemes = {
     light = {
-      nightfox = "dayfox";
+      nightfox = "nightfox";
       tokyonight = "tokyonight-day";
       gruvbox = "gruvbox_light";
       catppuccin = "catppuccin";
