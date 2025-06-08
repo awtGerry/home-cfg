@@ -14,7 +14,7 @@ let
   cfg = config.wayland.windowManager.hyprland;
   startupScript = pkgs.writeShellScriptBin "start" ''
     ${pkgs.waybar}/bin/waybar &
-    ${pkgs.swww}/bin/swww init &
+    ${pkgs.swww}/bin/swww-daemon &
     "random-wp" &
   '';
 in
