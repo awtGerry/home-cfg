@@ -21,7 +21,7 @@ in
         editor = {
           line-number = "relative";
           lsp.display-messages = true;
-          lsp.display-inlay-hints = true;
+          lsp.display-inlay-hints = false;
           cursorline = true;
           color-modes = true;
           true-color = true;
@@ -40,6 +40,8 @@ in
           "$" = "goto_line_end";
           "V" = "extend_line_below";
           "0" = "goto_line_start";
+          "H" = ":set lsp.display-inlay-hints false";
+          "L" = ":set lsp.display-inlay-hints false";
         };
 
         keys.insert = {

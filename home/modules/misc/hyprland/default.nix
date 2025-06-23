@@ -91,6 +91,7 @@ in
       polkit
       dconf
       xwayland
+      wlogout
       # xwaylandvideobridge
       libsForQt5.xwaylandvideobridge
       swww

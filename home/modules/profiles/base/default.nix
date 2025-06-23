@@ -156,6 +156,7 @@ in
     home.packages = with pkgs; [
 
       # Documentos
+      appflowy
       libreoffice
       texlab
       # texlive
