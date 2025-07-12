@@ -100,18 +100,21 @@ in
               base = if lib.strings.hasSuffix "-darwin" config.system then "Users" else "home";
               homeDirectory = "/${config.base}/${config.username}";
 
-              finalModules = [
-                config.entryPoint
-                {
-                  home = {
-                    inherit (config) username homeDirectory;
-                  };
-                  _module.args = {
-                    inherit inputs;
-                  };
-                }
-                { systemd.user.startServices = "sd-switch"; }
-              ] ++ config.modules ++ builtins.attrValues self.homeModules;
+              finalModules =
+                [
+                  config.entryPoint
+                  {
+                    home = {
+                      inherit (config) username homeDirectory;
+                    };
+                    _module.args = {
+                      inherit inputs;
+                    };
+                  }
+                  { systemd.user.startServices = "sd-switch"; }
+                ]
+                ++ config.modules
+                ++ builtins.attrValues self.homeModules;
 
               packageName = "home/config/${name}";
               finalPackage = config.finalHome.activationPackage;
