@@ -51,8 +51,7 @@ in
 
   fonts = {
     fontconfig.enable = true;
-    packages = with pkgs; [
-      maple-mono-SC-NF
+    packages = [
       inputs.self.packages.${pkgs.system}.sf-pro
     ];
   };
@@ -105,7 +104,6 @@ in
   };
 
   # Servicios
-  programs.dconf.enable = true;
   services.dbus.packages = [ pkgs.dconf ];
   services.openssh.enable = true; # OpenSSH daemon
   services.printing.enable = true; # cups

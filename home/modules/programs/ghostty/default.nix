@@ -18,7 +18,7 @@ in
         font-size = 16;
         font-family = "Fira Code";
         confirm-close-surface = false;
-        gtk-titlebar = true;
+        gtk-titlebar = false;
       };
     };
   };
