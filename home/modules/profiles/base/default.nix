@@ -169,6 +169,7 @@ in
       zip
 
       # Utilidades del sistema
+      kavita # books reader
       gimp
       xfce.thunar
       dunst

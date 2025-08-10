@@ -95,6 +95,8 @@ in
           "$mod CTRL, S, exec, setbg"
 
           # Utilidades del sistema
+          "$mod, T, exec, ${config.apps.terminal} -e ts-en"
+          "$mod SHIFT, T, exec, ${config.apps.terminal} -e ts-es"
           "$mod, D, exec, ${cfg.bindings.apps.terminal} -e ${cfg.bindings.apps.diskUsage}"
           "$mod SHIFT, D, exec, ${cfg.bindings.apps.terminal} -e ${cfg.bindings.apps.systemMonitor}"
 
