@@ -50,6 +50,7 @@ in
 
       openssl
       pkg-config
+      xh
 
       # Paginas de manual
       man-pages
@@ -64,6 +65,7 @@ in
       gleam
       erlang
       perl
+      lua
 
       nodejs
       nodePackages.pnpm

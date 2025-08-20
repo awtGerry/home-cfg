@@ -169,7 +169,7 @@ in
       zip
 
       # Utilidades del sistema
-      kavita # books reader
+      foliate # epub-reader
       gimp
       xfce.thunar
       dunst
