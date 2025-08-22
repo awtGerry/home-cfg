@@ -26,7 +26,6 @@ in
     home.packages = with pkgs; [
       discord
       # Paquetes para los controles
-      xpad
       # xboxdrv # discontinued
 
       # Informacion y mejoras
@@ -52,7 +51,7 @@ in
       winetricks
       snes9x
       shadps4
-      ryujinx # Emulador para switch
+      ryubing # Emulador para switch
       inputs.self.packages.${pkgs.system}.sudachi
       xemu
       # inputs.self.packages.${pkgs.system}.extract-xiso
