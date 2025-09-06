@@ -9,13 +9,14 @@
     ];
 
     theme = {
-      # variant = "dark";
-      variant = "light";
+      variant = "dark";
+      # variant = "light";
 
-      baseScheme = "nightfox";
       # baseScheme = "rose-pine";
-      # baseScheme = "gruber-darker";
+      # baseScheme = "nightfox";
       # baseScheme = "tokyonight";
+      baseScheme = "gruvbox";
+      # baseScheme = "gruber-darker";
     };
 
     apps = {
@@ -24,20 +25,19 @@
       editor = "helix";
     };
 
-    programs.waybar.enable = true; # TODO: Falta actualizar configuracion de waybar
+    programs.waybar.enable = true;
     wayland.windowManager.hyprland = {
       enable = true;
       visuals = {
-        # animation.enable = true;
         # Agrega reglas de transparencia (testeando con firefox)
-        transparency = {
-          enable = true;
-          opacityRules = {
-            terminal = {
-              ghostty = "0.90 0.90";
-            };
-          };
-        };
+        # transparency = {
+        #   enable = true;
+        #   opacityRules = {
+        #     terminal = {
+        #       ghostty = "0.90 0.90";
+        #     };
+        #   };
+        # };
       };
       # Atajos de teclado
       # bindings = {
@@ -57,7 +57,6 @@
     home.packages = with pkgs; [
       # ytui-music
       spotify
-
       waydroid
     ];
 

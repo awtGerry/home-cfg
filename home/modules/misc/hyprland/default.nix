@@ -92,8 +92,7 @@ in
       dconf
       xwayland
       wlogout
-      # xwaylandvideobridge
-      libsForQt5.xwaylandvideobridge
+      kdePackages.xwaylandvideobridge
       swww
       wl-clipboard
       wlr-randr
