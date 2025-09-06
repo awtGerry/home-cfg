@@ -53,7 +53,7 @@ in
       shadps4
       ryubing # Emulador para switch
       inputs.self.packages.${pkgs.system}.sudachi
-      xemu
+      # xemu # broken?
       # inputs.self.packages.${pkgs.system}.extract-xiso
 
       # Game dependencies
@@ -161,16 +161,17 @@ in
         };
       };
 
+      # BUG: Xemu seems to be broken
       # Xbox emulator
-      "lutris/runners/xemu.yml".source = settingsFormat.generate "xemu.yml" {
-        xemu = {
-          runner_executable = "${pkgs.xemu}/bin/xemu";
-        };
+      # "lutris/runners/xemu.yml".source = settingsFormat.generate "xemu.yml" {
+      #   xemu = {
+      #     runner_executable = "${pkgs.xemu}/bin/xemu";
+      #   };
 
-        system = {
-          disable_runtime = true;
-        };
-      };
+      #   system = {
+      #     disable_runtime = true;
+      #   };
+      # };
 
       # Libretro Emulator (por ahora lo manejare manual)
       # "lutris/runners/libretro.yml".source = settingsFormat.generate "libretro.yml" {
