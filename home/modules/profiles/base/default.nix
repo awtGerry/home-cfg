@@ -98,6 +98,7 @@ in
       home-manager.enable = true;
       lsd.enable = true;
       ssh.enable = true;
+      rmpc.enable = true;
       rofi.enable = true;
 
       tmux = {

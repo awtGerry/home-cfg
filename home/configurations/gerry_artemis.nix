@@ -12,10 +12,9 @@
       variant = "dark";
       # variant = "light";
 
-      # baseScheme = "rose-pine";
+      baseScheme = "rose-pine";
       # baseScheme = "nightfox";
       # baseScheme = "tokyonight";
-      baseScheme = "gruvbox";
       # baseScheme = "gruber-darker";
     };
 
@@ -50,13 +49,13 @@
       # };
     };
 
-    nixpkgs.allowedUnfree = [
-      "spotify"
-    ];
+    # nixpkgs.allowedUnfree = [
+    #   "spotify"
+    # ];
 
     home.packages = with pkgs; [
-      # ytui-music
-      spotify
+      rmpc
+      # spotify
       waydroid
     ];
 

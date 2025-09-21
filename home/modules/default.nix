@@ -10,6 +10,7 @@
     "programs/ghostty" = ./programs/ghostty;
     "programs/helix" = ./programs/helix;
     "programs/helix/lsp" = ./programs/helix/lsp.nix;
+    "programs/rmpc" = ./programs/rmpc;
     "programs/scripts" = ./programs/scripts;
     "programs/zathura" = ./programs/zathura;
     "programs/zsh" = ./programs/zsh;
