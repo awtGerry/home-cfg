@@ -15,7 +15,7 @@ in
             "rose-pine"
           else
             config.theme.scheme;
-        font-size = 16;
+        font-size = 18;
         font-family = "Fira Code";
         confirm-close-surface = false;
         gtk-titlebar = false;

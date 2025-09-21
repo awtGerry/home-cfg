@@ -61,16 +61,16 @@ in
 
   environment.systemPackages = [
     pkgs.iptables
-    pkgs.libsForQt5.qt5.qtwebengine
+    # pkgs.libsForQt5.qt5.qtwebengine # Insecure package
     # Para virtualizacion
-    pkgs.qemu
-    pkgs.quickemu
-    pkgs.quickgui
-    (pkgs.writeShellScriptBin "qemu-system-x86_64-uefi" ''
-      qemu-system-x86_64 \
-        -bios ${pkgs.OVMF.fd}/FV/OVMF.fd \
-        "$@"
-    '')
+    # pkgs.qemu
+    # pkgs.quickemu
+    # pkgs.quickgui
+    # (pkgs.writeShellScriptBin "qemu-system-x86_64-uefi" ''
+    #   qemu-system-x86_64 \
+    #     -bios ${pkgs.OVMF.fd}/FV/OVMF.fd \
+    #     "$@"
+    # '')
   ];
 
   # Xserver
@@ -139,6 +139,20 @@ in
     };
 
   };
+
+  # TODO: I'll handle this with home-manager
+  # services.mpd = {
+  #   enable = true;
+  #   musicDirectory = "/media/Drive/Music";
+  #   extraConfig = ''
+  #     audio_output {
+  #       type "pipewire"
+  #       name "My PipeWire Output"
+  #     }
+  #   '';
+
+  #   # network.listenAddress = "any"; # if you want to allow non-localhost connections
+  # };
 
   services.libinput = {
     enable = true;

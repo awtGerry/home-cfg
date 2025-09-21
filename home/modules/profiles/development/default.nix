@@ -47,6 +47,7 @@ in
       ninja
       sqlite
       python3
+      docker-compose
 
       openssl
       pkg-config
@@ -84,7 +85,6 @@ in
       nodePackages.typescript-language-server
       nodePackages.bash-language-server
       nodePackages.svelte-language-server
-
       bash-completion
     ];
   };

@@ -8,7 +8,7 @@ _:
 
 let
   cfg = config.programs.rofi;
-  rofi = pkgs.rofi-wayland;
+  rofi = pkgs.rofi;
   inherit (config.lib.formats.rasi) mkLiteral;
 
   # launcher_config =

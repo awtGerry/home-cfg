@@ -7,7 +7,7 @@ let
     light = {
       nightfox = "nightfox";
       tokyonight = "tokyonight-day";
-      gruvbox = "gruvbox_light";
+      gruvbox = "gruvbox";
       catppuccin = "catppuccin";
       rose-pine = "rose_pine";
       gruber-darker = "gruber-darker";
