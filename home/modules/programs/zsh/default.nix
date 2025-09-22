@@ -44,14 +44,14 @@ in
         gac = lib.mkDefault "git add . && git commit"; # Add all and commit
         gc = lib.mkDefault "git commit"; # Commit
         gca = lib.mkDefault "git commit --amend"; # Change last commit
-        gC = lib.mkDefault "git checkout"; # Checkout
-        gd = lib.mkDefault "git diff"; # Diff
+        gC = lib.mkDefault "git checkout";
+        gd = lib.mkDefault "git diff";
         gds = lib.mkDefault "git diff --staged"; # Diff staged
-        gf = lib.mkDefault "git fetch"; # Fetch
-        gl = lib.mkDefault "git log"; # Log
-        gP = lib.mkDefault "git push"; # Push
-        gp = lib.mkDefault "git pull"; # Pull
-        gs = lib.mkDefault "git status"; # Status
+        gf = lib.mkDefault "git fetch";
+        gl = lib.mkDefault "git log";
+        gP = lib.mkDefault "git push";
+        gp = lib.mkDefault "git pull";
+        gs = lib.mkDefault "git status";
 
         # Dirs
         cac = lib.mkDefault "cd ~/.cache";
