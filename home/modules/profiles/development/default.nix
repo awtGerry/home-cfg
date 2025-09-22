@@ -36,24 +36,20 @@ in
       ];
     };
 
-    nixpkgs.allowedUnfree = [
-      "code-cursor"
-      "cursor"
-    ];
-
     home.packages = with pkgs; [
-      lazygit
       ripgrep
       ninja
       sqlite
       python3
       docker-compose
-
+      tree
+      sqlx-cli
       openssl
       pkg-config
       xh
 
       # Paginas de manual
+      ascii
       man-pages
       man-pages-posix
       glibcInfo

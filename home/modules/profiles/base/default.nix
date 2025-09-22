@@ -92,13 +92,13 @@ in
       btop.enable = true;
       firefox.enable = true; # Todos tienen firefox, solo los 'browsing' tienen firefox personalizado
       fzf.enable = true;
-      helix.enable = if config.apps.editor == "helix" then true else false;
-      kitty.enable = if config.apps.terminal == "kitty" then true else false;
-      ghostty.enable = if config.apps.terminal == "ghostty" then true else false;
+      helix.enable = config.apps.editor == "helix";
+      kitty.enable = config.apps.terminal == "kitty";
+      ghostty.enable = config.apps.terminal == "ghostty";
       home-manager.enable = true;
       lsd.enable = true;
       ssh.enable = true;
-      rmpc.enable = true;
+      rmpc.enable = config.apps.music == "rmpc";
       rofi.enable = true;
 
       tmux = {
@@ -151,47 +151,50 @@ in
     nixpkgs.allowedUnfree = [
       "posy-cursors"
       "unrar"
-    ];
+    ]
+    ++ lib.optional (config.apps.music == "spotify") "spotify";
 
     # Otros programas
-    home.packages = with pkgs; [
+    home.packages =
+      with pkgs;
+      [
+        # Documentos
+        appflowy
+        libreoffice
+        texlab
+        # texlive
+        slides
 
-      # Documentos
-      appflowy
-      libreoffice
-      texlab
-      # texlive
-      slides
+        # Conversion de archivos
+        unrar
+        unzip
+        p7zip
+        zip
 
-      # Conversion de archivos
-      unrar
-      unzip
-      p7zip
-      zip
+        # Utilidades del sistema
+        foliate # epub-reader
+        gimp
+        xfce.thunar
+        dunst
+        xdotool
+        sxiv
+        yt-dlp
+        libnotify
+        pulsemixer
+        duf
+        neofetch
+        xdotool
+        easyeffects
 
-      # Utilidades del sistema
-      foliate # epub-reader
-      gimp
-      xfce.thunar
-      dunst
-      xdotool
-      sxiv
-      yt-dlp
-      libnotify
-      pulsemixer
-      duf
-      neofetch
-      xdotool
-      easyeffects
-
-      maim
-      xclip
-      # Network
-      networkmanager
-      curl
-      nmap
-      whois
-      wget
-    ];
+        maim
+        xclip
+        # Network
+        networkmanager
+        curl
+        nmap
+        whois
+        wget
+      ]
+      ++ lib.optional (config.apps.music == "spotify") spotify;
   };
 }

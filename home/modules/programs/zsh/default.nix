@@ -39,7 +39,6 @@ in
         nxe = lib.mkDefault "nix-env -iA";
 
         # Git
-        lg = lib.mkDefault "lazygit"; # Trying lazygit (finally)
         g = lib.mkDefault "git";
         ga = lib.mkDefault "git add";
         gac = lib.mkDefault "git add . && git commit"; # Add all and commit
