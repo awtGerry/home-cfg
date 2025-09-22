@@ -18,7 +18,7 @@ let
     gameLauncher = "lutris";
     bluetooth = "bluetoothctl";
     email = "thunderbird";
-    music = "spotify";
+    music = "rmpc";
   };
   # Toma screenshot fullscreen (wayland)
   mkScreenshotCmd =
@@ -104,8 +104,8 @@ in
           "$mod, X, exec, ${cfg.bindings.apps.gameClient}"
           "$mod SHIFT, X, exec, ${cfg.bindings.apps.gameLauncher}"
           "$mod, B, exec, ${cfg.bindings.apps.terminal} -e ${cfg.bindings.apps.bluetooth}"
-          "$mod, M, exec, ${cfg.bindings.apps.email}"
-          "$mod SHIFT, M, exec, ${cfg.bindings.apps.music}"
+          # "$mod, M, exec, ${cfg.bindings.apps.email}"
+          "$mod, M, exec, ${config.apps.music}"
         ]
         ++ cfg.bindings.extraBinds
         ++ (

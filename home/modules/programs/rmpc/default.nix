@@ -1,5 +1,10 @@
 _:
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.programs.rmpc;
 in
@@ -34,5 +39,9 @@ in
         )
       '';
     };
+
+    home.packages = [
+      pkgs.picard # Tagging audio
+    ];
   };
 }

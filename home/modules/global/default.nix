@@ -75,6 +75,11 @@ in
       default = "rofi";
       description = "Launcher";
     };
+    music = lib.mkOption {
+      type = lib.types.str;
+      default = "spotify"; # TODO: Spotify es unfree
+      description = "Music Player";
+    };
   };
 
   options.dirs = {

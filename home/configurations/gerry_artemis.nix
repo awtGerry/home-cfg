@@ -12,9 +12,8 @@
       variant = "dark";
       # variant = "light";
 
-      baseScheme = "rose-pine";
-      # baseScheme = "nightfox";
-      # baseScheme = "tokyonight";
+      baseScheme = "nightfox";
+      # baseScheme = "gruvbox";
       # baseScheme = "gruber-darker";
     };
 
@@ -22,6 +21,7 @@
       browser = "firefox";
       terminal = "ghostty";
       editor = "helix";
+      music = "rmpc";
     };
 
     programs.waybar.enable = true;
@@ -49,13 +49,7 @@
       # };
     };
 
-    # nixpkgs.allowedUnfree = [
-    #   "spotify"
-    # ];
-
     home.packages = with pkgs; [
-      rmpc
-      # spotify
       waydroid
     ];
 
