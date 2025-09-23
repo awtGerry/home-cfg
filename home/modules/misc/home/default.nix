@@ -14,7 +14,13 @@
     defaultFonts =
       let
         cfg = builtins.mapAttrs (
-          _: v: [ "Joy Pixels" ] ++ v ++ [ "Noto Color Emoji" ] ++ v ++ [ "FontAwesome" ]
+          _: f:
+          f
+          ++ [
+            "Joy Pixels"
+            "Noto Color Emoji"
+            "FontAwesome"
+          ]
         );
       in
       cfg {
