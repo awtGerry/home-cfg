@@ -87,8 +87,7 @@ in
     sddm = {
       enable = true;
       wayland.enable = true;
-      # TODO: Implementar el tema
-      # theme = "${import ../../home/modules/programs/sddm/default.nix { inherit pkgs; }}";
+      theme = "${import ../../home/modules/programs/sddm/default.nix { inherit pkgs; }}";
     };
     sessionPackages = [ pkgs.hyprland ];
   };

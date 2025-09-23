@@ -7,12 +7,14 @@ in
   config = lib.mkIf cfg.enable {
     programs.ghostty = {
       settings = {
-        # Hacer al tema gruvbox su variante 'dark hard'
+        # TODO: Mejor manera de renombrar?
         theme =
           if config.theme.scheme == "gruvbox" then
             "GruvboxDarkHard"
           else if config.theme.scheme == "rose_pine" then
             "rose-pine"
+          else if config.theme.scheme == "nightfox" then
+            "Nightfox"
           else
             config.theme.scheme;
         font-size = 18;

@@ -1,7 +1,4 @@
-_:
 { pkgs, ... }:
-
-# TODO: change this to a more reliable resource
 
 let
   themeUrl = "https://raw.githubusercontent.com/awtGerry/home-cfg/master/home/modules/programs/sddm/theme.conf";
