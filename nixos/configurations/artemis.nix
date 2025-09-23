@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  inputs,
   lib,
   ...
 }:
@@ -47,14 +46,6 @@ in
         9003
       ];
     };
-  };
-
-  fonts = {
-    fontconfig.enable = true;
-    packages = [
-      # maple-mono-SC-NF
-      inputs.self.packages.${pkgs.system}.sf-pro
-    ];
   };
 
   time.timeZone = "America/Mexico_City";

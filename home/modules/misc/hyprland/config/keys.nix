@@ -105,7 +105,13 @@ in
           "$mod SHIFT, X, exec, ${cfg.bindings.apps.gameLauncher}"
           "$mod, B, exec, ${cfg.bindings.apps.terminal} -e ${cfg.bindings.apps.bluetooth}"
           # "$mod, M, exec, ${cfg.bindings.apps.email}"
-          "$mod, M, exec, ${config.apps.music}"
+          # "$mod, M, exec, ${config.apps.music}"
+          (
+            if config.apps.music == "rmpc" then
+              "$mod, M, exec, ${cfg.bindings.apps.terminal} -e ${config.apps.music}"
+            else
+              "$mod, M, exec, ${config.apps.music}"
+          )
         ]
         ++ cfg.bindings.extraBinds
         ++ (

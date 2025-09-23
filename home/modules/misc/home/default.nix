@@ -1,5 +1,10 @@
 { self, ... }:
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
   profiles.base.enable = true;
 
@@ -22,6 +27,9 @@
   # systemd.user = {
   # sessionVariables = { NIX_PATH = nixPath; };
   # };
+
+  nixpkgs.allowedUnfree = [ "joypixels" ];
+  nixpkgs.config.joypixels.acceptLicense = true;
 
   home = {
     packages = with pkgs; [
