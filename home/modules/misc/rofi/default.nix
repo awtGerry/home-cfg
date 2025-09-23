@@ -9,7 +9,7 @@ _:
 let
   cfg = config.programs.rofi;
   rofi = pkgs.rofi;
-  inherit (config.lib.formats.rasi) mkLiteral;
+  # inherit (config.lib.formats.rasi) mkLiteral;
 
   # launcher_config =
   #   if config.theme.variant == "dark" then "./config/dark.rasi" else "./config/light.rasi";

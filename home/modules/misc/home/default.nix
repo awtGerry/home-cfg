@@ -10,7 +10,6 @@
 
   fonts.fontconfig = {
     enable = true;
-    antialiasing = true;
     defaultFonts =
       let
         cfg = builtins.mapAttrs (
@@ -29,11 +28,6 @@
         serif = [ "Libertinus Serif" ];
       };
   };
-
-  # systemd.user = {
-  # sessionVariables = { NIX_PATH = nixPath; };
-  # };
-
   nixpkgs.allowedUnfree = [ "joypixels" ];
   nixpkgs.config.joypixels.acceptLicense = true;
 

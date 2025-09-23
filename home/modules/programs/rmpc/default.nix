@@ -10,17 +10,6 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    services.mpd = {
-      enable = true;
-      musicDirectory = "/media/Drive/Music";
-      extraConfig = ''
-        audio_output {
-          type "pipewire"
-          name "My PipeWire Output"
-        }
-      '';
-      network.listenAddress = "any"; # if you want to allow non-localhost connections
-    };
     programs.rmpc = {
       config = ''
         (

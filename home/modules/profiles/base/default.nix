@@ -19,7 +19,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-
     # Configuracion de GTK
     gtk = {
       enable = true;
@@ -34,8 +33,13 @@ in
       iconTheme.package = pkgs.kora-icon-theme;
       iconTheme.name = "kora";
 
+      # font = {
+      #   name = "SF Pro Display";
+      # };
+
+      # Probando otras fuentes...
       font = {
-        name = "SF Pro Display";
+        name = "Libertinus Sans 11";
         package = inputs.self.packages.${pkgs.system}.sf-pro;
       };
 
@@ -77,6 +81,19 @@ in
       # '';
     };
 
+    # Configuracion basica de audio
+    services.mpd = {
+      enable = true;
+      musicDirectory = "/media/Drive/Music";
+      extraConfig = ''
+        audio_output {
+          type "pipewire"
+          name "My PipeWire Output"
+        }
+      '';
+      network.listenAddress = "any"; # if you want to allow non-localhost connections
+    };
+
     xdg.mimeApps = {
       enable = true;
       associations.added = {
@@ -97,7 +114,10 @@ in
       ghostty.enable = config.apps.terminal == "ghostty";
       home-manager.enable = true;
       lsd.enable = true;
-      ssh.enable = true;
+      ssh = {
+        enable = true;
+        enableDefaultConfig = false;
+      };
       rmpc.enable = config.apps.music == "rmpc";
       rofi.enable = true;
 
@@ -185,6 +205,7 @@ in
         neofetch
         xdotool
         easyeffects
+        libsForQt5.qt5.qtgraphicaleffects
 
         maim
         xclip
