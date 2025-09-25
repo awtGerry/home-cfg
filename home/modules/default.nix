@@ -15,6 +15,7 @@
     "programs/zathura" = ./programs/zathura;
     "programs/zsh" = ./programs/zsh;
 
+    "misc/anyrun" = ./misc/anyrun;
     "misc/hyprland" = ./misc/hyprland;
     "misc/waybar" = ./misc/waybar;
     "misc/home" = ./misc/home;
@@ -22,5 +23,6 @@
     "misc/rofi/config" = ./misc/rofi/config;
 
     "global" = ./global;
+    "global/themes" = ./global/themes;
   };
 }

@@ -16,6 +16,7 @@ let
       discord = "0.80 0.80";
       code = "0.80 0.80";
       thunar = "0.80 0.80";
+      ghostty = "0.90 0.90";
     };
     system = {
       dunst = "0.90 0.90";
@@ -118,10 +119,6 @@ in
             "workspace 4, title:(^(lutris)$)"
             "workspace 5, title:(^(gimp)$)"
             "workspace 8, title:(^(discord)$)"
-            "workspace 9, title:(^(thunderbird)$)"
-            "workspace 10, title:(^(Spotify)$)"
-            "workspace 10, title:(^(Spotify ( Premium)?)$)"
-            "workspace 10, title:(^(Spotify ( Free)?)$)"
           ];
           description = "Asignacion de programas en los espacios de trabajo";
         };
@@ -129,6 +126,7 @@ in
         opacityRules = lib.mkOption {
           type = with lib.types; listOf str;
           default = [
+            "opacity 0.90 0.90,class:^(Ghostty)$"
             "opacity 0.90 0.90,class:^(${config.apps.terminal})$"
             "opacity 0.90 0.90,class:^(${config.apps.browser})$"
             "opacity 0.90 0.90,class:^(foot)$"

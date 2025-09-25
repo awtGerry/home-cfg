@@ -52,6 +52,7 @@ in
 
   environment.systemPackages = [
     pkgs.iptables
+    pkgs.libsForQt5.qt5.qtgraphicaleffects
     # pkgs.libsForQt5.qt5.qtwebengine # Insecure package
     # Para virtualizacion
     # pkgs.qemu

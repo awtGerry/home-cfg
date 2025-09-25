@@ -9,7 +9,6 @@ _:
 # Configuracion para rofi
 let
   cfg = config.programs.rofi;
-  # mode = config.theme.variant;
   inherit (config.lib.formats.rasi) mkLiteral;
 in
 {

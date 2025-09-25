@@ -12,14 +12,13 @@
       variant = "dark";
       # variant = "light";
 
-      baseScheme = "nightfox";
-      # baseScheme = "gruvbox";
-      # baseScheme = "gruber-darker";
+      baseScheme = "ayu";
     };
 
     apps = {
       browser = "firefox";
       terminal = "ghostty";
+      launcher = "anyrun";
       editor = "helix";
       music = "rmpc";
     };

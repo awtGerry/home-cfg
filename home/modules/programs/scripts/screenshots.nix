@@ -1,8 +1,14 @@
 { pkgs, config, ... }:
 
 let
-  rofi_config = "${config.dirs.repoDir}/home/modules/misc/rofi/config/dark.rasi";
-  # rofi menu
+  cmd =
+    # rofi case (X11)
+    if config.apps.launcher == "rofi" then
+      "${config.apps.launcher} -dmenu -i -mesg \"Screenshot menu\""
+    # anyrun case (Wayland)
+    else
+      "${config.apps.launcher} --plugins libstdin.so --show-results-immediately true --hide-icons true --hide-plugin-info true";
+
   screenshot = pkgs.writeShellScriptBin "screenshot" ''
     screenshot_dir="${config.xdg.userDirs.pictures}/screenshots"
     if [ ! -d "$screenshot_dir" ]; then
@@ -17,7 +23,7 @@ let
     xclip_cmd="xclip -sel clip -t image/png"
 
     case "$(printf "  Area\\n  Window\\n󰍹  Full Screen\\n  Area(clipboard)\\n  Window(clipboard)\\n󰍹  Full Screen(clipboard)" |
-      rofi -dmenu -i -mesg "Screenshot menu" -config ${rofi_config})"
+      ${cmd})"
     in
       "  Area")
         if [ -n "$WAYLAND_DISPLAY" ]; then

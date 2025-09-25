@@ -119,7 +119,9 @@ in
         enableDefaultConfig = false;
       };
       rmpc.enable = config.apps.music == "rmpc";
-      rofi.enable = true;
+
+      anyrun.enable = config.apps.launcher == "anyrun";
+      rofi.enable = config.apps.launcher == "rofi"; # Dejare rofi disponible por si regreso
 
       tmux = {
         enable = true;
@@ -205,7 +207,6 @@ in
         neofetch
         xdotool
         easyeffects
-        libsForQt5.qt5.qtgraphicaleffects
 
         maim
         xclip

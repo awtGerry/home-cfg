@@ -9,7 +9,12 @@ let
     terminal = config.apps.terminal;
     altBrowser = "chromium";
     editor = config.apps.editor;
-    launcher = "${config.apps.launcher} -show drun -show-icons";
+    # launcher = config.apps.launcher;
+    launcher =
+      if config.apps.launcher == "rofi" then
+        "${config.apps.launcher} -show drun -show-icons"
+      else
+        "${config.apps.launcher}";
     mixer = "pulsemixer";
     imageEditor = "gimp";
     diskUsage = "duf";
@@ -90,7 +95,7 @@ in
           "$mod, A, exec, ${cfg.bindings.apps.terminal} -e ${cfg.bindings.apps.mixer}"
 
           # Manejo de fondos de pantalla
-          "$mod, S, exec, rofi-wp"
+          "$mod, S, exec, fzf-wp"
           "$mod SHIFT, S, exec, random-wp"
           "$mod CTRL, S, exec, setbg"
 
