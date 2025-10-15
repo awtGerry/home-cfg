@@ -80,7 +80,7 @@ in
         (mkLanguage {
           name = "lua";
           autoFormat = true;
-          langServer = "${pkgs.lua-language-server}/bin/lua-language-server";
+          langServer = "lua-language-server";
         })
         (mkLanguage {
           name = "ruby";
@@ -95,7 +95,8 @@ in
           autoFormat = true;
           langServer = "texlab";
         })
-      ] ++ prettierLanguages;
+      ]
+      ++ prettierLanguages;
 
       language-server = {
         biome-lsp = {
@@ -120,6 +121,17 @@ in
           command = "${pkgs.rubyPackages.solargraph}/bin/solargraph";
           config.diagnostics = true;
           config.formatting = true;
+        };
+        lua-language-server = {
+          command = "${pkgs.lua-language-server}/bin/lua-language-server";
+          config = {
+            Lua = {
+              workspace.library = [
+                "${pkgs.lua-language-server}/share/lua-language-server/meta/3rd/love2d/library"
+              ];
+              runtime.version = "LuaJIT";
+            };
+          };
         };
         texlab = {
           command = "${pkgs.texlab}/bin/texlab";
