@@ -10,7 +10,9 @@ in
         # TODO: Mejor manera de renombrar?
         theme =
           if config.theme.scheme == "gruvbox" then
-            "GruvboxDarkHard"
+            "Gruvbox Dark Hard"
+          else if config.theme.scheme == "rose_pine" then
+            "rose-pine"
           else if config.theme.scheme == "nightfox" then
             "Nightfox"
           else if config.theme.scheme == "ayu_dark" then

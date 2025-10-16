@@ -5,17 +5,8 @@
   lib,
   ...
 }:
-let
-  steamPackages = [
-    "steam"
-    "steam-run"
-    "steam-original"
-    "steam-runtime"
-    "steam-unwrapped"
-  ];
-in
 {
-  nix.allowedUnfree = [ "unrar" ] ++ steamPackages;
+  nix.allowedUnfree = [ "unrar" ];
   nix.settings.experimental-features = [
     "ca-derivations"
     "impure-derivations"
@@ -97,8 +88,7 @@ in
   services.displayManager = {
     sddm = {
       enable = true;
-      # TODO: Implementar el tema
-      # theme = "${import ../../home/modules/programs/sddm/default.nix { inherit pkgs; }}";
+      theme = "${import ../../home/modules/programs/sddm/default.nix { inherit pkgs; }}";
     };
     defaultSession = "none+dwm";
   };

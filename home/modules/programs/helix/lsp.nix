@@ -99,6 +99,14 @@ in
       ++ prettierLanguages;
 
       language-server = {
+        rust-analyzer = {
+          # config.nil.formatting.command = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ];
+          # Leptos configs
+          config.procMacro.ignored = [
+            "server"
+          ];
+          config.cargo.allFeatures = true;
+        };
         biome-lsp = {
           command = "biome";
           args = [ "lsp-proxy" ];

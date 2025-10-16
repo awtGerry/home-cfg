@@ -9,7 +9,7 @@
 
     theme = {
       variant = "dark";
-      baseScheme = "gruber-darker";
+      baseScheme = "ayu";
     };
 
     apps = {
