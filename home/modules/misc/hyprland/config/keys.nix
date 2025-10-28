@@ -93,6 +93,7 @@ in
           "$mod, P, exec, ${cfg.bindings.apps.launcher}"
           "$mod SHIFT, P, exec, ${cfg.bindings.apps.imageEditor}"
           "$mod, A, exec, ${cfg.bindings.apps.terminal} -e ${cfg.bindings.apps.mixer}"
+          "$mod, N, exec, hx-notes"
 
           # Manejo de fondos de pantalla
           "$mod, S, exec, fzf-wp"

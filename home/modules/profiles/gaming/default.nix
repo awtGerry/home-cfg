@@ -21,8 +21,17 @@ in
       "discord"
       "steam"
       "steam-run"
+      "steam-unwrapped"
       "snes9x"
     ];
+    xdg.desktopEntries."steam-custom" = {
+      name = "Steam (Custom)";
+      comment = "Launch Steam without chat or friends UI, silently";
+      exec = "${pkgs.steam}/bin/steam -nochatui -nofriendsui -silent %U";
+      icon = "steam";
+      categories = [ "Game" ];
+      terminal = false;
+    };
     home.packages = with pkgs; [
       discord
       # Paquetes para los controles
@@ -50,7 +59,6 @@ in
       wineWowPackages.staging
       winetricks
       snes9x
-      shadps4
       ryubing # Emulador para switch
       inputs.self.packages.${pkgs.system}.sudachi
       # xemu # broken?
@@ -151,15 +159,15 @@ in
       };
 
       # PS4
-      "lutris/runners/shadps4.yml".source = settingsFormat.generate "shadps4.yml" {
-        shadps4 = {
-          runner_executable = "${pkgs.shadps4}/bin/shadps4";
-        };
+      # "lutris/runners/shadps4.yml".source = settingsFormat.generate "shadps4.yml" {
+      #   shadps4 = {
+      #     runner_executable = "${pkgs.shadps4}/bin/shadps4";
+      #   };
 
-        system = {
-          disable_runtime = true;
-        };
-      };
+      #   system = {
+      #     disable_runtime = true;
+      #   };
+      # };
 
       # BUG: Xemu seems to be broken
       # Xbox emulator
