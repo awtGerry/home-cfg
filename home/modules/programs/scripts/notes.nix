@@ -21,7 +21,7 @@ let
         echo "sync notes"
         ;;
       *)
-        ${config.apps.terminal} hx -e "$choice"
+        ${config.apps.terminal} -e hx "$choice"
         ;;
     esac
   '';

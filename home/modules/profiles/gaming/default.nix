@@ -44,7 +44,7 @@ in
       mangohud
       mesa-demos
       vulkan-tools
-      vkBasalt
+      vkbasalt
 
       # Games & Launchers
       lutris-free

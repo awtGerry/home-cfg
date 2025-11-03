@@ -92,7 +92,6 @@ in
       dconf
       xwayland
       wlogout
-      kdePackages.xwaylandvideobridge
       swww
       wl-clipboard
       wlr-randr
