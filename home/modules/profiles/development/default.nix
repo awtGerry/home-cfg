@@ -17,11 +17,11 @@ in
     programs.git = {
       enable = true;
 
-      userName = "Victor Rodriguez";
-      userEmail = "awtGerry@gmail.com";
+      user.name = "Victor Rodriguez";
+      user.email = "awtGerry@gmail.com";
 
-      extraConfig = {
-        init.defaultBranch = "master";
+      settings = {
+        init.defaultBranch = "main";
         pull.rebase = "merges";
         rebase.autostash = true;
         diff.algorithm = "histogram";
