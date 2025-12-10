@@ -33,15 +33,16 @@ in
       iconTheme.package = pkgs.kora-icon-theme;
       iconTheme.name = "kora";
 
-      # font = {
-      #   name = "SF Pro Display";
-      # };
+      font = {
+        name = "SF Pro Display 11";
+        package = inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.sf-pro;
+      };
 
       # Probando otras fuentes...
-      font = {
-        name = "Libertinus Sans 11";
-        package = inputs.self.packages.${pkgs.system}.sf-pro;
-      };
+      # font = {
+      #   name = "Libertinus Sans 11";
+      #   inputs.self.packages.${pkgs.system}.sf-pro;
+      # };
 
       gtk3 = {
         bookmarks = [
@@ -112,6 +113,7 @@ in
       helix.enable = config.apps.editor == "helix";
       kitty.enable = config.apps.terminal == "kitty";
       ghostty.enable = config.apps.terminal == "ghostty";
+      awtst.enable = config.apps.terminal == "st";
       home-manager.enable = true;
       lsd.enable = true;
       ssh = {

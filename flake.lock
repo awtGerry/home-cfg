@@ -8,11 +8,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1761969823,
-        "narHash": "sha256-YqUB0AYD4KbeqvSZqPhXhHBj3mLKTyuYrofyRgG3+Xc=",
+        "lastModified": 1765166690,
+        "narHash": "sha256-R3IuQUCRKilXeCwhtc8V443zRt7CIVewQ2Oa5LoXsnw=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "aecae658b04384b2f87249c6b93fdbfd97ef249d",
+        "rev": "74c67b60a15ff1a55208bdd1788a5cd4bcb7481a",
         "type": "gitlab"
       },
       "original": {
@@ -45,11 +45,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760948891,
-        "narHash": "sha256-TmWcdiUUaWk8J4lpjzu4gCGxWY6/Ok7mOK4fIFfBuU4=",
+        "lastModified": 1763759067,
+        "narHash": "sha256-LlLt2Jo/gMNYAwOgdRQBrsRoOz7BPRkzvNaI/fzXi2Q=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "864599284fc7c0ba6357ed89ed5e2cd5040f0c04",
+        "rev": "2cccadc7357c0ba201788ae99c4dfa90728ef5e0",
         "type": "github"
       },
       "original": {
@@ -91,11 +91,11 @@
     },
     "hardware": {
       "locked": {
-        "lastModified": 1761933221,
-        "narHash": "sha256-rNHeoG3ZrA94jczyLSjxCtu67YYPYIlXXr0uhG3wNxM=",
+        "lastModified": 1764440730,
+        "narHash": "sha256-ZlJTNLUKQRANlLDomuRWLBCH5792x+6XUJ4YdFRjtO4=",
         "owner": "nixos",
         "repo": "nixos-hardware",
-        "rev": "7467f155fcba189eb088a7601f44fbef7688669b",
+        "rev": "9154f4569b6cdfd3c595851a6ba51bfaa472d9f3",
         "type": "github"
       },
       "original": {
@@ -111,11 +111,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1762025346,
-        "narHash": "sha256-6KR4dsNfA3Pqm6uT8j7aKjWydP/KXFqZUhOfMlfP+1E=",
+        "lastModified": 1765217760,
+        "narHash": "sha256-BVVyAodLcAD8KOtR3yCStBHSE0WAH/xQWH9f0qsxbmk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "87044c57222fb485974062e2dd557e7b8abd8fff",
+        "rev": "e5b1f87841810fc24772bf4389f9793702000c9b",
         "type": "github"
       },
       "original": {
@@ -138,11 +138,11 @@
         "nixpkgs-regression": "nixpkgs-regression"
       },
       "locked": {
-        "lastModified": 1762009701,
-        "narHash": "sha256-HScOtPmH8dua9DxijMJqddrMZM8dxamigh1r/B/Fkqc=",
+        "lastModified": 1765236363,
+        "narHash": "sha256-pYyvHpf3T42pxeK+BZvZwJUPzGmeuNRjcs5Vg5XB+rU=",
         "owner": "nixos",
         "repo": "nix",
-        "rev": "0ba1aa34dcab6c69dd9eb74db4353deb4608e759",
+        "rev": "afc2b96c5e32e82da344cb28fee5e06aa8a78873",
         "type": "github"
       },
       "original": {
@@ -153,11 +153,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1761907660,
-        "narHash": "sha256-kJ8lIZsiPOmbkJypG+B5sReDXSD1KGu2VEPNqhRa/ew=",
+        "lastModified": 1764950072,
+        "narHash": "sha256-BmPWzogsG2GsXZtlT+MTcAWeDK5hkbGRZTeZNW42fwA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "2fb006b87f04c4d3bdf08cfdbc7fab9c13d94a15",
+        "rev": "f61125a668a320878494449750330ca58b78c557",
         "type": "github"
       },
       "original": {
@@ -223,11 +223,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1762005806,
-        "narHash": "sha256-irf7c1UuOvJJmZsi2v7HUqWvqVbrm+b9uU1tsaOH0Nk=",
+        "lastModified": 1765189929,
+        "narHash": "sha256-QFZkwLMQuBESsxKEd6NwhawUk2xGWv4VPnY5Rh3+odM=",
         "owner": "wamserma",
         "repo": "flake-programs-sqlite",
-        "rev": "7360130834c30b4f1f4c9cbb676751b386b7fad0",
+        "rev": "99c5eeaca6ad8278f90f04a1728eeaadd3266f48",
         "type": "github"
       },
       "original": {
@@ -257,11 +257,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1761964689,
-        "narHash": "sha256-Zo3LQQDz+64EQ9zor/WmeNTFLoZkjmhp0UY3G0D3seE=",
+        "lastModified": 1765161692,
+        "narHash": "sha256-XdY9AFzmgRPYIhP4N+WiCHMNxPoifP5/Ld+orMYBD8c=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "63d22578600f70d293aede6bc737efef60ebd97f",
+        "rev": "7ed7e8c74be95906275805db68201e74e9904f07",
         "type": "github"
       },
       "original": {

@@ -91,6 +91,10 @@ in
           langServer = "vscode-html-language-server";
         })
         (mkLanguage {
+          name = "svelte";
+          langServer = "svelteserver";
+        })
+        (mkLanguage {
           name = "latex";
           autoFormat = true;
           langServer = "texlab";
