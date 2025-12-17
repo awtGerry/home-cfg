@@ -34,6 +34,7 @@
       auto-cpufreq
       cpulimit
       xwallpaper
+      neovim
     ];
   };
 }

@@ -95,6 +95,14 @@ in
           langServer = "svelteserver";
         })
         (mkLanguage {
+          name = "typescript";
+          langServer = "typescript-language-server";
+        })
+        (mkLanguage {
+          name = "python";
+          langServer = "python-lsp-server";
+        })
+        (mkLanguage {
           name = "latex";
           autoFormat = true;
           langServer = "texlab";
@@ -126,8 +134,11 @@ in
           command = "${pkgs.nodePackages.typescript-language-server}/bin/typescript-language-server";
           args = [
             "--stdio"
-            "tsserver-path=${pkgs.nodePackages.typescript}/lib/node_modules/typescript/lib"
+            # "tsserver-path=${pkgs.nodePackages.typescript}/lib/node_modules/typescript/lib"
           ];
+        };
+        python-lsp-server = {
+          command = "${pkgs.python313Packages.python-lsp-server}/bin/pylsp";
         };
         solargraph = {
           command = "${pkgs.rubyPackages.solargraph}/bin/solargraph";
