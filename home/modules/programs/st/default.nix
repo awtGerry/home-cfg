@@ -6,7 +6,7 @@ let
       owner = "awtgerry";
       repo = "vmst";
       rev = "master";
-      sha256 = "sha256-DsbO9451LBzDRB7v7G908Kbj3ZGvFVY1Hq/l88moPZs=";
+      sha256 = "sha256-HHK0OZ20IQasGEfm6fWVx6qJMhJGMwucUzC3R1GA0OQ=";
     };
     buildInputs = (oldAttrs.buildInputs or []) ++ (with pkgs; [
       xorg.libX11
