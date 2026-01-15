@@ -20,6 +20,7 @@ Configuracion de mi sistema utilizando nix y [home-manager](https://github.com/n
 - `artemis`: Soporta nuevo software, actualmente mi sistema principal (Wayland + Hyprland).
 - `lyra`: Maquina que utiliza X, para software mas sencillo solo para programar. (_on progress_)
 - `freya`: Sistema para portatiles, enfocado en la simplicidad y vida de la bateria (X11 + DWM).
+- `osiris`: Maquina con OSX, pensado especialmente para ser utilizado dentro de una VM.
 
 ## Inspiracion y recursos
 
