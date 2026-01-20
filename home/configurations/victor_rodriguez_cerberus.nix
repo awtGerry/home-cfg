@@ -13,11 +13,11 @@
     };
 
     apps = {
-      browser = "firefox";
-      terminal = "ghostty";
+      browser = "win";
+      terminal = "win";
       editor = "helix";
       launcher = "wsl";
-      music = "win10"; # Dejar la musica en windows
+      music = "win"; # Dejar la musica en windows
     };
 
     systemd.user.tmpfiles.rules = [
