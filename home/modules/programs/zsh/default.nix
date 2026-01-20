@@ -8,6 +8,11 @@ _:
 
 let
   cfg = config.programs.zsh;
+
+  # Copy token on ~/TOKEN for git to use
+  gt = pkgs.writeShellScriptBin "gt" ''
+    head -n 1 "${config.dirs.work}/TOKEN" | xclip -selection clipboard && git
+  '';
 in
 {
   config = lib.mkIf cfg.enable {
@@ -40,6 +45,7 @@ in
 
         # Git
         g = lib.mkDefault "git";
+        gt = lib.mkDefault "head -n 1 ${config.dirs.work}/TOKEN | xclip -selection clipboard && git";
         ga = lib.mkDefault "git add";
         gac = lib.mkDefault "git add . && git commit"; # Add all and commit
         gc = lib.mkDefault "git commit"; # Commit
@@ -52,6 +58,7 @@ in
         gP = lib.mkDefault "git push";
         gp = lib.mkDefault "git pull";
         gs = lib.mkDefault "git status";
+        gtk = lib.mkDefault "cat ~/TOKEN | xclip -selection clipboard && git"; # Git action with the token xclip
 
         # Dirs
         cac = lib.mkDefault "cd ~/.cache";

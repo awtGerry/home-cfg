@@ -38,7 +38,7 @@
 
       # Fuentes
       fira-code # dev
-      udev-gothic-nf # dev
+      nerd-fonts.monaspace
       libertinus
       joypixels # unfree?
       noto-fonts

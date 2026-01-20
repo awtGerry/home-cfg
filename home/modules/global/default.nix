@@ -45,5 +45,9 @@ _:
       type = lib.types.path;
       default = "${config.home.homeDirectory}/Dev/private/";
     };
+    work = lib.mkOption {
+      type = lib.types.path;
+      default = "${config.home.homeDirectory}/Dev/work/";
+    };
   };
 }

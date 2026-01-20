@@ -19,6 +19,11 @@ in
             "Ayu"
           else if config.theme.scheme == "ayu_light" then
             "Ayu Light"
+          else if config.theme.scheme == "gruber-darker" then
+            "Gruber Darker"
+          # TODO: Generar colores para curzon en ghostty
+          else if config.theme.scheme == "curzon" then # No existe en ghostty themes
+            "Gruber Darker"
           else
             config.theme.scheme;
         font-size = 18;

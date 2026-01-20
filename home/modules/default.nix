@@ -12,6 +12,7 @@
     "programs/helix/lsp" = ./programs/helix/lsp.nix;
     "programs/rmpc" = ./programs/rmpc;
     "programs/scripts" = ./programs/scripts;
+    "programs/st" = ./programs/st;
     "programs/zathura" = ./programs/zathura;
     "programs/zsh" = ./programs/zsh;
 
