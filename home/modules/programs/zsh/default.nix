@@ -15,7 +15,7 @@ in
 
     programs.zsh = {
       history.size = 10000000;
-      history.path = "/home/gerry/.cache/zsh_history";
+      history.path = "/home/${config.home.username}/.cache/zsh_history";
 
       shellAliases = {
         ls = lib.mkForce "lsd -h --color=auto --group-directories-first";

@@ -17,10 +17,9 @@ in
     programs.git = {
       enable = true;
 
-      user.name = "Victor Rodriguez";
-      user.email = "awtGerry@gmail.com";
-
       settings = {
+        user.name = "Victor Rodriguez";
+        user.email = "awtGerry@gmail.com";
         init.defaultBranch = "main";
         pull.rebase = "merges";
         rebase.autostash = true;
@@ -40,8 +39,6 @@ in
       ripgrep
       ninja
       sqlite
-      python3
-      docker-compose
       tree
       sqlx-cli
       openssl
@@ -68,9 +65,8 @@ in
       nodePackages.pnpm
 
       # java
-      # openjdk8
-      openjdk21
-      maven
+      # openjdk21
+      # maven
 
       # Language servers
       lua-language-server
