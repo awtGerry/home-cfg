@@ -4,6 +4,7 @@ let
   public_repos = "${config.dirs.publicRepos}";
   private_repos = "${config.dirs.privateRepos}";
   work_dir = "${config.dirs.work}";
+
   tmux-fzf = pkgs.writeShellScriptBin "tmux-fzf" ''
     #!/usr/bin/env bash
     if [[ $# -eq 1 ]]; then

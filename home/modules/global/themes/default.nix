@@ -2,7 +2,7 @@ _:
 {
   config,
   lib,
-  ... 
+  ...
 }:
 let
   einkColors = {
@@ -12,13 +12,13 @@ let
       fg = "#1a1a1a";
       bg-alt = "#f5f5ec";
       fg-alt = "#4a4a4a";
-      
+
       # UI elements
       selection = "#d4d4c8";
       border = "#c8c8bc";
       cursor = "#1a1a1a";
       cursorline = "#f0f0e6";
-      
+
       # Syntax - subtle but distinguishable
       comment = "#707068";
       keyword = "#2a2a2a";
@@ -28,7 +28,7 @@ let
       constant = "#3a3a3a";
       variable = "#1a1a1a";
       operator = "#4a4a4a";
-      
+
       # Diagnostics - using weight/style instead of color where possible
       error = "#1a1a1a";
       warning = "#3a3a3a";
@@ -41,13 +41,13 @@ let
       fg = "#e8e8e0";
       bg-alt = "#1e1e1e";
       fg-alt = "#b0b0a8";
-      
+
       # UI elements
       selection = "#2e2e2e";
       border = "#3a3a3a";
       cursor = "#e8e8e0";
       cursorline = "#1a1a1a";
-      
+
       # Syntax - subtle but distinguishable
       comment = "#6a6a62";
       keyword = "#d8d8d0";
@@ -57,7 +57,7 @@ let
       constant = "#c0c0b8";
       variable = "#e8e8e0";
       operator = "#a0a098";
-      
+
       # Diagnostics
       error = "#e8e8e0";
       warning = "#c0c0b8";
@@ -71,11 +71,15 @@ let
       nightfox = "dawnfox";
       gruvbox = "gruvbox_light";
       ayu = "ayu_light";
+      curzon = "curzon";
     };
     dark = {
       nightfox = "nightfox";
-      gruvbox = "gruvbox_dark_hard";
+      gruber = "gruber-darker";
+      gruvbox = "gruvbox";
+      catppuccin = "catppuccin";
       ayu = "ayu_dark";
+      curzon = "curzon";
     };
   };
 
@@ -111,8 +115,11 @@ in
         "gruvbox"
         "nightfox"
         "e-ink"
+        "gruber"
+        "catppuccin"
+        "curzon"
       ];
-      default = "ayu";
+      default = "gruvbox";
       description = "Familia de esquema de colores para utilizar";
     };
 
@@ -130,7 +137,7 @@ in
       type = lib.types.attrsOf lib.types.str;
       description = "Esquema de colores especifico por programa";
       default = lib.mapAttrs (
-        program:  variants: 
+        program: variants:
         if config.theme.baseScheme == "e-ink" then
           "eink_${config.theme.variant}"
         else
@@ -142,11 +149,7 @@ in
     colors = lib.mkOption {
       type = lib.types.attrsOf lib.types.str;
       description = "Colores del tema actual";
-      default =
-        if config.theme.baseScheme == "e-ink" then
-          einkColors.${config.theme.variant}
-        else
-          { };
+      default = if config.theme.baseScheme == "e-ink" then einkColors.${config.theme.variant} else { };
     };
 
     isEink = lib.mkOption {

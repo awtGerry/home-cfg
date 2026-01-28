@@ -39,13 +39,6 @@ let
     lib.mapAttrsToList (name: opacity: "opacity ${opacity},class:^(${name})$") (
       getOpacityRules category
     );
-
-  toRegex =
-    list:
-    let
-      elements = lib.concatStringsSep "|" list;
-    in
-    "^(${elements})$";
 in
 {
   imports = [ ]; # Atajos de teclado
@@ -113,12 +106,11 @@ in
         workspaceRules = lib.mkOption {
           type = with lib.types; listOf str;
           default = [
-            "workspace 2, title:(^(firefox)$)"
-            "workspace 3, title:(^(chromium)$)"
-            "workspace 4, title:(^(Steam)$)"
-            "workspace 4, title:(^(lutris)$)"
-            "workspace 5, title:(^(gimp)$)"
-            "workspace 8, title:(^(discord)$)"
+            "workspace 2, match:class firefox"
+            "workspace 4, match:class steam"
+            "workspace 4, match:class lutris"
+            "workspace 5, match:class gimp"
+            "workspace 8, match:class discord"
           ];
           description = "Asignacion de programas en los espacios de trabajo";
         };
@@ -184,6 +176,25 @@ in
           description = "Programas que se sobreponen (ignora el tipico efecto de un wm)";
         };
       };
+      layerrules = lib.mkOption {
+        type = with lib.types; listOf str;
+        default = [
+          "blur on, match:namespace calendar"
+          "blur on, match:namespace notifications"
+          "blur on, match:namespace osd"
+          "blur on, match:namespace systemmenu"
+          "blur on, match:namespace anyrun"
+          "blur on, match:namespace popups"
+          "xray 1, match:namespace bar"
+          "xray 1, match:namespace gtklayershell"
+          "ignore_alpha 0.2, match:namespace bar"
+          "ignore_alpha 0.2, match:namespace gtklayershell"
+          "ignore_alpha 0.5, match:namespace bar"
+          "ignore_alpha 0.5, match:namespace gtklayershell"
+          "ignore_alpha 0.5, match:namespace music"
+        ];
+        description = "Programas que se sobreponen (ignora el tipico efecto de un wm)";
+      };
     };
   };
 
@@ -201,11 +212,11 @@ in
         # shadow_range = 50;
         # shadow_render_power = 3;
         # "col.shadow" = "rgba(00000055)";
-        blurls = [
-          "lockscreen"
-          "waybar"
-          "popups"
-        ];
+        # blurls = [
+        #   "lockscreen"
+        #   "waybar"
+        #   "popups"
+        # ];
       };
 
       animation = lib.mkIf cfg.visuals.animation.enable {
@@ -234,37 +245,7 @@ in
         ))
         ++ cfg.visuals.windowRules.floatRules;
 
-      layerrule =
-        let
-          ignorealpha = [
-            "calendar"
-            "notifications"
-            "osd"
-            "system-menu"
-            "anyrun"
-            "popups"
-          ];
-          layers = ignorealpha ++ [
-            "bar"
-            "gtk-layer-shell"
-          ];
-        in
-        [
-          "blur, ${toRegex layers}"
-          "xray 1, ${
-            toRegex [
-              "bar"
-              "gtk-layer-shell"
-            ]
-          }"
-          "ignorealpha 0.2, ${
-            toRegex [
-              "bar"
-              "gtk-layer-shell"
-            ]
-          }"
-          "ignorealpha 0.5, ${toRegex (ignorealpha ++ [ "music" ])}"
-        ];
+      layerrule = cfg.visuals.layerrules;
     };
   };
 

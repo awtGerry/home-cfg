@@ -46,14 +46,15 @@
     pkgs.libsForQt5.qt5.qtgraphicaleffects
     # pkgs.libsForQt5.qt5.qtwebengine # Insecure package
     # Para virtualizacion
-    # pkgs.qemu
-    # pkgs.quickemu
-    # pkgs.quickgui
-    # (pkgs.writeShellScriptBin "qemu-system-x86_64-uefi" ''
-    #   qemu-system-x86_64 \
-    #     -bios ${pkgs.OVMF.fd}/FV/OVMF.fd \
-    #     "$@"
-    # '')
+    pkgs.qemu
+    pkgs.quickemu
+    pkgs.quickgui
+    pkgs.libvirt
+    (pkgs.writeShellScriptBin "qemu-system-x86_64-uefi" ''
+      qemu-system-x86_64 \
+        -bios ${pkgs.OVMF.fd}/FV/OVMF.fd \
+        "$@"
+    '')
   ];
 
   # Xserver
@@ -157,15 +158,13 @@
       enable = true;
       qemu = {
         swtpm.enable = true;
-        ovmf.enable = true;
-        ovmf.packages = [ pkgs.OVMFFull.fd ];
       };
     };
     spiceUSBRedirection.enable = true;
   };
   services.spice-vdagentd.enable = true;
 
-  # users.groups.libvirtd.members = [ "gerry" ];
+  users.groups.libvirtd.members = [ "gerry" ];
 
   users.users = {
     gerry = {
@@ -177,6 +176,9 @@
         "audio"
         "networkmanager"
         "libvirtd"
+        "kvm"
+        "libvirt"
+        "input"
       ];
     };
 
@@ -192,7 +194,7 @@
   # Activa algunos programas (zsh necesario)
   programs = {
     steam.enable = true;
-    # virt-manager.enable = true;
+    virt-manager.enable = true;
 
     # Arregla algunos problemas con helix y tmux
     screen = {
@@ -219,6 +221,7 @@
   environment = {
     variables.NIXOS_OZONE_WL = "1"; # Permite usar algunos programas que usan wayland
     sessionVariables = {
+      DOTNET_ROOT = "${pkgs.dotnet-aspnetcore_9}/share/dotnet/";
       XDG_CACHE_HOME = "$HOME/.cache";
       XDG_CONFIG_HOME = "$HOME/.config";
       XDG_DATA_HOME = "$HOME/.local/share";

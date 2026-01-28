@@ -60,9 +60,7 @@ in
       winetricks
       snes9x
       ryubing # Emulador para switch
-      inputs.self.packages.${pkgs.system}.sudachi
-      # xemu # broken?
-      # inputs.self.packages.${pkgs.system}.extract-xiso
+      # inputs.self.packages.${pkgs.system}.sudachi # broken
 
       # Game dependencies
       xorg.libXtst
@@ -135,11 +133,8 @@ in
       # Nintendo Switch Emulator
       "lutris/runners/ryujinx.yml".source = settingsFormat.generate "ryujinx.yml" {
         ryujinx = {
-          # runner_executable = "${pkgs.ryujinx}/bin/ryujinx";
-          # Por ahora usare sudachi
-          # TODO: Ver si hay una manera de agregar un runner no listado a lutris
-          # runner_executable = "/nix/store/cydkw8jjl27ki9qhwccylbrxa8pbf1yq-user-environment/bin/sudachi";
-          runner_executable = "${inputs.self.packages.${pkgs.system}.sudachi}/bin/sudachi";
+          runner_executable = "${pkgs.ryubing}/bin/ryubing";
+          # runner_executable = "${inputs.self.packages.${pkgs.system}.sudachi}/bin/sudachi";
         };
 
         system = {

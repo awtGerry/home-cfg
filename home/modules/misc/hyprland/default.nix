@@ -15,6 +15,7 @@ let
   startupScript = pkgs.writeShellScriptBin "start" ''
     ${pkgs.waybar}/bin/waybar &
     ${pkgs.swww}/bin/swww-daemon &
+    "anyrun daemon" &
     "random-wp" &
   '';
 in
@@ -55,7 +56,7 @@ in
       systemd.enable = true;
       settings = {
         xwayland.force_zero_scaling = true;
-        exec-once = ''${startupScript}/bin/start'';
+        exec-once = "${startupScript}/bin/start";
 
         general = {
           monitor = cfg.monitors;
@@ -63,7 +64,7 @@ in
           gaps_in = 5;
           gaps_out = 5;
           border_size = 2;
-          "no_border_on_floating" = false;
+          # "no_border_on_floating" = false;
           layout = "dwindle";
         };
 

@@ -22,8 +22,8 @@ in
           else if config.theme.scheme == "gruber-darker" then
             "Gruber Darker"
           # TODO: Generar colores para curzon en ghostty
-          else if config.theme.scheme == "curzon" then # No existe en ghostty themes
-            "Gruber Darker"
+          else if config.theme.scheme == "curzon" then
+            "Gruvbox Dark Hard"
           else
             config.theme.scheme;
         font-size = 18;

@@ -12,7 +12,8 @@
       variant = "dark";
       # variant = "light";
 
-      baseScheme = "ayu";
+      # baseScheme = "gruber";
+      baseScheme = "curzon";
     };
 
     apps = {

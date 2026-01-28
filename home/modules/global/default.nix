@@ -2,6 +2,13 @@ _:
 { lib, config, ... }:
 
 {
+  options.system = {
+    type = lib.types.enum [
+      "linux"
+      "darwin"
+      "macos"
+    ];
+  };
   options.apps = {
     browser = lib.mkOption {
       type = lib.types.str;
