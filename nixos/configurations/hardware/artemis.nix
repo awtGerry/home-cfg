@@ -58,8 +58,8 @@
 
   swapDevices = [ ];
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  # powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
+  # powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
   # NOTE: ROCM no esta muy bien implementado todavia, esperemos con el tiempo sea compatible con mi tarjeta.
   # hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
 

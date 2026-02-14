@@ -150,28 +150,28 @@ in
         floatRules = lib.mkOption {
           type = with lib.types; listOf str;
           default = [
-            "float,class:^(org.kde.polkit-kde-authentication-agent-1)$"
-            "float,class:^(pavucontrol)$"
-            "float,class:^(zathura)$"
-            "float,class:^(thunar)$"
-            "size 1280 720, class:^(thunar)$"
-            "float,title:^(Media viewer)$"
-            "float,title:^(Volume Control)$"
-            "float,class:^(Viewnior)$"
-            "float,title:^(DevTools)$"
-            "float,class:^(file_progress)$"
-            "float,class:^(confirm)$"
-            "float,class:^(dialog)$"
-            "float,class:^(download)$"
-            "float,class:^(notification)$"
-            "float,class:^(error)$"
-            "float,class:^(confirmreset)$"
-            "float,title:^(Open File)$"
-            "float,title:^(branchdialog)$"
-            "float,title:^(Confirm to replace files)$"
-            "float,title:^(File Operation Progress)$"
-            "float,class:^(com.github.Aylur.ags)$"
-            "float, title:^(Picture-in-Picture)$"
+            "float 1, match:class ^(org.kde.polkit-kde-authentication-agent-1)"
+            "float 1, match:class ^(pavucontrol)"
+            "float 1, match:class ^(zathura)"
+            "float 1, match:class ^(thunar)"
+            "size 1280 720,  match:class ^(thunar)"
+            "float 1, match:title ^(Media viewer)"
+            "float 1, match:title ^(Volume Control)"
+            "float 1, match:class ^(Viewnior)"
+            "float 1, match:title ^(DevTools)"
+            "float 1, match:class ^(file_progress)"
+            "float 1, match:class ^(confirm)"
+            "float 1, match:class ^(dialog)"
+            "float 1, match:class ^(download)"
+            "float 1, match:class ^(notification)"
+            "float 1, match:class ^(error)"
+            "float 1, match:class ^(confirmreset)"
+            "float 1, match:title ^(Open File)"
+            "float 1, match:title ^(branchdialog)"
+            "float 1, match:title ^(Confirm to replace files)"
+            "float 1, match:title ^(File Operation Progress)"
+            "float 1, match:class ^(com.github.Aylur.ags)"
+            "float 1, match:title ^(Picture-in-Picture)"
           ];
           description = "Programas que se sobreponen (ignora el tipico efecto de un wm)";
         };
@@ -230,9 +230,9 @@ in
         preserve_split = true;
       };
 
-      windowrule = cfg.visuals.windowRules.workspaceRules;
+      # windowrule = cfg.visuals.windowRules.workspaceRules;
 
-      windowrulev2 =
+      windowrule =
         (lib.optionals cfg.visuals.transparency.enable (
           # Terminal rules
           (makeOpacityRules "terminal")

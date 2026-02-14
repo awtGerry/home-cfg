@@ -35,51 +35,6 @@ in
         ];
       };
 
-      extraCss = with config.theme.themeAttrs.colors; ''
-        window {
-          background-color: ${c1};
-          border: 2px solid ${c1};
-        }
-
-        .main {
-          margin: 5px;
-        }
-
-        text {
-          padding: 5px;
-          margin: 5px;
-          background-color: transparent;
-          color: ${c3};
-        }
-
-        .matches box.plugin {
-          padding: 5px;
-        }
-
-        .matches box.plugin .info {
-          background-color: ${c1} ;
-        }
-
-        .matches box.plugin .info box.horizontal label {
-          padding-left: 5px;
-        }
-
-        .matches box.plugin list {
-          padding: 5px;
-        }
-
-        .matches box.plugin list .match .title,
-        .matches box.plugin list .match .description {
-          padding: 5px;
-        }
-
-        .matches box.plugin list .match:selected {
-          background-color: ${c2} ;
-          color: ${c4} ;
-        }
-
-      '';
-
       extraConfigFiles = {
         "applications.ron".text = ''
           Config(

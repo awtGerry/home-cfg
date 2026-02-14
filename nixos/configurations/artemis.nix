@@ -5,7 +5,11 @@
   ...
 }:
 {
-  nix.allowedUnfree = [ "unrar" ];
+  nix.allowedUnfree = [
+    "unrar"
+    "steam"
+    "steam-unwrapped"
+  ];
   nix.settings.experimental-features = [
     "ca-derivations"
     "impure-derivations"

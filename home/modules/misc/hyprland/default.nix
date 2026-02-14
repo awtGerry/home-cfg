@@ -15,8 +15,8 @@ let
   startupScript = pkgs.writeShellScriptBin "start" ''
     ${pkgs.waybar}/bin/waybar &
     ${pkgs.swww}/bin/swww-daemon &
-    "anyrun daemon" &
     "random-wp" &
+    "${pkgs.anyrun}/bin/anyrun daemon" &
   '';
 in
 {

@@ -107,6 +107,11 @@ in
           autoFormat = true;
           langServer = "texlab";
         })
+        (mkLanguage {
+          name = "zig";
+          langServer = "zls";
+          autoFormat = true;
+        })
       ]
       ++ prettierLanguages;
 
@@ -185,6 +190,10 @@ in
               };
             };
           };
+        };
+
+        zls = {
+          command = "${pkgs.zls}/bin/zls";
         };
       };
     };
