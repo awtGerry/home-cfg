@@ -11,6 +11,8 @@ _:
 }:
 let
   cfg = config.profiles.base;
+
+  # addons = inputs.firefox-addons.packages.${pkgs.system};
 in
 {
   options.profiles.base = {
@@ -24,7 +26,7 @@ in
       fzf.enable = true;
       helix.enable = config.apps.editor == "helix";
       # nixvim.enable = config.apps.editor == "nvim";
-      nixvim.enable = true;
+      # inputs.nxvim.homeModules.nixvim.enable = true;
       kitty.enable = config.apps.terminal == "kitty";
       ghostty.enable = config.apps.terminal == "ghostty";
       awtst.enable = config.apps.terminal == "st";

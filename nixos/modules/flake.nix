@@ -19,7 +19,8 @@ in
   options.nix.flakes.enable = lib.mkEnableOption "nix flakes";
 
   config = lib.mkIf config.nix.flakes.enable {
-    programs.command-not-found.dbPath = programsdb.packages.${pkgs.stdenv.hostPlatform.system}.programs-sqlite;
+    programs.command-not-found.dbPath =
+      programsdb.packages.${pkgs.stdenv.hostPlatform.system}.programs-sqlite;
 
     nixpkgs.overlays = [ rust-overlay.overlays.default ];
     environment.systemPackages = [
