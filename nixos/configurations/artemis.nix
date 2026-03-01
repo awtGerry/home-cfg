@@ -1,9 +1,22 @@
 {
+  self,
   config,
-  pkgs,
   lib,
+  pkgs,
   ...
 }:
+let
+  mkSurfshark = ovpn: {
+    autoStart = false;
+    up = "echo nameserver $nameserver | ${pkgs.openresolv}/sbin/resolvconf -m 0 -a $dev";
+    down = "${pkgs.openresolv}/sbin/resolvconf -da $dev";
+    config = ''
+      config ${ovpn}
+      auth-user-pass ${config.sops.secrets.surfshark_auth.path}
+      script-security 2
+    '';
+  };
+in
 {
   nix.allowedUnfree = [
     "unrar"
@@ -21,6 +34,43 @@
 
   services.lvm.boot.thin.enable = true;
   boot.enableContainers = false;
+
+  # Secrets
+  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+  sops.defaultSopsFile = "${self}/secrets/artemis/dev.yaml";
+  sops.secrets.surfshark_auth = {
+    owner = "root";
+    group = "root";
+    mode = "0600";
+  };
+  # vpn
+  services.openvpn.servers = {
+    surfshark-us = mkSurfshark "${self}/surfshark/us-hou.prod.surfshark.comsurfshark_openvpn_tcp.ovpn";
+    surfshark-mx = mkSurfshark "${self}/surfshark/mx-qro.prod.surfshark.comsurfshark_openvpn_tcp.ovpn";
+  };
+  security.sudo.extraRules = [
+    {
+      users = [ "gerry" ];
+      commands = [
+        {
+          command = "${pkgs.systemd}/bin/systemctl start openvpn-surfshark-us.service";
+          options = [ "NOPASSWD" ];
+        }
+        {
+          command = "${pkgs.systemd}/bin/systemctl start openvpn-surfshark-mx.service";
+          options = [ "NOPASSWD" ];
+        }
+        {
+          command = "${pkgs.systemd}/bin/systemctl stop openvpn-surfshark-us.service";
+          options = [ "NOPASSWD" ];
+        }
+        {
+          command = "${pkgs.systemd}/bin/systemctl stop openvpn-surfshark-mx.service";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
+  ];
 
   # Configuracion de red
   networking = {

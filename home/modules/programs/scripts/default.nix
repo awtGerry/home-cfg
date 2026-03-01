@@ -9,6 +9,7 @@ _:
     ./notes.nix
     ./translator.nix
     ./tmux-fzf.nix
+    ./vpn.nix
     ./wallpapers.nix
   ];
 }

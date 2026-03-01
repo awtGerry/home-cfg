@@ -1,0 +1,11 @@
+keys:
+  - &artemis age1muvxa44trrasxgjytwpzpl6zggzu287n0jw6j897xxxk5ytrheyq3csd8d
+creation_rules:
+  - path_regex: secrets/[^/]+\.yaml$
+    key_groups:
+      - age:
+          - *artemis
+  - path_regex: secrets/artemis/[^/]+\.yaml
+    key_groups:
+      - age:
+          - *artemis

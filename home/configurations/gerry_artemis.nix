@@ -12,8 +12,8 @@
       variant = "dark";
       # variant = "light";
 
-      # baseScheme = "gruber";
-      baseScheme = "curzon";
+      baseScheme = "ayu";
+      # baseScheme = "rose_pine";
     };
 
     apps = {

@@ -93,19 +93,20 @@ in
               bootloader = "${config.configFolder}/bootloader/${name}.nix";
               hardware = "${config.configFolder}/hardware/${name}.nix";
 
-              finalModules =
-                [
-                  { boot.tmp.cleanOnBoot = true; }
-                  { networking.hostName = name; }
-                  { nix.flakes.enable = true; }
-                  { system.configurationRevision = self.rev or "${self.dirtyRev or "unknown"}-dirty"; }
-                  { documentation.man.enable = true; }
-                  { documentation.man.generateCaches = true; }
-                  { nixpkgs.hostPlatform.system = config.system; }
-                ]
-                ++ config.modules
-                ++ builtins.attrValues { inherit (config) entryPoint bootloader hardware; }
-                ++ builtins.attrValues self.nixosModules;
+              finalModules = [
+                { boot.tmp.cleanOnBoot = true; }
+                { networking.hostName = name; }
+                { nix.flakes.enable = true; }
+                { system.configurationRevision = self.rev or "${self.dirtyRev or "unknown"}-dirty"; }
+                { documentation.man.enable = true; }
+                { documentation.man.generateCaches = true; }
+                { nixpkgs.hostPlatform.system = config.system; }
+                inputs.sops-nix.nixosModules.sops
+
+              ]
+              ++ config.modules
+              ++ builtins.attrValues { inherit (config) entryPoint bootloader hardware; }
+              ++ builtins.attrValues self.nixosModules;
 
               packageName = "nixos/config/${name}";
               finalPackage = config.finalSystem.config.system.build.toplevel;
