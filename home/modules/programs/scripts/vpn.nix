@@ -11,19 +11,19 @@ let
     }
 
     stop_all() {
-      systemctl stop openvpn-surfshark-us.service 2>/dev/null
-      systemctl stop openvpn-surfshark-mx.service 2>/dev/null
+      sudo systemctl stop openvpn-surfshark-us.service 2>/dev/null
+      sudo systemctl stop openvpn-surfshark-mx.service 2>/dev/null
     }
 
     case "$1" in
       us)
         stop_all
-        systemctl start openvpn-surfshark-us.service
+        sudo systemctl start openvpn-surfshark-us.service
         echo "Connected to USA"
         ;;
       mx)
         stop_all
-        systemctl start openvpn-surfshark-mx.service
+        sudo systemctl start openvpn-surfshark-mx.service
         echo "Connected to Mexico"
         ;;
       off)
@@ -32,9 +32,9 @@ let
         ;;
       status)
         echo "=== USA ===" 
-        systemctl is-active openvpn-surfshark-us.service
+        sudo systemctl is-active openvpn-surfshark-us.service
         echo "=== Mexico ==="
-        systemctl is-active openvpn-surfshark-mx.service
+        sudo systemctl is-active openvpn-surfshark-mx.service
         ;;
       *)
         usage
@@ -43,4 +43,7 @@ let
   '';
 in
 {
+  home.packages = [
+    vpn
+  ];
 }

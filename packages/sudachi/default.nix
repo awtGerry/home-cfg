@@ -62,7 +62,7 @@ stdenv.mkDerivation rec {
     xorg.libXfixes
     xorg.libXdamage
     xorg.libXcomposite
-    xorg.libXext
+    # xorg.libXext
   ];
 
   unpackPhase = ''

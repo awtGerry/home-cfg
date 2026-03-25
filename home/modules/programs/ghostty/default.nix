@@ -12,10 +12,10 @@ in
           if config.theme.scheme == "gruvbox" then
             "Gruvbox Dark Hard"
           else if config.theme.scheme == "rose_pine" then
-            "rose-pine"
+            "Rose Pine"
           else if config.theme.scheme == "nightfox" then
             "Nightfox"
-          else if config.theme.scheme == "ayu_dark" then
+          else if config.theme.scheme == "ayu_evolve" then
             "Ayu"
           else if config.theme.scheme == "ayu_light" then
             "Ayu Light"

@@ -198,7 +198,7 @@ in
         # Utilidades del sistema
         foliate # epub-reader
         gimp
-        xfce.thunar
+        thunar
         dunst
         xdotool
         sxiv

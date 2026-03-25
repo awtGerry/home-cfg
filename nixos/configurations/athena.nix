@@ -50,7 +50,10 @@
   # Xserver
   services.xserver = {
     enable = true;
-    videoDrivers = [ "virtio" "modesetting" ];
+    videoDrivers = [
+      "virtio"
+      "modesetting"
+    ];
     xkb.layout = "us";
 
     windowManager = {

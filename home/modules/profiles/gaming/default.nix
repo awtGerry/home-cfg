@@ -63,9 +63,9 @@ in
       # inputs.self.packages.${pkgs.system}.sudachi # broken
 
       # Game dependencies
-      xorg.libXtst
-      xorg.libXrender
-      xorg.libXext
+      libXtst
+      libXrender
+      libXext
     ];
 
     # Configuracion de lutris

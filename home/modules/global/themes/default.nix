@@ -72,13 +72,15 @@ let
       gruvbox = "gruvbox_light";
       ayu = "ayu_light";
       curzon = "curzon";
+      rose_pine = "rose_pine_dawn";
     };
     dark = {
       nightfox = "nightfox";
       gruber = "gruber-darker";
       gruvbox = "gruvbox";
       catppuccin = "catppuccin";
-      ayu = "ayu_dark";
+      rose_pine = "rose_pine";
+      ayu = "ayu_evolve";
       curzon = "curzon";
     };
   };
@@ -89,10 +91,12 @@ let
         gruvbox = "gruvbox_light";
         nightfox = "dawnfox";
         ayu = "ayu_light";
+        rose_pine = "rose_pine_dawn";
       };
       dark = {
         gruvbox = "gruvbox_dark_hard";
         nightfox = "nightfox";
+        rose_pine = "rose_pine";
         ayu = "ayu_dark";
       };
     };
@@ -118,6 +122,7 @@ in
         "gruber"
         "catppuccin"
         "curzon"
+        "rose_pine"
       ];
       default = "gruvbox";
       description = "Familia de esquema de colores para utilizar";

@@ -16,7 +16,7 @@ let
     ${pkgs.waybar}/bin/waybar &
     ${pkgs.swww}/bin/swww-daemon &
     "random-wp" &
-    "${pkgs.anyrun}/bin/anyrun daemon" &
+    "${pkgs.anyrun}/bin/anyrun daemon" & # For some reason this does not work
   '';
 in
 {
