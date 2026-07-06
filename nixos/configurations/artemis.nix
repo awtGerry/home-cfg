@@ -44,6 +44,7 @@ in
     mode = "0600";
   };
   # vpn
+	# I should use soups for this? Commit the files are not an option...
   services.openvpn.servers = {
     surfshark-us = mkSurfshark "${self}/surfshark/us-hou.prod.surfshark.comsurfshark_openvpn_tcp.ovpn";
     surfshark-mx = mkSurfshark "${self}/surfshark/mx-qro.prod.surfshark.comsurfshark_openvpn_tcp.ovpn";
