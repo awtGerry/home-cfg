@@ -19,10 +19,11 @@ in
   config = lib.mkIf cfg.enable {
     nixpkgs.allowedUnfree = [
       "discord"
+      "discord-unwrapped"
       "steam"
       "steam-run"
       "steam-unwrapped"
-      "snes9x"
+      # "snes9x"
     ];
     xdg.desktopEntries."steam-custom" = {
       name = "Steam (Custom)";
@@ -32,6 +33,21 @@ in
       categories = [ "Game" ];
       terminal = false;
     };
+
+    # programs.gamemode = {
+    #   enable = true;
+    #   settings = {
+    #     general = {
+    #       renice = 10;
+    #     };
+
+    #     custom = {
+    #       start = [ "${pkgs.libnotify}/bin/notify-send --app-name GameMode 'GameMode started'" ];
+    #       end = [ "${pkgs.libnotify}/bin/notify-send --app-name GameMode 'GameMode ended'" ];
+    #     };
+    #   };
+    # };
+
     home.packages = with pkgs; [
       discord
       # Paquetes para los controles
@@ -47,7 +63,9 @@ in
       vkbasalt
 
       # Games & Launchers
-      lutris-free
+      # lutris-unwrapped
+      lutris
+      umu-launcher
       prismlauncher
       protontricks
       eww
@@ -58,14 +76,10 @@ in
       dolphin-emu
       wineWowPackages.staging
       winetricks
-      snes9x
+      # snes9x
       ryubing # Emulador para switch
       # inputs.self.packages.${pkgs.system}.sudachi # broken
-
-      # Game dependencies
-      libXtst
-      libXrender
-      libXext
+      xenia-canary
     ];
 
     # Configuracion de lutris
@@ -107,17 +121,17 @@ in
         };
       };
 
-      # SNES
-      "lutris/runners/snes9x.yml".source = settingsFormat.generate "snes9x.yml" {
-        snes9x = {
-          nogui = true;
-          runner_executable = "${pkgs.snes9x}/bin/snes9x";
-        };
+      # SNES: BROKEN
+      # "lutris/runners/snes9x.yml".source = settingsFormat.generate "snes9x.yml" {
+      #   snes9x = {
+      #     nogui = true;
+      #     runner_executable = "${pkgs.snes9x}/bin/snes9x";
+      #   };
 
-        system = {
-          disable_runtime = true;
-        };
-      };
+      #   system = {
+      #     disable_runtime = true;
+      #   };
+      # };
 
       # Wii U Emulator
       "lutris/runners/cemu.yml".source = settingsFormat.generate "cemu.yml" {
@@ -153,16 +167,16 @@ in
         };
       };
 
-      # PS4
-      # "lutris/runners/shadps4.yml".source = settingsFormat.generate "shadps4.yml" {
-      #   shadps4 = {
-      #     runner_executable = "${pkgs.shadps4}/bin/shadps4";
-      #   };
+      # PS4 (still not detected by lutris)
+      "lutris/runners/shadps4.yml".source = settingsFormat.generate "shadps4.yml" {
+        shadps4 = {
+          runner_executable = "${pkgs.shadps4}/bin/shadps4";
+        };
 
-      #   system = {
-      #     disable_runtime = true;
-      #   };
-      # };
+        system = {
+          disable_runtime = true;
+        };
+      };
 
       # BUG: Xemu seems to be broken
       # Xbox emulator
@@ -186,6 +200,17 @@ in
       #     disable_runtime = true;
       #   };
       # };
+
+      # Xbox 360 Emulator
+      "lutris/runners/xenia.yml".source = settingsFormat.generate "xenia.yml" {
+        xenia = {
+          runner_executable = "${pkgs.xenia-canary}/bin/xenia_canary";
+        };
+
+        system = {
+          disable_runtime = true;
+        };
+      };
 
       # Steam
       "lutris/runners/steam.yml".source = settingsFormat.generate "steam.yml" {

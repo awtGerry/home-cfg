@@ -27,7 +27,7 @@ let
     // (lib.optionalAttrs (formatter != null) { inherit formatter; });
 
   prettier = lang: {
-    command = "${pkgs.nodePackages.prettier}/bin/prettier";
+    command = "${pkgs.prettier}/bin/prettier";
     args = [
       "--parser"
       lang
@@ -136,7 +136,7 @@ in
           config.nil.formatting.command = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ];
         };
         typescript-language-server = {
-          command = "${pkgs.nodePackages.typescript-language-server}/bin/typescript-language-server";
+          command = "${pkgs.typescript-language-server}/bin/typescript-language-server";
           args = [
             "--stdio"
             # "tsserver-path=${pkgs.nodePackages.typescript}/lib/node_modules/typescript/lib"

@@ -1,0 +1,154 @@
+* {
+  border: none;
+  border-radius: 0;
+  font-family: sans-serif, "Font Awesome 6 Free Solid";
+  font-size: 11pt;
+  min-height: 0;
+}
+
+window#waybar {
+  background: rgba(255, 255, 248, 0.92);
+  color: #1a1a1a;
+  border-bottom: 1px solid #c8c8bc;
+  transition-property: background-color, border-bottom-color;
+  transition-duration: 0.5s;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+window#waybar.empty {
+  background: transparent;
+}
+
+#workspaces button {
+  padding: 0 5px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  background: transparent;
+  color: #4a4a4a;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+}
+
+#workspaces button.focused {
+  background: #d4d4c8;
+  color: #1a1a1a;
+  border-bottom: 3px solid #1a1a1a;
+}
+
+#workspaces button.urgent {
+  background-color: #f85552;
+  color: #fffff8;
+}
+
+#workspaces button:hover {
+  background-color: #e6e6da;
+  color: #1a1a1a;
+  border-radius: 20px;
+}
+
+#workspaces button.active {
+  background: #d4d4c8;
+  color: #1a1a1a;
+  border-radius: 20px;
+}
+
+#mode {
+  background: #4a4a4a;
+  color: #fffff8;
+  border-bottom: 3px solid #1a1a1a;
+}
+
+#clock,
+#custom-lang,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor {
+  padding: 0 6px;
+  margin: 0 5px;
+  color: #1a1a1a;
+}
+
+#battery.charging {
+  color: #fffff8;
+  background-color: #8da101;
+}
+
+@keyframes blink {
+  to {
+    background-color: #1a1a1a;
+    color: #fffff8;
+  }
+}
+
+#battery.critical:not(.charging) {
+  background: #f85552;
+  color: #fffff8;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+label:focus {
+  background-color: #d4d4c8;
+}
+
+#custom-media {
+  background: #d4d4c8;
+  color: #1a1a1a;
+  min-width: 100px;
+}
+
+.custom-spotify {
+  background: #d4d4c8;
+}
+
+#custom-lang-es.es {
+  background: #e9e9dd;
+  color: #1a1a1a;
+}
+
+#custom-lang-us.us {
+  background: #e9e9dd;
+  color: #1a1a1a;
+}
+
+#temperature.critical {
+  background: #f85552;
+  color: #fffff8;
+}
+
+#idle_inhibitor.activated {
+  background-color: #4a4a4a;
+  color: #fffff8;
+}
+
+#mpd {
+  background: #d4d4c8;
+  color: #1a1a1a;
+}
+
+#mpd.disconnected {
+  background: #f85552;
+  color: #fffff8;
+}
+
+#mpd.stopped {
+  background: #e9e9dd;
+}
+
+#mpd.paused {
+  background: #c2c2b6;
+}

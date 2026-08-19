@@ -10,6 +10,33 @@ _:
 let
   cfg = config.programs.rofi;
   inherit (config.lib.formats.rasi) mkLiteral;
+
+  isEinkLight = config.theme.isEink && config.theme.variant == "light";
+  tc = config.theme.colors;
+
+  colors =
+    if isEinkLight then
+      {
+        muted = tc.comment;
+        normal = tc.fg-alt;
+        text = tc.fg;
+        input-bg = tc.bg-alt;
+        input-border = tc.accent;
+        selected-bg = tc.selection;
+        selected-text = tc.fg;
+        placeholder = tc.comment;
+      }
+    else
+      {
+        muted = "#62707A";
+        normal = "#c4a7e7";
+        text = "#e0def4";
+        input-bg = "#0D1113";
+        input-border = "#0D1113";
+        selected-bg = "#26233a";
+        selected-text = "#86CFC4";
+        placeholder = "#242A30";
+      };
 in
 {
   config = lib.mkIf cfg.enable {
@@ -17,7 +44,7 @@ in
     programs.rofi.theme = {
       "*" = {
         background-color = mkLiteral "transparent";
-        foreground-color = mkLiteral "#62707A";
+        foreground-color = mkLiteral colors.muted;
       };
 
       "configuration" = {
@@ -29,7 +56,7 @@ in
         font = mkLiteral "\"Font Awesome 6 Free Solid 12\"";
         text = mkLiteral "\"\"";
         background-color = mkLiteral "transparent";
-        foreground-color = mkLiteral "#62707A";
+        foreground-color = mkLiteral colors.muted;
       };
 
       "window" = {
@@ -77,20 +104,20 @@ in
 
       "inputbar" = {
         spacing = mkLiteral "0.4em";
-        border-color = mkLiteral "#0D1113";
+        border-color = mkLiteral colors.input-border;
         border = mkLiteral "5px";
         border-radius = mkLiteral "10px";
-        background-color = mkLiteral "#0D1113";
+        background-color = mkLiteral colors.input-bg;
         children = mkLiteral "[entry,overlay,case-indicator]";
       };
 
       "listview, message" = {
         padding = mkLiteral "0.4em";
         margin = mkLiteral "12px 0 0 0";
-        border-color = mkLiteral "#191724";
+        border-color = mkLiteral colors.input-border;
         border = mkLiteral "2px";
         border-radius = mkLiteral "10px";
-        background-color = mkLiteral "#0D1113";
+        background-color = mkLiteral colors.input-bg;
 
         columns = mkLiteral "1";
         lines = mkLiteral "8";
@@ -101,29 +128,24 @@ in
       };
 
       "element-text" = {
-        # background-color = mkLiteral "#0D1113";
-        text-color = mkLiteral "#62707A";
+        text-color = mkLiteral colors.muted;
       };
 
       "element normal.normal" = {
-        # background-color = mkLiteral "#1f1d2e";
-        text-color = mkLiteral "#c4a7e7";
+        text-color = mkLiteral colors.normal;
       };
 
       "element.selected.normal" = {
-        # background-color = mkLiteral "#26233a";
-        # border-color = mkLiteral "#26233a";
-        text-color = mkLiteral "#26233a";
+        background-color = mkLiteral colors.selected-bg;
+        text-color = mkLiteral colors.selected-text;
       };
 
       "element.alternate.normal" = {
-        # background-color = mkLiteral "#1f1d2e";
-        # border-color = mkLiteral "#1f1d2e";
-        text-color = mkLiteral "#e0def4";
+        text-color = mkLiteral colors.text;
       };
 
       "element-text.selected.normal" = {
-        text-color = mkLiteral "#86CFC4";
+        text-color = mkLiteral colors.selected-text;
         font = mkLiteral "\"SF Pro Display 14\"";
       };
 
@@ -136,12 +158,12 @@ in
       "entry" = {
         font = mkLiteral "\"SF Pro Display 14\"";
         placeholder = mkLiteral "\"Buscar aplicacion\"";
-        placeholder-color = mkLiteral "#242A30";
-        border-color = mkLiteral "#0D1113";
-        background-color = mkLiteral "#0D1113";
+        placeholder-color = mkLiteral colors.placeholder;
+        border-color = mkLiteral colors.input-border;
+        background-color = mkLiteral colors.input-bg;
         border = mkLiteral "8px";
         border-radius = mkLiteral "2px 2px 2px 2px";
-        text-color = mkLiteral "#e0def4";
+        text-color = mkLiteral colors.text;
         padding-bottom = mkLiteral "20px";
       };
 

@@ -224,11 +224,11 @@ in
         animation = cfg.visuals.animation.rules;
       };
 
-      dwindle = {
-        # no_gaps_when_only = true;
-        pseudotile = true;
-        preserve_split = true;
-      };
+      # dwindle = {
+      #   # no_gaps_when_only = true;
+      #   pseudotile = true;
+      #   preserve_split = true;
+      # };
 
       # windowrule = cfg.visuals.windowRules.workspaceRules;
 

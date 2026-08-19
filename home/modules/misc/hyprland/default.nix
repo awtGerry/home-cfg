@@ -14,9 +14,9 @@ let
   cfg = config.wayland.windowManager.hyprland;
   startupScript = pkgs.writeShellScriptBin "start" ''
     ${pkgs.waybar}/bin/waybar &
-    ${pkgs.swww}/bin/swww-daemon &
+    ${pkgs.awww}/bin/awww-daemon &
     "random-wp" &
-    "${pkgs.anyrun}/bin/anyrun daemon" & # For some reason this does not work
+    ${pkgs.anyrun}/bin/anyrun daemon &
   '';
 in
 {
@@ -65,7 +65,11 @@ in
           gaps_out = 5;
           border_size = 2;
           # "no_border_on_floating" = false;
-          layout = "dwindle";
+          # layout = "dwindle";
+        }
+        // lib.optionalAttrs (config.theme.isEink && config.theme.variant == "light") {
+          "col.active_border" = "rgb(1a1a1a)";
+          "col.inactive_border" = "rgb(c8c8bc)";
         };
 
         # Configuraciones del teclado (lo hace un poco mas veloz) y mouse cursor
@@ -78,7 +82,7 @@ in
           disable_autoreload = true;
           animate_mouse_windowdragging = false;
           # no_direct_scanout = false;
-          vfr = true;
+          # vfr = true;
           disable_splash_rendering = true;
           disable_hyprland_logo = true;
           force_default_wallpaper = 0;
@@ -93,7 +97,7 @@ in
       dconf
       xwayland
       wlogout
-      swww
+      awww
       wl-clipboard
       wlr-randr
       slurp

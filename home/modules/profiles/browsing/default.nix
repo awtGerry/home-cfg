@@ -9,6 +9,7 @@ _:
 let
   cfg = config.profiles.browsing;
   addons = inputs.firefox-addons.packages.${pkgs.system};
+  isEinkLight = config.theme.isEink && config.theme.variant == "light";
 in
 {
   options.profiles.browsing = {
@@ -20,6 +21,7 @@ in
       enable = true;
       profiles.gerry = {
         # Para personalizar vista de firefox
+        userChrome = lib.mkIf isEinkLight (builtins.readFile ./userChrome_eink.css);
         # userChrome = builtins.readFile ./userChrome.css;
         # userContent = builtins.readFile ./userContent.css;
 
@@ -187,6 +189,25 @@ in
                 hash = "sha256-VHyHwm8WNZtjifyimfvMBdhhIOPP1TvBz5z3uRoU58U=";
               }}";
               definedAliases = [ "@fa" ];
+            };
+
+            "Lucide Icons" = {
+              urls = [
+                {
+                  template = "https://lucide.dev/icons/?focus=&search=";
+                  params = [
+                    {
+                      name = "query";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+              icon = "${pkgs.fetchurl {
+                url = "https://lucide.dev/favicon.ico";
+                hash = "sha256-BpG0tlzvATndI2/s4Po25bK9bOX/EgrrB9r99R9BgFw=";
+              }}";
+              definedAliases = [ "@ico" ];
             };
           };
         }; # search

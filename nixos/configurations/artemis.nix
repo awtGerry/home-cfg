@@ -48,6 +48,8 @@ in
   services.openvpn.servers = {
     surfshark-us = mkSurfshark "${self}/surfshark/us-hou.prod.surfshark.comsurfshark_openvpn_tcp.ovpn";
     surfshark-mx = mkSurfshark "${self}/surfshark/mx-qro.prod.surfshark.comsurfshark_openvpn_tcp.ovpn";
+    # surfshark-us = mkSurfshark "${self}/surfshark/us-hou.prod.surfshark.com/surfshark_openvpn_tcp.ovpn";
+    # surfshark-mx = mkSurfshark "${self}/surfshark/mx-qro.prod.surfshark.com/surfshark_openvpn_tcp.ovpn";
   };
   security.sudo.extraRules = [
     {
@@ -98,18 +100,19 @@ in
 
   environment.systemPackages = [
     pkgs.iptables
-    pkgs.libsForQt5.qt5.qtgraphicaleffects
+    # pkgs.libsForQt5.qt5.qtgraphicaleffects
     # pkgs.libsForQt5.qt5.qtwebengine # Insecure package
+
     # Para virtualizacion
-    pkgs.qemu
-    pkgs.quickemu
-    pkgs.quickgui
-    pkgs.libvirt
-    (pkgs.writeShellScriptBin "qemu-system-x86_64-uefi" ''
-      qemu-system-x86_64 \
-        -bios ${pkgs.OVMF.fd}/FV/OVMF.fd \
-        "$@"
-    '')
+    # pkgs.qemu
+    # pkgs.quickemu
+    # pkgs.quickgui
+    # pkgs.libvirt
+    # (pkgs.writeShellScriptBin "qemu-system-x86_64-uefi" ''
+    #   qemu-system-x86_64 \
+    #     -bios ${pkgs.OVMF.fd}/FV/OVMF.fd \
+    #     "$@"
+    # '')
   ];
 
   # Xserver
@@ -206,15 +209,16 @@ in
   # hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ]; # No funciona para 5000 cards.
 
   virtualisation = {
-    waydroid.enable = true; # Emulador android para wayland
+    # BUG: waydroid seems broken in NixOS (or may not, but I have no time to check)
+    # waydroid.enable = true; # Emulador android para wayland
     docker.enable = true;
     containers.enable = true;
-    libvirtd = {
-      enable = true;
-      qemu = {
-        swtpm.enable = true;
-      };
-    };
+    # libvirtd = {
+    #   enable = true;
+    #   qemu = {
+    #     swtpm.enable = true;
+    #   };
+    # };
     spiceUSBRedirection.enable = true;
   };
   services.spice-vdagentd.enable = true;
@@ -249,7 +253,23 @@ in
   # Activa algunos programas (zsh necesario)
   programs = {
     steam.enable = true;
-    virt-manager.enable = true;
+    nix-ld.enable = true;
+    nix-ld.libraries = with pkgs; [
+      libX11
+      libXcursor
+      libXrandr
+      libXrender
+      libXi
+      libXext
+      libXtst
+      vulkan-loader
+      libXxf86vm
+      libglvnd
+      openal
+      zlib
+      glib
+    ];
+    # virt-manager.enable = true;
 
     # Arregla algunos problemas con helix y tmux
     screen = {

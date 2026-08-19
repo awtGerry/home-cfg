@@ -104,6 +104,7 @@
     jack.enable = true;
     pulse.enable = true;
   };
+  services.postgresql.enable = true;
 
   services.libinput = {
     enable = true;

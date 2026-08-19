@@ -68,6 +68,8 @@ in
         dvc = lib.mkDefault "cd ~/Dev/clones";
         dvw = lib.mkDefault "cd ~/Dev/work";
         dvt = lib.mkDefault "cd ~/Dev/tests";
+
+        cl = lib.mkDefault "claude --dangerously-skip-permissions";
       };
 
       initContent = lib.mkBefore ''

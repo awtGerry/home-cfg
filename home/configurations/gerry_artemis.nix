@@ -12,8 +12,8 @@
       variant = "dark";
       # variant = "light";
 
-      baseScheme = "ayu";
-      # baseScheme = "rose_pine";
+      # baseScheme = "e-ink";
+      baseScheme = "rose_pine";
     };
 
     apps = {
@@ -49,9 +49,9 @@
       # };
     };
 
-    home.packages = with pkgs; [
-      waydroid
-    ];
+    # home.packages = with pkgs; [
+    #   waydroid
+    # ];
 
     home.sessionVariables = {
       # Usa Wayland para aplicaciones Chrome & Electron

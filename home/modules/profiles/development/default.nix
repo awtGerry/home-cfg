@@ -35,7 +35,14 @@ in
       ];
     };
 
+    nixpkgs.allowedUnfree = [
+      "claude-code"
+    ];
+
     home.packages = with pkgs; [
+
+      chromium # I just don't get use to work with the same browser for research and development, so idk
+
       ripgrep
       ninja
       sqlite
@@ -46,6 +53,12 @@ in
       openssl
       pkg-config
       xh
+      jq
+
+      # Testing AI agent
+      opencode
+      codex
+      claude-code
 
       # Paginas de manual
       ascii
@@ -64,7 +77,7 @@ in
       lua
 
       nodejs
-      nodePackages.pnpm
+      pnpm
 
       # java
       # openjdk8
@@ -77,9 +90,9 @@ in
       gopls
       clang-tools
       tailwindcss-language-server
-      nodePackages.typescript-language-server
-      nodePackages.bash-language-server
-      nodePackages.svelte-language-server
+      typescript-language-server
+      bash-language-server
+      svelte-language-server
       bash-completion
     ];
   };

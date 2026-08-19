@@ -34,6 +34,12 @@ let
       warning = "#3a3a3a";
       info = "#5a5a5a";
       hint = "#707068";
+
+      # Accent colors (official e-ink/everforest accents, only for alerts)
+      accent = "#4a4a4a";
+      red = "#F85552";
+      yellow = "#DFA000";
+      green = "#8DA101";
     };
     dark = {
       # Base colors
@@ -63,6 +69,12 @@ let
       warning = "#c0c0b8";
       info = "#9a9a92";
       hint = "#6a6a62";
+
+      # Accent colors (everforest dark accents, only for alerts)
+      accent = "#b0b0a8";
+      red = "#E67E80";
+      yellow = "#DBBC7F";
+      green = "#A7C080";
     };
   };
 

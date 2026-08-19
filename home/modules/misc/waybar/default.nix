@@ -151,7 +151,12 @@ in
 
     # TODO: Crear la variante para el tema claro
     programs.waybar.style =
-      if config.theme.variant == "light" then ./style_light.css else ./style_dark.css;
+      if config.theme.isEink && config.theme.variant == "light" then
+        ./style_eink_light.css
+      else if config.theme.variant == "light" then
+        ./style_light.css
+      else
+        ./style_dark.css;
 
     home.packages = [
       pkgs.font-awesome_6

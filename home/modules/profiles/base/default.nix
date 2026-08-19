@@ -12,6 +12,7 @@ _:
 let
   cfg = config.profiles.base;
   isDark = config.theme.variant == "dark";
+  isEinkLight = config.theme.isEink && config.theme.variant == "light";
 in
 {
   options.profiles.base = {
@@ -23,8 +24,9 @@ in
     gtk = {
       enable = true;
 
-      theme.package = pkgs.arc-theme;
-      theme.name = if isDark then "Arc-Dark" else "Arc";
+      theme.package = pkgs.colloid-gtk-theme;
+      theme.name = "Colloid";
+      # theme.name = if isDark then "Colloid" else "Arc";
 
       cursorTheme.name = if isDark then "Posy_Cursor_Black" else "Posy_Cursor";
       cursorTheme.package = pkgs.posy-cursors;
@@ -68,7 +70,7 @@ in
     home.pointerCursor = {
       package = pkgs.posy-cursors;
       name = if isDark then "Posy_Cursor_Black" else "Posy_Cursor";
-      size = 16;
+      size = 21;
       gtk.enable = true;
       x11.enable = true;
     };
@@ -106,7 +108,11 @@ in
     };
 
     programs = {
-      bat.enable = true;
+      bat = {
+        enable = true;
+        # "ansi" hereda los colores del terminal (e-ink -> grises)
+        config.theme = lib.mkIf isEinkLight "ansi";
+      };
       btop.enable = true;
       firefox.enable = true; # Todos tienen firefox, solo los 'browsing' tienen firefox personalizado
       fzf.enable = true;
@@ -138,11 +144,15 @@ in
           set -sg escape-time 0 
 
           # basics
-          set -g status-style 'bg=#101010 fg=#EEEEEE'
+          set -g status-style 'bg=${if isEinkLight then "#4a4a4a" else "#101010"} fg=${
+            if isEinkLight then "#fffff8" else "#EEEEEE"
+          }'
           set -g base-index 1
           set-option -g history-limit 64096
-          set-option -g pane-active-border-style fg='#08D9D6'
-          set-window-option -g window-status-current-style fg='#08D9D6'
+          set-option -g pane-active-border-style fg='${if isEinkLight then "#1a1a1a" else "#08D9D6"}'
+          set-window-option -g window-status-current-style fg='${
+            if isEinkLight then "#fffff8" else "#08D9D6"
+          }'
 
           # vi settings
           set-window-option -g mode-keys vi
@@ -183,10 +193,9 @@ in
       with pkgs;
       [
         # Documentos
-        appflowy
         libreoffice
         texlab
-        # texlive
+        texliveFull
         slides
 
         # Conversion de archivos
@@ -206,7 +215,7 @@ in
         libnotify
         pulsemixer
         duf
-        neofetch
+        # neofetch
         xdotool
         easyeffects
 

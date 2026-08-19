@@ -1,0 +1,63 @@
+@charset "UTF-8";
+@-moz-document url(chrome://browser/content/browser.xhtml) {
+  :root {
+    --toolbar-bgcolor: #fffff8 !important;
+    --toolbar-color: #1a1a1a !important;
+    --lwt-accent-color: #fffff8 !important;
+    --lwt-text-color: #1a1a1a !important;
+    --lwt-accent-color-inactive: #f5f5ec !important;
+    --arrowpanel-background: #fffff8 !important;
+    --arrowpanel-color: #1a1a1a !important;
+    --arrowpanel-border-color: #c8c8bc !important;
+    --toolbarbutton-hover-background: #e9e9dd !important;
+    --toolbarbutton-active-background: #d4d4c8 !important;
+    --toolbarseparator-color: #c8c8bc !important;
+  }
+
+  #navigator-toolbox {
+    background: #f5f5ec !important;
+    border-bottom: 1px solid #c8c8bc !important;
+  }
+
+  .tabbrowser-tab:not([selected]) .tab-background {
+    background-color: #e9e9dd !important;
+    border-radius: 5px !important;
+  }
+
+  .tab-background[selected] {
+    background-color: #fffff8 !important;
+    outline: 1px solid #4a4a4a !important;
+    outline-offset: -1px !important;
+    border-radius: 5px !important;
+  }
+
+  #urlbar-background,
+  #searchbar {
+    background-color: #fffff8 !important;
+    color: #1a1a1a !important;
+    border: 1px solid #c8c8bc !important;
+    border-radius: 5px !important;
+  }
+
+  #urlbar[focused] > #urlbar-background {
+    border-color: #1a1a1a !important;
+  }
+
+  .urlbarView {
+    background-color: #fffff8 !important;
+    color: #1a1a1a !important;
+    border: 1px solid #c8c8bc !important;
+  }
+
+  .urlbarView-row[selected] {
+    background-color: #d4d4c8 !important;
+  }
+
+  #PersonalToolbar {
+    background: #f5f5ec !important;
+  }
+
+  .bookmark-item:hover {
+    background: #e9e9dd !important;
+  }
+}

@@ -12,7 +12,7 @@ let
   fzf-wp = pkgs.writeShellScriptBin "fzf-wp" ''
     #!/bin/sh
     if [ -n "$WAYLAND_DISPLAY" ]; then
-      swww img ${dir}/$(ls ${dir} | ${launcher-cmd}) --transition-type=wipe --transition-angle=25 --transition-step=90 --transition-fps=200
+      awww img ${dir}/$(ls ${dir} | ${launcher-cmd}) --transition-type=wipe --transition-angle=25 --transition-step=90 --transition-fps=200
     else
       # make a symbolic link to the selected wallpaper in ~/Pictures/.wallpaper
       # this file is referenced in DWM config.
@@ -30,7 +30,7 @@ let
   # Random wallpaper (right now only available for wayland)
   random-wp = pkgs.writeShellScriptBin "random-wp" ''
     #!/bin/sh
-    swww img ${dir}/$(ls ${dir} | shuf -n 1) --transition-type=wipe --transition-angle=25 --transition-step=90 --transition-fps=200
+    awww img ${dir}/$(ls ${dir} | shuf -n 1) --transition-type=wipe --transition-angle=25 --transition-step=90 --transition-fps=200
   '';
 in
 {
