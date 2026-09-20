@@ -44,7 +44,7 @@ in
     mode = "0600";
   };
   # vpn
-	# I should use soups for this? Commit the files are not an option...
+  # I should use soups for this? Commit the files are not an option...
   services.openvpn.servers = {
     surfshark-us = mkSurfshark "${self}/surfshark/us-hou.prod.surfshark.comsurfshark_openvpn_tcp.ovpn";
     surfshark-mx = mkSurfshark "${self}/surfshark/mx-qro.prod.surfshark.comsurfshark_openvpn_tcp.ovpn";
@@ -144,8 +144,18 @@ in
   };
 
   services.dbus.packages = [ pkgs.dconf ];
-  services.openssh.enable = true; # OpenSSH daemon
   services.printing.enable = true; # cups
+
+  # Host centralizado de agentes (SSH + Tailscale + ahorro de energia).
+  # TODO: agregar la llave publica de WSL antes de poder entrar por SSH.
+  awt.server = {
+    enable = true;
+    authorizedKeys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOUunfuYDSkD6wVWMeNvPYcbJAF4xVP3tZqcqCoz3YCF gerry@freya"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDe2ioO/juagSP5tmVksNnxXDL8XkHoc60Kb0GKdWKAc victor_rodriguez@ThinkPad-VR"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFd22CXlBqtBJeSpw2SlS6O8uT06B9TRiOXy14RRTG6O gerry@sol"
+    ];
+  };
 
   services.pipewire = {
     enable = true;

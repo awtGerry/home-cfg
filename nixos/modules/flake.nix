@@ -1,5 +1,4 @@
 {
-  nix,
   nixpkgs,
   rust-overlay,
   programsdb,
@@ -27,8 +26,8 @@ in
     ];
 
     nix = {
-      package = lib.mkDefault nix.packages.${pkgs.stdenv.hostPlatform.system}.nix-cli;
-
+      # Usa el nix de nixpkgs (precompilado). El input github:nixos/nix
+      # compilaba master desde fuente y truena con boost de unstable.
       settings.experimental-features = [
         "nix-command"
         "flakes"

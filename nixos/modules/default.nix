@@ -7,5 +7,6 @@
   awt.nixosModules = {
     flake = ./flake.nix;
     nix = ./nix.nix;
+    server = ./server.nix;
   };
 }

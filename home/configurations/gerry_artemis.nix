@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
 
   config = {
@@ -49,9 +54,14 @@
       # };
     };
 
-    # home.packages = with pkgs; [
-    #   waydroid
-    # ];
+    nixpkgs.allowedUnfree = [
+      "spotify"
+    ];
+
+    home.packages = with pkgs; [
+      spotify
+      inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.grok-bot
+    ];
 
     home.sessionVariables = {
       # Usa Wayland para aplicaciones Chrome & Electron
