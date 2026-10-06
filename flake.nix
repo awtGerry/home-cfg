@@ -36,9 +36,9 @@
     systems.url = "github:nix-systems/default-linux";
     hardware.url = "github:nixos/nixos-hardware";
 
-    nix.url = "github:nixos/nix";
-    nix.inputs.flake-parts.follows = "flake-parts";
-    nix.inputs.nixpkgs.follows = "nixpkgs";
+    # nix.url = "github:nixos/nix";
+    # nix.inputs.flake-parts.follows = "flake-parts";
+    # nix.inputs.nixpkgs.follows = "nixpkgs";
 
     # Arregla errores de sqlite
     programsdb.url = "github:wamserma/flake-programs-sqlite";
