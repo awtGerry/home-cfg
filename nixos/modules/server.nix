@@ -1,4 +1,5 @@
-# Centralized agent host: SSH (key-only) + Tailscale + idle power tuning.
+# Centralized agent host: SSH (key-only) + Tailscale + idle power tuning
+# + freeze protection when agents run out of memory.
 # See docs/adr/0001-centralized-agent-host.md for the rationale and
 # docs/agent-host.md for the setup/daily-use runbook.
 _:
@@ -67,5 +68,30 @@ in
         done
       '';
     };
+
+    # Varios agentes enlazando a la vez (`ld` de +1GB cada uno) agotan la RAM.
+    # El OOM killer del kernel llega tarde: la maquina se queda paginando
+    # minutos sin responder, y cuando actua puede matar al systemd del
+    # usuario (y con el a todas las sesiones de tmux). earlyoom actua antes
+    # y elige al enlazador/compilador. El tope de memoria de los agentes
+    # vive en home-manager (agents.memoryCap).
+    # `[.]` y `[[:space:]]` en vez de `\.` y ` `: los argumentos pasan por el
+    # ExecStart de systemd, que los parte en espacios y trata las barras
+    # invertidas a su manera. Los nombres son el `comm` del proceso
+    # (tmux se renombra a "tmux: server").
+    services.earlyoom = {
+      enable = true;
+      extraArgs = [
+        "--prefer"
+        "^(ld([.](bfd|gold|lld))?|mold|collect2|cc1(plus)?|rustc)$"
+        "--avoid"
+        "^(systemd|[.]?Hyprland(-wrapp)?|sddm|sshd(-session)?|tmux(:[[:space:]](server|client))?|pipewire|wireplumber|Xwayland)$"
+      ];
+    };
+
+    # Magic SysRq por si aun asi se congela: Alt+ImprPant+F mata el proceso
+    # mas grande, Alt+ImprPant+R,E,I,S,U,B reinicia sin desconectar.
+    # 244 = teclado (4) + sync (16) + remount (32) + senales (64) + reboot (128).
+    boot.kernel.sysctl."kernel.sysrq" = 244;
   };
 }

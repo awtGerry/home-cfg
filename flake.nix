@@ -15,6 +15,7 @@
         ./parts/home.nix
         ./parts/home_modules.nix
         ./parts/nixos_modules.nix
+        ./parts/checks.nix
 
         ./nixos/configurations
         ./home/configurations

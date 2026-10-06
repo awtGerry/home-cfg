@@ -238,6 +238,47 @@ into your main branch as with any other branch.
   both tools share per-user auth state in `$HOME`.
 - A repo with a running agent session is hands-off locally until it's done.
 
+## Memory protection
+
+Several agents linking at once (`ld` at 1GB+ each) used to exhaust the 16GB
+and freeze the machine until someone power-cycled it. Three layers now
+prevent that:
+
+1. **Agent memory cap (home-manager, `agents.memoryCap`).** The tmux server is
+   socket-activated inside `agents.slice` (`MemoryMax=10G`), and tmux puts
+   every pane in the server's slice. All agents together can't exceed the cap;
+   when they hit it, the kernel kills the biggest process *inside the slice*
+   (usually an `ld`, the agent sees exit 137) and the desktop, browser and sshd
+   never notice. A drop-in sets `OOMPolicy=continue` on pane scopes so that
+   kill doesn't take the whole pane (and its agent) down with it. There is no
+   `MemoryHigh` on purpose: above it the kernel throttles the whole slice and
+   a runaway `ld` crawls for minutes instead of dying.
+2. **earlyoom (NixOS, `awt.server`).** System-wide safety net for what runs
+   outside the slice (docker builds, `nix build`, Steam). Kills at ~10% free
+   RAM + swap, preferring linkers/compilers and avoiding the session.
+3. **Magic SysRq.** If it still freezes: `Alt+PrtSc+F` kills the biggest
+   process immediately. `Alt+PrtSc` + `R E I S U B` (slowly) is a safe reboot
+   — use it instead of the power button.
+
+### Activating the cap (one time)
+
+After `sudo nixos-rebuild switch --flake .#artemis` and
+`home-manager switch --flake .#gerry@artemis`, the tmux socket unit refuses to
+start while a tmux server is already running (taking its socket would leave
+those sessions running but unreachable). When the agents are idle:
+
+```sh
+tmux kill-server
+rm -f "$XDG_RUNTIME_DIR/tmux-$(id -u)/default"
+systemctl --user start tmux.socket
+```
+
+Or just reboot. From then on nothing changes in the workflow (`ff`, `ta`,
+`wt-agent`); home-manager switches keep the running server (`keep-old`).
+
+Check it: `systemctl --user status agents.slice` should list `tmux.service`
+and the `tmux-spawn-*.scope` panes.
+
 ## Troubleshooting
 
 | Symptom | Check |
@@ -246,6 +287,9 @@ into your main branch as with any other branch.
 | Permission denied (publickey) | Is the WSL pubkey in `awt.server.authorizedKeys`? Did the rebuild finish? `ssh -v artemis` for detail. |
 | MagicDNS name doesn't resolve in WSL | Use the `100.x.y.z` address; if persistent, apply the `.wslconfig` change from step 1. |
 | tmux session gone after reboot | Expected — tmux survives disconnects and logouts, not reboots. |
+| A build died with `Killed` / exit 137 | The agents hit the 10G cap (or earlyoom fired). `journalctl --user -g 'OOM killer'` (look for `agents.slice`) / `journalctl -u earlyoom`. Retry with fewer parallel jobs. |
+| Panes aren't in `agents.slice` | The server predates the socket unit: `systemctl --user status tmux.socket` says the condition failed. Follow "Activating the cap". |
+| Machine frozen anyway | `Alt+PrtSc+F`, wait a few seconds; if still frozen, `Alt+PrtSc` + `R E I S U B`. |
 | Mouse/keyboard lag after a few idle seconds | USB autosuspend from powertop. `for f in /sys/bus/usb/devices/*/power/control; do echo on \| sudo tee $f; done` for immediate relief; powertop is no longer in the config. |
 | Agents idle-slow or machine hot | `cat /sys/devices/system/cpu/cpu0/cpufreq/energy_performance_preference` should say `balance_power`; `systemctl status amd-epp-balance-power` for the unit that sets it. |
 | Stale worktrees | `git worktree list`; remove leftovers with `git worktree remove <path>` and `git branch -D agent/<name>`. |
