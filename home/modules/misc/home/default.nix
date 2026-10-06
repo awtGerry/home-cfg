@@ -34,7 +34,7 @@
   home = {
     packages = with pkgs; [
       hello
-      tmate # Comparte terminales
+      # tmate # Comparte terminales
 
       # Fuentes
       fira-code # dev

@@ -192,6 +192,7 @@ in
     home.packages =
       with pkgs;
       [
+        adwaita-icon-theme # GTK3 fallback theme; without it apps abort on a missing icon
         # Documentos
         libreoffice
         texlab

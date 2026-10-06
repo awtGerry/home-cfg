@@ -35,6 +35,7 @@ in
         ta = lib.mkDefault "tmux a";
         z = lib.mkDefault "zathura";
         ff = lib.mkDefault "tmux-fzf";
+        hf = lib.mkDefault "herdr-fzf";
 
         # Nix
         update = lib.mkDefault "sudo nixos-rebuild switch";
@@ -74,6 +75,7 @@ in
 
       initContent = lib.mkBefore ''
         export PATH="$PATH:$(find ~/.local/bin -type d | paste -sd ':' -)"
+        export PATH="$HOME/.railway/bin:$PATH"
 
         export EDITOR="hx"
         export TERMINAL="${config.apps.terminal}"

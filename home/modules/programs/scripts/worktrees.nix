@@ -21,12 +21,12 @@ let
   wt-agent = pkgs.writeShellScriptBin "wt-agent" ''
     #!/usr/bin/env bash
     if [[ $# -lt 1 ]]; then
-      echo "uso: wt-agent <nombre> [agente]   # agente: opencode (default) | claude" >&2
+      echo "uso: wt-agent <nombre> [agente]   # agente: claude (default)" >&2
       exit 1
     fi
 
     name="$1"
-    agent="''${2:-opencode}"
+    agent="''${2:-claude}"
 
     ${find-repo}
 

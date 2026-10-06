@@ -5,3 +5,8 @@ home/modules/profiles/gaming/lutris.conf
 result/
 surfshark/
 *.deb
+
+# Ignore the ai files, will not be using it but I might need them later...
+docs/superpowers
+docs/adr
+docs/agent-host.md

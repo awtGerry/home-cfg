@@ -54,7 +54,7 @@ in
       # xboxdrv # discontinued
 
       # Informacion y mejoras
-      goverlay
+      # goverlay
       gamemode
       gamescope
       mangohud
