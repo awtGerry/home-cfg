@@ -29,6 +29,9 @@
       music = "rmpc";
     };
 
+    # Host centralizado de agentes: que un `ld` no congele la maquina
+    agents.memoryCap.enable = true;
+
     programs.waybar.enable = true;
     wayland.windowManager.hyprland = {
       enable = true;

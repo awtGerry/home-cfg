@@ -36,10 +36,13 @@ in
     };
 
     nixpkgs.allowedUnfree = [
-      "claude-code"
+      # "claude-code"
+      "appflowy"
     ];
 
     home.packages = with pkgs; [
+
+      appflowy
 
       chromium # I just don't get use to work with the same browser for research and development, so idk
 
@@ -54,11 +57,11 @@ in
       pkg-config
       xh
       jq
+      mold
 
-      # Testing AI agent
-      opencode
-      codex
-      claude-code
+      # Testing AI tools
+      # claude-code
+      # codex
 
       # Paginas de manual
       ascii
