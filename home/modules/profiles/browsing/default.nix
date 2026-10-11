@@ -8,7 +8,7 @@ _:
 }:
 let
   cfg = config.profiles.browsing;
-  addons = inputs.firefox-addons.packages.${pkgs.system};
+  addons = inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system};
   isEinkLight = config.theme.isEink && config.theme.variant == "light";
 in
 {

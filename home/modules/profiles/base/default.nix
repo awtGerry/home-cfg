@@ -64,10 +64,13 @@ in
         };
       };
 
+      # El default nuevo es null; GTK4 sigue usando el tema de GTK.
+      gtk4.theme = config.gtk.theme;
       gtk4.extraConfig.gtk-application-prefer-dark-theme = if isDark then 1 else 0;
     };
 
     home.pointerCursor = {
+      enable = true;
       package = pkgs.posy-cursors;
       name = if isDark then "Posy_Cursor_Black" else "Posy_Cursor";
       size = 21;
@@ -114,7 +117,11 @@ in
         config.theme = lib.mkIf isEinkLight "ansi";
       };
       btop.enable = true;
-      firefox.enable = true; # Todos tienen firefox, solo los 'browsing' tienen firefox personalizado
+      firefox = {
+        enable = true; # Todos tienen firefox, solo los 'browsing' tienen firefox personalizado
+        # El default nuevo es $XDG_CONFIG_HOME/mozilla/firefox.
+        configPath = ".mozilla/firefox";
+      };
       fzf.enable = true;
       helix.enable = config.apps.editor == "helix";
       kitty.enable = config.apps.terminal == "kitty";
@@ -177,7 +184,11 @@ in
         '';
       };
 
-      yazi.enable = true;
+      yazi = {
+        enable = true;
+        # El default nuevo es `y`.
+        shellWrapperName = "yy";
+      };
       zathura.enable = true;
       zsh.enable = true;
     };

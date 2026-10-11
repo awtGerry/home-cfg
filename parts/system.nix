@@ -99,7 +99,7 @@ in
                 { nix.flakes.enable = true; }
                 { system.configurationRevision = self.rev or "${self.dirtyRev or "unknown"}-dirty"; }
                 { documentation.man.enable = true; }
-                { documentation.man.generateCaches = true; }
+                { documentation.man.cache.enable = true; }
                 { nixpkgs.hostPlatform.system = config.system; }
                 inputs.sops-nix.nixosModules.sops
 

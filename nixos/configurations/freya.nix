@@ -43,7 +43,7 @@
   fonts = {
     fontconfig.enable = true;
     packages = [
-      inputs.self.packages.${pkgs.system}.sf-pro
+      inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.sf-pro
     ];
   };
 
