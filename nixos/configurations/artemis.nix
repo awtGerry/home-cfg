@@ -100,7 +100,6 @@ in
 
   environment.systemPackages = [
     pkgs.iptables
-    pkgs.mangohud
     # pkgs.libsForQt5.qt5.qtgraphicaleffects
     # pkgs.libsForQt5.qt5.qtwebengine # Insecure package
 
@@ -264,8 +263,6 @@ in
   # Activa algunos programas (zsh necesario)
   programs = {
     steam.enable = true;
-    # gamemode/mangohud desde el sistema: mismo nixpkgs/glibc que Steam
-    gamemode.enable = true;
     nix-ld.enable = true;
     nix-ld.libraries = with pkgs; [
       libX11
