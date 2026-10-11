@@ -81,7 +81,7 @@ in
               };
 
               finalPackage = lib.mkOption {
-                type = lib.types.str;
+                type = lib.types.package;
                 readOnly = true;
               };
             };
