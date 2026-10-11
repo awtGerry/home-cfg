@@ -55,9 +55,8 @@ in
 
       # Informacion y mejoras
       # goverlay
-      gamemode
+      # gamemode y mangohud vienen del sistema (nixos/configurations/artemis.nix)
       gamescope
-      mangohud
       mesa-demos
       vulkan-tools
       vkbasalt
