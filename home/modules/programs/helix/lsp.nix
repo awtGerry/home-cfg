@@ -117,7 +117,7 @@ in
 
       language-server = {
         rust-analyzer = {
-          # config.nil.formatting.command = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ];
+          # config.nil.formatting.command = [ "${pkgs.nixfmt}/bin/nixfmt" ];
           # Leptos configs
           config.procMacro.ignored = [
             "server"
@@ -133,7 +133,7 @@ in
         };
         nil = {
           command = "${pkgs.nil}/bin/nil";
-          config.nil.formatting.command = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ];
+          config.nil.formatting.command = [ "${pkgs.nixfmt}/bin/nixfmt" ];
         };
         typescript-language-server = {
           command = "${pkgs.typescript-language-server}/bin/typescript-language-server";

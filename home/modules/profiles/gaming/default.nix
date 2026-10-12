@@ -74,7 +74,7 @@ in
 
       # Emulators
       dolphin-emu
-      wineWowPackages.staging
+      wineWow64Packages.staging
       winetricks
       # snes9x
       ryubing # Emulador para switch

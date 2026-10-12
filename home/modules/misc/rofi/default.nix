@@ -23,9 +23,12 @@ in
     programs.rofi = {
       package = rofi;
 
-      font = "SF-Pro Display 10";
-      terminal = config.apps.terminal;
-      location = "top-left";
+      # location es un entero: 1 = top-left.
+      settings = {
+        font = "SF-Pro Display 10";
+        terminal = config.apps.terminal;
+        location = 1;
+      };
 
       # theme = launcher_config;
     };

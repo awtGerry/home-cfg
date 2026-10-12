@@ -6,7 +6,11 @@
   ...
 }:
 {
-  nix.allowedUnfree = [ "unrar" ];
+  nix.allowedUnfree = [
+    "unrar"
+    "steam"
+    "steam-unwrapped"
+  ];
   nix.settings.experimental-features = [
     "ca-derivations"
     "impure-derivations"
@@ -43,7 +47,7 @@
   fonts = {
     fontconfig.enable = true;
     packages = [
-      inputs.self.packages.${pkgs.system}.sf-pro
+      inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.sf-pro
     ];
   };
 

@@ -37,7 +37,7 @@
   fonts = {
     fontconfig.enable = true;
     packages = [
-      inputs.self.packages.${pkgs.system}.sf-pro
+      inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.sf-pro
     ];
   };
 
@@ -50,8 +50,8 @@
   # Xserver
   services.xserver = {
     enable = true;
+    # virtio-gpu usa el driver modesetting de xorg-server.
     videoDrivers = [
-      "virtio"
       "modesetting"
     ];
     xkb.layout = "us";

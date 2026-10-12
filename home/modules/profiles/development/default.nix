@@ -75,7 +75,7 @@ in
       glibc
       go
       gleam
-      erlang
+      beamPackages.erlang
       perl
       lua
 

@@ -54,6 +54,8 @@ in
     wayland.windowManager.hyprland = {
       xwayland.enable = true;
       systemd.enable = true;
+      # El default nuevo es lua (hyprland.lua).
+      configType = "hyprlang";
       settings = {
         xwayland.force_zero_scaling = true;
         exec-once = "${startupScript}/bin/start";
@@ -92,7 +94,7 @@ in
 
     home.packages = with pkgs; [
       # Wayland packages
-      xorg.xprop
+      xprop
       polkit
       dconf
       xwayland

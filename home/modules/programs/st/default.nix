@@ -9,9 +9,9 @@ let
       sha256 = "sha256-HHK0OZ20IQasGEfm6fWVx6qJMhJGMwucUzC3R1GA0OQ=";
     };
     buildInputs = (oldAttrs.buildInputs or []) ++ (with pkgs; [
-      xorg.libX11
-      xorg.libXft
-      xorg.libXinerama
+      libx11
+      libxft
+      libxinerama
       fontconfig
       freetype
       harfbuzz
