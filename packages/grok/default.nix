@@ -42,12 +42,12 @@
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "grok-bot";
-  version = "0.68.1";
+  version = "0.71.2";
 
   src = fetchurl {
-    url = "https://downloads.cursor.com/grokbot/stable/33103062f95061ccf9c81c5b365d37ab152c3b66/linux/x64/grok-bot_0.68.1_amd64.deb";
+    url = "https://downloads.cursor.com/grokbot/stable/92808c0ad869b2e3725dbc3b8fa2fcc991687502/linux/x64/grok-bot_0.71.2_amd64.deb";
     name = "grok-bot-${finalAttrs.version}.deb";
-    hash = "sha256-sr6BBtKz6uB9mD1fHKd7ZXrM3mZtxEDbKkCUIez/M1k=";
+    hash = "sha256-oFJtdaPoUu1Z5QeIm8OqalGFqNBDYyzo3sqYsEqwY0g=";
   };
 
   nativeBuildInputs = [
