@@ -142,8 +142,9 @@ in
                   ];
                 }
               ];
+              # crates.io/assets/cargo.png ahora responde 404. Mismos bytes.
               icon = "${pkgs.fetchurl {
-                url = "https://crates.io/assets/cargo.png";
+                url = "https://raw.githubusercontent.com/rust-lang/crates.io/0dfd7239b0da8060ceb081a4a51e814a8fb5a9f3/svelte/src/lib/assets/cargo.png";
                 hash = "sha256-Js8J6cKjpdcctNFNGcjGhHB1UrLtBGODk0NxldIlRfQ=";
               }}";
               definedAliases = [ "@rc" ];

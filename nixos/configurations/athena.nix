@@ -62,7 +62,9 @@
         src = pkgs.fetchFromGitHub {
           owner = "awtGerry";
           repo = "dwm";
-          rev = "master";
+          # master (d24b6b32, 2025-12-08) cambia MODKEY de Mod4 a Mod1.
+          # Este rev es el arbol que ya describe el hash de abajo.
+          rev = "cebef6490008ce233fbc6cc27e173d05eee89ede";
           sha256 = "sha256-B9qOuL46IfPHQC4YlgGRDD7TpKiSFsJR3+/9Pu9L9Co=";
         };
       };
