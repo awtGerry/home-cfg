@@ -55,6 +55,8 @@ in
     # EPP de AMD en balance_power: baja agresivamente en idle pero
     # responde al instante al compilar. No hace nada si amd_pstate
     # no esta activo (ConditionPathExistsGlob).
+    # Con governor "performance", amd-pstate-epp suele devolver EBUSY
+    # al escribir el EPP. Ese fallo no debe abortar nixos-rebuild switch.
     systemd.services.amd-epp-balance-power = {
       description = "Set AMD energy performance preference to balance_power";
       wantedBy = [ "multi-user.target" ];
@@ -64,7 +66,11 @@ in
       serviceConfig.Type = "oneshot";
       script = ''
         for f in /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference; do
-          [ -w "$f" ] && echo balance_power > "$f"
+          [ -w "$f" ] || continue
+          [ "$(cat "$f")" = balance_power ] && continue
+          # EBUSY (governor performance) y cualquier otro fallo de escritura
+          # se ignoran: el switch no puede depender de que el EPP acepte el valor.
+          echo balance_power > "$f" || true
         done
       '';
     };

@@ -58,8 +58,9 @@
 
   swapDevices = [ ];
 
-  # powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
+  # artemis usa powersave + EPP via el servicio amd-epp-balance-power de awt.server.
+  # Con governor "performance", amd-pstate-epp rechaza escribir balance_power (EBUSY).
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   # NOTE: ROCM no esta muy bien implementado todavia, esperemos con el tiempo sea compatible con mi tarjeta.
   # hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
 
