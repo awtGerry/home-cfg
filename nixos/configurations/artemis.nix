@@ -221,7 +221,12 @@ in
   virtualisation = {
     # BUG: waydroid seems broken in NixOS (or may not, but I have no time to check)
     # waydroid.enable = true; # Emulador android para wayland
-    docker.enable = true;
+    docker = {
+      enable = true;
+      daemon.settings = {
+        data-root = "/media/Drive/docker";
+      };
+    };
     containers.enable = true;
     # libvirtd = {
     #   enable = true;
@@ -231,6 +236,12 @@ in
     # };
     spiceUSBRedirection.enable = true;
   };
+
+  # data-root is on the shared drive (nofail); wait for the mount before dockerd.
+  systemd.services.docker = {
+    unitConfig.RequiresMountsFor = [ "/media/Drive" ];
+  };
+
   services.spice-vdagentd.enable = true;
 
   users.groups.libvirtd.members = [ "gerry" ];
