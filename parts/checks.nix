@@ -176,6 +176,38 @@
                 exit 1
               ''
           );
+
+        hermes-desktop =
+          let
+            home = self.homeConfigurations."gerry@artemis".config;
+            installs = program: lib.any (p: (p.meta.mainProgram or null) == program) home.home.packages;
+            failures = lib.runTests {
+              # Sin FileChooser en el portal, Electron cae al dialogo de GTK y
+              # este aborta (cambiar la foto de un bot cerraba Hermes)
+              testPortalProvidesFileChooser = {
+                expr = lib.any (p: (p.pname or null) == "xdg-desktop-portal-gtk") home.xdg.portal.extraPortals;
+                expected = true;
+              };
+              testDesktopAppIsTheNixBuild = {
+                expr = installs "hermes-desktop";
+                expected = true;
+              };
+              # El CLI y el gateway siguen en la instalacion que se actualiza sola
+              testCliStaysWithSelfUpdatingInstall = {
+                expr = installs "hermes";
+                expected = false;
+              };
+            };
+          in
+          pkgs.runCommand "hermes-desktop" { } (
+            if failures == [ ] then
+              "touch $out"
+            else
+              ''
+                echo ${lib.escapeShellArg (lib.generators.toPretty { } failures)} >&2
+                exit 1
+              ''
+          );
       };
     };
 }
