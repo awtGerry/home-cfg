@@ -176,6 +176,73 @@
                 exit 1
               ''
           );
+
+        # Notificaciones "glass card": tarjeta translucida arriba a la derecha
+        notifications =
+          let
+            home = self.homeConfigurations."gerry@artemis".config;
+            dunst = home.services.dunst;
+            # Home Manager envuelve cada seccion de dunst como { data = ...; }
+            section = name: dunst.settings.${name}.data or { };
+            global = section "global";
+            layerrules = home.wayland.windowManager.hyprland.visuals.layerrules;
+            failures = lib.runTests {
+              testDunstRunsAsUserService = {
+                expr = dunst.enable;
+                expected = true;
+              };
+              testCardsStackTopRight = {
+                expr = global.origin or null;
+                expected = "top-right";
+              };
+              testCardsAreRounded = {
+                expr = global.corner_radius or null;
+                expected = 12;
+              };
+              testCardsHaveThinFrame = {
+                expr = global.frame_width or null;
+                expected = 1;
+              };
+              # Fondo con alpha: el blur de Hyprland se ve a traves de la tarjeta
+              testCardBackgroundIsTranslucent = {
+                expr = global.background or null;
+                expected = "#0c1110b3";
+              };
+              testNormalFrameMatchesWaybarAccent = {
+                expr = global.frame_color or null;
+                expected = "#2f6f64";
+              };
+              testCriticalFrameIsRed = {
+                expr = (section "urgency_critical").frame_color or null;
+                expected = "#eb4d4b";
+              };
+              # Los clics de pantalla no deben quedar atrapados por la tarjeta
+              testCardsCanBeDismissedWithMouse = {
+                expr = global.mouse_left_click or null;
+                expected = "close_current";
+              };
+              testHyprlandBlursNotifications = {
+                expr = lib.elem "blur on, match:namespace notifications" layerrules;
+                expected = true;
+              };
+              # Sin ignore_alpha el blur pinta un rectangulo detras de las esquinas redondeadas
+              testBlurIgnoresTransparentCorners = {
+                expr = lib.any (lib.hasPrefix "ignore_alpha") (
+                  builtins.filter (r: lib.hasSuffix "match:namespace notifications" r) layerrules
+                );
+                expected = true;
+              };
+            };
+          in
+          pkgs.runCommand "notifications" { } (
+            if failures == [ ] then
+              "touch $out"
+            else
+              ''
+                echo ${lib.escapeShellArg (lib.generators.toPretty { } failures)} >&2
+                exit 1
+              ''
+          );
       };
     };
 }

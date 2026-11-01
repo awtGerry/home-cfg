@@ -181,6 +181,7 @@ in
         default = [
           "blur on, match:namespace calendar"
           "blur on, match:namespace notifications"
+          "ignore_alpha 0.2, match:namespace notifications"
           "blur on, match:namespace osd"
           "blur on, match:namespace systemmenu"
           "blur on, match:namespace anyrun"
