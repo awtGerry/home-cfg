@@ -92,6 +92,9 @@ in
       };
     };
 
+    # El portal de hyprland no implementa FileChooser (hyprland-portals.conf ya pide gtk)
+    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
     home.packages = with pkgs; [
       # Wayland packages
       xprop
