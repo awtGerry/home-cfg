@@ -32,6 +32,9 @@
     # Host centralizado de agentes: que un `ld` no congele la maquina
     agents.memoryCap.enable = true;
 
+    # Solo la app de escritorio; el CLI y los gateways siguen en ~/.hermes/hermes-agent
+    programs.hermes-agent.desktop.enable = true;
+
     programs.waybar.enable = true;
     wayland.windowManager.hyprland = {
       enable = true;

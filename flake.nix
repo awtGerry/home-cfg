@@ -69,6 +69,13 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Hermes Desktop empaquetado. Fijado al mismo commit que ~/.hermes/hermes-agent
+    # (que se actualiza solo): ambos comparten ~/.hermes, subirlos juntos.
+    hermes-agent.url = "github:NousResearch/hermes-agent/f41ac076956da5c2b513b322a47f7938508017e4";
+    hermes-agent.inputs.nixpkgs.follows = "nixpkgs";
+    hermes-agent.inputs.flake-parts.follows = "flake-parts";
+    hermes-agent.inputs.home-manager.follows = "home-manager";
+
     # nixvim.url = "github:nix-community/nixvim";
     # nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
