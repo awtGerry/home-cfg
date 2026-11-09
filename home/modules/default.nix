@@ -18,6 +18,7 @@
 
     "misc/agents" = ./misc/agents;
     "misc/anyrun" = ./misc/anyrun;
+    "misc/dunst" = ./misc/dunst;
     "misc/hyprland" = ./misc/hyprland;
     "misc/waybar" = ./misc/waybar;
     "misc/home" = ./misc/home;
