@@ -156,6 +156,62 @@
               ''
           );
 
+        # Bot Screen de Hermes: el escritorio Xvnc + Xfce de cada bot (ver docs/agent-host.md).
+        # Los binarios son los REQUIRED_BINARIES de tools/bot_desktop/runtime.py; Hermes los busca en el PATH.
+        hermes-bot-screen =
+          let
+            nixos = self.nixosConfigurations.artemis.config;
+            home = self.homeConfigurations."gerry@artemis".config;
+            failures = lib.runTests {
+              # cua-driver (el computer_use de los bots) es un binario precompilado que corre por nix-ld
+              testNixLdServesCuaDriverLibraries = {
+                expr = map (p: lib.elem p nixos.programs.nix-ld.libraries) [
+                  pkgs.libX11
+                  pkgs.libXi
+                  pkgs.libxkbcommon
+                ];
+                expected = [
+                  true
+                  true
+                  true
+                ];
+              };
+            };
+            bins = [
+              "Xvnc"
+              "xfwm4"
+              "xfce4-panel"
+              "xfdesktop"
+              "xfsettingsd"
+              "dbus-run-session"
+              "xauth"
+              "xdpyinfo"
+              "setxkbmap"
+              "xprop"
+              "xsetroot"
+              "xset"
+            ];
+          in
+          pkgs.runCommand "hermes-bot-screen" { } (
+            if failures != [ ] then
+              ''
+                echo ${lib.escapeShellArg (lib.generators.toPretty { } failures)} >&2
+                exit 1
+              ''
+            else
+              ''
+                missing=""
+                for b in ${lib.escapeShellArgs bins}; do
+                  [ -x ${home.home.path}/bin/$b ] || missing="$missing $b"
+                done
+                [ -z "$missing" ] || { echo "falta en el PATH de home:$missing" >&2; exit 1; }
+                # Sin xfconfd en el D-Bus privado de la pantalla, Xfce ignora el dock y el fondo que siembra Hermes
+                [ -e ${home.home.path}/share/dbus-1/services/org.xfce.Xfconf.service ] \
+                  || { echo "xfconfd no se puede activar por D-Bus" >&2; exit 1; }
+                touch $out
+              ''
+          );
+
         # Pin del feed oficial: api2.cursor.sh/updates/api/download/stable/linux-x64/sand
         grok-bot-version =
           let
