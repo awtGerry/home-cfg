@@ -112,6 +112,7 @@ in
                 }
                 { systemd.user.startServices = "sd-switch"; }
                 inputs.sops-nix.homeManagerModules.sops
+                inputs.hermes-agent.homeManagerModules.default
               ]
               ++ config.modules
               ++ builtins.attrValues self.homeModules;
