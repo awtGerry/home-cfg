@@ -289,6 +289,7 @@ in
       openal
       zlib
       glib
+      libxkbcommon # cua-driver, el computer_use de los bots de Hermes
     ];
     # virt-manager.enable = true;
 

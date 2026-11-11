@@ -67,6 +67,25 @@
     home.packages = with pkgs; [
       spotify
       inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.grok-bot
+
+      # Bot Screen de Hermes: escritorio por bot que se ve y se toma desde la app.
+      # `hermes computer-use screen install` solo sabe de apt/dnf/pacman. Sin el metapaquete
+      # de xfce4: su salvapantallas y polkit bloquean un escritorio sin monitor.
+      tigervnc
+      xfwm4
+      xfce4-panel
+      xfdesktop
+      xfce4-settings
+      xfce4-terminal
+      xfconf # su servicio D-Bus: sin xfconfd, Xfce ignora el dock y el fondo de Hermes
+      dbus
+      xauth
+      xdpyinfo
+      setxkbmap
+      xprop
+      xsetroot
+      xset
+      dejavu_fonts
     ];
 
     home.sessionVariables = {
