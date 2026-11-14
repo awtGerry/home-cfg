@@ -64,6 +64,8 @@ in
         };
       };
 
+      gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
+
       # El default nuevo es null; GTK4 sigue usando el tema de GTK.
       gtk4.theme = config.gtk.theme;
       gtk4.extraConfig.gtk-application-prefer-dark-theme = if isDark then 1 else 0;
@@ -75,16 +77,14 @@ in
       name = if isDark then "Posy_Cursor_Black" else "Posy_Cursor";
       size = 21;
       gtk.enable = true;
-      x11.enable = true;
+      x11.enable = false;
+      dotIcons.enable = false;
     };
 
+    # Sin sesion X propia (.xsession/.xprofile en ~); numlockx es un servicio aparte
     xsession = {
-      enable = true;
+      enable = false;
       numlock.enable = true;
-      # NOTA: Activar esta opcion si se desea usar teclado español por defecto!
-      # profileExtra = ''
-      #   setxkbmap es
-      # '';
     };
 
     # Configuracion basica de audio

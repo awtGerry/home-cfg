@@ -92,7 +92,7 @@
       # Usa Wayland para aplicaciones Chrome & Electron
       NIXOS_OZONE_WL = 1;
       # Mejora la apariencia de aplicaciones de Java
-      JDK_JAVA_OPTIONS = "-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel";
+      JDK_JAVA_OPTIONS = "-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Djava.util.prefs.userRoot=${config.xdg.configHome}/java";
     };
 
     dconf.enable = true;
