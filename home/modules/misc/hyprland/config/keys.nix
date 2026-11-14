@@ -29,6 +29,20 @@ let
   mkScreenshotCmd =
     dir:
     "grim -o $(hyprctl -j activeworkspace | jq -r '.monitor') ${dir}/$(date +%Y-%m-%d_%H-%M-%S).png";
+
+  # hl.bind("<mod> + <teclas>", <dispatcher>[, opts])
+  bindWith =
+    opts: keys: dispatcher:
+    {
+      _args = [
+        "${cfg.bindings.modKey} + ${keys}"
+        (lib.generators.mkLuaInline dispatcher)
+      ]
+      ++ lib.optional (opts != { }) opts;
+    };
+  bind = bindWith { };
+  exec = keys: cmd: bind keys "hl.dsp.exec_cmd(${lib.generators.toLua { } cmd})";
+  terminalExec = keys: cmd: exec keys "${cfg.bindings.apps.terminal} -e ${cmd}";
 in
 {
   options.wayland.windowManager.hyprland = {
@@ -54,100 +68,90 @@ in
       };
 
       extraBinds = lib.mkOption {
-        type = with lib.types; listOf str;
+        type = with lib.types; listOf (attrsOf anything);
         default = [ ];
-        description = "Atajos adicionales";
+        description = "Atajos adicionales, con la forma `{ _args = [ teclas dispatcher opts? ]; }` de hl.bind";
       };
     };
   };
 
   config = lib.mkIf cfg.enable {
-    wayland.windowManager.hyprland.settings = {
-      "$mod" = cfg.bindings.modKey;
+    wayland.windowManager.hyprland.settings.bind =
+      # Atajos del sistema
+      [
+        (bind "Q" "hl.dsp.window.close()")
+        (exec "Backspace" "wlogout")
+        (bind "CTRL + Backspace" "hl.dsp.exit()")
+        (exec "Print" "screenshot")
+        (exec "SHIFT + Print" (mkScreenshotCmd cfg.bindings.screenshotDir))
 
-      bind =
-        # Atajos del sistema
-        [
-          "$mod, Q, killactive"
-          "$mod, Backspace, exec, wlogout"
-          "$mod CTRL, Backspace, exec, hyprctl dispatch exit"
-          "$mod, Print, exec, screenshot"
-          "$mod Shift, Print, exec, ${mkScreenshotCmd cfg.bindings.screenshotDir}"
+        # Atajos relacionados a las ventanas
+        (bind "Tab" "hl.dsp.focus({ workspace = \"previous\" })")
+        (bind "k" "hl.dsp.window.cycle_next()")
+        (bind "k" "hl.dsp.window.bring_to_top()")
+        (bind "j" "hl.dsp.window.cycle_next({ next = false })")
+        (bind "j" "hl.dsp.window.bring_to_top()")
+        (bind "F" "hl.dsp.window.fullscreen()")
+        (bind "Space" "hl.dsp.window.float({ action = \"toggle\" })")
 
-          # Atajos relacionados a las ventanas
-          "$mod, Tab, workspace, previous"
-          "$mod, k, cyclenext"
-          "$mod, k, bringactivetotop"
-          "$mod, j, cyclenext, prev"
-          "$mod, j, bringactivetotop"
-          "$mod, F, fullscreen"
-          "$mod, Space, togglefloating"
+        # Ejecutar aplicaciones
+        (exec "Return" config.apps.terminal)
+        (exec "v" "quickemu --vm $HOME/vm/windows-10.conf")
+        (exec "W" config.apps.browser)
+        (exec "CTRL + W" cfg.bindings.apps.altBrowser)
+        (exec "E" "thunar")
+        (terminalExec "CTRL + E" "hx")
+        (exec "P" cfg.bindings.apps.launcher)
+        (exec "SHIFT + P" cfg.bindings.apps.imageEditor)
+        (terminalExec "A" cfg.bindings.apps.mixer)
+        (exec "N" "hx-notes")
 
-          # Ejecutar aplicaciones
-          "$mod, Return, exec, ${config.apps.terminal}"
-          "$mod, v, exec, quickemu --vm $HOME/vm/windows-10.conf"
-          "$mod, W, exec, ${config.apps.browser}"
-          "$mod CTRL, W, exec, ${cfg.bindings.apps.altBrowser}"
-          "$mod, E, exec, thunar"
-          "$mod CTRL, E, exec, ${cfg.bindings.apps.terminal} -e hx"
-          "$mod, P, exec, ${cfg.bindings.apps.launcher}"
-          "$mod SHIFT, P, exec, ${cfg.bindings.apps.imageEditor}"
-          "$mod, A, exec, ${cfg.bindings.apps.terminal} -e ${cfg.bindings.apps.mixer}"
-          "$mod, N, exec, hx-notes"
+        # Manejo de fondos de pantalla
+        (exec "S" "fzf-wp")
+        (exec "SHIFT + S" "random-wp")
+        (exec "CTRL + S" "setbg")
 
-          # Manejo de fondos de pantalla
-          "$mod, S, exec, fzf-wp"
-          "$mod SHIFT, S, exec, random-wp"
-          "$mod CTRL, S, exec, setbg"
+        # Utilidades del sistema
+        (exec "T" "${config.apps.terminal} -e ts-en")
+        (exec "SHIFT + T" "${config.apps.terminal} -e ts-es")
+        (terminalExec "D" cfg.bindings.apps.diskUsage)
+        (terminalExec "SHIFT + D" cfg.bindings.apps.systemMonitor)
 
-          # Utilidades del sistema
-          "$mod, T, exec, ${config.apps.terminal} -e ts-en"
-          "$mod SHIFT, T, exec, ${config.apps.terminal} -e ts-es"
-          "$mod, D, exec, ${cfg.bindings.apps.terminal} -e ${cfg.bindings.apps.diskUsage}"
-          "$mod SHIFT, D, exec, ${cfg.bindings.apps.terminal} -e ${cfg.bindings.apps.systemMonitor}"
+        # Multimedia y comunicacion
+        (exec "X" cfg.bindings.apps.gameClient)
+        (exec "SHIFT + X" cfg.bindings.apps.gameLauncher)
+        (terminalExec "B" cfg.bindings.apps.bluetooth)
+        # (exec "M" cfg.bindings.apps.email)
+        (
+          if config.apps.music == "rmpc" then
+            terminalExec "M" config.apps.music
+          else
+            exec "M" config.apps.music
+        )
 
-          # Multimedia y comunicacion
-          "$mod, X, exec, ${cfg.bindings.apps.gameClient}"
-          "$mod SHIFT, X, exec, ${cfg.bindings.apps.gameLauncher}"
-          "$mod, B, exec, ${cfg.bindings.apps.terminal} -e ${cfg.bindings.apps.bluetooth}"
-          # "$mod, M, exec, ${cfg.bindings.apps.email}"
-          # "$mod, M, exec, ${config.apps.music}"
-          (
-            if config.apps.music == "rmpc" then
-              "$mod, M, exec, ${cfg.bindings.apps.terminal} -e ${config.apps.music}"
-            else
-              "$mod, M, exec, ${config.apps.music}"
-          )
-        ]
-        ++ cfg.bindings.extraBinds
-        ++ (
-          # Atajos de espacios de trabajo (workspace)
-          # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
-          builtins.concatLists (
-            builtins.genList (
-              x:
-              let
-                ws =
-                  let
-                    c = (x + 1) / 10;
-                  in
-                  builtins.toString (x + 1 - (c * 10));
-              in
-              [
-                "$mod, ${ws}, workspace, ${toString (x + 1)}"
-                "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
-              ]
-            ) 10
-          )
-        );
-
-      bindm = [
         # Para el mouse
         # WARNING: No recomiendo quitar esta configuracion
-        "$mod, mouse:272, movewindow"
-        "$mod, mouse:273, resizewindow"
-        "$mod ALT, mouse:272, resizewindow"
-      ];
-    };
+        (bindWith { mouse = true; } "mouse:272" "hl.dsp.window.drag()")
+        (bindWith { mouse = true; } "mouse:273" "hl.dsp.window.resize()")
+        (bindWith { mouse = true; } "ALT + mouse:272" "hl.dsp.window.resize()")
+      ]
+      ++ cfg.bindings.extraBinds
+      ++ (
+        # Atajos de espacios de trabajo (workspace)
+        # mod + [shift +] {1..9,0} cambia a [mueve la ventana a] la ventana de trabajo {1..10}
+        builtins.concatLists (
+          builtins.genList (
+            x:
+            let
+              n = toString (x + 1);
+              key = toString (lib.mod (x + 1) 10);
+            in
+            [
+              (bind key "hl.dsp.focus({ workspace = ${n} })")
+              (bind "SHIFT + ${key}" "hl.dsp.window.move({ workspace = ${n} })")
+            ]
+          ) 10
+        )
+      );
   };
 }
