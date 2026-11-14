@@ -71,7 +71,7 @@
 
     # Hermes Desktop empaquetado. Fijado al mismo commit que ~/.hermes/hermes-agent
     # (que se actualiza solo): ambos comparten ~/.hermes, subirlos juntos.
-    hermes-agent.url = "github:NousResearch/hermes-agent/f41ac076956da5c2b513b322a47f7938508017e4";
+    hermes-agent.url = "github:NousResearch/hermes-agent/3b421578588243f920886e6fe79a6faa87ea026e";
     hermes-agent.inputs.nixpkgs.follows = "nixpkgs";
     hermes-agent.inputs.flake-parts.follows = "flake-parts";
     hermes-agent.inputs.home-manager.follows = "home-manager";
