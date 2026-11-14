@@ -41,9 +41,6 @@ in
     ];
 
     home.packages = with pkgs; [
-
-      appflowy
-
       chromium # I just don't get use to work with the same browser for research and development, so idk
 
       ripgrep

@@ -6,6 +6,91 @@
     { pkgs, system, ... }:
     {
       checks = lib.optionalAttrs (system == "x86_64-linux") {
+        # Que las herramientas no escriban en el tope de ~ (ver home/modules/misc/clean-home)
+        clean-home =
+          let
+            home = self.homeConfigurations."gerry@artemis".config;
+            homeDir = home.home.homeDirectory;
+            sessionVars = home.home.sessionVariables;
+            systemdVars = home.systemd.user.sessionVariables;
+
+            # Los destinos pueden ser absolutos (/home/gerry/.x) o relativos (./.x, .x)
+            normalize = target: lib.removePrefix "./" (lib.removePrefix "${homeDir}/" target);
+            enabledFiles = lib.filter (f: f.enable) (lib.attrValues home.home.file);
+            topLevel = lib.sort (a: b: a < b) (
+              lib.filter (t: !(lib.hasInfix "/" t)) (map (f: normalize f.target) enabledFiles)
+            );
+
+            isDirectChildOfHome = value: !(lib.hasInfix "/" (lib.removePrefix "${homeDir}/" (toString value)));
+            # Lista explicita, no derivada del modulo: asi detecta una variable que se pierda
+            relocated = [
+              "CARGO_HOME"
+              "GOPATH"
+              "GOMODCACHE"
+              "RUSTUP_HOME"
+              "NPM_CONFIG_CACHE"
+              "BUN_INSTALL"
+              "NUGET_PACKAGES"
+              "DOTNET_CLI_HOME"
+              "DOCKER_CONFIG"
+              "ANDROID_USER_HOME"
+              "ANDROID_HOME"
+              "WINEPREFIX"
+              "PYTHON_HISTORY"
+              "NODE_REPL_HISTORY"
+              "PSQL_HISTORY"
+              "PULSE_COOKIE"
+              "TEXMFVAR"
+            ];
+            isSessionWide =
+              name:
+              sessionVars ? ${name}
+              && systemdVars ? ${name}
+              && !(isDirectChildOfHome sessionVars.${name})
+              && !(isDirectChildOfHome systemdVars.${name});
+
+            zshrc = lib.concatMapStrings (f: f.text) (
+              lib.filter (f: baseNameOf f.target == ".zshrc") enabledFiles
+            );
+            # `autoload -U compinit` no cuenta: solo la llamada en posicion de comando
+            compinitCalls = lib.filter (
+              line:
+              builtins.match "[[:space:]]*(.*(&&|;|\\|\\|))?[[:space:]]*compinit([[:space:]].*)?" line != null
+            ) (lib.splitString "\n" zshrc);
+            dumpsToFile = line: builtins.match ".*compinit[[:space:]].*-d[[:space:]].*" line != null;
+
+            failures = lib.runTests {
+              testOnlyZshenvAtTopOfHome = {
+                expr = topLevel;
+                expected = [ ".zshenv" ];
+              };
+              testToolHomesAreSessionWide = {
+                expr = lib.filter (name: !(isSessionWide name)) relocated;
+                expected = [ ];
+              };
+              # Sin -d, compinit deja .zcompdump.<host>.<pid> en ~ en cada shell
+              testCompinitDumpsToCache = {
+                expr = {
+                  found = compinitCalls != [ ];
+                  withoutDumpFile = lib.filter (l: !(dumpsToFile l)) compinitCalls;
+                };
+                expected = {
+                  found = true;
+                  withoutDumpFile = [ ];
+                };
+              };
+            };
+          in
+          pkgs.runCommand "clean-home" { } (
+            if failures == [ ] then
+              "touch $out"
+            else
+              ''
+                echo ${lib.escapeShellArg (lib.generators.toPretty { } failures)} >&2
+                exit 1
+              ''
+          );
+
         # Que un `ld` de algun agente no congele artemis (ver docs/agent-host.md)
         agent-memory-guard =
           let
@@ -219,7 +304,7 @@
             failures = lib.runTests {
               testPinnedToOfficialStable = {
                 expr = grok.version;
-                expected = "0.75.5";
+                expected = "0.78.1";
               };
             };
           in
@@ -381,6 +466,35 @@
             };
           in
           pkgs.runCommand "notifications" { } (
+            if failures == [ ] then
+              "touch $out"
+            else
+              ''
+                echo ${lib.escapeShellArg (lib.generators.toPretty { } failures)} >&2
+                exit 1
+              ''
+          );
+
+        # Sin default, xdg-open usa el orden alfabetico de mimeinfo.cache y
+        # chromium (perfil development) le gana a firefox
+        default-browser =
+          let
+            home = self.homeConfigurations."gerry@artemis".config;
+            opensIn = mime: home.xdg.mimeApps.defaultApplications.${mime} or null;
+            failures = lib.runTests {
+              testWebLinksOpenInConfiguredBrowser = {
+                expr = map opensIn [
+                  "text/html"
+                  "x-scheme-handler/http"
+                  "x-scheme-handler/https"
+                  "x-scheme-handler/about"
+                  "x-scheme-handler/unknown"
+                ];
+                expected = lib.replicate 5 [ "firefox.desktop" ];
+              };
+            };
+          in
+          pkgs.runCommand "default-browser" { } (
             if failures == [ ] then
               "touch $out"
             else

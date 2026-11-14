@@ -19,6 +19,19 @@ in
     home.packages = with pkgs; [ starship ];
 
     programs.zsh = {
+      dotDir = "${config.xdg.configHome}/zsh";
+
+      # Un solo compinit, con -d: sin el, deja .zcompdump.<host>.<pid> en ~.
+      # globdots va despues de compinit porque este reinicia _comp_options.
+      completionInit = ''
+        mkdir -p "${config.xdg.cacheHome}/zsh"
+        autoload -U compinit
+        zstyle ':completion:*' menu select
+        zmodload zsh/complist
+        compinit -d "${config.xdg.cacheHome}/zsh/zcompdump-$ZSH_VERSION"
+        _comp_options+=(globdots)
+      '';
+
       history.size = 10000000;
       history.path = "/home/gerry/.cache/zsh_history";
 
@@ -71,6 +84,9 @@ in
         dvt = lib.mkDefault "cd ~/Dev/tests";
 
         cl = lib.mkDefault "claude --dangerously-skip-permissions";
+        cx = lib.mkDefault "codex --yolo";
+
+        wget = lib.mkDefault "wget --hsts-file=${config.xdg.cacheHome}/wget-hsts";
       };
 
       initContent = lib.mkBefore ''
@@ -81,27 +97,9 @@ in
         export TERMINAL="${config.apps.terminal}"
         export BROWSER="${config.apps.browser}"
 
-        # Autocomplete with tab
-        autoload -U compinit
-        zstyle ':completion:*' menu select
-        zmodload zsh/complist
-        compinit
-        _comp_options+=(globdots)
-
         # shortcuts
         bindkey -v
         export KEYTIMEOUT=1
-
-        # Clean ~
-        export XDG_CONFIG_HOME="$HOME/.config"
-        export XDG_DATA_HOME="$HOME/.local/share"
-        export XDG_CACHE_HOME="$HOME/.cache"
-
-        export CARGO_HOME="$XDG_DATA_HOME/cargo"
-        export PATH="$PATH:$CARGO_HOME/bin"
-        export GOPATH="$XDG_DATA_HOME/go"
-        export PATH=$PATH:$GOPATH/bin
-        export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
       '';
 
       plugins = [
