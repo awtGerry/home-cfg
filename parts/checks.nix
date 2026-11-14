@@ -219,7 +219,7 @@
             failures = lib.runTests {
               testPinnedToOfficialStable = {
                 expr = grok.version;
-                expected = "0.75.5";
+                expected = "0.78.1";
               };
             };
           in
