@@ -389,6 +389,35 @@
                 exit 1
               ''
           );
+
+        # Sin default, xdg-open usa el orden alfabetico de mimeinfo.cache y
+        # chromium (perfil development) le gana a firefox
+        default-browser =
+          let
+            home = self.homeConfigurations."gerry@artemis".config;
+            opensIn = mime: home.xdg.mimeApps.defaultApplications.${mime} or null;
+            failures = lib.runTests {
+              testWebLinksOpenInConfiguredBrowser = {
+                expr = map opensIn [
+                  "text/html"
+                  "x-scheme-handler/http"
+                  "x-scheme-handler/https"
+                  "x-scheme-handler/about"
+                  "x-scheme-handler/unknown"
+                ];
+                expected = lib.replicate 5 [ "firefox.desktop" ];
+              };
+            };
+          in
+          pkgs.runCommand "default-browser" { } (
+            if failures == [ ] then
+              "touch $out"
+            else
+              ''
+                echo ${lib.escapeShellArg (lib.generators.toPretty { } failures)} >&2
+                exit 1
+              ''
+          );
       };
     };
 }
