@@ -54,8 +54,8 @@
       #   modKey = "SUPER";
       #   # NOTE: Aqui se pueden añadir atajos de teclado adicionales
       #   # extraBinds = [
-      #   #   "$mod, C, exec, code"
-      #   #   "$mod SHIFT, V, exec, vlc"
+      #   #   { _args = [ "SUPER + C" (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("code")'') ]; }
+      #   #   { _args = [ "SUPER + SHIFT + V" (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("vlc")'') ]; }
       #   # ];
       # };
     };

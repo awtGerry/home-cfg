@@ -265,6 +265,64 @@
               ''
           );
 
+        # Hyprland >= 0.57 solo lee hyprland.lua: si HM escribe hyprland.conf,
+        # arranca con el default (sin atajos, monitores ni waybar).
+        hyprland-config =
+          let
+            artemis = self.homeConfigurations."gerry@artemis";
+            home = artemis.config;
+            hypr = home.wayland.windowManager.hyprland;
+            luaFile = home.xdg.configFile."hypr/hyprland.lua" or null;
+            # artemis no prende estas ramas; Hyprland tambien debe aceptarlas
+            allBranches =
+              (artemis.extendModules {
+                modules = [
+                  {
+                    theme.baseScheme = lib.mkForce "e-ink";
+                    theme.variant = lib.mkForce "light";
+                    wayland.windowManager.hyprland.visuals = {
+                      animation.enable = true;
+                      transparency.enable = true;                    };
+                  }
+                ];
+              }).config;
+            configs = [
+              luaFile.source
+              allBranches.xdg.configFile."hypr/hyprland.lua".source
+            ];
+            failures = lib.runTests {
+              testWritesLuaConfig = {
+                expr = luaFile != null && !(home.xdg.configFile ? "hypr/hyprland.conf");
+                expected = true;
+              };
+              # Ya existe un hyprland.lua (el default de Hyprland) que HM debe reemplazar
+              testReplacesExistingStub = {
+                expr = luaFile.force or false;
+                expected = true;
+              };
+            };
+          in
+          pkgs.runCommand "hyprland-config" { } (
+            if failures != [ ] then
+              ''
+                echo ${lib.escapeShellArg (lib.generators.toPretty { } failures)} >&2
+                exit 1
+              ''
+            else
+              ''
+                export HOME=$TMPDIR XDG_RUNTIME_DIR=$TMPDIR
+                for cfg in ${lib.escapeShellArgs configs}; do
+                  ${hypr.finalPackage}/bin/Hyprland --verify-config -c $cfg > log 2>&1 \
+                    || { sed -n '/Config parsing result/,$p' log >&2; exit 1; }
+                done
+                # Lo que faltaba al arrancar con el default
+                for want in 'hl.monitor(' 'hl.workspace_rule(' 'hl.bind(' '/bin/start'; do
+                  grep -qF "$want" ${luaFile.source} || { echo "falta en hyprland.lua: $want" >&2; exit 1; }
+                done
+                touch $out
+              ''
+          );
+
         # Notificaciones "glass card": tarjeta translucida arriba a la derecha
         notifications =
           let
@@ -273,7 +331,9 @@
             # Home Manager envuelve cada seccion de dunst como { data = ...; }
             section = name: dunst.settings.${name}.data or { };
             global = section "global";
-            layerrules = home.wayland.windowManager.hyprland.visuals.layerrules;
+            notificationRules = builtins.filter (
+              r: (r.match.namespace or null) == "notifications"
+            ) home.wayland.windowManager.hyprland.visuals.layerrules;
             failures = lib.runTests {
               testDunstRunsAsUserService = {
                 expr = dunst.enable;
@@ -310,14 +370,12 @@
                 expected = "close_current";
               };
               testHyprlandBlursNotifications = {
-                expr = lib.elem "blur on, match:namespace notifications" layerrules;
+                expr = lib.any (r: r.blur or false) notificationRules;
                 expected = true;
               };
               # Sin ignore_alpha el blur pinta un rectangulo detras de las esquinas redondeadas
               testBlurIgnoresTransparentCorners = {
-                expr = lib.any (lib.hasPrefix "ignore_alpha") (
-                  builtins.filter (r: lib.hasSuffix "match:namespace notifications" r) layerrules
-                );
+                expr = lib.any (r: r ? ignore_alpha) notificationRules;
                 expected = true;
               };
             };
