@@ -143,7 +143,7 @@ in
       rmpc.enable = config.apps.music == "rmpc";
 
       anyrun.enable = config.apps.launcher == "anyrun";
-      rofi.enable = config.apps.launcher == "rofi"; # Dejare rofi disponible por si regreso
+      # rofi.enable = config.apps.launcher == "rofi"; # Dejare rofi disponible por si regreso
 
       tmux = {
         enable = true;

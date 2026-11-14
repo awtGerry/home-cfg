@@ -84,6 +84,7 @@ in
         dvt = lib.mkDefault "cd ~/Dev/tests";
 
         cl = lib.mkDefault "claude --dangerously-skip-permissions";
+        cx = lib.mkDefault "codex --yolo";
 
         wget = lib.mkDefault "wget --hsts-file=${config.xdg.cacheHome}/wget-hsts";
       };
